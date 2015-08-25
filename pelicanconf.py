@@ -12,6 +12,15 @@ TIMEZONE = 'America/Sao_Paulo'
 
 DEFAULT_LANG = u'pt'
 
+USE_FOLDER_AS_CATEGORY = True
+
+DEFAULT_METADATA = (
+    (
+        'About_author',
+        'Desenvolvedor, Linuxista e Gamer'
+    ),
+)
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -26,10 +35,53 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (
+    ('github', 'https://github.com/rafaelhenrique'),
+    ('twitter', 'https://twitter.com/rafaelhenrique'),
+    #('rss', 'http://abraseucodigo.com.br/feeds/feeds.atom.xml'),
+)
 
 DEFAULT_PAGINATION = 10
 
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.8,
+        'indexes': 0.5,
+        'pages': 0.3
+    },
+    'changefreqs': {
+        'articles': 'daily',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
+
+# Plugins
+PLUGIN_PATHS = [
+    'pelican-plugins',
+    'custom-plugins'
+]
+
+PLUGINS = [
+    'gravatar',
+    'sitemap',
+    'emoji',
+    #'share_post',
+    #'pelican_youtube',  # funciona somente com arquivos rst
+    #'pelican_vimeo',  # funciona somente com arquivos rst
+    'gzip_cache'  # deve ser o ultimo plugin
+]
+
+COVER_IMG_URL = 'http://lorempixel.com/g/200/500/animals/'
+TAGLINE = 'Por um mundo livre e inteligente!!'
+GITHUB_URL = 'https://github.com/rafaelhenrique/rafaelhenrique.github.io'
+DISQUS_SITENAME = 'abraseucodigo'
+GOOGLE_ANALYTICS = 'UA-66364849-1'
+
+# Theme
+THEME = 'theme'
+
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
+STATIC_PATHS = ['images']
