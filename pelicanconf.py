@@ -43,6 +43,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (
     ('github', 'https://github.com/rafaelhenrique'),
     ('twitter', 'https://twitter.com/rafaelhenrique'),
+    ('linkedin',
+     'http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3')
     #('rss', 'http://abraseucodigo.com.br/feeds/feeds.atom.xml'),
 )
 
@@ -78,7 +80,8 @@ PLUGINS = [
     'gzip_cache'  # deve ser o ultimo plugin
 ]
 
-COVER_IMG_URL = 'http://lorempixel.com/g/200/500/animals/'
+#COVER_IMG_URL = 'http://lorempixel.com/g/200/500/animals/'
+COVER_IMG_URL = '/images/cover_img.png'
 TAGLINE = 'Por um mundo livre e inteligente!!'
 GITHUB_URL = 'https://github.com/rafaelhenrique/rafaelhenrique.github.io'
 DISQUS_SITENAME = 'abraseucodigo'
