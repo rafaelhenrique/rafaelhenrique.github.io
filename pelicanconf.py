@@ -28,6 +28,11 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+MENUITEMS = [
+    ('Arquivo', 'archives.html'),
+    ('Sobre', 'about.html'),
+]
+
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
