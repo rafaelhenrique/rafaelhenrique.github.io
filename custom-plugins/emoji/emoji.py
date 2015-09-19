@@ -889,7 +889,7 @@ dict = {
         ':zap:': 'zap.png',
         ':zero:': 'zero.png',
         ':zzz:': 'zzz.png',
-
+        ':python:': 'python.png',
     }
 
 
