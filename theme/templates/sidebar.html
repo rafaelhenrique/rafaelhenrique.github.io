@@ -1,22 +1,45 @@
-<div class="sidebar pure-u">
-    <div class="cover-img" style="background-image: url('{{ COVER_IMG_URL }}')">
-        <div class="cover-body">
-            <header class="header">
-                <hgroup>
-                    <h1 class="brand-main"><a href="/">{{ SITENAME }}</a></h1>
-                    <p class="tagline">{{ TAGLINE }}</p>
-                {% for title, link in MENUITEMS %}
-                    <p class="links"><a href="{{ link }}">{{ title }}</a></p>
-                {% endfor %}
-                    <p class="social">
-                {% for title, link in SOCIAL %}
-                        <a href="{{ link }}">
-                            <i class="fa fa-{{ title }} fa-3x"></i>
-                        </a>
-                {% endfor %}
-                    <p>
-                </hgroup>
-            </header>
-        </div>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="{{ SITEURL }}/theme/img/profile.png"/>
     </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    {% for title, link in MENUITEMS %}
+      <a class="sidebar-nav-item" href="{{ link }}">{{ title }}</a>
+    {% endfor %}
+        <p class="social">
+    {% for title, link in SOCIAL %}
+            <a class="sidebar-nav-item" href="{{ link }}">
+                <i class="fa fa-{{ title }} fa-3x"></i>
+            </a>
+    {% endfor %}
+        <p>
+  </nav>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+  {% for category, articles in categories %}
+      <a class="sidebar-nav-item" href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
+  {% endfor %}
+
+  {% for title, href in LINKS %}
+  <a class="sidebar-nav-item" href="{{ href }}">{{ title }}</a>
+  {% endfor %}
+  </nav>
+
+<!--   <div class="sidebar-item">
+    <p>
+    <a href="https://twitter.com/{{ TWITTER_ACCOUNT }}">&copy; @{{ TWITTER_ACCOUNT }}</a> 2015
+    </p>
+    <p class="tiny-note">
+      <a class="muted" href="https://github.com/thomaswilley/pelicanyan">pelicanyan v0.1</a>
+    </p>
+  </div> -->
 </div>

@@ -34,10 +34,10 @@ MENUITEMS = [
 ]
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+# LINKS = (('Pelican', 'http://getpelican.com/'),
+#          ('Python.org', 'http://python.org/'),
+#          ('Jinja2', 'http://jinja.pocoo.org/'),
+#          ('You can modify those links in your config file', '#'),)
 
 # Social widget
 SOCIAL = (
@@ -81,7 +81,7 @@ PLUGINS = [
 ]
 
 #COVER_IMG_URL = 'http://lorempixel.com/g/200/500/animals/'
-COVER_IMG_URL = '/images/cover_img.png'
+# COVER_IMG_URL = '/images/cover_img.png'
 TAGLINE = 'Por um mundo livre e inteligente!!'
 GITHUB_URL = 'https://github.com/rafaelhenrique/rafaelhenrique.github.io'
 DISQUS_SITENAME = 'abraseucodigo'
