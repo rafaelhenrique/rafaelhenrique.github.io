@@ -3,23 +3,24 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Rafael Henrique da Silva Correia'
+AUTHOR_USERNAME = u'@rafaelhenrique'
+AUTHOR_DESCRIPTION = (
+    "Dev, geek, gamer, pythonista, e obviamente o "
+    "criador deste log que vôs contempla neste momento."
+)
+
 SITENAME = u'Abra seu C\xf3digo!!!'
 SITEURL = ''
+SITEDESCRIPTION = 'Por um mundo livre e inteligente'
 
 PATH = 'content'
 
 TIMEZONE = 'America/Sao_Paulo'
 
 DEFAULT_LANG = u'pt'
+DATE_FORMATS = {'pt': '%B %d, %Y', }
 
 USE_FOLDER_AS_CATEGORY = True
-
-DEFAULT_METADATA = (
-    (
-        'About_author',
-        'Desenvolvedor, Linuxista e Gamer'
-    ),
-)
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -28,11 +29,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-MENUITEMS = [
-    ('Arquivo', 'archives.html'),
-    ('Sobre', 'about.html'),
-]
-
 # Blogroll
 # LINKS = (('Pelican', 'http://getpelican.com/'),
 #          ('Python.org', 'http://python.org/'),
@@ -40,9 +36,9 @@ MENUITEMS = [
 #          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (
-    ('github', 'https://github.com/rafaelhenrique'),
+SOCIAL_LINKS = (
     ('twitter', 'https://twitter.com/rafaelhenrique'),
+    ('github', 'https://github.com/rafaelhenrique'),
     ('linkedin',
      'http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3')
     #('rss', 'http://abraseucodigo.com.br/feeds/feeds.atom.xml'),
@@ -63,6 +59,7 @@ SITEMAP = {
         'pages': 'monthly'
     }
 }
+SITEMAP_SAVE_AS = 'sitemap.xml'
 
 # Plugins
 PLUGIN_PATHS = [
@@ -80,8 +77,6 @@ PLUGINS = [
     'gzip_cache'  # deve ser o ultimo plugin
 ]
 
-#COVER_IMG_URL = 'http://lorempixel.com/g/200/500/animals/'
-# COVER_IMG_URL = '/images/cover_img.png'
 TAGLINE = 'Por um mundo livre e inteligente!!'
 GITHUB_URL = 'https://github.com/rafaelhenrique/rafaelhenrique.github.io'
 DISQUS_SITENAME = 'abraseucodigo'
@@ -92,4 +87,13 @@ THEME = 'theme'
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'favicon.ico']
+
+DIRECT_TEMPLATES = (
+    'index', 'categories',
+    'authors', 'archives',
+    'sitemap', 'robots', 'humans')
+
+ROBOTS_SAVE_AS = 'robots.txt'
+HUMANS_SAVE_AS = 'humans.txt'
+TYPOGRIFY = True

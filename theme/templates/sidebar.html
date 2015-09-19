@@ -8,38 +8,35 @@ styles, `#sidebar-checkbox` for behavior. -->
       <img src="{{ SITEURL }}/theme/img/profile.png"/>
     </div>
   </div>
-
+  
   <nav class="sidebar-nav">
-    {% for title, link in MENUITEMS %}
-      <a class="sidebar-nav-item" href="{{ link }}">{{ title }}</a>
-    {% endfor %}
-        <p class="social">
-    {% for title, link in SOCIAL %}
-            <a class="sidebar-nav-item" href="{{ link }}">
-                <i class="fa fa-{{ title }} fa-3x"></i>
-            </a>
-    {% endfor %}
-        <p>
+    <div class="author sidebar-nav-item">
+      <p>{{ AUTHOR_USERNAME }}</p>
+      <p>{{ AUTHOR_DESCRIPTION }}</p>
+    </div>
   </nav>
 
   <nav class="sidebar-nav">
-  <a class="sidebar-nav-item" href="/">All</a>
-
-  {% for category, articles in categories %}
-      <a class="sidebar-nav-item" href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
-  {% endfor %}
-
-  {% for title, href in LINKS %}
-  <a class="sidebar-nav-item" href="{{ href }}">{{ title }}</a>
-  {% endfor %}
+    <div class="sidebar-nav-item">
+      {% for title, link in SOCIAL_LINKS %}
+      <a href="{{ link }}">
+        <i class="fa fa-{{ title }} fa-3x"></i>
+      </a>
+      {% endfor %}
+    </div>
   </nav>
 
-<!--   <div class="sidebar-item">
-    <p>
-    <a href="https://twitter.com/{{ TWITTER_ACCOUNT }}">&copy; @{{ TWITTER_ACCOUNT }}</a> 2015
-    </p>
-    <p class="tiny-note">
-      <a class="muted" href="https://github.com/thomaswilley/pelicanyan">pelicanyan v0.1</a>
-    </p>
-  </div> -->
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/sobre.html">Sobre o blog</a>
+    <a class="sidebar-nav-item" href="/archives.html">Histórico de posts</a>
+
+    {% for category, articles in categories %}
+    <a class="sidebar-nav-item" href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
+    {% endfor %}
+
+    {% for title, href in LINKS %}
+    <a class="sidebar-nav-item" href="{{ href }}">{{ title }}</a>
+    {% endfor %}
+  </nav>
+
 </div>

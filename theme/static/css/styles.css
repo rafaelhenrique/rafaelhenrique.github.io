@@ -11,6 +11,10 @@
   opacity: 0;
   filter: alpha(opactiy=0);
 }
+.author {
+  height: 100%;
+  width: 90%;  
+}
 .content-title h2 {
   color: #9a9a9a;
 }
