@@ -6,7 +6,7 @@ AUTHOR = u'Rafael Henrique da Silva Correia'
 AUTHOR_USERNAME = u'@rafaelhenrique'
 AUTHOR_DESCRIPTION = (
     "Dev, geek, gamer, pythonista, e obviamente o "
-    "criador deste log que vôs contempla neste momento."
+    "criador deste blog que vôs contempla neste momento."
 )
 
 SITENAME = u'Abra seu C\xf3digo!!!'
