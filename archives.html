@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Abra seu Código!!!</title>
+
+    <meta charset="utf-8" />
+    <link href="abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Abra seu Código!!! Full Atom Feed" />
+    <link rel="stylesheet" href="abraseucodigo.com.br/theme/css/poole.css"/>
+    <link rel="stylesheet" href="abraseucodigo.com.br/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="abraseucodigo.com.br/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="abraseucodigo.com.br/theme/css/styles.css"/>
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="abraseucodigo.com.br/theme/img/profile.png"/>
+    </div>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <div class="author sidebar-nav-item">
+      <p>@rafaelhenrique</p>
+      <p>Dev, geek, gamer, pythonista, e obviamente o criador deste log que vôs contempla neste momento.</p>
+    </div>
+  </nav>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-nav-item">
+      <a href="https://twitter.com/rafaelhenrique">
+        <i class="fa fa-twitter fa-3x"></i>
+      </a>
+      <a href="https://github.com/rafaelhenrique">
+        <i class="fa fa-github fa-3x"></i>
+      </a>
+      <a href="http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3">
+        <i class="fa fa-linkedin fa-3x"></i>
+      </a>
+    </div>
+  </nav>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/sobre.html">Sobre o blog</a>
+    <a class="sidebar-nav-item" href="/archives.html">Histórico de posts</a>
+
+    <a class="sidebar-nav-item" href="abraseucodigo.com.br/category/geral.html">Geral</a>
+
+  </nav>
+
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="abraseucodigo.com.br/" title="Home">Abra seu Código!!!</a>
+            <small>Por um mundo livre e inteligente</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<h1>Histórico de posts...</h1>
+
+<dl>
+    <dt>setembro 19, 2015</dt>
+    <dd><a href="abraseucodigo.com.br/sobre.html">Sobre o&nbsp;blog</a></dd>
+</dl>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
