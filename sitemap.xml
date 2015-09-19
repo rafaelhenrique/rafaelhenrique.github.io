@@ -4,42 +4,42 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>abraseucodigo.com.br/</loc>
-<lastmod>2015-09-19T17:41:09-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2015-09-19T17:48:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>abraseucodigo.com.br/archives.html</loc>
-<lastmod>2015-09-19T17:41:09-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2015-09-19T17:48:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>abraseucodigo.com.br/categories.html</loc>
-<lastmod>2015-09-19T17:41:09-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2015-09-19T17:48:46-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>abraseucodigo.com.br/sobre.html</loc>
+<loc>/sobre.html</loc>
 <lastmod>2015-09-19T17:27:00-03:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
-<loc>abraseucodigo.com.br/category/geral.html</loc>
+<loc>/category/geral.html</loc>
 <lastmod>2015-09-19T17:27:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html</loc>
+<loc>/author/rafael-henrique-da-silva-correia.html</loc>
 <lastmod>2015-09-19T17:27:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
