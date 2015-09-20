@@ -87,7 +87,7 @@ THEME = 'theme'
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
-STATIC_PATHS = ['images', 'favicon.ico']
+STATIC_PATHS = ['images', 'favicon.ico', 'CNAME']
 
 DIRECT_TEMPLATES = (
     'index', 'categories',
