@@ -18,7 +18,7 @@ Nós queríamos trazer mais movimento de comunidades para Sorocaba e regiões pr
 
 [PG Day Campinas 2015](http://pgdaycampinas.com.br/)
 
-[GruPy-SP](www.meetup.com/pt/Grupy-SP/) :heart:
+[GruPy-SP](http://www.meetup.com/pt/Grupy-SP/) :heart:
 
 [TDC São Paulo 2015](http://www.thedevelopersconference.com.br/tdc/2015/saopaulo/trilhas) :heart:
 
