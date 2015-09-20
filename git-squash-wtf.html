@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Abra seu Código!!!</title>
+
+    <meta charset="utf-8" />
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Abra seu Código!!! Full Atom Feed" />
+    <link href="/feeds/git.atom.xml" type="application/atom+xml" rel="alternate" title="Abra seu Código!!! Categories Atom Feed" />
+    <link rel="stylesheet" href="/theme/css/poole.css"/>
+    <link rel="stylesheet" href="/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/theme/css/styles.css"/>
+
+
+
+    <meta name="tags" contents="git" />
+    <meta name="tags" contents="squash" />
+    <meta name="tags" contents="github" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="/theme/img/profile.png"/>
+    </div>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <div class="author sidebar-nav-item">
+      <p>@rafaelhenrique</p>
+      <p>Dev, geek, gamer, pythonista, e obviamente o criador deste blog que vôs contempla neste momento.</p>
+    </div>
+  </nav>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-nav-item">
+      <a href="https://twitter.com/rafaelhenrique">
+        <i class="fa fa-twitter fa-3x"></i>
+      </a>
+      <a href="https://github.com/rafaelhenrique">
+        <i class="fa fa-github fa-3x"></i>
+      </a>
+      <a href="http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3">
+        <i class="fa fa-linkedin fa-3x"></i>
+      </a>
+    </div>
+  </nav>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/sobre.html">Sobre o blog</a>
+    <a class="sidebar-nav-item" href="/archives.html">Histórico de posts</a>
+
+    <a class="sidebar-nav-item" href="/category/geral.html">Geral</a>
+    <a class="sidebar-nav-item" href="/category/git.html">GIT</a>
+    <a class="sidebar-nav-item" href="/category/python.html">Python</a>
+
+  </nav>
+
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Abra seu Código!!!</a>
+            <small>Por um mundo livre e inteligente</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Git squash?? <span class="caps">WTF</span>?
+    </h1>
+    <span class="post-date">março 24, 2015</span>
+
+    <p>Galera conforme mencionei no post anterior.. estou contribuindo com o <a href="https://github.com/puppet-community/puppetboard/">puppetboard</a> (mais informações no post abaixo desse :P). E fiz meu primeiro Pull Request e talz resolvendo uma questão que estava na issue para acrescentar uma nova funcionalidade ao projeto. Porém quando eu fiz meu <span class="caps">PR</span> (Pull Request) teve um cara que me disse o&nbsp;seguinte:</p>
+<p><img alt="comment-github-image" src="/images/git-squash-wtf_01.png" title="comment-github-image" />
+**<a href="http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">squash</a></p>
+<p>Ai eu pensei como qualquer ótimo conhecedor do Git que porras é essa de&nbsp;squash?</p>
+<p>O squash é uma prática utilizada para combinar mais de um commit em um commit só, desta forma eliminando &#8220;lixos&#8221; do projeto. Agora aqui neste post explicarei como raios você faz isso, pois não achei uma documentação simples que explicasse a uma pessoa normal como fazer isso, e após aprender, decidi <span class="caps">TENTAR</span> explicar de uma forma simples&nbsp;<img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png">.</p>
+<h2>O&nbsp;projeto</h2>
+<p>Primeiro obviamente você precisa ter um repositório git, para isso eu criei um repositório <span class="caps">BEEEM</span>&nbsp;simples:  </p>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir teste  
+<span class="nv">$ </span><span class="nb">cd </span>teste  
+<span class="nv">$ </span>git init  
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;Rafael&quot;</span> &gt;&gt; README  
+<span class="nv">$ </span>git add README  
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Adicionado Rafael&quot;</span> 
+
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;Henrique&quot;</span> &gt;&gt; README  
+<span class="nv">$ </span>git add README  
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Adicionado Henrique&quot;</span> 
+
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;da&quot;</span> &gt;&gt; README
+<span class="nv">$ </span>git add README  
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Adicionado da&quot;</span> 
+
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;Silva&quot;</span> &gt;&gt; README  
+<span class="nv">$ </span>git add README  
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Adicionado Silva&quot;</span> 
+
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;Correia&quot;</span> &gt;&gt; README  
+<span class="nv">$ </span>git add README  
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Adicionado Correia&quot;</span>
+</pre></div>
+
+
+<p>Feito isso terei o seguinte histórico de&nbsp;commits:</p>
+<div class="highlight"><pre><span class="nv">$ </span>git log --oneline  
+4c03027 Adicionado Correia  
+e23576b Adicionado Silva  
+769bda9 Adicionado da  
+2a71622 Adicionado Henrique  
+5ebadcd Adicionado Rafael
+</pre></div>
+
+
+<h2>O&nbsp;squash</h2>
+<p>Agora vamos imaginar que eu quero fazer um squash a partir de Henrique, ou seja quero que os commits 2a71622, 769bda9, e23576b e 4c03027 sejam um só, pois todos tratam da adição do sobrenome no arquivo <span class="caps">README</span>. Para isso precisarei usar o comando rebase do git no commit que eu desejo, no caso a partir do Henrique (como é a partir do Henrique deveremos pegar 1 commit&nbsp;antes):</p>
+<div class="highlight"><pre><span class="nv">$ </span>git rebase -i 5ebadcd
+</pre></div>
+
+
+<p>Após executar este comando será aberto um arquivo temporário para podermos fazer as alterações desejadas, o arquivo será similar a este&nbsp;abaixo:</p>
+<div class="highlight"><pre>pick 2a71622 Adicionado Henrique  
+pick 769bda9 Adicionado da  
+pick e23576b Adicionado Silva  
+pick 4c03027 Adicionado Correia 
+
+# Rebase 5ebadcd..4c03027 onto 5ebadcd  
+#  
+# Commands:  
+#  p, pick = use commit  
+#  r, reword = use commit, but edit the commit message  
+#  e, edit = use commit, but stop for amending  
+#  s, squash = use commit, but meld into previous commit  
+#  f, fixup = like &quot;squash&quot;, but discard this commit&#39;s log message  
+#  x, exec = run command (the rest of the line) using shell  
+#  
+# These lines can be re-ordered; they are executed from top to bottom.  
+#  
+# If you remove a line here THAT COMMIT WILL BE LOST.  
+#  
+# However, if you remove everything, the rebase will be aborted.  
+#  
+# Note that empty commits are commented out
+</pre></div>
+
+
+<p>Neste mesmo arquivo já podemos visualizar algumas opções do que fazer com esses commits, para este post utilizaremos somente o squash, mas vale a pena conhecer as outras opções descritas abaixo de commands. Agora altere este arquivo da seguinte&nbsp;maneira:</p>
+<div class="highlight"><pre>pick 2a71622 Adicionado Henrique  
+squash 769bda9 Adicionado da  
+squash e23576b Adicionado Silva  
+squash 4c03027 Adicionado Correia 
+
+# Rebase 5ebadcd..4c03027 onto 5ebadcd  
+#  
+# Commands:  
+#  p, pick = use commit  
+#  r, reword = use commit, but edit the commit message  
+#  e, edit = use commit, but stop for amending  
+#  s, squash = use commit, but meld into previous commit  
+#  f, fixup = like &quot;squash&quot;, but discard this commit&#39;s log message  
+#  x, exec = run command (the rest of the line) using shell  
+#  
+# These lines can be re-ordered; they are executed from top to bottom.  
+#  
+# If you remove a line here THAT COMMIT WILL BE LOST.  
+#  
+# However, if you remove everything, the rebase will be aborted.  
+#  
+# Note that empty commits are commented out
+</pre></div>
+
+
+<p>As linhas dos commits 769bda9, e23576b e 4c03027 foram mudadas para squash, portanto serão combinados ao commit que possui a o nome pick, então o commit 2a71622 agora será unido aos 3 commits abaixo dele. É importante comentar que o squash não remove os logs (mensagens dos commits) conforme a descrição do &#8220;Commands&#8221; já a opção fixup descarta os logs. Feita esta alteração basta salvar o arquivo e sair. Feito isso será apresentado outro arquivo similar a este&nbsp;abaixo:</p>
+<div class="highlight"><pre># This is a combination of 4 commits.  
+# The first commit&#39;s message is:  
+Adicionado Henrique  
+# This is the 2nd commit message:  
+Adicionado da  
+# This is the 3rd commit message:  
+Adicionado Silva  
+# This is the 4th commit message:  
+Adicionado Correia  
+# Please enter the commit message for your changes. Lines starting  
+# with &#39;#&#39; will be ignored, and an empty message aborts the commit.  
+#  
+# Date:      Tue Mar 24 11:08:29 2015 -0300  
+#  
+# rebase in progress; onto 5ebadcd  
+# You are currently editing a commit while rebasing branch &#39;master&#39; on &#39;5ebadcd&#39;.  
+#
+</pre></div>
+
+
+<p>Neste arquivo você poderá mudar as mensagens de log (mensagens dos commits) caso desejar, se desejar mude alguma coisa e salve e saia do arquivo. Terminada a edição/salvamento deste arquivo você acabou o squash! Podemos ver no log como ficou a nova&nbsp;estrutura:</p>
+<div class="highlight"><pre><span class="nv">$ </span>git log --oneline  
+f4c9d80 Adicionado Henrique  
+5ebadcd Adicionado Rafael 
+</pre></div>
+
+
+<p>Ou:  </p>
+<div class="highlight"><pre><span class="nv">$ </span>git log  
+commit f4c9d80a089ee35fca0eb7c6e5aabcb435fb9bb4  
+Author: Rafael Henrique da Silva Correia &lt;rafael@abraseucodigo.com.br&gt;  
+Date:   Tue Mar <span class="m">24</span> 11:08:29 <span class="m">2015</span> -0300  
+    Adicionado Henrique  
+
+    Adicionado da  
+
+    Adicionado Silva  
+
+    Adicionado Correia
+
+commit 5ebadcde3eb8c006bd33ee4c62f9cbb359822d6e  
+Author: Rafael Henrique da Silva Correia &lt;rafael@abraseucodigo.com.br&gt;  
+Date:   Tue Mar <span class="m">24</span> 11:08:14 <span class="m">2015</span> -0300  
+    Adicionado Rafael
+</pre></div>
+
+
+<h2>Conclusão</h2>
+<p>Esta prática é bem interessante e deixa o repositório do git mais limpo, é <span class="caps">MUITO</span> válida principalmente em projetos grandes onde se tem muitos contribuidores (principalmente em projetos open source&nbsp;<img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png">).</p>
+    <div class="hr"></div>
+    <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+  </div>
+</div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
