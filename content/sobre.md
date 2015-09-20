@@ -17,7 +17,7 @@ Trabalhei muitos anos da minha vida com infraestrutura/suporte em GNU/Linux, é 
 
 Comecei na área de suporte e infra pois como já citei para alguns amigos, eu conheci Python a muito tempo atrás (sem me aprofundar) e depois de conhecê-lo não consegui mais programar em linguagens MAL FEITAS, prefiro não citar exemplos para não ficar chato :coffee: :trollface:. Daí preferi ir para uma área que não precisasse "desenvolver nada".
 
-Fiz uma Lighting Talk no GruPy-SP intitulada "Não trabalho com Python como posso aprender?"" falando sobre essa jornada de mudar de infra para programação, que pode ser lido com mais calma [aqui](https://github.com/grupy-sp/encontros/blob/master/2015-07-7comm.md) caso tenha interesse.
+Fiz uma Lightning talk no GruPy-SP intitulada "Não trabalho com Python como posso aprender?"" falando sobre essa jornada de mudar de infra para programação, que pode ser lido com mais calma [aqui](https://github.com/grupy-sp/encontros/blob/master/2015-07-7comm.md) caso tenha interesse.
 
 Eu basicamente não pretendo nunca mais sair de programação (no popular) ou desenvolvimento (para quem tem medo de ser chamado de programador) pois eu particularmente me identifiquei muito mais nessa área. Também gosto bastante de ensinar... quem sabe no futuro essa não seja a área nova em em em!? :wink:
 
