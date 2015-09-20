@@ -30,6 +30,9 @@ Nós queríamos trazer mais movimento de comunidades para Sorocaba e regiões pr
 
 Esses links acima foram apenas exemplos de eventos de comunidade ou um pouco mais comerciais que rolaram/rolam ainda por este ano, os que marquei com coração foi os que eu ja participei pelo menos uma vez na vida e fiquei muito feliz de ter participado :stuck_out_tongue_winking_eye:.
 
+O início
+--------
+
 Para tentar começar a trazer coisas legais pra Sorocaba, inicialmente divulguei na lista de [email do Hacklab](https://groups.google.com/forum/?hl=pt#!searchin/hackerspace-sorocaba/Sesc/hackerspace-sorocaba/ampID5hePrI/w0Jt_vIWSTEJ) um bate-papo descontraído no SESC Sorocaba, era descontraído, mas para ter foco nessa "descontração" toda eu queria propor objetivos as conversas e que preferencialmente se baseasse em tecnologia (ou não, caso não tivessem muitos geeks na parada). 
 Porém infelizmente (ou felizmente, ainda não descobri) somente EU coloquei um tema lá para discutir neste evento intitulado de "Quinta-feira Hacker" (o nome era bonito :wink:). Olha só que loucura que ficou o call4papers deste dia:
 
@@ -39,6 +42,9 @@ Bombando.... com 1 call somente!! :disappointed_relieved:
 
 Inicialmente fiquei meio puto e imaginei que não ia aparecer ninguém no SESC, por fim foram várias pessoas (no mínimo umas 6 pelo que me recordo) ai eu fiquei mais feliz um pouco. Mas mesmo assim fiquei meio de queixo caído com o desinteresse geral das pessoas, pois eu chamei para o encontro no mínimo 50 e apareceram somente 6.
 
+Hacklab no sábado (rolando ainda quase sempre)
+----------------------------------------------
+
 Alguns dias após este "big evento" fomos novamente os 6 mosqueteiros (quase todos que foram no SESC) no sábado para nos encontrar no [Museu de Arte Contemporânea de Sorocaba](http://www.macs.org.br/), lá tem uma sala MUITO MUITO BACANA onde o pessoal faz umas reuniões embaixo do Museu (não amigo não é culto satânico.. é parada de hacker mesmo :smirk:). 
 Neste dia conheci o Hudson que é o cara que toca o barco do Hacklab junto com o Guilherme que é um membro assíduo também, conversamos bastante e neste mesmo dia o Hudson me falou uma coisa importante que eu estava deixando passar...
 
@@ -47,6 +53,10 @@ Neste dia conheci o Hudson que é o cara que toca o barco do Hacklab junto com o
 ```
 
 Resumindo... acho que ele tinha razão, pois bastam 2 interessados para formar um pequeno grupo para fazer algo, se você estiver sozinho OK! Também é LEGAL! Porém você não tem o compromisso de estar na mesma hora no mesmo lugar para estudar algum assunto, imagino que isso seja o princípio da ideia de um [hackerspace](https://en.wikipedia.org/wiki/Hackerspace).
+
+O grupo de estudos
+------------------
+
 Eis que neste dia um pouco depois surgiu a ideia de montarmos um [Grupo de Estudos de Python em Sorocaba](https://groups.google.com/forum/#!forum/python-sorocaba), um grupo com um caminho simples a trilhar:
 
 1. Nivelar as pessoas em Python, para que discussões futuras sejam mais proveitosas (no ponto que estamos já estão sendo)
@@ -58,7 +68,9 @@ Eis que neste dia um pouco depois surgiu a ideia de montarmos um [Grupo de Estud
 3. A parte mais legal!!!
     - Começar a contribuir ou criar projetos open source!!! Sem prazo nem cobranças.. fazer algo da legal que queremos pra aprendermos mais e mais
 
-E o valor do curso!? O valor é DEDICAÇÃO E INTERESSE. Se você estiver afim de entrar no Grupo tem que ter no mínimo MUITA DEDICAÇÃO E MUITO INTERESSE.
+E o valor do curso!? O valor é DEDICAÇÃO E INTERESSE. 
+
+Se você estiver afim de entrar no Grupo tem que ter no mínimo MUITA DEDICAÇÃO E MUITO INTERESSE pois é caro o curso em termos de valores honrosos hahaha.
 
 Quer entrar para o nosso Grupo?? 
 --------------------------------
