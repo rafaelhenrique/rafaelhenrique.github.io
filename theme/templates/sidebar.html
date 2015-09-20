@@ -27,16 +27,21 @@ styles, `#sidebar-checkbox` for behavior. -->
   </nav>
 
   <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/eu.html">Quem eu sou?</a>
     <a class="sidebar-nav-item" href="/sobre.html">Sobre o blog</a>
     <a class="sidebar-nav-item" href="/archives.html">Histórico de posts</a>
 
-    {% for category, articles in categories %}
-    <a class="sidebar-nav-item" href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
-    {% endfor %}
+    <div class="sidebar-nav-item">Jabá links...
+      {% for title, href in LINKS %}
+      <a class="sidebar-nav-item" href="{{ href }}">{{ title }}</a>
+      {% endfor %}
+    </div>
 
-    {% for title, href in LINKS %}
-    <a class="sidebar-nav-item" href="{{ href }}">{{ title }}</a>
-    {% endfor %}
+    <div class="sidebar-nav-item">Posts por categoria...
+      {% for category, articles in categories %}
+      <a class="sidebar-nav-item" href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
+      {% endfor %}
+    </div>
   </nav>
 
 </div>

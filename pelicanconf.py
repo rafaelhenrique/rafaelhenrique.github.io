@@ -30,10 +30,12 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-# LINKS = (('Pelican', 'http://getpelican.com/'),
-#          ('Python.org', 'http://python.org/'),
-#          ('Jinja2', 'http://jinja.pocoo.org/'),
-#          ('You can modify those links in your config file', '#'),)
+LINKS = (
+    ('Blog antigo V1.0', 'http://abraseucodigo.blogspot.com/'),
+    ('GruPy-SP', 'http://www.meetup.com/pt/Grupy-SP/'),
+    ('Python Brasil 2015',
+        'http://pythonbrasil.github.io/pythonbrasil11-site/'),
+)
 
 # Social widget
 SOCIAL_LINKS = (
