@@ -10,25 +10,17 @@ Summary: Grupo de estudos Python em Sorocaba aberto ao público em geral
 Perto do dia 2 de julho de 2015 eu o Rafael Gottsfritz e o Caio Carrara tivemos a iniciativa de nos misturar ao [Hacklab Sorocaba](http://hacklab.club/) para tentar organizar um grupo de estudos sobre variados assuntos.
 Nós queríamos trazer mais movimento de comunidades para Sorocaba e regiões próximas, visto que isso é muitíssimo popular em cidades como Campinas, São Paulo e São José dos Campos:
 
-[Garoa Hacker Clube SP](https://garoa.net.br/wiki/P%C3%A1gina_principal) :heart:
+- [Garoa Hacker Clube SP](https://garoa.net.br/wiki/P%C3%A1gina_principal) X
+- [Laboratório Hacker Campinas](http://lhc.net.br/wiki/P%C3%A1gina_principal)
+- [RuPy Campinas 2015](http://campinas.rupy.com.br/) X
+- [PG Day Campinas 2015](http://pgdaycampinas.com.br/)
+- [GruPy-SP](http://www.meetup.com/pt/Grupy-SP/) X
+- [TDC São Paulo 2015](http://www.thedevelopersconference.com.br/tdc/2015/saopaulo/trilhas) X
+- [Pyladies Campinas - Facebook](https://www.facebook.com/pyladiescps)
+- [Pyladies Campinas - Twitter](https://twitter.com/pyladiescps)
+- [Python Brasil 2015 - SJC](http://pythonbrasil.github.io/pythonbrasil11-site/)
 
-[Laboratório Hacker Campinas](http://lhc.net.br/wiki/P%C3%A1gina_principal)
-
-[RuPy Campinas 2015](http://campinas.rupy.com.br/) :heart:
-
-[PG Day Campinas 2015](http://pgdaycampinas.com.br/)
-
-[GruPy-SP](http://www.meetup.com/pt/Grupy-SP/) :heart:
-
-[TDC São Paulo 2015](http://www.thedevelopersconference.com.br/tdc/2015/saopaulo/trilhas) :heart:
-
-[Pyladies Campinas - Facebook](https://www.facebook.com/pyladiescps)
-
-[Pyladies Campinas - Twitter](https://twitter.com/pyladiescps)
-
-[Python Brasil 2015 - SJC](http://pythonbrasil.github.io/pythonbrasil11-site/)
-
-Esses links acima foram apenas exemplos de eventos de comunidade ou um pouco mais comerciais que rolaram/rolam ainda por este ano, os que marquei com coração foi os que eu ja participei pelo menos uma vez na vida e fiquei muito feliz de ter participado :stuck_out_tongue_winking_eye:.
+Esses links acima foram apenas exemplos de eventos de comunidade ou um pouco mais comerciais que rolaram/rolam ainda por este ano, os que marquei com X foi os que eu ja participei pelo menos uma vez na vida e fiquei muito feliz de ter participado :stuck_out_tongue_winking_eye:.
 
 O início
 --------
