@@ -5,23 +5,30 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2015-09-20T14:06:53-00:00</lastmod>
+<lastmod>2015-09-23T00:11:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2015-09-20T14:06:53-00:00</lastmod>
+<lastmod>2015-09-23T00:11:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2015-09-20T14:06:53-00:00</lastmod>
+<lastmod>2015-09-23T00:11:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>/como-criar-seu-paas-com-tsuru.html</loc>
+<lastmod>2015-09-22T22:48:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -53,6 +60,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/category/deploy.html</loc>
+<lastmod>2015-09-22T22:48:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/category/geral.html</loc>
 <lastmod>2015-09-19T17:27:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -69,6 +83,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/category/python.html</loc>
 <lastmod>2015-09-19T23:43:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/tag/paas.html</loc>
+<lastmod>2015-09-22T22:48:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -95,6 +116,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/tag/deploy.html</loc>
+<lastmod>2015-09-22T22:48:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/tag/squash.html</loc>
 <lastmod>2015-03-24T10:16:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -116,8 +144,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/tag/tsuru.html</loc>
+<lastmod>2015-09-22T22:48:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/author/rafael-henrique-da-silva-correia.html</loc>
-<lastmod>2015-09-19T23:43:00-03:06</lastmod>
+<lastmod>2015-09-22T22:48:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
