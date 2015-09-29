@@ -1,7 +1,7 @@
 # Blog: Abra seu Código!!!
 
-Old blog: [http://abraseucodigo.com.br](http://abraseucodigo.com.br)
-New blog (in project): [http://rafaelhenrique.github.io/](http://rafaelhenrique.github.io/)
+My personal Blog:
+[http://blog.abraseucodigo.com.br/](http://blog.abraseucodigo.com.br/)
 
 # Thanks for:
 
