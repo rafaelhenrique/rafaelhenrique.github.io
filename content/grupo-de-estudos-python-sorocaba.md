@@ -1,6 +1,6 @@
 Title: Grupo de Estudos Python Sorocaba
 Date: 2015-09-19 23:43
-Tags: python, grupo de estudos, sorocaba
+Tags: python, grupo de estudos python, sorocaba
 Category: Python
 Author: Rafael Henrique da Silva Correia
 Email: rafael@abraseucodigo.com.br
@@ -60,9 +60,7 @@ Eis que neste dia um pouco depois surgiu a ideia de montarmos um [Grupo de Estud
 3. A parte mais legal!!!
     - Começar a contribuir ou criar projetos open source!!! Sem prazo nem cobranças.. fazer algo da legal que queremos pra aprendermos mais e mais
 
-E o valor do curso!? O valor é DEDICAÇÃO E INTERESSE. 
-
-Se você estiver afim de entrar no Grupo tem que ter no mínimo MUITA DEDICAÇÃO E MUITO INTERESSE pois é caro o curso em termos de valores honrosos hahaha.
+E o valor do curso!? O valor é DEDICAÇÃO E INTERESSE. Se você estiver afim de entrar no Grupo tem que ter no mínimo MUITA DEDICAÇÃO E MUITO INTERESSE pois é caro o curso em termos de valores honrosos hahaha.
 
 Quer entrar para o nosso Grupo?? 
 --------------------------------
