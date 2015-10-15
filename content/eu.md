@@ -28,7 +28,7 @@ Após tudo isso ai gostei da coisa toda e fui fazer graduação em Ciências da 
 - Trabalhei com SAGE - Sistema Aberto de Gerenciamento de Energia
     - Trabalhei com uma galera MUITO legal, em grande parte engenheiros elétricos
     - Conheci protocolos de comunicação que nem imaginava que existiam, tais como: Modbus, iec61850, iec104, dnp3 ... entre outros
-    - Aturei em vários projetos e vários clientes grandes
+    - Atuei em vários projetos e vários clientes grandes
 
 - Monitoramento de Serviços de TI
     - Trabalhei bastante com Nagios/Centreon, foi uma experiência muito legal
