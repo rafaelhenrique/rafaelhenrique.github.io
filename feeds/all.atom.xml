@@ -55,7 +55,7 @@ ValueError: could not convert string to float: a
 
 &lt;p&gt;Tentei somar a letra &amp;#8216;a&amp;#8217;, porém quando vou converter &amp;#8216;a&amp;#8217; para float recebo um erro de&amp;nbsp;conversão.&lt;/p&gt;
 &lt;h2&gt;Forma mais complexa (o mundo&amp;nbsp;real)&lt;/h2&gt;
-&lt;p&gt;Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar&amp;nbsp;:troll:&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/trollface.png"&gt;&amp;#8230;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="mi"&gt;3&lt;/span&gt; 
