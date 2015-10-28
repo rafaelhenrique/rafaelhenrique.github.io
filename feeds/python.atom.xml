@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2015-10-14T22:53:00-03:00</updated><entry><title>Grupo de Estudos Python - Aula 01</title><link href="/grupo-de-estudos-python-sorocaba-01.html" rel="alternate"></link><updated>2015-10-14T22:53:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-10-14:grupo-de-estudos-python-sorocaba-01.html</id><summary type="html">&lt;p&gt;Olá! Já expliquei um pouco da história do Grupo de Estudos Python Sorocaba &lt;a href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html"&gt;aqui&lt;/a&gt;, então nos próximos posts sobre o Grupo vou abordar o que andamos falando por lá. 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2015-10-28T19:49:00-02:00</updated><entry><title>Grupo de Estudos Python - Aula 01 - Resposta do Exercício</title><link href="/grupo-de-estudos-python-sorocaba-01_resposta.html" rel="alternate"></link><updated>2015-10-28T19:49:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-10-28:grupo-de-estudos-python-sorocaba-01_resposta.html</id><summary type="html">&lt;p&gt;Ao final da aula 01 foi passado um exercício bem básico, o qual agora vou mostrar passar a resposta, decidi fazer em post separado pois caso você ainda não tenha feito, você poderá ler o post da aula 02 sem&amp;nbsp;spoilers.&lt;/p&gt;
+&lt;h2&gt;Relembrando&lt;/h2&gt;
+&lt;p&gt;Faça uma calculadora de soma conforme&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 calculadora_soma.py
+Digite operando1:
+10
+Digite operando2:
+40
+Resultado: 50.0
+
+&lt;span class="nv"&gt;$ &lt;/span&gt;python3 calculadora_soma.py
+Digite operando1:
+10
+Digite operando2:
+-2
+Resultado: 8.0
+
+&lt;span class="nv"&gt;$ &lt;/span&gt;python3 calculadora_soma.py
+Digite operando1:
+10
+Digite operando2:
+20
+Resultado: 30.0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Simples!? Conseguiram&amp;nbsp;fazer!?&lt;/p&gt;
+&lt;h2&gt;Explicação&amp;nbsp;prévia&lt;/h2&gt;
+&lt;p&gt;Basicamente você terá que receber dois números do usuário e mostrar a resposta na tela, existe a forma simples (e fácil) de resolver este exercício e a forma mais&amp;nbsp;complexa.&lt;/p&gt;
+&lt;h2&gt;Forma simples (o mundo&amp;nbsp;ideal)&lt;/h2&gt;
+&lt;p&gt;Você soma os números sempre esperando que o usuário seja bonzinho com você e realmente só digite&amp;nbsp;números&amp;#8230;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;3&lt;/span&gt;     &lt;span class="nb"&gt;raw_input&lt;/span&gt;
+&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;5&lt;/span&gt;     &lt;span class="nb"&gt;raw_input&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;
+&lt;span class="mi"&gt;6&lt;/span&gt; 
+&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite operando1: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite operando2: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;9&lt;/span&gt; 
+&lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Resultado: {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este código é compatível com python2 e python3. A forma simples pode dar alguns&amp;nbsp;problemas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python resposta_blog.py 
+Digite operando1: a
+Traceback &lt;span class="o"&gt;(&lt;/span&gt;most recent call last&lt;span class="o"&gt;)&lt;/span&gt;:
+  File &lt;span class="s2"&gt;&amp;quot;resposta_blog.py&amp;quot;&lt;/span&gt;, line 7, in &amp;lt;module&amp;gt;
+    &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; float&lt;span class="o"&gt;(&lt;/span&gt;raw_input&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Digite operando1: &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+ValueError: could not convert string to float: a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tentei somar a letra &amp;#8216;a&amp;#8217;, porém quando vou converter &amp;#8216;a&amp;#8217; para float recebo um erro de&amp;nbsp;conversão.&lt;/p&gt;
+&lt;h2&gt;Forma mais complexa (o mundo&amp;nbsp;real)&lt;/h2&gt;
+&lt;p&gt;Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar&amp;nbsp;:troll:&amp;#8230;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="mi"&gt;3&lt;/span&gt; 
+&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;5&lt;/span&gt;     &lt;span class="nb"&gt;raw_input&lt;/span&gt;
+&lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;7&lt;/span&gt;     &lt;span class="nb"&gt;raw_input&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;
+&lt;span class="mi"&gt;8&lt;/span&gt; 
+&lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;10&lt;/span&gt;    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite operando1: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;11&lt;/span&gt;    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite operando2: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;13&lt;/span&gt;    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite somente números!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;14&lt;/span&gt;    &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;15&lt;/span&gt; 
+&lt;span class="mi"&gt;16&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Resultado: {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Desta forma mostrada acima não mostramos um exception tão feia para o usuário, caso o usuário informe uma letra esta saída ficará mais&amp;nbsp;legível:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python resposta_blog.py 
+Digite operando1: 1
+Digite operando2: a
+Digite somente números!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E ai o que achou? Bem mais bonito né!? Caso tenha alguma dúvida (qualquer que seja ela) dos exemplos postados, por favor entre em contato. E logo sairá a aula 2&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry><entry><title>Grupo de Estudos Python - Aula 01</title><link href="/grupo-de-estudos-python-sorocaba-01.html" rel="alternate"></link><updated>2015-10-14T22:53:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-10-14:grupo-de-estudos-python-sorocaba-01.html</id><summary type="html">&lt;p&gt;Olá! Já expliquei um pouco da história do Grupo de Estudos Python Sorocaba &lt;a href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html"&gt;aqui&lt;/a&gt;, então nos próximos posts sobre o Grupo vou abordar o que andamos falando por lá. 
 Na primeira aula de nivelamento Python foram abordados os seguintes tópicos&amp;nbsp;chave:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Por que Python se chama&amp;nbsp;Python?&lt;/li&gt;

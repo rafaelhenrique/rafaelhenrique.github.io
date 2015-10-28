@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Abra seu Código!!!</title>
+
+    <meta charset="utf-8" />
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Abra seu Código!!! Full Atom Feed" />
+    <link href="/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Abra seu Código!!! Categories Atom Feed" />
+    <link rel="stylesheet" href="/theme/css/poole.css"/>
+    <link rel="stylesheet" href="/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/theme/css/styles.css"/>
+
+
+
+    <meta name="tags" contents="python" />
+    <meta name="tags" contents="grupo de estudos python" />
+    <meta name="tags" contents="sorocaba" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="/theme/img/profile.png"/>
+    </div>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <div class="author sidebar-nav-item">
+      <p>@rafaelhenrique</p>
+      <p>Dev, geek, gamer, pythonista, e obviamente o criador deste blog que vôs contempla neste momento.</p>
+    </div>
+  </nav>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-nav-item">
+      <a href="https://twitter.com/rafaelhenrique">
+        <i class="fa fa-twitter fa-3x"></i>
+      </a>
+      <a href="https://github.com/rafaelhenrique">
+        <i class="fa fa-github fa-3x"></i>
+      </a>
+      <a href="http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3">
+        <i class="fa fa-linkedin fa-3x"></i>
+      </a>
+    </div>
+  </nav>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/eu.html">Quem eu sou?</a>
+    <a class="sidebar-nav-item" href="/sobre.html">Sobre o blog</a>
+    <a class="sidebar-nav-item" href="/archives.html">Histórico de posts</a>
+
+    <div class="sidebar-nav-item">Jabá links...
+      <a class="sidebar-nav-item" href="http://abraseucodigo.blogspot.com/">Blog antigo V1.0</a>
+      <a class="sidebar-nav-item" href="http://www.meetup.com/pt/Grupy-SP/">GruPy-SP</a>
+      <a class="sidebar-nav-item" href="http://pythonbrasil.github.io/pythonbrasil11-site/">Python Brasil 2015</a>
+    </div>
+
+    <div class="sidebar-nav-item">Posts por categoria...
+      <a class="sidebar-nav-item" href="/category/deploy.html">Deploy</a>
+      <a class="sidebar-nav-item" href="/category/geral.html">Geral</a>
+      <a class="sidebar-nav-item" href="/category/git.html">GIT</a>
+      <a class="sidebar-nav-item" href="/category/python.html">Python</a>
+    </div>
+  </nav>
+
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Abra seu Código!!!</a>
+            <small>Por um mundo livre e inteligente</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Grupo de Estudos Python - Aula 01 - Resposta do&nbsp;Exercício
+    </h1>
+    <span class="post-date">outubro 28, 2015</span>
+
+    <p>Ao final da aula 01 foi passado um exercício bem básico, o qual agora vou mostrar passar a resposta, decidi fazer em post separado pois caso você ainda não tenha feito, você poderá ler o post da aula 02 sem&nbsp;spoilers.</p>
+<h2>Relembrando</h2>
+<p>Faça uma calculadora de soma conforme&nbsp;abaixo:</p>
+<div class="highlight"><pre><span class="nv">$ </span>python3 calculadora_soma.py
+Digite operando1:
+10
+Digite operando2:
+40
+Resultado: 50.0
+
+<span class="nv">$ </span>python3 calculadora_soma.py
+Digite operando1:
+10
+Digite operando2:
+-2
+Resultado: 8.0
+
+<span class="nv">$ </span>python3 calculadora_soma.py
+Digite operando1:
+10
+Digite operando2:
+20
+Resultado: 30.0
+</pre></div>
+
+
+<p>Simples!? Conseguiram&nbsp;fazer!?</p>
+<h2>Explicação&nbsp;prévia</h2>
+<p>Basicamente você terá que receber dois números do usuário e mostrar a resposta na tela, existe a forma simples (e fácil) de resolver este exercício e a forma mais&nbsp;complexa.</p>
+<h2>Forma simples (o mundo&nbsp;ideal)</h2>
+<p>Você soma os números sempre esperando que o usuário seja bonzinho com você e realmente só digite&nbsp;números&#8230;</p>
+<div class="highlight"><pre><span class="mi">1</span> <span class="c"># -*- coding: utf-8 -*-</span>
+<span class="mi">2</span> <span class="k">try</span><span class="p">:</span>
+<span class="mi">3</span>     <span class="nb">raw_input</span>
+<span class="mi">4</span> <span class="k">except</span><span class="p">:</span>
+<span class="mi">5</span>     <span class="nb">raw_input</span> <span class="o">=</span> <span class="nb">input</span>
+<span class="mi">6</span> 
+<span class="mi">7</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Digite operando1: &quot;</span><span class="p">))</span>
+<span class="mi">8</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Digite operando2: &quot;</span><span class="p">))</span>
+<span class="mi">9</span> 
+<span class="mi">10</span> <span class="k">print</span><span class="p">(</span><span class="s">&quot;Resultado: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Este código é compatível com python2 e python3. A forma simples pode dar alguns&nbsp;problemas:</p>
+<div class="highlight"><pre><span class="nv">$ </span>python resposta_blog.py 
+Digite operando1: a
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">&quot;resposta_blog.py&quot;</span>, line 7, in &lt;module&gt;
+    <span class="nv">x</span> <span class="o">=</span> float<span class="o">(</span>raw_input<span class="o">(</span><span class="s2">&quot;Digite operando1: &quot;</span><span class="o">))</span>
+ValueError: could not convert string to float: a
+</pre></div>
+
+
+<p>Tentei somar a letra &#8216;a&#8217;, porém quando vou converter &#8216;a&#8217; para float recebo um erro de&nbsp;conversão.</p>
+<h2>Forma mais complexa (o mundo&nbsp;real)</h2>
+<p>Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar&nbsp;:troll:&#8230;</p>
+<div class="highlight"><pre><span class="mi">1</span> <span class="c"># -*- coding: utf-8 -*-</span>
+<span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="mi">3</span> 
+<span class="mi">4</span> <span class="k">try</span><span class="p">:</span>
+<span class="mi">5</span>     <span class="nb">raw_input</span>
+<span class="mi">6</span> <span class="k">except</span><span class="p">:</span>
+<span class="mi">7</span>     <span class="nb">raw_input</span> <span class="o">=</span> <span class="nb">input</span>
+<span class="mi">8</span> 
+<span class="mi">9</span> <span class="k">try</span><span class="p">:</span>
+<span class="mi">10</span>    <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Digite operando1: &quot;</span><span class="p">))</span>
+<span class="mi">11</span>    <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Digite operando2: &quot;</span><span class="p">))</span>
+<span class="mi">12</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="mi">13</span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Digite somente números!&quot;</span><span class="p">)</span>
+<span class="mi">14</span>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="mi">15</span> 
+<span class="mi">16</span> <span class="k">print</span><span class="p">(</span><span class="s">&quot;Resultado: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Desta forma mostrada acima não mostramos um exception tão feia para o usuário, caso o usuário informe uma letra esta saída ficará mais&nbsp;legível:</p>
+<div class="highlight"><pre><span class="nv">$ </span>python resposta_blog.py 
+Digite operando1: 1
+Digite operando2: a
+Digite somente números!
+</pre></div>
+
+
+<p>E ai o que achou? Bem mais bonito né!? Caso tenha alguma dúvida (qualquer que seja ela) dos exemplos postados, por favor entre em contato. E logo sairá a aula 2&nbsp;<img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"></p>
+    <div class="hr"></div>
+    <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+  </div>
+</div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
