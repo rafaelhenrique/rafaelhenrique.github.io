@@ -74,7 +74,7 @@ Tentei somar a letra 'a', porém quando vou converter 'a' para float recebo um e
 
 ## Forma mais complexa (o mundo real)
 
-Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar :troll:...
+Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar :trollface:...
 
 ```python
 1 # -*- coding: utf-8 -*-
