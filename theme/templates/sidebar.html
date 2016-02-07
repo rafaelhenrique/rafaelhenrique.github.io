@@ -1,47 +1,26 @@
-<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <div class="profile">
-      <img src="{{ SITEURL }}/theme/img/profile.png"/>
+<div class="sidebar pure-u">
+    <div class="cover-img" style="background-image: url('{{ COVER_IMG_URL }}')">
+        <div class="cover-body">
+            <header class="header">
+                <hgroup>
+                    <h1 class="brand-main"><a href="/">{{ SITENAME }}</a></h1>
+                    <p class="tagline">{{ TAGLINE }}</p>
+                {% for title, link in MENUITEMS %}
+                    {% if "http" not in link %}
+                    <p class="links"><a href="/{{ link }}">{{ title }}</a></p>
+                    {% else %}
+                    <p class="links"><a href="{{ link }}">{{ title }}</a></p>
+                    {% endif %}
+                {% endfor %}
+                    <p class="social">
+                {% for title, link in SOCIAL %}
+                        <a href="{{ link }}">
+                            <i class="fa fa-{{ title }} fa-3x"></i>
+                        </a>
+                {% endfor %}
+                    <p>
+                </hgroup>
+            </header>
+        </div>
     </div>
-  </div>
-  
-  <nav class="sidebar-nav">
-    <div class="author sidebar-nav-item">
-      <p>{{ AUTHOR_USERNAME }}</p>
-      <p>{{ AUTHOR_DESCRIPTION }}</p>
-    </div>
-  </nav>
-
-  <nav class="sidebar-nav">
-    <div class="sidebar-nav-item">
-      {% for title, link in SOCIAL_LINKS %}
-      <a href="{{ link }}">
-        <i class="fa fa-{{ title }} fa-3x"></i>
-      </a>
-      {% endfor %}
-    </div>
-  </nav>
-
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/eu.html">Quem eu sou?</a>
-    <a class="sidebar-nav-item" href="/sobre.html">Sobre o blog</a>
-    <a class="sidebar-nav-item" href="/archives.html">Histórico de posts</a>
-
-    <div class="sidebar-nav-item">Jabá links...
-      {% for title, href in LINKS %}
-      <a class="sidebar-nav-item" href="{{ href }}">{{ title }}</a>
-      {% endfor %}
-    </div>
-
-    <div class="sidebar-nav-item">Posts por categoria...
-      {% for category, articles in categories %}
-      <a class="sidebar-nav-item" href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
-      {% endfor %}
-    </div>
-  </nav>
-
 </div>

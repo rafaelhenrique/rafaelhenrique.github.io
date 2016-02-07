@@ -1,22 +1,54 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-<div class="content-title">
-{% block content_title %}
-{% endblock %}
+<div class="pure-g-r" id="layout">
+    {% include 'sidebar.html' %}
+    <div class="pure-u-1">
+        <div class="content">
+            <div class="google-search">
+                <script>
+                  (function() {
+                    var cx = '000279532842413632704:n_rw0bekuzw';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                        '//cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                  })();
+                </script>
+                <gcse:searchbox-only resultsUrl="{{ SITEURL }}/pages/search.html" newWindow="false" enableAutoComplete=true></gcse:searchbox-only>
+            </div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">
+                    {% block pagetitle %}
+                        {% if not articles_page.has_previous() %}
+                            Latest posts
+                        {% else %}
+                            Posts
+                        {% endif %}
+                    {% endblock pagetitle %}
+                    {% if articles_page.has_previous() %}
+                        &ndash; Page&nbsp;{{ articles_page.number }}
+                    {% endif %}
+                </h1>
+                {% for article in articles_page.object_list %}
+                    {% include 'post.html' %}
+                    {% if MATH is defined and not MATH['auto_insert'] %}
+			{% if page and page.mathjax or article and article.mathjax %}
+                            {% set mathjax = True %}
+                        {% endif %}
+                    {% endif %}
+                    {% if loop.last and mathjax is defined %}
+                        {{ MATHJAXSCRIPT }}
+                    {% endif %}
+                {% endfor %}
+                {% include 'pagination.html' %}
+                {% include 'footer.html' %}
+            </div>
+        </div>
+    </div>
 </div>
-<div class="posts">
-  {% for article in articles_page.object_list %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-    </h1>
-    <span class="post-tags">
-    {{ article.tags|join(', ') }}
-    </span>    
-    <span class="post-date">{{ article.locale_date }}</span>
-    {{ article.summary }}
-  </div>
-  {% endfor %}
-</div>
-{% include 'pagination.html' %}
 {% endblock content %}
