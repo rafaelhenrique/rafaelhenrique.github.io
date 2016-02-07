@@ -5,20 +5,28 @@
                 <hgroup>
                     <h1 class="brand-main"><a href="/">{{ SITENAME }}</a></h1>
                     <p class="tagline">{{ TAGLINE }}</p>
-                {% for title, link in MENUITEMS %}
-                    {% if "http" not in link %}
-                    <p class="links"><a href="/{{ link }}">{{ title }}</a></p>
-                    {% else %}
-                    <p class="links"><a href="{{ link }}">{{ title }}</a></p>
-                    {% endif %}
-                {% endfor %}
+                    {% for title, link in MENUITEMS %}
+                        {% if "http" not in link %}
+                        <p class="links"><a href="/{{ link }}">{{ title }}</a></p>
+                        {% else %}
+                        <p class="links"><a href="{{ link }}">{{ title }}</a></p>
+                        {% endif %}
+                    {% endfor %}
                     <p class="social">
-                {% for title, link in SOCIAL %}
+                    {% for title, link in SOCIAL %}
                         <a href="{{ link }}">
                             <i class="fa fa-{{ title }} fa-3x"></i>
                         </a>
-                {% endfor %}
+                    {% endfor %}
                     <p>
+                    <p class="tagline">
+                        Small Acts Make Great Revolutions
+                        <a target="_blank" href="http://smallactsmanifesto.org" title="Small Acts Manifesto">
+                        <img src="http://smallactsmanifesto.org/static/images/smallacts-badge-80x15.png"
+                        style="border: none;"
+                        alt="Small Acts Manifesto"/>
+                        </a>
+                    </p>
                 </hgroup>
             </header>
         </div>
