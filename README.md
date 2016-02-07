@@ -8,6 +8,3 @@ My personal Blog:
 Pelican project, static site generator that supports Markdown and reST syntax:
 https://github.com/getpelican/pelican
 
-A Pelican port of Jekyll's Lanyon Theme:
-https://github.com/thomaswilley/pelicanyan
-
