@@ -1,163 +1,119 @@
-<!DOCTYPE html>
-<html lang="pt">
-  <head>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
 
-    <title>Abra seu Código!!!</title>
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
 
-    <meta charset="utf-8" />
-    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Abra seu Código!!! Full Atom Feed" />
-    <link href="/feeds/deploy.atom.xml" type="application/atom+xml" rel="alternate" title="Abra seu Código!!! Categories Atom Feed" />
-    <link rel="stylesheet" href="/theme/css/poole.css"/>
-    <link rel="stylesheet" href="/theme/css/syntax.css"/>
-    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+        <title>Como criar seu PaaS com Tsuru // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
 
-
-    <meta name="tags" contents="deploy" />
-    <meta name="tags" contents="tsuru" />
-    <meta name="tags" contents="paas" />
-
-  </head>
-
-  <body>
-<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <div class="profile">
-      <img src="/theme/img/profile.png"/>
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>setembro 22, 2015</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
     </div>
-  </div>
-  
-  <nav class="sidebar-nav">
-    <div class="author sidebar-nav-item">
-      <p>@rafaelhenrique</p>
-      <p>Dev, geek, gamer, pythonista, e obviamente o criador deste blog que vôs contempla neste momento.</p>
-    </div>
-  </nav>
-
-  <nav class="sidebar-nav">
-    <div class="sidebar-nav-item">
-      <a href="https://twitter.com/rafaelhenrique">
-        <i class="fa fa-twitter fa-3x"></i>
-      </a>
-      <a href="https://github.com/rafaelhenrique">
-        <i class="fa fa-github fa-3x"></i>
-      </a>
-      <a href="http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3">
-        <i class="fa fa-linkedin fa-3x"></i>
-      </a>
-    </div>
-  </nav>
-
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/eu.html">Quem eu sou?</a>
-    <a class="sidebar-nav-item" href="/sobre.html">Sobre o blog</a>
-    <a class="sidebar-nav-item" href="/archives.html">Histórico de posts</a>
-
-    <div class="sidebar-nav-item">Jabá links...
-      <a class="sidebar-nav-item" href="http://abraseucodigo.blogspot.com/">Blog antigo V1.0</a>
-      <a class="sidebar-nav-item" href="http://www.meetup.com/pt/Grupy-SP/">GruPy-SP</a>
-      <a class="sidebar-nav-item" href="http://pythonbrasil.github.io/pythonbrasil11-site/">Python Brasil 2015</a>
-    </div>
-
-    <div class="sidebar-nav-item">Posts por categoria...
-      <a class="sidebar-nav-item" href="/category/deploy.html">Deploy</a>
-      <a class="sidebar-nav-item" href="/category/geral.html">Geral</a>
-      <a class="sidebar-nav-item" href="/category/git.html">GIT</a>
-      <a class="sidebar-nav-item" href="/category/python.html">Python</a>
-    </div>
-  </nav>
-
-</div>    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <h3 class="masthead-title">
-            <a href="/" title="Home">Abra seu Código!!!</a>
-            <small>Por um mundo livre e inteligente</small>
-          </h3>
-        </div>
-      </div>
-
-      <div class="container content">
-<div class="posts">
-<div class="post">
-    <h1 class="post-title">
-      Como criar seu PaaS com&nbsp;Tsuru
-    </h1>
-    <span class="post-date">setembro 22, 2015</span>
-
-    <p>Começo este post dizendo que gostei bastante da proposta do&nbsp;Tsuru. </p>
-<h2>Mas o que é o&nbsp;Tsuru?</h2>
-<p>Tsuru é um software que você pode criar seu próprio <a href="https://en.wikipedia.org/wiki/Platform_as_a_service">PaaS</a> explicando de forma simples, você tem um <a href="https://www.heroku.com/">Heroku</a>/<a href="https://www.openshift.com">Openshift</a> pessoal onde você tem controle completo na máquina e você pode fazer o que bem&nbsp;entender.</p>
-<h2>E pra que serve esse tal&nbsp;Tsuru?</h2>
-<p>Serve para você fazer deploy de suas aplicações de forma <span class="caps">BRUTALMENTE</span> RÁ<span class="caps">PIDA</span>, com a vantagem de não pagar nada para o Openshift nem para o Heroku, mesmo que seja uma aplicação grande e pesada, quem vai gerenciar os recursos é você mesmo, então se sua máquina &#8220;explodir&#8221; a culpa será sua, pois você tem controle absoluto sobre os recursos da máquina em que você irá instalar o&nbsp;Tsuru.</p>
-<h2>Quem é o pai do&nbsp;Tsuru?</h2>
-<p>O pai do Tsuru (pelo que eu sei pelo menos) é o Andrews Medina, e este cara começou a desenvolver o Tsuru dentro da Globo.com. Podemos ver até na doc do Tsuru o Copyright da Globo.com, isso fica bem evidente que a Globo.com tem um dedinho&nbsp;ai.</p>
-<p>O Andrews Medina também fez inúmeros vídeos no YouTube muito bons explicando mais sobre o Tsuru, recomendo <span class="caps">TODOS</span>.. principalmente os três&nbsp;abaixo:</p>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Como criar seu PaaS com Tsuru</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/deploy.html">deploy</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/tsuru.html">tsuru</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/paas.html">paas</a>
+                        </p>
+                </header>
+            </section>
+            <p>Começo este post dizendo que gostei bastante da proposta do Tsuru. </p>
+<h2>Mas o que é o Tsuru?</h2>
+<p>Tsuru é um software que você pode criar seu próprio <a href="https://en.wikipedia.org/wiki/Platform_as_a_service">PaaS</a> explicando de forma simples, você tem um <a href="https://www.heroku.com/">Heroku</a>/<a href="https://www.openshift.com">Openshift</a> pessoal onde você tem controle completo na máquina e você pode fazer o que bem entender.</p>
+<h2>E pra que serve esse tal Tsuru?</h2>
+<p>Serve para você fazer deploy de suas aplicações de forma BRUTALMENTE RÁPIDA, com a vantagem de não pagar nada para o Openshift nem para o Heroku, mesmo que seja uma aplicação grande e pesada, quem vai gerenciar os recursos é você mesmo, então se sua máquina "explodir" a culpa será sua, pois você tem controle absoluto sobre os recursos da máquina em que você irá instalar o Tsuru.</p>
+<h2>Quem é o pai do Tsuru?</h2>
+<p>O pai do Tsuru (pelo que eu sei pelo menos) é o Andrews Medina, e este cara começou a desenvolver o Tsuru dentro da Globo.com. Podemos ver até na doc do Tsuru o Copyright da Globo.com, isso fica bem evidente que a Globo.com tem um dedinho ai.</p>
+<p>O Andrews Medina também fez inúmeros vídeos no YouTube muito bons explicando mais sobre o Tsuru, recomendo TODOS.. principalmente os três abaixo:</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=YD3iNEBb4t0">tsuru - fazendo deploys de forma simples e&nbsp;divertida</a></li>
-<li><a href="https://www.youtube.com/watch?v=h68DCFFXGW0">Garoa Hacker | Entrevista: Andrews Medina (possui 3&nbsp;partes)</a></li>
-<li><a href="https://www.youtube.com/watch?v=dC79RpifEQI">Garoa Hacker Club | Andrews Medina - Tsuru Live&nbsp;Code</a></li>
+<li><a href="https://www.youtube.com/watch?v=YD3iNEBb4t0">tsuru - fazendo deploys de forma simples e divertida</a></li>
+<li><a href="https://www.youtube.com/watch?v=h68DCFFXGW0">Garoa Hacker | Entrevista: Andrews Medina (possui 3 partes)</a></li>
+<li><a href="https://www.youtube.com/watch?v=dC79RpifEQI">Garoa Hacker Club | Andrews Medina - Tsuru Live Code</a></li>
 </ul>
-<h2>Por que raios eu estou falando do&nbsp;Tsuru?</h2>
-<p>Volto a dizer&#8230; achei <span class="caps">SENSACIONAL</span> o deploy realizado pelo Tsuru, extremamente rápido e seguro. Então ontem eu subi o meu PaaS utilizando o Tsuru&nbsp;<img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/raised_hands.png">.</p>
-<h2>Procedimentos&nbsp;básicos</h2>
-<p>A doc do Tsuru é excelente e pode ser lida <a href="http://docs.tsuru.io/en/stable/understanding/index.html">aqui</a>, mas tem um porém, caso você seja apenas um xereta (assim como eu), não recomendo fazer a instalação através dessa doc, pois você irá travar assim como eu no passo <a href="http://docs.tsuru.io/en/stable/installing/adding-nodes.html">Adding Nodes</a> muito&nbsp;provavelmente. </p>
-<p>Neste &#8220;Adding Nodes&#8221; é o passo onde você terá que adicionar uma *instância de IaaS da <a href="https://aws.amazon.com/pt/ec2/">Amazon <span class="caps">EC2</span></a> ou de <a href="https://cloudstack.apache.org/">Apache CloudStack</a>, por isso eu disse que você provavelmente vai travar se for um curioso, por&nbsp;que?</p>
+<h2>Por que raios eu estou falando do Tsuru?</h2>
+<p>Volto a dizer... achei SENSACIONAL o deploy realizado pelo Tsuru, extremamente rápido e seguro. Então ontem eu subi o meu PaaS utilizando o Tsuru <img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/raised_hands.png">.</p>
+<h2>Procedimentos básicos</h2>
+<p>A doc do Tsuru é excelente e pode ser lida <a href="http://docs.tsuru.io/en/stable/understanding/index.html">aqui</a>, mas tem um porém, caso você seja apenas um xereta (assim como eu), não recomendo fazer a instalação através dessa doc, pois você irá travar assim como eu no passo <a href="http://docs.tsuru.io/en/stable/installing/adding-nodes.html">Adding Nodes</a> muito provavelmente. </p>
+<p>Neste "Adding Nodes" é o passo onde você terá que adicionar uma *instância de IaaS da <a href="https://aws.amazon.com/pt/ec2/">Amazon EC2</a> ou de <a href="https://cloudstack.apache.org/">Apache CloudStack</a>, por isso eu disse que você provavelmente vai travar se for um curioso, por que?</p>
 <ul>
-<li>pois no <span class="caps">EC2</span> você terá que pagar a instância, que é uma coisa que provavelmente você não vai querer fazer a&nbsp;princípio</li>
-<li>e o CloudStack não é pago, porém extremamente complexo, pelo menos eu&nbsp;achei</li>
+<li>pois no EC2 você terá que pagar a instância, que é uma coisa que provavelmente você não vai querer fazer a princípio</li>
+<li>e o CloudStack não é pago, porém extremamente complexo, pelo menos eu achei</li>
 </ul>
-<p>Portanto minha escolha óbvia foi fazer o &#8220;procedimento mais fácil&#8221; (dica do @rpedigoni) que é usar o <a href="https://github.com/tsuru/now">Tsuru Now</a>.</p>
-<p>* Não sei se o nome certo para o CloudStack é instância, se eu estiver errado me&nbsp;desculpem</p>
-<h2>Procedimento &#8220;mais&nbsp;fácil&#8221;</h2>
-<p>Cara por que eu coloquei essas aspas&nbsp;ai? </p>
-<p>Meu, o Tsuru Now é um script em Shell bem antiguinho (pelo menos ao meu ver) e ele não é tão intuitivo como promete, creio que na época que ele foi criado ele deveria ser mais fácil de usar, mas agora devido ao tempo e versões mais novas de sistema operacional ele se tornou meio&nbsp;obsoleto.</p>
-<p>Mas mesmo obsoleto galera, eu ainda recomendo esse cara, pois se você aprender a domá-lo você consegue subir o Tsuru bem&nbsp;tranquilão.</p>
-<h2>Ferramentas&nbsp;utilizadas</h2>
-<p>Para subir o meu Tsuru estou&nbsp;utilizando:</p>
+<p>Portanto minha escolha óbvia foi fazer o "procedimento mais fácil" (dica do @rpedigoni) que é usar o <a href="https://github.com/tsuru/now">Tsuru Now</a>.</p>
+<p>* Não sei se o nome certo para o CloudStack é instância, se eu estiver errado me desculpem</p>
+<h2>Procedimento "mais fácil"</h2>
+<p>Cara por que eu coloquei essas aspas ai? </p>
+<p>Meu, o Tsuru Now é um script em Shell bem antiguinho (pelo menos ao meu ver) e ele não é tão intuitivo como promete, creio que na época que ele foi criado ele deveria ser mais fácil de usar, mas agora devido ao tempo e versões mais novas de sistema operacional ele se tornou meio obsoleto.</p>
+<p>Mas mesmo obsoleto galera, eu ainda recomendo esse cara, pois se você aprender a domá-lo você consegue subir o Tsuru bem tranquilão.</p>
+<h2>Ferramentas utilizadas</h2>
+<p>Para subir o meu Tsuru estou utilizando:</p>
 <ul>
-<li><a href="https://github.com/tsuru/now">Tsuru&nbsp;Now</a></li>
+<li><a href="https://github.com/tsuru/now">Tsuru Now</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet-virtual-server">Um droplet da Digital Ocean</a><ul>
-<li><span class="caps">S.O.</span> Ubuntu 14.04&nbsp;x64</li>
-<li><span class="caps">512MB</span>&nbsp;Ram </li>
-<li><span class="caps">20GB</span> <span class="caps">SSD</span>&nbsp;Disk </li>
-<li>New York&nbsp;3</li>
-<li>Neste droplet a configuração default da Digital Ocean é vir 2 interfaces de rede, uma eth0 que será o ip externo e a lo que representa o&nbsp;loopback</li>
-<li>Valor desse cara $5 por&nbsp;mês</li>
+<li>S.O. Ubuntu 14.04 x64</li>
+<li>512MB Ram </li>
+<li>20GB SSD Disk </li>
+<li>New York 3</li>
+<li>Neste droplet a configuração default da Digital Ocean é vir 2 interfaces de rede, uma eth0 que será o ip externo e a lo que representa o loopback</li>
+<li>Valor desse cara $5 por mês</li>
 </ul>
 </li>
 </ul>
-<p>Caso você não queira pagar absolutamente <span class="caps">NADA</span> também é possível, você só terá o trabalho de configurar as interfaces da sua máquina física (ou virtual, sei lá) e instalar o Ubuntu 14.04 x64 (o x32 eu não testei e não sei se funciona&nbsp;bem!).</p>
-<h2>Problemas encontrados logo no&nbsp;começo</h2>
-<p>No repositório do <a href="https://github.com/tsuru/now">github do Tsuru Now</a> tem algumas informações faltantes a respeito da compatibilidade com os Sistemas operacionais. Lá no <span class="caps">README</span> ele menciona que este script funciona em Debian e Ubuntu, mas não diz a versão&nbsp;<img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/pensive.png">.</p>
-<p>Eu como um bom paranóico amante de Debian, fui logo criando um droplet na Digital Ocean com o Debian mais novo que encontrei o 8.1~8.2 (Jessie Stable), ai rodei o script conforme manda o <span class="caps">README</span>:</p>
+<p>Caso você não queira pagar absolutamente NADA também é possível, você só terá o trabalho de configurar as interfaces da sua máquina física (ou virtual, sei lá) e instalar o Ubuntu 14.04 x64 (o x32 eu não testei e não sei se funciona bem!).</p>
+<h2>Problemas encontrados logo no começo</h2>
+<p>No repositório do <a href="https://github.com/tsuru/now">github do Tsuru Now</a> tem algumas informações faltantes a respeito da compatibilidade com os Sistemas operacionais. Lá no README ele menciona que este script funciona em Debian e Ubuntu, mas não diz a versão <img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/pensive.png">.</p>
+<p>Eu como um bom paranóico amante de Debian, fui logo criando um droplet na Digital Ocean com o Debian mais novo que encontrei o 8.1~8.2 (Jessie Stable), ai rodei o script conforme manda o README:</p>
 <div class="highlight"><pre># curl -sL https://raw.githubusercontent.com/tsuru/now/master/run.bash | bash
 </pre></div>
 
 
-<p>Coisa linda pra se ver&#8230;. massss&#8230; não consegui nem ir até 50% da instalação, logo de cara falta o pacote linux-image-extras-* no Debian, e adicionar repositórios começa a ficar meio impraticável pois eu como um bom paranóico, acredito, que se ele não está no repositório main alguma razão deve&nbsp;ter.</p>
-<p>Eis que pensei <em>&#8220;pooo&#8230; se não vai Debian, os caras devem gostar de Ubuntu&#8230; vamos de Ubuntu&#8221;</em>, ai novamente como um bom paranóico fui logo escolhendo a versão <span class="caps">MAIS</span> <span class="caps">NOVA</span> do Ubuntu, a versão 15.04 x64&#8230;. e adivinhem?? Problema de novo&#8230;. se não me engano com o mesmo&nbsp;pacote.</p>
-<p>Ai novamente como um bom brasileiro que não desiste nunca fui de novo agora pensei <em>&#8220;poooo&#8230;. se os caras não gostam desse Ubuntu vou usar o Ubuntu que está referenciado na doc oficial do Tsuru&#8221;</em> que vem a ser o 14.04&nbsp;! </p>
-<p>E desta vez fiz progressos significativos, <span class="caps">MUITO</span> <span class="caps">SIGNIFICATIVOS</span> e consegui concluir cerca de 80% da instalação e o script foi dar pau lá pelo finalzinho próximo da <code>linha 671</code> quando ele chama a função <code>config_tsuru_post</code>.</p>
-<p>Ai começa meu instinto de programador maluco e fui depurando a parada. Pelo que pude ver o script não estava pegando meu ip externo&nbsp;adequadamente.</p>
-<h2>Variáveis/adaptação e funcionamento&nbsp;completo</h2>
-<p>Como o Tsuru Now não conseguia pegar meu ip corretamente fui lá e comecei a testar coisas de modo que fizesse o filho da mãe funcionar. Eis que por fim eu consegui, e vou dar a receita de bolo pra vocês. Clone o repositório do Tsuru Now&nbsp;inicialmente:</p>
+<p>Coisa linda pra se ver.... massss... não consegui nem ir até 50% da instalação, logo de cara falta o pacote linux-image-extras-* no Debian, e adicionar repositórios começa a ficar meio impraticável pois eu como um bom paranóico, acredito, que se ele não está no repositório main alguma razão deve ter.</p>
+<p>Eis que pensei <em>"pooo... se não vai Debian, os caras devem gostar de Ubuntu... vamos de Ubuntu"</em>, ai novamente como um bom paranóico fui logo escolhendo a versão MAIS NOVA do Ubuntu, a versão 15.04 x64.... e adivinhem?? Problema de novo.... se não me engano com o mesmo pacote.</p>
+<p>Ai novamente como um bom brasileiro que não desiste nunca fui de novo agora pensei <em>"poooo.... se os caras não gostam desse Ubuntu vou usar o Ubuntu que está referenciado na doc oficial do Tsuru"</em> que vem a ser o 14.04 ! </p>
+<p>E desta vez fiz progressos significativos, MUITO SIGNIFICATIVOS e consegui concluir cerca de 80% da instalação e o script foi dar pau lá pelo finalzinho próximo da <code>linha 671</code> quando ele chama a função <code>config_tsuru_post</code>.</p>
+<p>Ai começa meu instinto de programador maluco e fui depurando a parada. Pelo que pude ver o script não estava pegando meu ip externo adequadamente.</p>
+<h2>Variáveis/adaptação e funcionamento completo</h2>
+<p>Como o Tsuru Now não conseguia pegar meu ip corretamente fui lá e comecei a testar coisas de modo que fizesse o filho da mãe funcionar. Eis que por fim eu consegui, e vou dar a receita de bolo pra vocês. Clone o repositório do Tsuru Now inicialmente:</p>
 <div class="highlight"><pre># git clone git@github.com:tsuru/now.git
 </pre></div>
 
 
-<p>Nas primeiras linhas do script chamado <code>run.bash</code> tem algumas variáveis&nbsp;interessantes:</p>
+<p>Nas primeiras linhas do script chamado <code>run.bash</code> tem algumas variáveis interessantes:</p>
 <div class="highlight"><pre>1  #!/bin/bash -ue
 2 
 3  # Copyright 2015 tsuru-now authors. All rights reserved.
@@ -178,17 +134,17 @@ styles, `#sidebar-checkbox` for behavior. -->
 </pre></div>
 
 
-<p>Destas 17 linhas as variáveis que resolveram minha vira foram <code>host_ip</code> e <code>private_ip</code>, nestas duas eu setei meu ip <strong><span class="caps">EXTERNO</span> (ou seja o ip que a galera de fora da sua rede vê)</strong>, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site <a href="https://www.whatismyip.com/">What Is My Ip?</a> que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru&nbsp;<img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png">).</p>
-<p>Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando&nbsp;sudo):</p>
+<p>Destas 17 linhas as variáveis que resolveram minha vira foram <code>host_ip</code> e <code>private_ip</code>, nestas duas eu setei meu ip <strong>EXTERNO (ou seja o ip que a galera de fora da sua rede vê)</strong>, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site <a href="https://www.whatismyip.com/">What Is My Ip?</a> que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru <img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png">).</p>
+<p>Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando sudo):</p>
 <div class="highlight"><pre># bash run.bash --host-ip &lt;meu ip externo&gt; | tee log_run.log
 </pre></div>
 
 
-<p>Troque &lt;meu ip externo> pelo seu ip&nbsp;externo. </p>
-<p>Executando esse comando vá tomar banho, comer, tomar café ou outra coisa desse tipo, pois vai demorar um pouco (calculo pelo menos uns 15 minutos caso você não use um hd <span class="caps">SSD</span>).</p>
-<p>Usei o comando <code>| tee log_run.log</code> para que ele gere um arquivo contendo todo output (erros e não erros) do script, se você quiser analisar depois como foi a instalação ficará mais fácil você ler este&nbsp;arquivo.</p>
-<h2>Finish&nbsp;him!</h2>
-<p>Se tudo correr bem ao fim dessa execução seu Tsuru já vai estar funcionando de forma básica pronta para testes bacaninhas. É importante em um primeiro momento alterar a senha do admin e rodar <code>source ~/.bashrc</code> conforme manda o próprio Tsuru&nbsp;Now:</p>
+<p>Troque &lt;meu ip externo> pelo seu ip externo. </p>
+<p>Executando esse comando vá tomar banho, comer, tomar café ou outra coisa desse tipo, pois vai demorar um pouco (calculo pelo menos uns 15 minutos caso você não use um hd SSD).</p>
+<p>Usei o comando <code>| tee log_run.log</code> para que ele gere um arquivo contendo todo output (erros e não erros) do script, se você quiser analisar depois como foi a instalação ficará mais fácil você ler este arquivo.</p>
+<h2>Finish him!</h2>
+<p>Se tudo correr bem ao fim dessa execução seu Tsuru já vai estar funcionando de forma básica pronta para testes bacaninhas. É importante em um primeiro momento alterar a senha do admin e rodar <code>source ~/.bashrc</code> conforme manda o próprio Tsuru Now:</p>
 <div class="highlight"><pre>######################## DONE! ########################
 
 Some information about your tsuru installation:
@@ -203,10 +159,10 @@ You should run `source ~/.bashrc` on your current terminal.
 
 
 <p>Para alterar a senha você poderá usar o comando <code>tsuru change-password</code>. Após você ter seu PaaS instalado e funcional recomendo assistir o vídeo do Andrews para dar seus primeiros passinhos utilizando o tsuru-cli, um vídeo ótimo para começar é este <a href="https://www.youtube.com/watch?v=YD3iNEBb4t0">tsuru - fazendo deploys de forma simples e divertida</a>.</p>
-<p>Espero que tenha gostado do post, deixe seus comentários ali embaixo&nbsp;<img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/point_down.png">.</p>
+<p>Espero que tenha gostado do post, deixe seus comentários ali embaixo <img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/point_down.png">.</p>
 <p>Flw!</p>
-    <div class="hr"></div>
-    <a href="#" class="go-top">Go Top</a>
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
 <div class="comments">
     <div id="disqus_thread"></div>
     <script type="text/javascript">
@@ -222,43 +178,47 @@ You should run `source ~/.bashrc` on your current terminal.
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-  </div>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
 </div>
-      </div>
+    <script>
+        var $top = $('.go-top');
 
-      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
-      <script>
-        (function(document) {
-          var i = 0;
-          // snip empty header rows since markdown can't
-          var rows = document.querySelectorAll('tr');
-          for(i=0; i<rows.length; i++) {
-            var ths = rows[i].querySelectorAll('th');
-            var rowlen = rows[i].children.length;
-            if (ths.length > 0 && ths.length === rowlen) {
-              rows[i].remove();
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
             }
-          }
-        })(document);
-      </script>
+        });
 
-      <script>
-        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
-        (function(document) {
-          var toggle = document.querySelector('.sidebar-toggle');
-          var sidebar = document.querySelector('#sidebar');
-          var checkbox = document.querySelector('#sidebar-checkbox');
-          document.addEventListener('click', function(e) {
-            var target = e.target;
-            if(!checkbox.checked ||
-            sidebar.contains(target) ||
-            (target === checkbox || target === toggle)) return;
-            checkbox.checked = false;
-            }, false);
-            })(document);
-      </script>
-     </div>
-  </body>
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
 </html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2015-10-28T19:49:00-02:00</updated><entry><title>Grupo de Estudos Python - Aula 01 - Resposta do Exercício</title><link href="/grupo-de-estudos-python-sorocaba-01_resposta.html" rel="alternate"></link><updated>2015-10-28T19:49:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-10-28:grupo-de-estudos-python-sorocaba-01_resposta.html</id><summary type="html">&lt;p&gt;Ao final da aula 01 foi passado um exercício bem básico, o qual agora vou mostrar passar a resposta, decidi fazer em post separado pois caso você ainda não tenha feito, você poderá ler o post da aula 02 sem&amp;nbsp;spoilers.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/python.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-10-28T19:49:00-02:00</updated><entry><title>Grupo de Estudos Python - Aula 01 - Resposta do Exercício</title><link href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba-01_resposta.html" rel="alternate"></link><updated>2015-10-28T19:49:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-10-28:grupo-de-estudos-python-sorocaba-01_resposta.html</id><summary type="html">&lt;p&gt;Ao final da aula 01 foi passado um exercício bem básico, o qual agora vou mostrar passar a resposta, decidi fazer em post separado pois caso você ainda não tenha feito, você poderá ler o post da aula 02 sem spoilers.&lt;/p&gt;
 &lt;h2&gt;Relembrando&lt;/h2&gt;
-&lt;p&gt;Faça uma calculadora de soma conforme&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;Faça uma calculadora de soma conforme abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 calculadora_soma.py
 Digite operando1:
 10
@@ -25,11 +25,11 @@ Resultado: 30.0
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Simples!? Conseguiram&amp;nbsp;fazer!?&lt;/p&gt;
-&lt;h2&gt;Explicação&amp;nbsp;prévia&lt;/h2&gt;
-&lt;p&gt;Basicamente você terá que receber dois números do usuário e mostrar a resposta na tela, existe a forma simples (e fácil) de resolver este exercício e a forma mais&amp;nbsp;complexa.&lt;/p&gt;
-&lt;h2&gt;Forma simples (o mundo&amp;nbsp;ideal)&lt;/h2&gt;
-&lt;p&gt;Você soma os números sempre esperando que o usuário seja bonzinho com você e realmente só digite&amp;nbsp;números&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Simples!? Conseguiram fazer!?&lt;/p&gt;
+&lt;h2&gt;Explicação prévia&lt;/h2&gt;
+&lt;p&gt;Basicamente você terá que receber dois números do usuário e mostrar a resposta na tela, existe a forma simples (e fácil) de resolver este exercício e a forma mais complexa.&lt;/p&gt;
+&lt;h2&gt;Forma simples (o mundo ideal)&lt;/h2&gt;
+&lt;p&gt;Você soma os números sempre esperando que o usuário seja bonzinho com você e realmente só digite números...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;span class="mi"&gt;3&lt;/span&gt;     &lt;span class="nb"&gt;raw_input&lt;/span&gt;
@@ -43,7 +43,7 @@ Resultado: 30.0
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Este código é compatível com python2 e python3. A forma simples pode dar alguns&amp;nbsp;problemas:&lt;/p&gt;
+&lt;p&gt;Este código é compatível com python2 e python3. A forma simples pode dar alguns problemas:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python resposta_blog.py 
 Digite operando1: a
 Traceback &lt;span class="o"&gt;(&lt;/span&gt;most recent call last&lt;span class="o"&gt;)&lt;/span&gt;:
@@ -53,9 +53,9 @@ ValueError: could not convert string to float: a
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Tentei somar a letra &amp;#8216;a&amp;#8217;, porém quando vou converter &amp;#8216;a&amp;#8217; para float recebo um erro de&amp;nbsp;conversão.&lt;/p&gt;
-&lt;h2&gt;Forma mais complexa (o mundo&amp;nbsp;real)&lt;/h2&gt;
-&lt;p&gt;Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/trollface.png"&gt;&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Tentei somar a letra 'a', porém quando vou converter 'a' para float recebo um erro de conversão.&lt;/p&gt;
+&lt;h2&gt;Forma mais complexa (o mundo real)&lt;/h2&gt;
+&lt;p&gt;Você soma os números porém valida se realmente o que o usuário digitou é um número, pois eventualmente ele vai ser malandro e não digitar &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/trollface.png"&gt;...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="mi"&gt;3&lt;/span&gt; 
@@ -75,7 +75,7 @@ ValueError: could not convert string to float: a
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Desta forma mostrada acima não mostramos um exception tão feia para o usuário, caso o usuário informe uma letra esta saída ficará mais&amp;nbsp;legível:&lt;/p&gt;
+&lt;p&gt;Desta forma mostrada acima não mostramos um exception tão feia para o usuário, caso o usuário informe uma letra esta saída ficará mais legível:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python resposta_blog.py 
 Digite operando1: 1
 Digite operando2: a
@@ -83,58 +83,58 @@ Digite somente números!
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;E ai o que achou? Bem mais bonito né!? Caso tenha alguma dúvida (qualquer que seja ela) dos exemplos postados, por favor entre em contato. E logo sairá a aula 2&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry><entry><title>Grupo de Estudos Python - Aula 01</title><link href="/grupo-de-estudos-python-sorocaba-01.html" rel="alternate"></link><updated>2015-10-14T22:53:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-10-14:grupo-de-estudos-python-sorocaba-01.html</id><summary type="html">&lt;p&gt;Olá! Já expliquei um pouco da história do Grupo de Estudos Python Sorocaba &lt;a href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html"&gt;aqui&lt;/a&gt;, então nos próximos posts sobre o Grupo vou abordar o que andamos falando por lá. 
-Na primeira aula de nivelamento Python foram abordados os seguintes tópicos&amp;nbsp;chave:&lt;/p&gt;
+&lt;p&gt;E ai o que achou? Bem mais bonito né!? Caso tenha alguma dúvida (qualquer que seja ela) dos exemplos postados, por favor entre em contato. E logo sairá a aula 2 &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry><entry><title>Grupo de Estudos Python - Aula 01</title><link href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba-01.html" rel="alternate"></link><updated>2015-10-14T22:53:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-10-14:grupo-de-estudos-python-sorocaba-01.html</id><summary type="html">&lt;p&gt;Olá! Já expliquei um pouco da história do Grupo de Estudos Python Sorocaba &lt;a href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html"&gt;aqui&lt;/a&gt;, então nos próximos posts sobre o Grupo vou abordar o que andamos falando por lá. 
+Na primeira aula de nivelamento Python foram abordados os seguintes tópicos chave:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Por que Python se chama&amp;nbsp;Python?&lt;/li&gt;
-&lt;li&gt;Por que Python? O que podemos fazer com&amp;nbsp;Python?&lt;/li&gt;
-&lt;li&gt;Filosofia&amp;nbsp;Pythônica&lt;/li&gt;
-&lt;li&gt;Instalando&amp;nbsp;Python&lt;/li&gt;
-&lt;li&gt;Usando&amp;nbsp;Python&lt;/li&gt;
-&lt;li&gt;input vs&amp;nbsp;raw_input&lt;/li&gt;
-&lt;li&gt;Cuidado com eval (usado no input do&amp;nbsp;Python2.X)&lt;/li&gt;
-&lt;li&gt;Python2 e&amp;nbsp;Python3&lt;/li&gt;
+&lt;li&gt;Por que Python se chama Python?&lt;/li&gt;
+&lt;li&gt;Por que Python? O que podemos fazer com Python?&lt;/li&gt;
+&lt;li&gt;Filosofia Pythônica&lt;/li&gt;
+&lt;li&gt;Instalando Python&lt;/li&gt;
+&lt;li&gt;Usando Python&lt;/li&gt;
+&lt;li&gt;input vs raw_input&lt;/li&gt;
+&lt;li&gt;Cuidado com eval (usado no input do Python2.X)&lt;/li&gt;
+&lt;li&gt;Python2 e Python3&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Alguns assuntos desses eu apenas mandei links para a galera ler, pois o tempo de 1h era muito pequeno pra ver tudo isso, e existem coisas muito &amp;#8220;batidas&amp;#8221; que eu não queria focar tanto, minha ideia era mais fazer o pessoal sair da primeira aula programando. Maassss como em um blog não existe tempo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/raised_hands.png"&gt; pretendo explicar e mostrar coisas sobre estes assuntos todos neste post da Aula&amp;nbsp;01.&lt;/p&gt;
-&lt;p&gt;Let&amp;#8217;s&amp;nbsp;start&amp;#8230;&lt;/p&gt;
-&lt;h2&gt;Por que Python se chama&amp;nbsp;Python?&lt;/h2&gt;
+&lt;p&gt;Alguns assuntos desses eu apenas mandei links para a galera ler, pois o tempo de 1h era muito pequeno pra ver tudo isso, e existem coisas muito "batidas" que eu não queria focar tanto, minha ideia era mais fazer o pessoal sair da primeira aula programando. Maassss como em um blog não existe tempo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/raised_hands.png"&gt; pretendo explicar e mostrar coisas sobre estes assuntos todos neste post da Aula 01.&lt;/p&gt;
+&lt;p&gt;Let's start...&lt;/p&gt;
+&lt;h2&gt;Por que Python se chama Python?&lt;/h2&gt;
 &lt;p&gt;Copiando literalmente as palavras da &lt;a href="http://wiki.python.org.br/PerguntasFrequentes/SobrePython#De_onde_surgiu_esse_nome.3F"&gt;Wiki Python Brasil&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;Ao contrário do que normalmente se pensa, a origem do nome da linguagem não é a espécie de serpente &amp;quot;Pitón&amp;quot; e sim o grupo inglês de humoristas &amp;quot;Monty Python&amp;quot;. 
 O uso da serpente como símbolo da linguagem se difundiu depois da publicação do ProgrammingPython da editora O&amp;#39;Reilly.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Por que Python? O que podemos fazer com&amp;nbsp;Python?&lt;/h2&gt;
-&lt;p&gt;Python é uma linguagem de altíssimo nível, extremamente poderosa e versátil. Maiores&amp;nbsp;vantagens:&lt;/p&gt;
+&lt;h2&gt;Por que Python? O que podemos fazer com Python?&lt;/h2&gt;
+&lt;p&gt;Python é uma linguagem de altíssimo nível, extremamente poderosa e versátil. Maiores vantagens:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Muito fácil de ser&amp;nbsp;aprendida&lt;/li&gt;
-&lt;li&gt;Comunidade muito&amp;nbsp;grande&lt;/li&gt;
-&lt;li&gt;Os grandes mestres na comunidade são muito acessíveis para conversar/tirar&amp;nbsp;dúvidas&lt;/li&gt;
-&lt;li&gt;É uma linguagem limpa e tem isso como&amp;nbsp;filosofia&lt;/li&gt;
-&lt;li&gt;Por ser uma linguagem limpa fica fácil de você ler os códigos fonte de outras pessoas e entender o que está rolando&amp;nbsp;ali&lt;/li&gt;
-&lt;li&gt;Muitas bibliotecas para &lt;span class="caps"&gt;TUDO&lt;/span&gt;!&lt;/li&gt;
-&lt;li&gt;Quantidade enorme de frameworks para os mais variados&amp;nbsp;usos&lt;/li&gt;
-&lt;li&gt;Não é Java ! Isso pra mim é uma vantagem &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/trollface.png"&gt; ! (me desculpem&amp;nbsp;javeiros)&lt;/li&gt;
+&lt;li&gt;Muito fácil de ser aprendida&lt;/li&gt;
+&lt;li&gt;Comunidade muito grande&lt;/li&gt;
+&lt;li&gt;Os grandes mestres na comunidade são muito acessíveis para conversar/tirar dúvidas&lt;/li&gt;
+&lt;li&gt;É uma linguagem limpa e tem isso como filosofia&lt;/li&gt;
+&lt;li&gt;Por ser uma linguagem limpa fica fácil de você ler os códigos fonte de outras pessoas e entender o que está rolando ali&lt;/li&gt;
+&lt;li&gt;Muitas bibliotecas para TUDO!&lt;/li&gt;
+&lt;li&gt;Quantidade enorme de frameworks para os mais variados usos&lt;/li&gt;
+&lt;li&gt;Não é Java ! Isso pra mim é uma vantagem &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/trollface.png"&gt; ! (me desculpem javeiros)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;É difícil definir um limite entre o que é possível fazer com Python e o que não é possível, mas não vou mentir, vou usar uma frase que é comumente utilizada por todos: &lt;strong&gt;Não existe bala de prata! Use o que for melhor para o seu projeto!&lt;/strong&gt; Python provavelmente tem um limite de alcance&amp;#8230; proponho aos conhecedores mais avançados comentar sobre estas limitações nos comentários deste post. Mas eu como conhecedor nível médio em Python, digo que não encontrei algo que seja impossível fazer com&amp;nbsp;Python.&lt;/p&gt;
-&lt;p&gt;Tópicos da computação que estão muito na &amp;#8220;moda&amp;#8221; usando Python (e empregam muita&amp;nbsp;gente):&lt;/p&gt;
+&lt;p&gt;É difícil definir um limite entre o que é possível fazer com Python e o que não é possível, mas não vou mentir, vou usar uma frase que é comumente utilizada por todos: &lt;strong&gt;Não existe bala de prata! Use o que for melhor para o seu projeto!&lt;/strong&gt; Python provavelmente tem um limite de alcance... proponho aos conhecedores mais avançados comentar sobre estas limitações nos comentários deste post. Mas eu como conhecedor nível médio em Python, digo que não encontrei algo que seja impossível fazer com Python.&lt;/p&gt;
+&lt;p&gt;Tópicos da computação que estão muito na "moda" usando Python (e empregam muita gente):&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Aplicações&amp;nbsp;Web&lt;/li&gt;
-&lt;li&gt;Computação&amp;nbsp;científica&lt;/li&gt;
-&lt;li&gt;Computação de Alto&amp;nbsp;Desempenho &lt;/li&gt;
+&lt;li&gt;Aplicações Web&lt;/li&gt;
+&lt;li&gt;Computação científica&lt;/li&gt;
+&lt;li&gt;Computação de Alto Desempenho &lt;/li&gt;
 &lt;li&gt;IoT&lt;/li&gt;
-&lt;li&gt;Análise de&amp;nbsp;dados&lt;/li&gt;
-&lt;li&gt;Sistemas de&amp;nbsp;recomendações&lt;/li&gt;
-&lt;li&gt;Aplicações Desktop (sim! ainda&amp;nbsp;existem!)&lt;/li&gt;
+&lt;li&gt;Análise de dados&lt;/li&gt;
+&lt;li&gt;Sistemas de recomendações&lt;/li&gt;
+&lt;li&gt;Aplicações Desktop (sim! ainda existem!)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Links bacanas falando mais sobre por que usar&amp;nbsp;Python:&lt;/p&gt;
+&lt;p&gt;Links bacanas falando mais sobre por que usar Python:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.fullstackpython.com/why-use-python.html"&gt;Full Stack&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://wiki.python.org.br/PerguntasFrequentes/SobrePython"&gt;Wiki Python Brasil&lt;/a&gt; (tem umas coisas meio defasadas,&amp;nbsp;cuidado)&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://python.pro.br/pydoc/2.7/tutorial/appetite.html"&gt;Abrindo o&amp;nbsp;Apetite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.fullstackpython.com/why-use-python.html"&gt;Full Stack Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wiki.python.org.br/PerguntasFrequentes/SobrePython"&gt;Wiki Python Brasil&lt;/a&gt; (tem umas coisas meio defasadas, cuidado)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://python.pro.br/pydoc/2.7/tutorial/appetite.html"&gt;Abrindo o Apetite&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Filosofia&amp;nbsp;Pythônica&lt;/h2&gt;
-&lt;p&gt;O Python é regido por um &amp;#8220;mantra&amp;#8221; chamado Zen do Python, se você seguir esse &amp;#8220;mantra&amp;#8221; na hora de programar tudo seguirá de forma maravilhosamente bem&amp;#8230; apresento-lhes o &amp;#8220;mantra&amp;#8221;&amp;nbsp;Pythônico:&lt;/p&gt;
+&lt;h2&gt;Filosofia Pythônica&lt;/h2&gt;
+&lt;p&gt;O Python é regido por um "mantra" chamado Zen do Python, se você seguir esse "mantra" na hora de programar tudo seguirá de forma maravilhosamente bem... apresento-lhes o "mantra" Pythônico:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Zen&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
     &lt;span class="n"&gt;Beautiful&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;ugly&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
     &lt;span class="n"&gt;Explicit&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;implicit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
@@ -160,39 +160,39 @@ O uso da serpente como símbolo da linguagem se difundiu depois da publicação 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Fonte: &lt;a href="https://www.python.org/dev/peps/pep-0020/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt;-20&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Existem muitas derivações e interpretações a partir deste mantra na internet, vou citar os que achei mais&amp;nbsp;legais:&lt;/p&gt;
+&lt;p&gt;Fonte: &lt;a href="https://www.python.org/dev/peps/pep-0020/"&gt;PEP-20&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Existem muitas derivações e interpretações a partir deste mantra na internet, vou citar os que achei mais legais:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://hacktoon.com/log/2015/programming-comics-3/"&gt;Zen of Python em ilustrado&lt;/a&gt; - &lt;a href="https://twitter.com/hacktoon"&gt;@hacktoon&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/luanfonceca/oxente"&gt;Cordel do Python&lt;/a&gt; - &lt;a href="https://github.com/luanfonceca"&gt;luanfonseca&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/vsouza/Minerin-do-Python"&gt;Minerin do Python&lt;/a&gt; - &lt;a href="https://github.com/vsouza"&gt;vsouza&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Instalando&amp;nbsp;Python&lt;/h2&gt;
-&lt;p&gt;Em sistemas operacionais Linux o Python 2.6 já é a versão default. Mas deixo aqui dicas de como instalar outras versões. Seria legal ter instalado pelo menos uma versão &amp;gt;= 2.7 e uma versão &amp;gt;= 3.4, para que assim você possa comparar algumas pequenas coisas que serão comentadas mais a frente. Caso leia os procedimentos/tutoriais passados abaixo e não consiga instalar Python em seu &lt;span class="caps"&gt;PC&lt;/span&gt; mesmo assim por favor me diga qual problema você encontrou nos comentários abaixo deste&amp;nbsp;Post.&lt;/p&gt;
-&lt;h2&gt;Instalando Python em sistemas operacionais Linux&amp;nbsp;Debian-Like&lt;/h2&gt;
-&lt;p&gt;Todo sistema operacional Debian-like (Debian, Ubuntu, Xubuntu, Linux Mint&amp;#8230; etc) possui apt-get, então isso já facilita muito a instalação, basta digitar (estando logado como root) os seguintes&amp;nbsp;comandos:&lt;/p&gt;
+&lt;h2&gt;Instalando Python&lt;/h2&gt;
+&lt;p&gt;Em sistemas operacionais Linux o Python 2.6 já é a versão default. Mas deixo aqui dicas de como instalar outras versões. Seria legal ter instalado pelo menos uma versão &amp;gt;= 2.7 e uma versão &amp;gt;= 3.4, para que assim você possa comparar algumas pequenas coisas que serão comentadas mais a frente. Caso leia os procedimentos/tutoriais passados abaixo e não consiga instalar Python em seu PC mesmo assim por favor me diga qual problema você encontrou nos comentários abaixo deste Post.&lt;/p&gt;
+&lt;h2&gt;Instalando Python em sistemas operacionais Linux Debian-Like&lt;/h2&gt;
+&lt;p&gt;Todo sistema operacional Debian-like (Debian, Ubuntu, Xubuntu, Linux Mint... etc) possui apt-get, então isso já facilita muito a instalação, basta digitar (estando logado como root) os seguintes comandos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# apt-get update
 # apt-get install python3.4 python3.4-venv python2.7 python-virtualenv
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Dúvidas sobre como usar o apt-get!? Consulte a &lt;a href="http://wiki.ubuntu-br.org/AptGet"&gt;Wiki do Ubuntu-&lt;span class="caps"&gt;BR&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Instalando Python em sistemas operacionais Linux Red&amp;nbsp;Hat-Like&lt;/h2&gt;
-&lt;p&gt;Existe um tutorial muito bom pra isso &lt;a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-python-2-7-6-and-3-3-3-on-centos-6-4"&gt;aqui no tutorial da Digital Ocean&lt;/a&gt; no momento estou sem tempo de criar uma &lt;span class="caps"&gt;VM&lt;/span&gt; de CentOS só para fazer esta instalação e documentar, mas achei muito bom este tutorial criado pela Digital&amp;nbsp;Ocean. &lt;/p&gt;
-&lt;h2&gt;Instalando Python em sistemas operacionais&amp;nbsp;Apple&lt;/h2&gt;
+&lt;p&gt;Dúvidas sobre como usar o apt-get!? Consulte a &lt;a href="http://wiki.ubuntu-br.org/AptGet"&gt;Wiki do Ubuntu-BR&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Instalando Python em sistemas operacionais Linux Red Hat-Like&lt;/h2&gt;
+&lt;p&gt;Existe um tutorial muito bom pra isso &lt;a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-python-2-7-6-and-3-3-3-on-centos-6-4"&gt;aqui no tutorial da Digital Ocean&lt;/a&gt; no momento estou sem tempo de criar uma VM de CentOS só para fazer esta instalação e documentar, mas achei muito bom este tutorial criado pela Digital Ocean. &lt;/p&gt;
+&lt;h2&gt;Instalando Python em sistemas operacionais Apple&lt;/h2&gt;
 &lt;p&gt;Eu não tenho afinidade nenhuma com sistemas Apple mas achei &lt;a href="http://www.ime.usp.br/~mac2166/python/macos.html"&gt;esse tutorial&lt;/a&gt; bem convincente, se vocês testarem e funcionar me avisem &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smirk.png"&gt;.
 Também temos o tutorial da documentação oficial &lt;a href="https://docs.python.org/2/using/mac.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Instalando Python em sistemas operacionais Microsoft&amp;nbsp;Windows&lt;/h2&gt;
-&lt;p&gt;Se eu não tenho afinidade com Apple &amp;#8230;. tenho muito menos afinidade com Windows &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/confused.png"&gt;.
-Mas creio que para este cara temos alguns tutoriais bem bacanas&amp;nbsp;também:&lt;/p&gt;
+&lt;h2&gt;Instalando Python em sistemas operacionais Microsoft Windows&lt;/h2&gt;
+&lt;p&gt;Se eu não tenho afinidade com Apple .... tenho muito menos afinidade com Windows &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/confused.png"&gt;.
+Mas creio que para este cara temos alguns tutoriais bem bacanas também:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://docs.python.org/2/using/windows.html"&gt;Tutorial&amp;nbsp;Oficial&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Es_kdnPUgDg"&gt;How to install Python, Setuptools, Pip and Virtualenv on Windows in 5 minutes (&lt;span class="caps"&gt;XP&lt;/span&gt; / 7 /&amp;nbsp;8)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://pythonclub.com.br/instalacao-python-django-windows.html"&gt;Instalando e Configurando o Python e Django no&amp;nbsp;Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.python.org/2/using/windows.html"&gt;Tutorial Oficial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Es_kdnPUgDg"&gt;How to install Python, Setuptools, Pip and Virtualenv on Windows in 5 minutes (XP / 7 / 8)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pythonclub.com.br/instalacao-python-django-windows.html"&gt;Instalando e Configurando o Python e Django no Windows&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Usando&amp;nbsp;Python&lt;/h2&gt;
-&lt;p&gt;Agora que você já instalou o Python então vamos conhecê-lo&amp;nbsp;né!?&lt;/p&gt;
-&lt;p&gt;No seu terminal (seja windows/linux/mac) digite python e tecle enter conforme mostrado abaixo (o &lt;code&gt;$&lt;/code&gt; é apenas uma indicação que estou digitando o comando no terminal, não precisa digitar&amp;nbsp;ok!?):&lt;/p&gt;
+&lt;h2&gt;Usando Python&lt;/h2&gt;
+&lt;p&gt;Agora que você já instalou o Python então vamos conhecê-lo né!?&lt;/p&gt;
+&lt;p&gt;No seu terminal (seja windows/linux/mac) digite python e tecle enter conforme mostrado abaixo (o &lt;code&gt;$&lt;/code&gt; é apenas uma indicação que estou digitando o comando no terminal, não precisa digitar ok!?):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python
 Python 2.7.9 &lt;span class="o"&gt;(&lt;/span&gt;default, Mar  &lt;span class="m"&gt;1&lt;/span&gt; 2015, 12:57:24&lt;span class="o"&gt;)&lt;/span&gt; 
 &lt;span class="o"&gt;[&lt;/span&gt;GCC 4.9.2&lt;span class="o"&gt;]&lt;/span&gt; on linux2
@@ -201,8 +201,8 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Uma saída similar será apresentada para você, para sair do terminal interativo do python você poderá teclar &lt;code&gt;Ctrl + D&lt;/code&gt; ou digitar o comando &lt;code&gt;exit()&lt;/code&gt; (os parênteses são necessários), faça isso para sair do terminal interativo para você ir se acostumando&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;. &lt;/p&gt;
-&lt;p&gt;Se você já instalou mais de uma versão do Python neste passo (o que é extremamente recomendável) você poderá abrir o terminal interativo das diferentes versões que você instalou, conforme mostrado&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;Uma saída similar será apresentada para você, para sair do terminal interativo do python você poderá teclar &lt;code&gt;Ctrl + D&lt;/code&gt; ou digitar o comando &lt;code&gt;exit()&lt;/code&gt; (os parênteses são necessários), faça isso para sair do terminal interativo para você ir se acostumando &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;. &lt;/p&gt;
+&lt;p&gt;Se você já instalou mais de uma versão do Python neste passo (o que é extremamente recomendável) você poderá abrir o terminal interativo das diferentes versões que você instalou, conforme mostrado abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python2.7
 Python 2.7.9 &lt;span class="o"&gt;(&lt;/span&gt;default, Mar  &lt;span class="m"&gt;1&lt;/span&gt; 2015, 12:57:24&lt;span class="o"&gt;)&lt;/span&gt; 
 &lt;span class="o"&gt;[&lt;/span&gt;GCC 4.9.2&lt;span class="o"&gt;]&lt;/span&gt; on linux2
@@ -217,9 +217,9 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Seria legal abrir os interpretadores das diferentes versões instaladas para ver se correu tudo bem com sua&amp;nbsp;instalação.&lt;/p&gt;
-&lt;h2&gt;Vamos fazer&amp;nbsp;continhas!?&lt;/h2&gt;
-&lt;p&gt;Agora que você está com Python instalado e o interpretador de comandos Python funcionando, vamos dar uma brincada, você sabia que o interpretador de comandos Python também pode ser usado como uma calculadora!? Não!? Pois é, deixa eu te&amp;nbsp;mostrar:&lt;/p&gt;
+&lt;p&gt;Seria legal abrir os interpretadores das diferentes versões instaladas para ver se correu tudo bem com sua instalação.&lt;/p&gt;
+&lt;h2&gt;Vamos fazer continhas!?&lt;/h2&gt;
+&lt;p&gt;Agora que você está com Python instalado e o interpretador de comandos Python funcionando, vamos dar uma brincada, você sabia que o interpretador de comandos Python também pode ser usado como uma calculadora!? Não!? Pois é, deixa eu te mostrar:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python
 Python 2.7.9 &lt;span class="o"&gt;(&lt;/span&gt;default, Mar  &lt;span class="m"&gt;1&lt;/span&gt; 2015, 12:57:24&lt;span class="o"&gt;)&lt;/span&gt; 
 &lt;span class="o"&gt;[&lt;/span&gt;GCC 4.9.2&lt;span class="o"&gt;]&lt;/span&gt; on linux2
@@ -245,7 +245,7 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Perceba que os parênteses fazem diferença assim como nas equações matemáticas, e aqui números reais devem ser escritos com um &lt;code&gt;.&lt;/code&gt; como separador de&amp;nbsp;casas:&lt;/p&gt;
+&lt;p&gt;Perceba que os parênteses fazem diferença assim como nas equações matemáticas, e aqui números reais devem ser escritos com um &lt;code&gt;.&lt;/code&gt; como separador de casas:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; 3.4 + 5.4
 8.8
 &amp;gt;&amp;gt;&amp;gt; 3,4 + 5,5
@@ -255,12 +255,12 @@ Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span clas
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Perceba aqui que a &lt;code&gt;,&lt;/code&gt; serve pra outra coisa! Outra hora volto nesse assunto da vírgula ai, por enquanto só guarde na sua cabeça que contas com números reais (float) devem ser feitas com &lt;code&gt;.&lt;/code&gt;,&amp;nbsp;beleza!?&lt;/p&gt;
-&lt;h2&gt;Quer fazer continhas mais&amp;nbsp;loucas!?&lt;/h2&gt;
+&lt;p&gt;Perceba aqui que a &lt;code&gt;,&lt;/code&gt; serve pra outra coisa! Outra hora volto nesse assunto da vírgula ai, por enquanto só guarde na sua cabeça que contas com números reais (float) devem ser feitas com &lt;code&gt;.&lt;/code&gt;, beleza!?&lt;/p&gt;
+&lt;h2&gt;Quer fazer continhas mais loucas!?&lt;/h2&gt;
 &lt;p&gt;Sempre olhe a documentação oficial do Python antes de procurar em qualquer outro lugar, então a documentação dos tipos numéricos básicos pode ser lida &lt;a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"&gt;aqui&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;Outra dica é sempre ler a documentação de acordo com a versão do Python que você está usando no momento, perceba que no canto superior esquerdo da documentação oficial sempre terá a versão que você está lendo, esta que eu passei acima é do&amp;nbsp;Python3.&lt;/p&gt;
-&lt;h2&gt;Como escrever&amp;nbsp;coisas!?&lt;/h2&gt;
-&lt;p&gt;Bom, para escrever coisas na tela (stdout) é bem simples também&amp;#8230; vamos&amp;nbsp;lá:&lt;/p&gt;
+&lt;p&gt;Outra dica é sempre ler a documentação de acordo com a versão do Python que você está usando no momento, perceba que no canto superior esquerdo da documentação oficial sempre terá a versão que você está lendo, esta que eu passei acima é do Python3.&lt;/p&gt;
+&lt;h2&gt;Como escrever coisas!?&lt;/h2&gt;
+&lt;p&gt;Bom, para escrever coisas na tela (stdout) é bem simples também... vamos lá:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3.4
 Python 3.4.2 &lt;span class="o"&gt;(&lt;/span&gt;default, Oct  &lt;span class="m"&gt;8&lt;/span&gt; 2014, 10:45:20&lt;span class="o"&gt;)&lt;/span&gt; 
 &lt;span class="o"&gt;[&lt;/span&gt;GCC 4.9.1&lt;span class="o"&gt;]&lt;/span&gt; on linux
@@ -271,8 +271,8 @@ Olá amigo!
 
 
 &lt;p&gt;Feito!&lt;/p&gt;
-&lt;h2&gt;Como escrever coisas dentro de coisas!? (ou melhor.. concatenar&amp;nbsp;strings)&lt;/h2&gt;
-&lt;p&gt;Hãm!? Como assim!? É cara&amp;#8230; as vezes eu também não entendo o que eu escrevo, mas explicando acho que&amp;nbsp;melhora:&lt;/p&gt;
+&lt;h2&gt;Como escrever coisas dentro de coisas!? (ou melhor.. concatenar strings)&lt;/h2&gt;
+&lt;p&gt;Hãm!? Como assim!? É cara... as vezes eu também não entendo o que eu escrevo, mas explicando acho que melhora:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3.4
 Python 3.4.2 &lt;span class="o"&gt;(&lt;/span&gt;default, Oct  &lt;span class="m"&gt;8&lt;/span&gt; 2014, 10:45:20&lt;span class="o"&gt;)&lt;/span&gt; 
 &lt;span class="o"&gt;[&lt;/span&gt;GCC 4.9.1&lt;span class="o"&gt;]&lt;/span&gt; on linux
@@ -283,9 +283,9 @@ Meu nome é Rafael
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Opa! Gravei uma string Rafael dentro de uma variável nome e escrevi ela na tela! Puts &amp;#8230; bem legal em!? Isso começa a parecer um programa de&amp;nbsp;verdade!&lt;/p&gt;
-&lt;h2&gt;Montando um programinha&amp;nbsp;&amp;#8220;completo&amp;#8221;&lt;/h2&gt;
-&lt;p&gt;Vamos agora capturar uma entrada de usuário (stdin) no nosso programinha. Vamos&amp;nbsp;lá:&lt;/p&gt;
+&lt;p&gt;Opa! Gravei uma string Rafael dentro de uma variável nome e escrevi ela na tela! Puts ... bem legal em!? Isso começa a parecer um programa de verdade!&lt;/p&gt;
+&lt;h2&gt;Montando um programinha "completo"&lt;/h2&gt;
+&lt;p&gt;Vamos agora capturar uma entrada de usuário (stdin) no nosso programinha. Vamos lá:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3.4
 Python 3.4.2 &lt;span class="o"&gt;(&lt;/span&gt;default, Oct  &lt;span class="m"&gt;8&lt;/span&gt; 2014, 10:45:20&lt;span class="o"&gt;)&lt;/span&gt; 
 &lt;span class="o"&gt;[&lt;/span&gt;GCC 4.9.1&lt;span class="o"&gt;]&lt;/span&gt; on linux
@@ -299,26 +299,26 @@ Meu nome é Rafael
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Testa ai! Veja se funciona bem! E vamos melhorar isso ai!&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;&lt;/p&gt;
-&lt;h2&gt;Interpretadores, comandos, wtf é tudo&amp;nbsp;isso!?&lt;/h2&gt;
-&lt;p&gt;O que fizemos até agora foi usando o interpretador interativo do Python, mas o que é&amp;nbsp;isso?&lt;/p&gt;
-&lt;p&gt;Python é uma linguagem interpretada (talvez eu já deveria ter falado isso no começo do post). Nas palavras do Henrique Bastos (um dos grandes mestres Python que andei conhecendo em minhas&amp;nbsp;jornadas):&lt;/p&gt;
+&lt;p&gt;Testa ai! Veja se funciona bem! E vamos melhorar isso ai! &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Interpretadores, comandos, wtf é tudo isso!?&lt;/h2&gt;
+&lt;p&gt;O que fizemos até agora foi usando o interpretador interativo do Python, mas o que é isso?&lt;/p&gt;
+&lt;p&gt;Python é uma linguagem interpretada (talvez eu já deveria ter falado isso no começo do post). Nas palavras do Henrique Bastos (um dos grandes mestres Python que andei conhecendo em minhas jornadas):&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;Na computação, a compilação é o processo que reúne o código fonte e o transforma em algo que faça mais sentido para o computador. Do ponto de vista do código fonte, toda linguagem de programação é&amp;nbsp;compilada.&lt;/p&gt;
-&lt;p&gt;O produto final do processo de compilação de uma linguagem diz muito sobre seu design. Linguagens como C e C++ são compiladas estaticamente, e seus códigos fontes são transformados diretamente em linguagem de máquina. Enquanto as linguagens mais modernas como Java, C# e Python têm seus códigos fontes transformados em uma linguagem intermediária (específica de cada linguagem), que será interpretada pela máquina virtual da linguagem quando o programa for&amp;nbsp;executado.&lt;/p&gt;
-&lt;p&gt;Este processo de interpretação da linguagem intermediária durante a execução do programa, consiste na tradução dos comandos da linguagem intermediária para linguagem de máquina. Sendo assim, em tempo de execução, o código intermediário pode ser encarado como um “código fonte” que será compilado dinamicamente pelo interpretador da linguagem em código de&amp;nbsp;máquina.&amp;#8221;&lt;/p&gt;
-&lt;p&gt;Fonte: &lt;a href="http://henriquebastos.net/diferencas-entre-linguagem-compilada-e-linguagem-interpretada/"&gt;Diferenças entre linguagem compilada e linguagem&amp;nbsp;interpretada&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;"Na computação, a compilação é o processo que reúne o código fonte e o transforma em algo que faça mais sentido para o computador. Do ponto de vista do código fonte, toda linguagem de programação é compilada.&lt;/p&gt;
+&lt;p&gt;O produto final do processo de compilação de uma linguagem diz muito sobre seu design. Linguagens como C e C++ são compiladas estaticamente, e seus códigos fontes são transformados diretamente em linguagem de máquina. Enquanto as linguagens mais modernas como Java, C# e Python têm seus códigos fontes transformados em uma linguagem intermediária (específica de cada linguagem), que será interpretada pela máquina virtual da linguagem quando o programa for executado.&lt;/p&gt;
+&lt;p&gt;Este processo de interpretação da linguagem intermediária durante a execução do programa, consiste na tradução dos comandos da linguagem intermediária para linguagem de máquina. Sendo assim, em tempo de execução, o código intermediário pode ser encarado como um “código fonte” que será compilado dinamicamente pelo interpretador da linguagem em código de máquina."&lt;/p&gt;
+&lt;p&gt;Fonte: &lt;a href="http://henriquebastos.net/diferencas-entre-linguagem-compilada-e-linguagem-interpretada/"&gt;Diferenças entre linguagem compilada e linguagem interpretada&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Então como Python é uma linguagem interpretada os criadores tiveram a brilhante ideia de fazer um interpretador interativo onde podemos testar nossos programas antes de sair fazendo por ai, isso torna muito mais fácil desenvolver qualquer coisa em Python (não desmerecendo outras linguagens que também tem interpretadores interativos, tal como &lt;a href="https://www.ruby-lang.org/pt/documentation/quickstart/"&gt;o irb do Ruby&lt;/a&gt;). O que fizemos até o momento foi testar alguns comandos (functions) embutidos (built-in) do Python para simplesmente&amp;nbsp;conhecê-los.&lt;/p&gt;
-&lt;h2&gt;Eai!? Vamos fazer um script de verdade ou&amp;nbsp;não!?&lt;/h2&gt;
-&lt;p&gt;Vamos lá&amp;#8230; 
-Utilizando um editor de texto que use &lt;span class="caps"&gt;UTF&lt;/span&gt;-8 para salvar os arquivos (se não conhecer nenhum recomendo o &lt;a href="http://www.sublimetext.com/"&gt;Sublime&lt;/a&gt;) crie o seguinte&amp;nbsp;programinha:&lt;/p&gt;
+&lt;p&gt;Então como Python é uma linguagem interpretada os criadores tiveram a brilhante ideia de fazer um interpretador interativo onde podemos testar nossos programas antes de sair fazendo por ai, isso torna muito mais fácil desenvolver qualquer coisa em Python (não desmerecendo outras linguagens que também tem interpretadores interativos, tal como &lt;a href="https://www.ruby-lang.org/pt/documentation/quickstart/"&gt;o irb do Ruby&lt;/a&gt;). O que fizemos até o momento foi testar alguns comandos (functions) embutidos (built-in) do Python para simplesmente conhecê-los.&lt;/p&gt;
+&lt;h2&gt;Eai!? Vamos fazer um script de verdade ou não!?&lt;/h2&gt;
+&lt;p&gt;Vamos lá... 
+Utilizando um editor de texto que use UTF-8 para salvar os arquivos (se não conhecer nenhum recomendo o &lt;a href="http://www.sublimetext.com/"&gt;Sublime&lt;/a&gt;) crie o seguinte programinha:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Este é o exemplo mais besta do mundo! Mas é melhor que Hello World!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;:-o -- &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Salve este cara como &lt;code&gt;hello_world.py&lt;/code&gt; e execute este cara assim (o &lt;code&gt;$&lt;/code&gt; é apenas uma indicação que estou digitando o comando no terminal, não precisa digitar&amp;nbsp;ok!?):&lt;/p&gt;
+&lt;p&gt;Salve este cara como &lt;code&gt;hello_world.py&lt;/code&gt; e execute este cara assim (o &lt;code&gt;$&lt;/code&gt; é apenas uma indicação que estou digitando o comando no terminal, não precisa digitar ok!?):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python hello_world.py
 
 Saída:
@@ -327,7 +327,7 @@ Este é o exemplo mais besta &lt;span class="k"&gt;do&lt;/span&gt; mundo! Mas é
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Esse exemplo é bem legal pois no Python2.X ele vai dar &lt;span class="caps"&gt;ERROOOOO&lt;/span&gt;, erros são ótimos para o aprendizado! E qual o erro!? Veja a saída&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;Esse exemplo é bem legal pois no Python2.X ele vai dar ERROOOOO, erros são ótimos para o aprendizado! E qual o erro!? Veja a saída abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python hello_world.py
 
 Saída:
@@ -336,8 +336,8 @@ SyntaxError: Non-ASCII character &lt;span class="s1"&gt;&amp;#39;\xc3&amp;#39;&l
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Vishhhh! E&amp;nbsp;agora!?&lt;/p&gt;
-&lt;p&gt;O Python2.X trabalha por padrão com caracteres &lt;span class="caps"&gt;ASCII&lt;/span&gt; (leia-se aski e não asc2 por favor), então quando colocamos um mínimo acento temos que especificar que trabalharemos com utf-8, pois o utf-8 não é o padrão do Python2.X, no caso o nosso acento é o do &lt;code&gt;é&lt;/code&gt;, removendo este acento este programinha funcionaria perfeitamente,&amp;nbsp;veja:&lt;/p&gt;
+&lt;p&gt;Vishhhh! E agora!?&lt;/p&gt;
+&lt;p&gt;O Python2.X trabalha por padrão com caracteres ASCII (leia-se aski e não asc2 por favor), então quando colocamos um mínimo acento temos que especificar que trabalharemos com utf-8, pois o utf-8 não é o padrão do Python2.X, no caso o nosso acento é o do &lt;code&gt;é&lt;/code&gt;, removendo este acento este programinha funcionaria perfeitamente, veja:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python hello_world.py 
 
 Saída:
@@ -346,19 +346,19 @@ Este e o exemplo mais besta &lt;span class="k"&gt;do&lt;/span&gt; mundo! Mas e m
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Você quer dizer que o Python2.X não suporta &lt;span class="caps"&gt;ACENTOS&lt;/span&gt;!?????&lt;/h2&gt;
-&lt;p&gt;Não não amigo! Você entendeu mal&amp;#8230; eu disse que o Python2.X trabalha por padrão com &lt;span class="caps"&gt;ASCII&lt;/span&gt;, para que ele entenda que deve trabalhar com utf-8 para ler seus lindos acentos do print você deverá especificar isso no código fonte conforme&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;h2&gt;Você quer dizer que o Python2.X não suporta ACENTOS!?????&lt;/h2&gt;
+&lt;p&gt;Não não amigo! Você entendeu mal... eu disse que o Python2.X trabalha por padrão com ASCII, para que ele entenda que deve trabalhar com utf-8 para ler seus lindos acentos do print você deverá especificar isso no código fonte conforme abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Este é o exemplo mais besta do mundo! Mas é melhor que Hello World!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;:-o -- &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Pronto! Arrume seu programinha ai (voltando também o &lt;code&gt;é&lt;/code&gt; caso você o tenha removido) e execute novamente conforme mostrado&amp;nbsp;acima.&lt;/p&gt;
-&lt;h2&gt;Um programinha mais&amp;nbsp;legal&lt;/h2&gt;
-&lt;p&gt;Programinha&amp;#8230; nome estranho esse &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;, mas eu tenho costume de escrever coisas estranhas as vezes, não fiquem chateados comigo se eu escrever script, programinha, sistema, softwarezinho e coisas do tipo, na verdade todas elas vão significar um sistema feito em Python&amp;nbsp;ok!?&lt;/p&gt;
-&lt;p&gt;Continuando&amp;#8230;&lt;/p&gt;
-&lt;p&gt;Agora crie o seguinte programinha&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;Pronto! Arrume seu programinha ai (voltando também o &lt;code&gt;é&lt;/code&gt; caso você o tenha removido) e execute novamente conforme mostrado acima.&lt;/p&gt;
+&lt;h2&gt;Um programinha mais legal&lt;/h2&gt;
+&lt;p&gt;Programinha... nome estranho esse &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;, mas eu tenho costume de escrever coisas estranhas as vezes, não fiquem chateados comigo se eu escrever script, programinha, sistema, softwarezinho e coisas do tipo, na verdade todas elas vão significar um sistema feito em Python ok!?&lt;/p&gt;
+&lt;p&gt;Continuando...&lt;/p&gt;
+&lt;p&gt;Agora crie o seguinte programinha abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;numero&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite um número: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="mi"&gt;3&lt;/span&gt; 
@@ -369,16 +369,16 @@ Este e o exemplo mais besta &lt;span class="k"&gt;do&lt;/span&gt; mundo! Mas e m
 
 
 &lt;ul&gt;
-&lt;li&gt;Linha 1: Especificamos nossa codificação do&amp;nbsp;programinha;&lt;/li&gt;
-&lt;li&gt;Linha 2: Recebemos um número do usuário, o input espera o usuário digitar alguma coisa e digitar enter em seguida para continuar o&amp;nbsp;programa&lt;/li&gt;
-&lt;li&gt;Linha 3: Não tem nada&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/trollface.png"&gt;&lt;/li&gt;
-&lt;li&gt;Linha 4: Mostra o número na tela usando o&amp;nbsp;format&lt;/li&gt;
-&lt;li&gt;Linha 5: Mostra o número na tela concatenando string com o número por meio de &lt;code&gt;,&lt;/code&gt; esta saída ficará bem estranha se você rodar no Python2.X, essa sintaxe representa coisas diferentes no Python2.X e no&amp;nbsp;Python3.X&lt;/li&gt;
-&lt;li&gt;Linha 6: Mostra o número na tela concatenando string com o número por meio de &lt;code&gt;+&lt;/code&gt; e conversão (cast) do número para string, você não precisará converter se estiver usando&amp;nbsp;Python3.X&lt;/li&gt;
+&lt;li&gt;Linha 1: Especificamos nossa codificação do programinha;&lt;/li&gt;
+&lt;li&gt;Linha 2: Recebemos um número do usuário, o input espera o usuário digitar alguma coisa e digitar enter em seguida para continuar o programa&lt;/li&gt;
+&lt;li&gt;Linha 3: Não tem nada &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/trollface.png"&gt;&lt;/li&gt;
+&lt;li&gt;Linha 4: Mostra o número na tela usando o format&lt;/li&gt;
+&lt;li&gt;Linha 5: Mostra o número na tela concatenando string com o número por meio de &lt;code&gt;,&lt;/code&gt; esta saída ficará bem estranha se você rodar no Python2.X, essa sintaxe representa coisas diferentes no Python2.X e no Python3.X&lt;/li&gt;
+&lt;li&gt;Linha 6: Mostra o número na tela concatenando string com o número por meio de &lt;code&gt;+&lt;/code&gt; e conversão (cast) do número para string, você não precisará converter se estiver usando Python3.X&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Explicando algo um pouco mais aprofundado, tenha ciência que Python2.X e Python3.X são diferentes, algumas coisas mudam de significado &lt;span class="caps"&gt;MESMO&lt;/span&gt;, mas a diferença é pouca, é legal sempre testar o mesmo código no 2 e no 3 enquanto se aprende Python, mas caso você não tenha muito saco pra isso dê maior foco ao Python3.X. Algumas diferenças são listadas &lt;a href="http://python3porting.com/differences.html"&gt;aqui&lt;/a&gt; e podem ser consultadas durante a leitura destas aulas que&amp;nbsp;postarei.&lt;/p&gt;
-&lt;h2&gt;input vs&amp;nbsp;raw_input&lt;/h2&gt;
-&lt;p&gt;Caso vocês executem o script acima utilizando Python2.X poderão notar algumas diferenças. No Python2.X quando usamos o input na verdade estamos utilizando por baixo uma função bem importante chamada &lt;code&gt;eval&lt;/code&gt; junto a esse input, vamos entender&amp;nbsp;isso:&lt;/p&gt;
+&lt;p&gt;Explicando algo um pouco mais aprofundado, tenha ciência que Python2.X e Python3.X são diferentes, algumas coisas mudam de significado MESMO, mas a diferença é pouca, é legal sempre testar o mesmo código no 2 e no 3 enquanto se aprende Python, mas caso você não tenha muito saco pra isso dê maior foco ao Python3.X. Algumas diferenças são listadas &lt;a href="http://python3porting.com/differences.html"&gt;aqui&lt;/a&gt; e podem ser consultadas durante a leitura destas aulas que postarei.&lt;/p&gt;
+&lt;h2&gt;input vs raw_input&lt;/h2&gt;
+&lt;p&gt;Caso vocês executem o script acima utilizando Python2.X poderão notar algumas diferenças. No Python2.X quando usamos o input na verdade estamos utilizando por baixo uma função bem importante chamada &lt;code&gt;eval&lt;/code&gt; junto a esse input, vamos entender isso:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python2.7 numero.py 
 
 Saída:
@@ -389,7 +389,7 @@ O número é 4
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Quando passamos uma expressão para o input ele vai fazer um &lt;code&gt;evaluate&lt;/code&gt; (em português acho que a tradução melhor seria calcular/avaliar) daquela expressão! Ou seja, ele vai resolver a expressão para depois guardar o resultado dela na variável especificada que no nosso caso se chama &lt;code&gt;numero&lt;/code&gt;. Isso parece lindo em um primeiro momento, mas quando se usa &lt;code&gt;eval&lt;/code&gt; em qualquer lugar não somente em Python sempre devemos tomar &lt;span class="caps"&gt;MUITO&lt;/span&gt; cuidado, vamos analisar o código&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;Quando passamos uma expressão para o input ele vai fazer um &lt;code&gt;evaluate&lt;/code&gt; (em português acho que a tradução melhor seria calcular/avaliar) daquela expressão! Ou seja, ele vai resolver a expressão para depois guardar o resultado dela na variável especificada que no nosso caso se chama &lt;code&gt;numero&lt;/code&gt;. Isso parece lindo em um primeiro momento, mas quando se usa &lt;code&gt;eval&lt;/code&gt; em qualquer lugar não somente em Python sempre devemos tomar MUITO cuidado, vamos analisar o código abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 
 &lt;span class="n"&gt;minha_senha&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;rafael123&amp;#39;&lt;/span&gt;
@@ -398,7 +398,7 @@ O número é 4
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Executando este script&amp;nbsp;temos:&lt;/p&gt;
+&lt;p&gt;Executando este script temos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python2.7 numero.py
 
 Saída:
@@ -407,7 +407,7 @@ O número é: rafael123
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Então amiguinhos!!! Vocês acabam de capturar uma variável do seu script!!! Isso pode ser extremamente perigoso em um ambiente real!! Para isso você pode usar no Python2.X a função built-in chamada &lt;code&gt;raw_input&lt;/code&gt; que não faz eval por baixo dos panos e torna sua vida muito mais&amp;nbsp;segura:&lt;/p&gt;
+&lt;p&gt;Então amiguinhos!!! Vocês acabam de capturar uma variável do seu script!!! Isso pode ser extremamente perigoso em um ambiente real!! Para isso você pode usar no Python2.X a função built-in chamada &lt;code&gt;raw_input&lt;/code&gt; que não faz eval por baixo dos panos e torna sua vida muito mais segura:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 
 &lt;span class="n"&gt;minha_senha&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;rafael123&amp;#39;&lt;/span&gt;
@@ -425,7 +425,7 @@ O número é: minha_senha
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Para que a gente consiga compatibilidade entre Python2.X e Python3.X neste script acima poderíamos fazer algo bem&amp;nbsp;simples:&lt;/p&gt;
+&lt;p&gt;Para que a gente consiga compatibilidade entre Python2.X e Python3.X neste script acima poderíamos fazer algo bem simples:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;span class="mi"&gt;3&lt;/span&gt;     &lt;span class="nb"&gt;raw_input&lt;/span&gt;
@@ -439,12 +439,12 @@ O número é: minha_senha
 
 
 &lt;ul&gt;
-&lt;li&gt;Linha 2 e 3: Tenta verificar se existe a palavra &lt;code&gt;raw_input&lt;/code&gt; neste Python que chamará o&amp;nbsp;script&lt;/li&gt;
-&lt;li&gt;Linha 4 e 5: Caso não exista raw_input o raw_input será o mesmo que o&amp;nbsp;input&lt;/li&gt;
+&lt;li&gt;Linha 2 e 3: Tenta verificar se existe a palavra &lt;code&gt;raw_input&lt;/code&gt; neste Python que chamará o script&lt;/li&gt;
+&lt;li&gt;Linha 4 e 5: Caso não exista raw_input o raw_input será o mesmo que o input&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Vale lembrar que o input no Python3.X não usa &lt;code&gt;eval&lt;/code&gt; por baixo dos panos, sendo assim ele é bem tranquilo de ser usado no&amp;nbsp;Python3.X.&lt;/p&gt;
-&lt;h2&gt;Fim de aula - Exercício para aula&amp;nbsp;02&lt;/h2&gt;
-&lt;p&gt;Bom &amp;#8230; não quero perder o ritmo que foi feito no Grupo de Estudos Python Sorocaba, então vou seguir a mesma dinâmica onde todo final de aula rola um exercício! O primeiro exercício será fazer uma calculadora que faça soma, conforme mostrada a saída&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;Vale lembrar que o input no Python3.X não usa &lt;code&gt;eval&lt;/code&gt; por baixo dos panos, sendo assim ele é bem tranquilo de ser usado no Python3.X.&lt;/p&gt;
+&lt;h2&gt;Fim de aula - Exercício para aula 02&lt;/h2&gt;
+&lt;p&gt;Bom ... não quero perder o ritmo que foi feito no Grupo de Estudos Python Sorocaba, então vou seguir a mesma dinâmica onde todo final de aula rola um exercício! O primeiro exercício será fazer uma calculadora que faça soma, conforme mostrada a saída abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 calculadora_soma.py
 Digite operando1:
 10
@@ -468,61 +468,61 @@ Resultado: 30.0
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Eai!? Aceita o desafio!? A resposta para este problema está no que eu disse/mostrei neste post inicial, basta ler com atenção. Se você estiver com dúvidas por favor me avise, ai a gente bate um papo, pode usar o comentário abaixo deste post pra isso ou me mandar e-mail, twitter e etc, meus contatos estão a esquerda do&amp;nbsp;blog.&lt;/p&gt;
-&lt;p&gt;Espero que tenham gostado da primeira aula, e se viram algo que não gostaram muito me avisem&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;&lt;/p&gt;
-&lt;p&gt;Abraço!&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry><entry><title>Grupo de Estudos Python Sorocaba</title><link href="/grupo-de-estudos-python-sorocaba.html" rel="alternate"></link><updated>2015-09-19T23:43:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-09-19:grupo-de-estudos-python-sorocaba.html</id><summary type="html">&lt;p&gt;Perto do dia 2 de julho de 2015 eu o Rafael Gottsfritz e o Caio Carrara tivemos a iniciativa de nos misturar ao &lt;a href="http://hacklab.club/"&gt;Hacklab Sorocaba&lt;/a&gt; para tentar organizar um grupo de estudos sobre variados assuntos.
-Nós queríamos trazer mais movimento de comunidades para Sorocaba e regiões próximas, visto que isso é muitíssimo popular em cidades como Campinas, São Paulo e São José dos&amp;nbsp;Campos:&lt;/p&gt;
+&lt;p&gt;Eai!? Aceita o desafio!? A resposta para este problema está no que eu disse/mostrei neste post inicial, basta ler com atenção. Se você estiver com dúvidas por favor me avise, ai a gente bate um papo, pode usar o comentário abaixo deste post pra isso ou me mandar e-mail, twitter e etc, meus contatos estão a esquerda do blog.&lt;/p&gt;
+&lt;p&gt;Espero que tenham gostado da primeira aula, e se viram algo que não gostaram muito me avisem &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;&lt;/p&gt;
+&lt;p&gt;Abraço!&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry><entry><title>Grupo de Estudos Python Sorocaba</title><link href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html" rel="alternate"></link><updated>2015-09-19T23:43:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-09-19:grupo-de-estudos-python-sorocaba.html</id><summary type="html">&lt;p&gt;Perto do dia 2 de julho de 2015 eu o Rafael Gottsfritz e o Caio Carrara tivemos a iniciativa de nos misturar ao &lt;a href="http://hacklab.club/"&gt;Hacklab Sorocaba&lt;/a&gt; para tentar organizar um grupo de estudos sobre variados assuntos.
+Nós queríamos trazer mais movimento de comunidades para Sorocaba e regiões próximas, visto que isso é muitíssimo popular em cidades como Campinas, São Paulo e São José dos Campos:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://garoa.net.br/wiki/P%C3%A1gina_principal"&gt;Garoa Hacker Clube &lt;span class="caps"&gt;SP&lt;/span&gt;&lt;/a&gt;&amp;nbsp;X&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://lhc.net.br/wiki/P%C3%A1gina_principal"&gt;Laboratório Hacker&amp;nbsp;Campinas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://campinas.rupy.com.br/"&gt;RuPy Campinas 2015&lt;/a&gt;&amp;nbsp;X&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://pgdaycampinas.com.br/"&gt;&lt;span class="caps"&gt;PG&lt;/span&gt; Day Campinas&amp;nbsp;2015&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.meetup.com/pt/Grupy-SP/"&gt;GruPy-&lt;span class="caps"&gt;SP&lt;/span&gt;&lt;/a&gt;&amp;nbsp;X&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.thedevelopersconference.com.br/tdc/2015/saopaulo/trilhas"&gt;&lt;span class="caps"&gt;TDC&lt;/span&gt; São Paulo 2015&lt;/a&gt;&amp;nbsp;X&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.facebook.com/pyladiescps"&gt;Pyladies Campinas -&amp;nbsp;Facebook&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://twitter.com/pyladiescps"&gt;Pyladies Campinas -&amp;nbsp;Twitter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://pythonbrasil.github.io/pythonbrasil11-site/"&gt;Python Brasil 2015 - &lt;span class="caps"&gt;SJC&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://garoa.net.br/wiki/P%C3%A1gina_principal"&gt;Garoa Hacker Clube SP&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://lhc.net.br/wiki/P%C3%A1gina_principal"&gt;Laboratório Hacker Campinas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://campinas.rupy.com.br/"&gt;RuPy Campinas 2015&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pgdaycampinas.com.br/"&gt;PG Day Campinas 2015&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.meetup.com/pt/Grupy-SP/"&gt;GruPy-SP&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.thedevelopersconference.com.br/tdc/2015/saopaulo/trilhas"&gt;TDC São Paulo 2015&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.facebook.com/pyladiescps"&gt;Pyladies Campinas - Facebook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/pyladiescps"&gt;Pyladies Campinas - Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pythonbrasil.github.io/pythonbrasil11-site/"&gt;Python Brasil 2015 - SJC&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Esses links acima foram apenas exemplos de eventos de comunidade ou um pouco mais comerciais que rolaram/rolam ainda por este ano, os que marquei com X foi os que eu ja participei pelo menos uma vez na vida e fiquei muito feliz de ter participado&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/stuck_out_tongue_winking_eye.png"&gt;.&lt;/p&gt;
-&lt;h2&gt;O&amp;nbsp;início&lt;/h2&gt;
-&lt;p&gt;Para tentar começar a trazer coisas legais pra Sorocaba, inicialmente divulguei na lista de &lt;a href="https://groups.google.com/forum/?hl=pt#!searchin/hackerspace-sorocaba/Sesc/hackerspace-sorocaba/ampID5hePrI/w0Jt_vIWSTEJ"&gt;email do Hacklab&lt;/a&gt; um bate-papo descontraído no &lt;span class="caps"&gt;SESC&lt;/span&gt; Sorocaba, era descontraído, mas para ter foco nessa &amp;#8220;descontração&amp;#8221; toda eu queria propor objetivos as conversas e que preferencialmente se baseasse em tecnologia (ou não, caso não tivessem muitos geeks na parada). 
-Porém infelizmente (ou felizmente, ainda não descobri) somente &lt;span class="caps"&gt;EU&lt;/span&gt; coloquei um tema lá para discutir neste evento intitulado de &amp;#8220;Quinta-feira Hacker&amp;#8221; (o nome era bonito &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;). Olha só que loucura que ficou o call4papers deste&amp;nbsp;dia:&lt;/p&gt;
+&lt;p&gt;Esses links acima foram apenas exemplos de eventos de comunidade ou um pouco mais comerciais que rolaram/rolam ainda por este ano, os que marquei com X foi os que eu ja participei pelo menos uma vez na vida e fiquei muito feliz de ter participado &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/stuck_out_tongue_winking_eye.png"&gt;.&lt;/p&gt;
+&lt;h2&gt;O início&lt;/h2&gt;
+&lt;p&gt;Para tentar começar a trazer coisas legais pra Sorocaba, inicialmente divulguei na lista de &lt;a href="https://groups.google.com/forum/?hl=pt#!searchin/hackerspace-sorocaba/Sesc/hackerspace-sorocaba/ampID5hePrI/w0Jt_vIWSTEJ"&gt;email do Hacklab&lt;/a&gt; um bate-papo descontraído no SESC Sorocaba, era descontraído, mas para ter foco nessa "descontração" toda eu queria propor objetivos as conversas e que preferencialmente se baseasse em tecnologia (ou não, caso não tivessem muitos geeks na parada). 
+Porém infelizmente (ou felizmente, ainda não descobri) somente EU coloquei um tema lá para discutir neste evento intitulado de "Quinta-feira Hacker" (o nome era bonito &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;). Olha só que loucura que ficou o call4papers deste dia:&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://call4paperz.com/events/quinta-feira-hacker"&gt;&lt;img alt="Call4Papers" src="/images/grupo-de-estudos-python-sorocaba_01.png" title="Call4Papers" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Bombando&amp;#8230;. com 1 call somente!!&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/disappointed_relieved.png"&gt;&lt;/p&gt;
-&lt;p&gt;Inicialmente fiquei meio puto e imaginei que não ia aparecer ninguém no &lt;span class="caps"&gt;SESC&lt;/span&gt;, por fim foram várias pessoas (no mínimo umas 6 pelo que me recordo) ai eu fiquei mais feliz um pouco. Mas mesmo assim fiquei meio de queixo caído com o desinteresse geral das pessoas, pois eu chamei para o encontro no mínimo 50 e apareceram somente&amp;nbsp;6.&lt;/p&gt;
-&lt;h2&gt;Hacklab no sábado (rolando ainda quase&amp;nbsp;sempre)&lt;/h2&gt;
-&lt;p&gt;Alguns dias após este &amp;#8220;big evento&amp;#8221; fomos novamente os 6 mosqueteiros (quase todos que foram no &lt;span class="caps"&gt;SESC&lt;/span&gt;) no sábado para nos encontrar no &lt;a href="http://www.macs.org.br/"&gt;Museu de Arte Contemporânea de Sorocaba&lt;/a&gt;, lá tem uma sala &lt;span class="caps"&gt;MUITO&lt;/span&gt; &lt;span class="caps"&gt;MUITO&lt;/span&gt; &lt;span class="caps"&gt;BACANA&lt;/span&gt; onde o pessoal faz umas reuniões embaixo do Museu (não amigo não é culto satânico.. é parada de hacker mesmo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smirk.png"&gt;). 
-Neste dia conheci o Hudson que é o cara que toca o barco do Hacklab junto com o Guilherme que é um membro assíduo também, conversamos bastante e neste mesmo dia o Hudson me falou uma coisa importante que eu estava deixando&amp;nbsp;passar&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Bombando.... com 1 call somente!! &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/disappointed_relieved.png"&gt;&lt;/p&gt;
+&lt;p&gt;Inicialmente fiquei meio puto e imaginei que não ia aparecer ninguém no SESC, por fim foram várias pessoas (no mínimo umas 6 pelo que me recordo) ai eu fiquei mais feliz um pouco. Mas mesmo assim fiquei meio de queixo caído com o desinteresse geral das pessoas, pois eu chamei para o encontro no mínimo 50 e apareceram somente 6.&lt;/p&gt;
+&lt;h2&gt;Hacklab no sábado (rolando ainda quase sempre)&lt;/h2&gt;
+&lt;p&gt;Alguns dias após este "big evento" fomos novamente os 6 mosqueteiros (quase todos que foram no SESC) no sábado para nos encontrar no &lt;a href="http://www.macs.org.br/"&gt;Museu de Arte Contemporânea de Sorocaba&lt;/a&gt;, lá tem uma sala MUITO MUITO BACANA onde o pessoal faz umas reuniões embaixo do Museu (não amigo não é culto satânico.. é parada de hacker mesmo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smirk.png"&gt;). 
+Neste dia conheci o Hudson que é o cara que toca o barco do Hacklab junto com o Guilherme que é um membro assíduo também, conversamos bastante e neste mesmo dia o Hudson me falou uma coisa importante que eu estava deixando passar...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&amp;quot;Cara pra ser um evento precisa de você e mais um&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Resumindo&amp;#8230; acho que ele tinha razão, pois bastam 2 interessados para formar um pequeno grupo para fazer algo, se você estiver sozinho &lt;span class="caps"&gt;OK&lt;/span&gt;! Também é &lt;span class="caps"&gt;LEGAL&lt;/span&gt;! Porém você não tem o compromisso de estar na mesma hora no mesmo lugar para estudar algum assunto, imagino que isso seja o princípio da ideia de um &lt;a href="https://en.wikipedia.org/wiki/Hackerspace"&gt;hackerspace&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;O grupo de&amp;nbsp;estudos&lt;/h2&gt;
-&lt;p&gt;Eis que neste dia um pouco depois surgiu a ideia de montarmos um &lt;a href="https://groups.google.com/forum/#!forum/python-sorocaba"&gt;Grupo de Estudos de Python em Sorocaba&lt;/a&gt;, um grupo com um caminho simples a&amp;nbsp;trilhar:&lt;/p&gt;
+&lt;p&gt;Resumindo... acho que ele tinha razão, pois bastam 2 interessados para formar um pequeno grupo para fazer algo, se você estiver sozinho OK! Também é LEGAL! Porém você não tem o compromisso de estar na mesma hora no mesmo lugar para estudar algum assunto, imagino que isso seja o princípio da ideia de um &lt;a href="https://en.wikipedia.org/wiki/Hackerspace"&gt;hackerspace&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;O grupo de estudos&lt;/h2&gt;
+&lt;p&gt;Eis que neste dia um pouco depois surgiu a ideia de montarmos um &lt;a href="https://groups.google.com/forum/#!forum/python-sorocaba"&gt;Grupo de Estudos de Python em Sorocaba&lt;/a&gt;, um grupo com um caminho simples a trilhar:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Nivelar as pessoas em Python, para que discussões futuras sejam mais proveitosas (no ponto que estamos já estão&amp;nbsp;sendo)&lt;/p&gt;
+&lt;p&gt;Nivelar as pessoas em Python, para que discussões futuras sejam mais proveitosas (no ponto que estamos já estão sendo)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Para isso estou dando aulas eu mesmo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/hushed.png"&gt; via &lt;a href="http://www.google.com/intl/pt-BR_ALL/+/learnmore/hangouts/onair.html"&gt;Hangout on&amp;nbsp;Air&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Para isso estou dando aulas eu mesmo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/hushed.png"&gt; via &lt;a href="http://www.google.com/intl/pt-BR_ALL/+/learnmore/hangouts/onair.html"&gt;Hangout on Air&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Todos nós aprendendo&amp;nbsp;juntos&lt;/p&gt;
+&lt;p&gt;Todos nós aprendendo juntos&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Existem assuntos bem complexos no mundo Python aos quais eu não domino para esses precisamos já ter entendido o básico e estarmos nivelados a ponto de aprendermos&amp;nbsp;juntos&lt;/li&gt;
+&lt;li&gt;Existem assuntos bem complexos no mundo Python aos quais eu não domino para esses precisamos já ter entendido o básico e estarmos nivelados a ponto de aprendermos juntos&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;A parte mais&amp;nbsp;legal!!!&lt;/p&gt;
+&lt;p&gt;A parte mais legal!!!&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Começar a contribuir ou criar projetos open source!!! Sem prazo nem cobranças.. fazer algo da legal que queremos pra aprendermos mais e&amp;nbsp;mais&lt;/li&gt;
+&lt;li&gt;Começar a contribuir ou criar projetos open source!!! Sem prazo nem cobranças.. fazer algo da legal que queremos pra aprendermos mais e mais&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;E o valor do curso!? O valor é &lt;span class="caps"&gt;DEDICA&lt;/span&gt;ÇÃO E &lt;span class="caps"&gt;INTERESSE&lt;/span&gt;. Se você estiver afim de entrar no Grupo tem que ter no mínimo &lt;span class="caps"&gt;MUITA&lt;/span&gt; &lt;span class="caps"&gt;DEDICA&lt;/span&gt;ÇÃO E &lt;span class="caps"&gt;MUITO&lt;/span&gt; &lt;span class="caps"&gt;INTERESSE&lt;/span&gt; pois é caro o curso em termos de valores honrosos&amp;nbsp;hahaha.&lt;/p&gt;
-&lt;h2&gt;Quer entrar para o nosso&amp;nbsp;Grupo??&lt;/h2&gt;
+&lt;p&gt;E o valor do curso!? O valor é DEDICAÇÃO E INTERESSE. Se você estiver afim de entrar no Grupo tem que ter no mínimo MUITA DEDICAÇÃO E MUITO INTERESSE pois é caro o curso em termos de valores honrosos hahaha.&lt;/p&gt;
+&lt;h2&gt;Quer entrar para o nosso Grupo??&lt;/h2&gt;
 &lt;p&gt;Basta se inscrever na lista &lt;a href="https://groups.google.com/forum/#!forum/python-sorocaba"&gt;Python-Sorocaba&lt;/a&gt; e acompanhar os emails, sempre fazemos nossos encontros nas quartas-feiras a noite próximo das 20hrs. 
 Porém caso você queira entrar neste atual momento, agora, agorinha, me manda um tweet para que eu alinhe o que você precisa estudar, pois estamos indo para a aula 12 já &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/open_mouth.png"&gt;. Mas podemos fazer novas aulas a partir da aula 1 se tiver mais gente interessada.
-Logo menos começarei a postar as aulas que rolaram em forma de texto aqui neste blog, futuramente todos poderão acompanhar por aqui&amp;nbsp;também.&lt;/p&gt;
-&lt;p&gt;E ai curtiram a&amp;nbsp;ideia?&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry></feed>
+Logo menos começarei a postar as aulas que rolaram em forma de texto aqui neste blog, futuramente todos poderão acompanhar por aqui também.&lt;/p&gt;
+&lt;p&gt;E ai curtiram a ideia?&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry></feed>

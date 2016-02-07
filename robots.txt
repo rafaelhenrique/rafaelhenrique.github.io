@@ -1,2 +1,4 @@
 User-Agent: *
-Sitemap: /sitemap.xml
+Disallow: 
+
+Sitemap: http://blog.abraseucodigo.com.br/sitemap.xml

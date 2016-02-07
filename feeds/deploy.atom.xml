@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="/" rel="alternate"></link><link href="/feeds/deploy.atom.xml" rel="self"></link><id>/</id><updated>2015-09-22T22:48:00-03:00</updated><entry><title>Como criar seu PaaS com Tsuru</title><link href="/como-criar-seu-paas-com-tsuru.html" rel="alternate"></link><updated>2015-09-22T22:48:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-09-22:como-criar-seu-paas-com-tsuru.html</id><summary type="html">&lt;p&gt;Começo este post dizendo que gostei bastante da proposta do&amp;nbsp;Tsuru. &lt;/p&gt;
-&lt;h2&gt;Mas o que é o&amp;nbsp;Tsuru?&lt;/h2&gt;
-&lt;p&gt;Tsuru é um software que você pode criar seu próprio &lt;a href="https://en.wikipedia.org/wiki/Platform_as_a_service"&gt;PaaS&lt;/a&gt; explicando de forma simples, você tem um &lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt;/&lt;a href="https://www.openshift.com"&gt;Openshift&lt;/a&gt; pessoal onde você tem controle completo na máquina e você pode fazer o que bem&amp;nbsp;entender.&lt;/p&gt;
-&lt;h2&gt;E pra que serve esse tal&amp;nbsp;Tsuru?&lt;/h2&gt;
-&lt;p&gt;Serve para você fazer deploy de suas aplicações de forma &lt;span class="caps"&gt;BRUTALMENTE&lt;/span&gt; RÁ&lt;span class="caps"&gt;PIDA&lt;/span&gt;, com a vantagem de não pagar nada para o Openshift nem para o Heroku, mesmo que seja uma aplicação grande e pesada, quem vai gerenciar os recursos é você mesmo, então se sua máquina &amp;#8220;explodir&amp;#8221; a culpa será sua, pois você tem controle absoluto sobre os recursos da máquina em que você irá instalar o&amp;nbsp;Tsuru.&lt;/p&gt;
-&lt;h2&gt;Quem é o pai do&amp;nbsp;Tsuru?&lt;/h2&gt;
-&lt;p&gt;O pai do Tsuru (pelo que eu sei pelo menos) é o Andrews Medina, e este cara começou a desenvolver o Tsuru dentro da Globo.com. Podemos ver até na doc do Tsuru o Copyright da Globo.com, isso fica bem evidente que a Globo.com tem um dedinho&amp;nbsp;ai.&lt;/p&gt;
-&lt;p&gt;O Andrews Medina também fez inúmeros vídeos no YouTube muito bons explicando mais sobre o Tsuru, recomendo &lt;span class="caps"&gt;TODOS&lt;/span&gt;.. principalmente os três&amp;nbsp;abaixo:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/deploy.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-09-22T22:48:00-03:00</updated><entry><title>Como criar seu PaaS com Tsuru</title><link href="http://blog.abraseucodigo.com.br/como-criar-seu-paas-com-tsuru.html" rel="alternate"></link><updated>2015-09-22T22:48:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-09-22:como-criar-seu-paas-com-tsuru.html</id><summary type="html">&lt;p&gt;Começo este post dizendo que gostei bastante da proposta do Tsuru. &lt;/p&gt;
+&lt;h2&gt;Mas o que é o Tsuru?&lt;/h2&gt;
+&lt;p&gt;Tsuru é um software que você pode criar seu próprio &lt;a href="https://en.wikipedia.org/wiki/Platform_as_a_service"&gt;PaaS&lt;/a&gt; explicando de forma simples, você tem um &lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt;/&lt;a href="https://www.openshift.com"&gt;Openshift&lt;/a&gt; pessoal onde você tem controle completo na máquina e você pode fazer o que bem entender.&lt;/p&gt;
+&lt;h2&gt;E pra que serve esse tal Tsuru?&lt;/h2&gt;
+&lt;p&gt;Serve para você fazer deploy de suas aplicações de forma BRUTALMENTE RÁPIDA, com a vantagem de não pagar nada para o Openshift nem para o Heroku, mesmo que seja uma aplicação grande e pesada, quem vai gerenciar os recursos é você mesmo, então se sua máquina "explodir" a culpa será sua, pois você tem controle absoluto sobre os recursos da máquina em que você irá instalar o Tsuru.&lt;/p&gt;
+&lt;h2&gt;Quem é o pai do Tsuru?&lt;/h2&gt;
+&lt;p&gt;O pai do Tsuru (pelo que eu sei pelo menos) é o Andrews Medina, e este cara começou a desenvolver o Tsuru dentro da Globo.com. Podemos ver até na doc do Tsuru o Copyright da Globo.com, isso fica bem evidente que a Globo.com tem um dedinho ai.&lt;/p&gt;
+&lt;p&gt;O Andrews Medina também fez inúmeros vídeos no YouTube muito bons explicando mais sobre o Tsuru, recomendo TODOS.. principalmente os três abaixo:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=YD3iNEBb4t0"&gt;tsuru - fazendo deploys de forma simples e&amp;nbsp;divertida&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=h68DCFFXGW0"&gt;Garoa Hacker | Entrevista: Andrews Medina (possui 3&amp;nbsp;partes)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=dC79RpifEQI"&gt;Garoa Hacker Club | Andrews Medina - Tsuru Live&amp;nbsp;Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=YD3iNEBb4t0"&gt;tsuru - fazendo deploys de forma simples e divertida&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=h68DCFFXGW0"&gt;Garoa Hacker | Entrevista: Andrews Medina (possui 3 partes)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=dC79RpifEQI"&gt;Garoa Hacker Club | Andrews Medina - Tsuru Live Code&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Por que raios eu estou falando do&amp;nbsp;Tsuru?&lt;/h2&gt;
-&lt;p&gt;Volto a dizer&amp;#8230; achei &lt;span class="caps"&gt;SENSACIONAL&lt;/span&gt; o deploy realizado pelo Tsuru, extremamente rápido e seguro. Então ontem eu subi o meu PaaS utilizando o Tsuru&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/raised_hands.png"&gt;.&lt;/p&gt;
-&lt;h2&gt;Procedimentos&amp;nbsp;básicos&lt;/h2&gt;
-&lt;p&gt;A doc do Tsuru é excelente e pode ser lida &lt;a href="http://docs.tsuru.io/en/stable/understanding/index.html"&gt;aqui&lt;/a&gt;, mas tem um porém, caso você seja apenas um xereta (assim como eu), não recomendo fazer a instalação através dessa doc, pois você irá travar assim como eu no passo &lt;a href="http://docs.tsuru.io/en/stable/installing/adding-nodes.html"&gt;Adding Nodes&lt;/a&gt; muito&amp;nbsp;provavelmente. &lt;/p&gt;
-&lt;p&gt;Neste &amp;#8220;Adding Nodes&amp;#8221; é o passo onde você terá que adicionar uma *instância de IaaS da &lt;a href="https://aws.amazon.com/pt/ec2/"&gt;Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt;&lt;/a&gt; ou de &lt;a href="https://cloudstack.apache.org/"&gt;Apache CloudStack&lt;/a&gt;, por isso eu disse que você provavelmente vai travar se for um curioso, por&amp;nbsp;que?&lt;/p&gt;
+&lt;h2&gt;Por que raios eu estou falando do Tsuru?&lt;/h2&gt;
+&lt;p&gt;Volto a dizer... achei SENSACIONAL o deploy realizado pelo Tsuru, extremamente rápido e seguro. Então ontem eu subi o meu PaaS utilizando o Tsuru &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/raised_hands.png"&gt;.&lt;/p&gt;
+&lt;h2&gt;Procedimentos básicos&lt;/h2&gt;
+&lt;p&gt;A doc do Tsuru é excelente e pode ser lida &lt;a href="http://docs.tsuru.io/en/stable/understanding/index.html"&gt;aqui&lt;/a&gt;, mas tem um porém, caso você seja apenas um xereta (assim como eu), não recomendo fazer a instalação através dessa doc, pois você irá travar assim como eu no passo &lt;a href="http://docs.tsuru.io/en/stable/installing/adding-nodes.html"&gt;Adding Nodes&lt;/a&gt; muito provavelmente. &lt;/p&gt;
+&lt;p&gt;Neste "Adding Nodes" é o passo onde você terá que adicionar uma *instância de IaaS da &lt;a href="https://aws.amazon.com/pt/ec2/"&gt;Amazon EC2&lt;/a&gt; ou de &lt;a href="https://cloudstack.apache.org/"&gt;Apache CloudStack&lt;/a&gt;, por isso eu disse que você provavelmente vai travar se for um curioso, por que?&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;pois no &lt;span class="caps"&gt;EC2&lt;/span&gt; você terá que pagar a instância, que é uma coisa que provavelmente você não vai querer fazer a&amp;nbsp;princípio&lt;/li&gt;
-&lt;li&gt;e o CloudStack não é pago, porém extremamente complexo, pelo menos eu&amp;nbsp;achei&lt;/li&gt;
+&lt;li&gt;pois no EC2 você terá que pagar a instância, que é uma coisa que provavelmente você não vai querer fazer a princípio&lt;/li&gt;
+&lt;li&gt;e o CloudStack não é pago, porém extremamente complexo, pelo menos eu achei&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Portanto minha escolha óbvia foi fazer o &amp;#8220;procedimento mais fácil&amp;#8221; (dica do @rpedigoni) que é usar o &lt;a href="https://github.com/tsuru/now"&gt;Tsuru Now&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;* Não sei se o nome certo para o CloudStack é instância, se eu estiver errado me&amp;nbsp;desculpem&lt;/p&gt;
-&lt;h2&gt;Procedimento &amp;#8220;mais&amp;nbsp;fácil&amp;#8221;&lt;/h2&gt;
-&lt;p&gt;Cara por que eu coloquei essas aspas&amp;nbsp;ai? &lt;/p&gt;
-&lt;p&gt;Meu, o Tsuru Now é um script em Shell bem antiguinho (pelo menos ao meu ver) e ele não é tão intuitivo como promete, creio que na época que ele foi criado ele deveria ser mais fácil de usar, mas agora devido ao tempo e versões mais novas de sistema operacional ele se tornou meio&amp;nbsp;obsoleto.&lt;/p&gt;
-&lt;p&gt;Mas mesmo obsoleto galera, eu ainda recomendo esse cara, pois se você aprender a domá-lo você consegue subir o Tsuru bem&amp;nbsp;tranquilão.&lt;/p&gt;
-&lt;h2&gt;Ferramentas&amp;nbsp;utilizadas&lt;/h2&gt;
-&lt;p&gt;Para subir o meu Tsuru estou&amp;nbsp;utilizando:&lt;/p&gt;
+&lt;p&gt;Portanto minha escolha óbvia foi fazer o "procedimento mais fácil" (dica do @rpedigoni) que é usar o &lt;a href="https://github.com/tsuru/now"&gt;Tsuru Now&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;* Não sei se o nome certo para o CloudStack é instância, se eu estiver errado me desculpem&lt;/p&gt;
+&lt;h2&gt;Procedimento "mais fácil"&lt;/h2&gt;
+&lt;p&gt;Cara por que eu coloquei essas aspas ai? &lt;/p&gt;
+&lt;p&gt;Meu, o Tsuru Now é um script em Shell bem antiguinho (pelo menos ao meu ver) e ele não é tão intuitivo como promete, creio que na época que ele foi criado ele deveria ser mais fácil de usar, mas agora devido ao tempo e versões mais novas de sistema operacional ele se tornou meio obsoleto.&lt;/p&gt;
+&lt;p&gt;Mas mesmo obsoleto galera, eu ainda recomendo esse cara, pois se você aprender a domá-lo você consegue subir o Tsuru bem tranquilão.&lt;/p&gt;
+&lt;h2&gt;Ferramentas utilizadas&lt;/h2&gt;
+&lt;p&gt;Para subir o meu Tsuru estou utilizando:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/tsuru/now"&gt;Tsuru&amp;nbsp;Now&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/tsuru/now"&gt;Tsuru Now&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet-virtual-server"&gt;Um droplet da Digital Ocean&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;span class="caps"&gt;S.O.&lt;/span&gt; Ubuntu 14.04&amp;nbsp;x64&lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;512MB&lt;/span&gt;&amp;nbsp;Ram &lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;20GB&lt;/span&gt; &lt;span class="caps"&gt;SSD&lt;/span&gt;&amp;nbsp;Disk &lt;/li&gt;
-&lt;li&gt;New York&amp;nbsp;3&lt;/li&gt;
-&lt;li&gt;Neste droplet a configuração default da Digital Ocean é vir 2 interfaces de rede, uma eth0 que será o ip externo e a lo que representa o&amp;nbsp;loopback&lt;/li&gt;
-&lt;li&gt;Valor desse cara $5 por&amp;nbsp;mês&lt;/li&gt;
+&lt;li&gt;S.O. Ubuntu 14.04 x64&lt;/li&gt;
+&lt;li&gt;512MB Ram &lt;/li&gt;
+&lt;li&gt;20GB SSD Disk &lt;/li&gt;
+&lt;li&gt;New York 3&lt;/li&gt;
+&lt;li&gt;Neste droplet a configuração default da Digital Ocean é vir 2 interfaces de rede, uma eth0 que será o ip externo e a lo que representa o loopback&lt;/li&gt;
+&lt;li&gt;Valor desse cara $5 por mês&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Caso você não queira pagar absolutamente &lt;span class="caps"&gt;NADA&lt;/span&gt; também é possível, você só terá o trabalho de configurar as interfaces da sua máquina física (ou virtual, sei lá) e instalar o Ubuntu 14.04 x64 (o x32 eu não testei e não sei se funciona&amp;nbsp;bem!).&lt;/p&gt;
-&lt;h2&gt;Problemas encontrados logo no&amp;nbsp;começo&lt;/h2&gt;
-&lt;p&gt;No repositório do &lt;a href="https://github.com/tsuru/now"&gt;github do Tsuru Now&lt;/a&gt; tem algumas informações faltantes a respeito da compatibilidade com os Sistemas operacionais. Lá no &lt;span class="caps"&gt;README&lt;/span&gt; ele menciona que este script funciona em Debian e Ubuntu, mas não diz a versão&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/pensive.png"&gt;.&lt;/p&gt;
-&lt;p&gt;Eu como um bom paranóico amante de Debian, fui logo criando um droplet na Digital Ocean com o Debian mais novo que encontrei o 8.1~8.2 (Jessie Stable), ai rodei o script conforme manda o &lt;span class="caps"&gt;README&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;Caso você não queira pagar absolutamente NADA também é possível, você só terá o trabalho de configurar as interfaces da sua máquina física (ou virtual, sei lá) e instalar o Ubuntu 14.04 x64 (o x32 eu não testei e não sei se funciona bem!).&lt;/p&gt;
+&lt;h2&gt;Problemas encontrados logo no começo&lt;/h2&gt;
+&lt;p&gt;No repositório do &lt;a href="https://github.com/tsuru/now"&gt;github do Tsuru Now&lt;/a&gt; tem algumas informações faltantes a respeito da compatibilidade com os Sistemas operacionais. Lá no README ele menciona que este script funciona em Debian e Ubuntu, mas não diz a versão &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/pensive.png"&gt;.&lt;/p&gt;
+&lt;p&gt;Eu como um bom paranóico amante de Debian, fui logo criando um droplet na Digital Ocean com o Debian mais novo que encontrei o 8.1~8.2 (Jessie Stable), ai rodei o script conforme manda o README:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# curl -sL https://raw.githubusercontent.com/tsuru/now/master/run.bash | bash
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Coisa linda pra se ver&amp;#8230;. massss&amp;#8230; não consegui nem ir até 50% da instalação, logo de cara falta o pacote linux-image-extras-* no Debian, e adicionar repositórios começa a ficar meio impraticável pois eu como um bom paranóico, acredito, que se ele não está no repositório main alguma razão deve&amp;nbsp;ter.&lt;/p&gt;
-&lt;p&gt;Eis que pensei &lt;em&gt;&amp;#8220;pooo&amp;#8230; se não vai Debian, os caras devem gostar de Ubuntu&amp;#8230; vamos de Ubuntu&amp;#8221;&lt;/em&gt;, ai novamente como um bom paranóico fui logo escolhendo a versão &lt;span class="caps"&gt;MAIS&lt;/span&gt; &lt;span class="caps"&gt;NOVA&lt;/span&gt; do Ubuntu, a versão 15.04 x64&amp;#8230;. e adivinhem?? Problema de novo&amp;#8230;. se não me engano com o mesmo&amp;nbsp;pacote.&lt;/p&gt;
-&lt;p&gt;Ai novamente como um bom brasileiro que não desiste nunca fui de novo agora pensei &lt;em&gt;&amp;#8220;poooo&amp;#8230;. se os caras não gostam desse Ubuntu vou usar o Ubuntu que está referenciado na doc oficial do Tsuru&amp;#8221;&lt;/em&gt; que vem a ser o 14.04&amp;nbsp;! &lt;/p&gt;
-&lt;p&gt;E desta vez fiz progressos significativos, &lt;span class="caps"&gt;MUITO&lt;/span&gt; &lt;span class="caps"&gt;SIGNIFICATIVOS&lt;/span&gt; e consegui concluir cerca de 80% da instalação e o script foi dar pau lá pelo finalzinho próximo da &lt;code&gt;linha 671&lt;/code&gt; quando ele chama a função &lt;code&gt;config_tsuru_post&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Ai começa meu instinto de programador maluco e fui depurando a parada. Pelo que pude ver o script não estava pegando meu ip externo&amp;nbsp;adequadamente.&lt;/p&gt;
-&lt;h2&gt;Variáveis/adaptação e funcionamento&amp;nbsp;completo&lt;/h2&gt;
-&lt;p&gt;Como o Tsuru Now não conseguia pegar meu ip corretamente fui lá e comecei a testar coisas de modo que fizesse o filho da mãe funcionar. Eis que por fim eu consegui, e vou dar a receita de bolo pra vocês. Clone o repositório do Tsuru Now&amp;nbsp;inicialmente:&lt;/p&gt;
+&lt;p&gt;Coisa linda pra se ver.... massss... não consegui nem ir até 50% da instalação, logo de cara falta o pacote linux-image-extras-* no Debian, e adicionar repositórios começa a ficar meio impraticável pois eu como um bom paranóico, acredito, que se ele não está no repositório main alguma razão deve ter.&lt;/p&gt;
+&lt;p&gt;Eis que pensei &lt;em&gt;"pooo... se não vai Debian, os caras devem gostar de Ubuntu... vamos de Ubuntu"&lt;/em&gt;, ai novamente como um bom paranóico fui logo escolhendo a versão MAIS NOVA do Ubuntu, a versão 15.04 x64.... e adivinhem?? Problema de novo.... se não me engano com o mesmo pacote.&lt;/p&gt;
+&lt;p&gt;Ai novamente como um bom brasileiro que não desiste nunca fui de novo agora pensei &lt;em&gt;"poooo.... se os caras não gostam desse Ubuntu vou usar o Ubuntu que está referenciado na doc oficial do Tsuru"&lt;/em&gt; que vem a ser o 14.04 ! &lt;/p&gt;
+&lt;p&gt;E desta vez fiz progressos significativos, MUITO SIGNIFICATIVOS e consegui concluir cerca de 80% da instalação e o script foi dar pau lá pelo finalzinho próximo da &lt;code&gt;linha 671&lt;/code&gt; quando ele chama a função &lt;code&gt;config_tsuru_post&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Ai começa meu instinto de programador maluco e fui depurando a parada. Pelo que pude ver o script não estava pegando meu ip externo adequadamente.&lt;/p&gt;
+&lt;h2&gt;Variáveis/adaptação e funcionamento completo&lt;/h2&gt;
+&lt;p&gt;Como o Tsuru Now não conseguia pegar meu ip corretamente fui lá e comecei a testar coisas de modo que fizesse o filho da mãe funcionar. Eis que por fim eu consegui, e vou dar a receita de bolo pra vocês. Clone o repositório do Tsuru Now inicialmente:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# git clone git@github.com:tsuru/now.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Nas primeiras linhas do script chamado &lt;code&gt;run.bash&lt;/code&gt; tem algumas variáveis&amp;nbsp;interessantes:&lt;/p&gt;
+&lt;p&gt;Nas primeiras linhas do script chamado &lt;code&gt;run.bash&lt;/code&gt; tem algumas variáveis interessantes:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;1  #!/bin/bash -ue
 2 
 3  # Copyright 2015 tsuru-now authors. All rights reserved.
@@ -81,17 +81,17 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Destas 17 linhas as variáveis que resolveram minha vira foram &lt;code&gt;host_ip&lt;/code&gt; e &lt;code&gt;private_ip&lt;/code&gt;, nestas duas eu setei meu ip &lt;strong&gt;&lt;span class="caps"&gt;EXTERNO&lt;/span&gt; (ou seja o ip que a galera de fora da sua rede vê)&lt;/strong&gt;, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site &lt;a href="https://www.whatismyip.com/"&gt;What Is My Ip?&lt;/a&gt; que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;).&lt;/p&gt;
-&lt;p&gt;Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando&amp;nbsp;sudo):&lt;/p&gt;
+&lt;p&gt;Destas 17 linhas as variáveis que resolveram minha vira foram &lt;code&gt;host_ip&lt;/code&gt; e &lt;code&gt;private_ip&lt;/code&gt;, nestas duas eu setei meu ip &lt;strong&gt;EXTERNO (ou seja o ip que a galera de fora da sua rede vê)&lt;/strong&gt;, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site &lt;a href="https://www.whatismyip.com/"&gt;What Is My Ip?&lt;/a&gt; que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;).&lt;/p&gt;
+&lt;p&gt;Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando sudo):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# bash run.bash --host-ip &amp;lt;meu ip externo&amp;gt; | tee log_run.log
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Troque &amp;lt;meu ip externo&gt; pelo seu ip&amp;nbsp;externo. &lt;/p&gt;
-&lt;p&gt;Executando esse comando vá tomar banho, comer, tomar café ou outra coisa desse tipo, pois vai demorar um pouco (calculo pelo menos uns 15 minutos caso você não use um hd &lt;span class="caps"&gt;SSD&lt;/span&gt;).&lt;/p&gt;
-&lt;p&gt;Usei o comando &lt;code&gt;| tee log_run.log&lt;/code&gt; para que ele gere um arquivo contendo todo output (erros e não erros) do script, se você quiser analisar depois como foi a instalação ficará mais fácil você ler este&amp;nbsp;arquivo.&lt;/p&gt;
-&lt;h2&gt;Finish&amp;nbsp;him!&lt;/h2&gt;
-&lt;p&gt;Se tudo correr bem ao fim dessa execução seu Tsuru já vai estar funcionando de forma básica pronta para testes bacaninhas. É importante em um primeiro momento alterar a senha do admin e rodar &lt;code&gt;source ~/.bashrc&lt;/code&gt; conforme manda o próprio Tsuru&amp;nbsp;Now:&lt;/p&gt;
+&lt;p&gt;Troque &amp;lt;meu ip externo&gt; pelo seu ip externo. &lt;/p&gt;
+&lt;p&gt;Executando esse comando vá tomar banho, comer, tomar café ou outra coisa desse tipo, pois vai demorar um pouco (calculo pelo menos uns 15 minutos caso você não use um hd SSD).&lt;/p&gt;
+&lt;p&gt;Usei o comando &lt;code&gt;| tee log_run.log&lt;/code&gt; para que ele gere um arquivo contendo todo output (erros e não erros) do script, se você quiser analisar depois como foi a instalação ficará mais fácil você ler este arquivo.&lt;/p&gt;
+&lt;h2&gt;Finish him!&lt;/h2&gt;
+&lt;p&gt;Se tudo correr bem ao fim dessa execução seu Tsuru já vai estar funcionando de forma básica pronta para testes bacaninhas. É importante em um primeiro momento alterar a senha do admin e rodar &lt;code&gt;source ~/.bashrc&lt;/code&gt; conforme manda o próprio Tsuru Now:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;######################## DONE! ########################
 
 Some information about your tsuru installation:
@@ -106,5 +106,5 @@ You should run `source ~/.bashrc` on your current terminal.
 
 
 &lt;p&gt;Para alterar a senha você poderá usar o comando &lt;code&gt;tsuru change-password&lt;/code&gt;. Após você ter seu PaaS instalado e funcional recomendo assistir o vídeo do Andrews para dar seus primeiros passinhos utilizando o tsuru-cli, um vídeo ótimo para começar é este &lt;a href="https://www.youtube.com/watch?v=YD3iNEBb4t0"&gt;tsuru - fazendo deploys de forma simples e divertida&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Espero que tenha gostado do post, deixe seus comentários ali embaixo&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/point_down.png"&gt;.&lt;/p&gt;
+&lt;p&gt;Espero que tenha gostado do post, deixe seus comentários ali embaixo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/point_down.png"&gt;.&lt;/p&gt;
 &lt;p&gt;Flw!&lt;/p&gt;</summary><category term="deploy"></category><category term="tsuru"></category><category term="paas"></category></entry></feed>

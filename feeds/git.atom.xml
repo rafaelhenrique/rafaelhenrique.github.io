@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="/" rel="alternate"></link><link href="/feeds/git.atom.xml" rel="self"></link><id>/</id><updated>2015-03-24T10:16:00-03:00</updated><entry><title>Git squash?? WTF?</title><link href="/git-squash-wtf.html" rel="alternate"></link><updated>2015-03-24T10:16:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:,2015-03-24:git-squash-wtf.html</id><summary type="html">&lt;p&gt;Galera conforme mencionei no post anterior.. estou contribuindo com o &lt;a href="https://github.com/puppet-community/puppetboard/"&gt;puppetboard&lt;/a&gt; (mais informações no post abaixo desse :P). E fiz meu primeiro Pull Request e talz resolvendo uma questão que estava na issue para acrescentar uma nova funcionalidade ao projeto. Porém quando eu fiz meu &lt;span class="caps"&gt;PR&lt;/span&gt; (Pull Request) teve um cara que me disse o&amp;nbsp;seguinte:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/git.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-03-24T10:16:00-03:00</updated><entry><title>Git squash?? WTF?</title><link href="http://blog.abraseucodigo.com.br/git-squash-wtf.html" rel="alternate"></link><updated>2015-03-24T10:16:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-03-24:git-squash-wtf.html</id><summary type="html">&lt;p&gt;Galera conforme mencionei no post anterior.. estou contribuindo com o &lt;a href="https://github.com/puppet-community/puppetboard/"&gt;puppetboard&lt;/a&gt; (mais informações no post abaixo desse :P). E fiz meu primeiro Pull Request e talz resolvendo uma questão que estava na issue para acrescentar uma nova funcionalidade ao projeto. Porém quando eu fiz meu PR (Pull Request) teve um cara que me disse o seguinte:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="comment-github-image" src="/images/git-squash-wtf_01.png" title="comment-github-image" /&gt;
 **&lt;a href="http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits"&gt;squash&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Ai eu pensei como qualquer ótimo conhecedor do Git que porras é essa de&amp;nbsp;squash?&lt;/p&gt;
-&lt;p&gt;O squash é uma prática utilizada para combinar mais de um commit em um commit só, desta forma eliminando &amp;#8220;lixos&amp;#8221; do projeto. Agora aqui neste post explicarei como raios você faz isso, pois não achei uma documentação simples que explicasse a uma pessoa normal como fazer isso, e após aprender, decidi &lt;span class="caps"&gt;TENTAR&lt;/span&gt; explicar de uma forma simples&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;.&lt;/p&gt;
-&lt;h2&gt;O&amp;nbsp;projeto&lt;/h2&gt;
-&lt;p&gt;Primeiro obviamente você precisa ter um repositório git, para isso eu criei um repositório &lt;span class="caps"&gt;BEEEM&lt;/span&gt;&amp;nbsp;simples:  &lt;/p&gt;
+&lt;p&gt;Ai eu pensei como qualquer ótimo conhecedor do Git que porras é essa de squash?&lt;/p&gt;
+&lt;p&gt;O squash é uma prática utilizada para combinar mais de um commit em um commit só, desta forma eliminando "lixos" do projeto. Agora aqui neste post explicarei como raios você faz isso, pois não achei uma documentação simples que explicasse a uma pessoa normal como fazer isso, e após aprender, decidi TENTAR explicar de uma forma simples &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;.&lt;/p&gt;
+&lt;h2&gt;O projeto&lt;/h2&gt;
+&lt;p&gt;Primeiro obviamente você precisa ter um repositório git, para isso eu criei um repositório BEEEM simples:  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir teste  
 &lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;teste  
 &lt;span class="nv"&gt;$ &lt;/span&gt;git init  
@@ -31,7 +31,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Feito isso terei o seguinte histórico de&amp;nbsp;commits:&lt;/p&gt;
+&lt;p&gt;Feito isso terei o seguinte histórico de commits:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git log --oneline  
 4c03027 Adicionado Correia  
 e23576b Adicionado Silva  
@@ -41,13 +41,13 @@ e23576b Adicionado Silva
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;O&amp;nbsp;squash&lt;/h2&gt;
-&lt;p&gt;Agora vamos imaginar que eu quero fazer um squash a partir de Henrique, ou seja quero que os commits 2a71622, 769bda9, e23576b e 4c03027 sejam um só, pois todos tratam da adição do sobrenome no arquivo &lt;span class="caps"&gt;README&lt;/span&gt;. Para isso precisarei usar o comando rebase do git no commit que eu desejo, no caso a partir do Henrique (como é a partir do Henrique deveremos pegar 1 commit&amp;nbsp;antes):&lt;/p&gt;
+&lt;h2&gt;O squash&lt;/h2&gt;
+&lt;p&gt;Agora vamos imaginar que eu quero fazer um squash a partir de Henrique, ou seja quero que os commits 2a71622, 769bda9, e23576b e 4c03027 sejam um só, pois todos tratam da adição do sobrenome no arquivo README. Para isso precisarei usar o comando rebase do git no commit que eu desejo, no caso a partir do Henrique (como é a partir do Henrique deveremos pegar 1 commit antes):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git rebase -i 5ebadcd
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Após executar este comando será aberto um arquivo temporário para podermos fazer as alterações desejadas, o arquivo será similar a este&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;Após executar este comando será aberto um arquivo temporário para podermos fazer as alterações desejadas, o arquivo será similar a este abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;pick 2a71622 Adicionado Henrique  
 pick 769bda9 Adicionado da  
 pick e23576b Adicionado Silva  
@@ -73,7 +73,7 @@ pick 4c03027 Adicionado Correia 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Neste mesmo arquivo já podemos visualizar algumas opções do que fazer com esses commits, para este post utilizaremos somente o squash, mas vale a pena conhecer as outras opções descritas abaixo de commands. Agora altere este arquivo da seguinte&amp;nbsp;maneira:&lt;/p&gt;
+&lt;p&gt;Neste mesmo arquivo já podemos visualizar algumas opções do que fazer com esses commits, para este post utilizaremos somente o squash, mas vale a pena conhecer as outras opções descritas abaixo de commands. Agora altere este arquivo da seguinte maneira:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;pick 2a71622 Adicionado Henrique  
 squash 769bda9 Adicionado da  
 squash e23576b Adicionado Silva  
@@ -99,7 +99,7 @@ squash 4c03027 Adicionado Correia 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;As linhas dos commits 769bda9, e23576b e 4c03027 foram mudadas para squash, portanto serão combinados ao commit que possui a o nome pick, então o commit 2a71622 agora será unido aos 3 commits abaixo dele. É importante comentar que o squash não remove os logs (mensagens dos commits) conforme a descrição do &amp;#8220;Commands&amp;#8221; já a opção fixup descarta os logs. Feita esta alteração basta salvar o arquivo e sair. Feito isso será apresentado outro arquivo similar a este&amp;nbsp;abaixo:&lt;/p&gt;
+&lt;p&gt;As linhas dos commits 769bda9, e23576b e 4c03027 foram mudadas para squash, portanto serão combinados ao commit que possui a o nome pick, então o commit 2a71622 agora será unido aos 3 commits abaixo dele. É importante comentar que o squash não remove os logs (mensagens dos commits) conforme a descrição do "Commands" já a opção fixup descarta os logs. Feita esta alteração basta salvar o arquivo e sair. Feito isso será apresentado outro arquivo similar a este abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# This is a combination of 4 commits.  
 # The first commit&amp;#39;s message is:  
 Adicionado Henrique  
@@ -120,7 +120,7 @@ Adicionado Correia
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Neste arquivo você poderá mudar as mensagens de log (mensagens dos commits) caso desejar, se desejar mude alguma coisa e salve e saia do arquivo. Terminada a edição/salvamento deste arquivo você acabou o squash! Podemos ver no log como ficou a nova&amp;nbsp;estrutura:&lt;/p&gt;
+&lt;p&gt;Neste arquivo você poderá mudar as mensagens de log (mensagens dos commits) caso desejar, se desejar mude alguma coisa e salve e saia do arquivo. Terminada a edição/salvamento deste arquivo você acabou o squash! Podemos ver no log como ficou a nova estrutura:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git log --oneline  
 f4c9d80 Adicionado Henrique  
 5ebadcd Adicionado Rafael 
@@ -148,4 +148,4 @@ Date:   Tue Mar &lt;span class="m"&gt;24&lt;/span&gt; 11:08:14 &lt;span class="
 
 
 &lt;h2&gt;Conclusão&lt;/h2&gt;
-&lt;p&gt;Esta prática é bem interessante e deixa o repositório do git mais limpo, é &lt;span class="caps"&gt;MUITO&lt;/span&gt; válida principalmente em projetos grandes onde se tem muitos contribuidores (principalmente em projetos open source&amp;nbsp;&lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;).&lt;/p&gt;</summary><category term="git"></category><category term="squash"></category><category term="github"></category></entry></feed>
+&lt;p&gt;Esta prática é bem interessante e deixa o repositório do git mais limpo, é MUITO válida principalmente em projetos grandes onde se tem muitos contribuidores (principalmente em projetos open source &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;).&lt;/p&gt;</summary><category term="git"></category><category term="squash"></category><category term="github"></category></entry></feed>
