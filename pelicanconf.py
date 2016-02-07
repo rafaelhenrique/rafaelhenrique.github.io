@@ -22,7 +22,7 @@ DEFAULT_METADATA = (
 # Site info
 
 SITENAME = u'Abra seu C\xf3digo!!!'
-SITEURL = 'http://blog.abraseucodigo.com.br/'
+SITEURL = u'http://blog.abraseucodigo.com.br/'
 SITEDESCRIPTION = u'Por um mundo livre e inteligente'
 TAGLINE = u'Por um mundo livre e inteligente'
 
