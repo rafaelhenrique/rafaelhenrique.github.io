@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/</loc>
-<lastmod>2016-02-06T23:35:44-00:00</lastmod>
+<lastmod>2016-02-16T22:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/archives.html</loc>
-<lastmod>2016-02-06T23:35:44-00:00</lastmod>
+<lastmod>2016-02-16T22:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/tags.html</loc>
-<lastmod>2016-02-06T23:35:44-00:00</lastmod>
+<lastmod>2016-02-16T22:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/categories.html</loc>
-<lastmod>2016-02-06T23:35:44-00:00</lastmod>
+<lastmod>2016-02-16T22:52:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/pages/contato.html</loc>
-<lastmod>2016-02-06T23:35:44-00:00</lastmod>
+<lastmod>2016-02-16T22:52:37-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -46,15 +46,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba-01_resposta.html</loc>
-<lastmod>2015-10-28T19:49:00-02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-
-<url>
-<loc>http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba-01.html</loc>
-<lastmod>2015-10-14T22:53:00-03:00</lastmod>
+<loc>http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html</loc>
+<lastmod>2016-02-16T21:09:00-02:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -62,13 +55,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.abraseucodigo.com.br/como-criar-seu-paas-com-tsuru.html</loc>
 <lastmod>2015-09-22T22:48:00-03:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-
-<url>
-<loc>http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html</loc>
-<lastmod>2015-09-19T23:43:00-03:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -96,21 +82,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/category/python.html</loc>
-<lastmod>2015-10-28T19:49:00-03:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.abraseucodigo.com.br/tag/grupo-de-estudos-python.html</loc>
-<lastmod>2015-10-28T19:49:00-03:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.abraseucodigo.com.br/tag/git.html</loc>
-<lastmod>2015-03-24T10:16:00-03:06</lastmod>
+<lastmod>2016-02-16T21:09:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -123,8 +95,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/python.html</loc>
-<lastmod>2015-10-28T19:49:00-03:06</lastmod>
+<loc>http://blog.abraseucodigo.com.br/tag/git.html</loc>
+<lastmod>2015-03-24T10:16:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -137,6 +109,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://blog.abraseucodigo.com.br/tag/python.html</loc>
+<lastmod>2016-02-16T21:09:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://blog.abraseucodigo.com.br/tag/squash.html</loc>
 <lastmod>2015-03-24T10:16:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -144,8 +123,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/sorocaba.html</loc>
-<lastmod>2015-10-28T19:49:00-03:06</lastmod>
+<loc>http://blog.abraseucodigo.com.br/tag/windows.html</loc>
+<lastmod>2016-02-16T21:09:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -153,6 +132,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.abraseucodigo.com.br/tag/github.html</loc>
 <lastmod>2015-03-24T10:16:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/instalar-python.html</loc>
+<lastmod>2016-02-16T21:09:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -166,7 +152,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html</loc>
-<lastmod>2015-10-28T19:49:00-03:06</lastmod>
+<lastmod>2016-02-16T21:09:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

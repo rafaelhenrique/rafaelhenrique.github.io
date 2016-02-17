@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>Instalando Python 3.5 no Windows 7 // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>fevereiro 16, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Instalando Python 3.5 no Windows 7</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/windows.html">windows</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/instalar-python.html">instalar python</a>
+                        </p>
+                </header>
+            </section>
+            <p>Muitos tem a dúvida de como instalar Python no Windows, hoje vou colocar aqui um passo a passo bem básico pra que você consiga instalar Python3 no Windows 7.</p>
+<p>Estou especificando as versões do Windows e a versão do Python pois como ambos evoluem com o tempo (e muito rapidamente) então creio eu que logo esse post irá ficar velho.</p>
+<p>Ao escrever este post também tenho conhecimento que o Windows 10 é o Windows &quot;da moda&quot; porém neste momento só tenho uma máquina virtual de Windows 7 e estou sem tempo para criar uma máquina virtual de Windows 10, mas pelas pesquisas e googladas na internet creio que este post também será útil para outras versões do Windows.</p>
+<div class="section" id="baixando-o-python">
+<h2>Baixando o Python</h2>
+<p>Você poderá baixar a versão oficial do Python neste site:</p>
+<p><a class="reference external" href="https://www.python.org/downloads">https://www.python.org/downloads</a></p>
+<p>A página acessada será semelhante a esta:</p>
+<img alt="python download" src="images/instalando-python35-no-windows-7/01.png" />
+<p>Baixe a release 3.5.1 (disponível atualmente), se quiser baixar diretamente clique:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe">aqui para baixar a versão 32 bits</a>.</li>
+<li><a class="reference external" href="https://www.python.org/ftp/python/3.5.1/python-3.5.1-amd64.exe">aqui para baixar a versão 64 bits</a>.</li>
+</ul>
+<p>Recomendo verificar qual a arquitetura do seu sistema operacional para isso pressione as teclas <tt class="docutils literal">Windows + Pause Break</tt> do seu teclado ou <tt class="docutils literal">clique com o direito no ícone do Computador e posteriormente clique em propriedades</tt>, a seguinte tela será apresentada:</p>
+<img alt="system" src="images/instalando-python35-no-windows-7/02.png" />
+<p>Observe que eu grifei em vermelho a arquitetura do meu Windows instalado que é de 32 bits.</p>
+</div>
+<div class="section" id="instalando-o-python">
+<h2>Instalando o Python</h2>
+<p>Basicamente para instalar o Python depois de baixado clique duas vezes no executável baixado. A instalação é bem tranquila e bem next.. next.. finish.</p>
+<p>Ao clicar duas vezes no executável a seguinte tela será aberta:</p>
+<img alt="python wizard 01" src="images/instalando-python35-no-windows-7/03.png" />
+<p>Repare que aqui nesta tela inicial o que é mais importante é marcar a opção <tt class="docutils literal">Add Python3.5 to PATH</tt> desta forma você não precisará configurar as variáveis de ambiente do seu Windows posteriormente (pois isso é meio chato de se fazer manualmente). Marcada essa opção clique em <tt class="docutils literal">Install Now</tt>, ao clicar nesta opção o processo de instalação será iniciado:</p>
+<img alt="python wizard 02" src="images/instalando-python35-no-windows-7/04.png" />
+<p>Aguarde alguns instantes e esta outra tela será apresentada:</p>
+<img alt="python wizard 03" src="images/instalando-python35-no-windows-7/05.png" />
+<p>Feito isso clique em <tt class="docutils literal">Close</tt>, caso tenha algum problema nesta parte por favor me contate por email ou nos comentários abaixo deste post.</p>
+</div>
+<div class="section" id="conferindo-quais-programas-voce-ganhou">
+<h2>Conferindo quais programas você &quot;ganhou&quot;</h2>
+<p>Vejamos inicialmente o que instalamos:</p>
+<img alt="iniciar" src="images/instalando-python35-no-windows-7/06.png" />
+<ul class="simple">
+<li><tt class="docutils literal">IDLE</tt>: Uma IDE de linha de comando muito simples para começar suas aventuras no mundo Python;</li>
+<li><tt class="docutils literal">Python 3.5</tt>: Irá abrir o interpretador do Python no seu <tt class="docutils literal">Prompt de comandos</tt>;</li>
+<li><tt class="docutils literal">Python 3.5 Manuals</tt>: Toda a documentação do Python que está online <a class="reference external" href="https://docs.python.org/3/">aqui</a> ficará no seu computador para você acessar offline (para casos extremos onde você ficou sem internet).</li>
+<li><tt class="docutils literal">Python 3.5 Module Docs</tt>: Uma referência sobre os módulos Python, ao clicar neste carinha será iniciado um servidorzinho que te servirá essa documentação, quando quiser sair basta ir ao console aberto e digitar <tt class="docutils literal">q</tt> seguido de enter que o servidorzinho será desligado.</li>
+</ul>
+<p>Para começar seus estudos em Python é importante saber que a partir desta instalação você acaba de &quot;ganhar&quot; alguns programas que te ajudarão na sua jornada pelo conhecimento, alguns merecer destaque:</p>
+<ul class="simple">
+<li><tt class="docutils literal">pip</tt>: Um poderoso gerenciador de pacotes/bibliotecas do Python, com ele você pode instalar muitas e muitas bibliotecas de terceiros;</li>
+<li><tt class="docutils literal">virtualenv</tt>: Um cara &quot;separador&quot; de ambientes, não faz muito tempo este cara foi incorporado ao Python (antes ele era um cara fora do Python), ele serve para que você tenha diversas versões da mesma biblioteca para projetos diferentes sem que elas colidam e briguem entre si para ver qual a versão vai assumir e ficar a frente quando você chamar um <tt class="docutils literal">import</tt>.</li>
+</ul>
+</div>
+<div class="section" id="conclusao">
+<h2>Conclusão</h2>
+<p>Não é difícil instalar Python no Windows, mas tem que se atentar a alguns detalhes bem simples. No próximo post pretendo descrever como e pra que serve o <tt class="docutils literal">virtualenv</tt> e <tt class="docutils literal">pip</tt> que você acabou de instalar.</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>
