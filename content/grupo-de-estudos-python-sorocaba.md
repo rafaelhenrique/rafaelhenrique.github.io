@@ -67,6 +67,5 @@ Quer entrar para o nosso Grupo??
 
 Basta se inscrever na lista [Python-Sorocaba](https://groups.google.com/forum/#!forum/python-sorocaba) e acompanhar os emails, sempre fazemos nossos encontros nas quartas-feiras a noite próximo das 20hrs. 
 Porém caso você queira entrar neste atual momento, agora, agorinha, me manda um tweet para que eu alinhe o que você precisa estudar, pois estamos indo para a aula 12 já :open_mouth:. Mas podemos fazer novas aulas a partir da aula 1 se tiver mais gente interessada.
-Logo menos começarei a postar as aulas que rolaram em forma de texto aqui neste blog, futuramente todos poderão acompanhar por aqui também.
 
 E ai curtiram a ideia?
