@@ -48,4 +48,58 @@
 &lt;h2&gt;Conclusão&lt;/h2&gt;
 &lt;p&gt;Não é difícil instalar Python no Windows, mas tem que se atentar a alguns detalhes bem simples. No próximo post pretendo descrever como e pra que serve o &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; que você acabou de instalar.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="windows"></category><category term="instalar python"></category></entry></feed>
+</summary><category term="python"></category><category term="windows"></category><category term="instalar python"></category></entry><entry><title>Grupo de Estudos Python Sorocaba</title><link href="http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html" rel="alternate"></link><updated>2015-09-19T23:43:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-09-19:grupo-de-estudos-python-sorocaba.html</id><summary type="html">&lt;p&gt;Perto do dia 2 de julho de 2015 eu o Rafael Gottsfritz e o Caio Carrara tivemos a iniciativa de nos misturar ao &lt;a href="http://hacklab.club/"&gt;Hacklab Sorocaba&lt;/a&gt; para tentar organizar um grupo de estudos sobre variados assuntos.
+Nós queríamos trazer mais movimento de comunidades para Sorocaba e regiões próximas, visto que isso é muitíssimo popular em cidades como Campinas, São Paulo e São José dos Campos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://garoa.net.br/wiki/P%C3%A1gina_principal"&gt;Garoa Hacker Clube SP&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://lhc.net.br/wiki/P%C3%A1gina_principal"&gt;Laboratório Hacker Campinas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://campinas.rupy.com.br/"&gt;RuPy Campinas 2015&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pgdaycampinas.com.br/"&gt;PG Day Campinas 2015&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.meetup.com/pt/Grupy-SP/"&gt;GruPy-SP&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.thedevelopersconference.com.br/tdc/2015/saopaulo/trilhas"&gt;TDC São Paulo 2015&lt;/a&gt; X&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.facebook.com/pyladiescps"&gt;Pyladies Campinas - Facebook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/pyladiescps"&gt;Pyladies Campinas - Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pythonbrasil.github.io/pythonbrasil11-site/"&gt;Python Brasil 2015 - SJC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Esses links acima foram apenas exemplos de eventos de comunidade ou um pouco mais comerciais que rolaram/rolam ainda por este ano, os que marquei com X foi os que eu ja participei pelo menos uma vez na vida e fiquei muito feliz de ter participado &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/stuck_out_tongue_winking_eye.png"&gt;.&lt;/p&gt;
+&lt;h2&gt;O início&lt;/h2&gt;
+&lt;p&gt;Para tentar começar a trazer coisas legais pra Sorocaba, inicialmente divulguei na lista de &lt;a href="https://groups.google.com/forum/?hl=pt#!searchin/hackerspace-sorocaba/Sesc/hackerspace-sorocaba/ampID5hePrI/w0Jt_vIWSTEJ"&gt;email do Hacklab&lt;/a&gt; um bate-papo descontraído no SESC Sorocaba, era descontraído, mas para ter foco nessa "descontração" toda eu queria propor objetivos as conversas e que preferencialmente se baseasse em tecnologia (ou não, caso não tivessem muitos geeks na parada). 
+Porém infelizmente (ou felizmente, ainda não descobri) somente EU coloquei um tema lá para discutir neste evento intitulado de "Quinta-feira Hacker" (o nome era bonito &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/wink.png"&gt;). Olha só que loucura que ficou o call4papers deste dia:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://call4paperz.com/events/quinta-feira-hacker"&gt;&lt;img alt="Call4Papers" src="/images/grupo-de-estudos-python-sorocaba_01.png" title="Call4Papers" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Bombando.... com 1 call somente!! &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/disappointed_relieved.png"&gt;&lt;/p&gt;
+&lt;p&gt;Inicialmente fiquei meio puto e imaginei que não ia aparecer ninguém no SESC, por fim foram várias pessoas (no mínimo umas 6 pelo que me recordo) ai eu fiquei mais feliz um pouco. Mas mesmo assim fiquei meio de queixo caído com o desinteresse geral das pessoas, pois eu chamei para o encontro no mínimo 50 e apareceram somente 6.&lt;/p&gt;
+&lt;h2&gt;Hacklab no sábado (rolando ainda quase sempre)&lt;/h2&gt;
+&lt;p&gt;Alguns dias após este "big evento" fomos novamente os 6 mosqueteiros (quase todos que foram no SESC) no sábado para nos encontrar no &lt;a href="http://www.macs.org.br/"&gt;Museu de Arte Contemporânea de Sorocaba&lt;/a&gt;, lá tem uma sala MUITO MUITO BACANA onde o pessoal faz umas reuniões embaixo do Museu (não amigo não é culto satânico.. é parada de hacker mesmo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smirk.png"&gt;). 
+Neste dia conheci o Hudson que é o cara que toca o barco do Hacklab junto com o Guilherme que é um membro assíduo também, conversamos bastante e neste mesmo dia o Hudson me falou uma coisa importante que eu estava deixando passar...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;quot;Cara pra ser um evento precisa de você e mais um&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Resumindo... acho que ele tinha razão, pois bastam 2 interessados para formar um pequeno grupo para fazer algo, se você estiver sozinho OK! Também é LEGAL! Porém você não tem o compromisso de estar na mesma hora no mesmo lugar para estudar algum assunto, imagino que isso seja o princípio da ideia de um &lt;a href="https://en.wikipedia.org/wiki/Hackerspace"&gt;hackerspace&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;O grupo de estudos&lt;/h2&gt;
+&lt;p&gt;Eis que neste dia um pouco depois surgiu a ideia de montarmos um &lt;a href="https://groups.google.com/forum/#!forum/python-sorocaba"&gt;Grupo de Estudos de Python em Sorocaba&lt;/a&gt;, um grupo com um caminho simples a trilhar:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Nivelar as pessoas em Python, para que discussões futuras sejam mais proveitosas (no ponto que estamos já estão sendo)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Para isso estou dando aulas eu mesmo &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/hushed.png"&gt; via &lt;a href="http://www.google.com/intl/pt-BR_ALL/+/learnmore/hangouts/onair.html"&gt;Hangout on Air&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Todos nós aprendendo juntos&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Existem assuntos bem complexos no mundo Python aos quais eu não domino para esses precisamos já ter entendido o básico e estarmos nivelados a ponto de aprendermos juntos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A parte mais legal!!!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Começar a contribuir ou criar projetos open source!!! Sem prazo nem cobranças.. fazer algo da legal que queremos pra aprendermos mais e mais&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;E o valor do curso!? O valor é DEDICAÇÃO E INTERESSE. Se você estiver afim de entrar no Grupo tem que ter no mínimo MUITA DEDICAÇÃO E MUITO INTERESSE pois é caro o curso em termos de valores honrosos hahaha.&lt;/p&gt;
+&lt;h2&gt;Quer entrar para o nosso Grupo??&lt;/h2&gt;
+&lt;p&gt;Basta se inscrever na lista &lt;a href="https://groups.google.com/forum/#!forum/python-sorocaba"&gt;Python-Sorocaba&lt;/a&gt; e acompanhar os emails, sempre fazemos nossos encontros nas quartas-feiras a noite próximo das 20hrs. 
+Porém caso você queira entrar neste atual momento, agora, agorinha, me manda um tweet para que eu alinhe o que você precisa estudar, pois estamos indo para a aula 12 já &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/open_mouth.png"&gt;. Mas podemos fazer novas aulas a partir da aula 1 se tiver mais gente interessada.&lt;/p&gt;
+&lt;p&gt;E ai curtiram a ideia?&lt;/p&gt;</summary><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category></entry></feed>

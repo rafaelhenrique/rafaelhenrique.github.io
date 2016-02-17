@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/</loc>
-<lastmod>2016-02-16T22:52:37-00:00</lastmod>
+<lastmod>2016-02-17T09:54:44-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/archives.html</loc>
-<lastmod>2016-02-16T22:52:37-00:00</lastmod>
+<lastmod>2016-02-17T09:54:44-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/tags.html</loc>
-<lastmod>2016-02-16T22:52:37-00:00</lastmod>
+<lastmod>2016-02-17T09:54:44-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/categories.html</loc>
-<lastmod>2016-02-16T22:52:37-00:00</lastmod>
+<lastmod>2016-02-17T09:54:44-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/pages/contato.html</loc>
-<lastmod>2016-02-16T22:52:37-00:00</lastmod>
+<lastmod>2016-02-17T09:54:44-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -55,6 +55,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.abraseucodigo.com.br/como-criar-seu-paas-com-tsuru.html</loc>
 <lastmod>2015-09-22T22:48:00-03:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/grupo-de-estudos-python-sorocaba.html</loc>
+<lastmod>2015-09-19T23:43:00-03:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -102,6 +109,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://blog.abraseucodigo.com.br/tag/grupo-de-estudos-python.html</loc>
+<lastmod>2015-09-19T23:43:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://blog.abraseucodigo.com.br/tag/deploy.html</loc>
 <lastmod>2015-09-22T22:48:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -118,6 +132,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.abraseucodigo.com.br/tag/squash.html</loc>
 <lastmod>2015-03-24T10:16:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/sorocaba.html</loc>
+<lastmod>2015-09-19T23:43:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
