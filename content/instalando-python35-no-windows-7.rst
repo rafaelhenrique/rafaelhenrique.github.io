@@ -7,8 +7,9 @@ Instalando Python 3.5 no Windows 7
 :slug: instalando-python35-no-windows-7
 :author: Rafael Henrique da Silva Correia
 :email:  rafael@abraseucodigo.com.br
+:summary: Muitos tem a dúvida de como instalar Python no Windows, hoje vou postar aqui um passo a passo bem básico pra que você consiga instalar Python3 no Windows 7
 
-Muitos tem a dúvida de como instalar Python no Windows, hoje vou colocar aqui um passo a passo bem básico pra que você consiga instalar Python3 no Windows 7.
+Muitos tem a dúvida de como instalar Python no Windows, hoje vou postar aqui um passo a passo bem básico pra que você consiga instalar Python3 no Windows 7.
 
 Estou especificando as versões do Windows e a versão do Python pois como ambos evoluem com o tempo (e muito rapidamente) então creio eu que logo esse post irá ficar velho.
 
