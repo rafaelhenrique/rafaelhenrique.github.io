@@ -1,5 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/python.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-02-16T21:09:00-02:00</updated><entry><title>Instalando Python 3.5 no Windows 7</title><link href="http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html" rel="alternate"></link><updated>2016-02-16T21:09:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-16:instalando-python35-no-windows-7.html</id><summary type="html">&lt;p&gt;Muitos tem a dúvida de como instalar Python no Windows, hoje vou colocar aqui um passo a passo bem básico pra que você consiga instalar Python3 no Windows 7.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/python.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-02-17T21:18:00-02:00</updated><entry><title>virtualenv/pip pra que servem?</title><link href="http://blog.abraseucodigo.com.br/virtualenv-pip-pra-que-servem.html" rel="alternate"></link><updated>2016-02-17T21:18:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-17:virtualenv-pip-pra-que-servem.html</id><summary type="html">&lt;p&gt;Existem muitos posts pela internet afora dizendo como usar virtualenv e pip, e realmente é muito fácil. Mas para um iniciante a pergunta que vem a mente é... pra que serve virtualenv? Pra que serve pip?&lt;/p&gt;
+&lt;div class="section" id="explicando-para-quem-nunca-desenvolveu-em-python"&gt;
+&lt;h2&gt;Explicando para quem nunca desenvolveu em Python&lt;/h2&gt;
+&lt;p&gt;Imagine que você tem um programa na sua máquina em uma versão 1.0.0 e em dado momento você quer instalar a versão 1.0.1, porém, você também precisa da versão 1.0.0 pois você tem algum arquivo que não abre na versão mais nova.&lt;/p&gt;
+&lt;p&gt;Pois é, este problema também acontece com os desenvolvedores Python, e a solução criada para este problema foi o nosso amigo &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="o-virtualenv"&gt;
+&lt;h2&gt;O virtualenv&lt;/h2&gt;
+&lt;p&gt;Uilizando o &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; você consegue isolar as bibliotecas do projeto A em relação ao projeto B.&lt;/p&gt;
+&lt;p&gt;Imagine que em determinado momento que o projeto A começou a ser desenvolvido você ainda não tinha Python3 e optou por usar Python2 e mais um monte de bibliotecas do Python2, porém o projeto B usa Python3 e obviamente você não vai querer usar as bibliotecas do Python2 pois você deu uma evoluída nesse projeto e quer usar tudo que existe de mais novo no mundo Python.&lt;/p&gt;
+&lt;p&gt;Já imaginou a bagunça que seu sistema operacional vai fazer? O S.O. vai colocar a versão antiga e a nova no mesmo diretório e quando você chamar o comando &lt;cite&gt;import&lt;/cite&gt; do Python para importar sua biblioteca você sempre ficará em dúvida de qual a versão você importou. Isso vira um caos com o passar do tempo, principalmente depois de você instalar muitas bibliotecas.&lt;/p&gt;
+&lt;p&gt;Apenas fazendo um comentário pertinente, biblioteca também pode ser chamadas de módulos em Python e vice-versa. Estou chamando de biblioteca pois fica mais fácil para as pessoas que vem de outras linguagens entenderem.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="o-pip"&gt;
+&lt;h2&gt;O pip&lt;/h2&gt;
+&lt;p&gt;Falei um pouco sobre &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt;, mas e o &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt;?&lt;/p&gt;
+&lt;p&gt;O &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; é o &amp;quot;gerenciador de pacotes&amp;quot; do Python. Assim como o &lt;a class="reference external" href="https://www.debian.org/doc/manuals/apt-howto/ch-apt-get.pt-br.html"&gt;apt-get&lt;/a&gt; e o &lt;a class="reference external" href="http://brew.sh/"&gt;homebrew&lt;/a&gt; que são os gerenciadores de pacotes do Ubuntu/Mac OSX o &lt;a class="reference external" href="https://pypi.python.org/pypi/pip"&gt;pip&lt;/a&gt; é o instalador de bibliotecas de terceiros padrão do Python.&lt;/p&gt;
+&lt;p&gt;Com o pip você poderá instalar qualquer biblioteca disponível no famoso site de bibliotecas da Python Software Foundation o &lt;a class="reference external" href="https://pypi.python.org/pypi"&gt;PyPi&lt;/a&gt;. Eu não tenho ideia de como verificar quantas bibliotecas Python existem hoje no PyPi, mas posso dizer que são centenas, ou milhares! São muitos MESMO, para os mais variados fins.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="hands-on"&gt;
+&lt;h2&gt;Hands-on&lt;/h2&gt;
+&lt;p&gt;Vamos criar um projeto chamado &lt;tt class="docutils literal"&gt;myprojectA&lt;/tt&gt; e outro chamado &lt;tt class="docutils literal"&gt;myprojectB&lt;/tt&gt; para demonstrar o uso do isolamento de ambientes que &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; nos ajuda a fazer, também iremos instalar bibliotecas com o &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; durante o processo.&lt;/p&gt;
+&lt;p&gt;Para executar este passo a passo estou usando Python 3:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Se você não tem Python 3 instalado e usar Windows clique &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html"&gt;aqui&lt;/a&gt; para ir ao post que escrevi ontem descrevendo este procedimento;&lt;/li&gt;
+&lt;li&gt;Se você não tem Python 3 instalado e usar Linux ou Mac OSX você poderá usar o apt-get, yum ou homebrew para instalar Python3 no seu computador de forma absolutamente simples, porém ainda não fiz posts sobre isso.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No Windows vou abrir o &lt;tt class="docutils literal"&gt;Prompt de comandos&lt;/tt&gt; que terá essa cara:&lt;/p&gt;
+&lt;img alt="prompt de comandos" src="images/prompt-windows-7.png" /&gt;
+&lt;p&gt;Onde &lt;tt class="docutils literal"&gt;rafael&lt;/tt&gt; é meu nome de usuário e o caminho padrão que usarei é &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C:\Users\rafael&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;No Linux/Mac OSX vamos abrir um terminal que terá esta aparência:&lt;/p&gt;
+&lt;img alt="terminal linux mac osx" src="images/terminal.png" /&gt;
+&lt;p&gt;Onde &lt;tt class="docutils literal"&gt;rafael&lt;/tt&gt; também é meu nome de usuário e o caminho padrão que usarei é &lt;tt class="docutils literal"&gt;/home/rafael&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Clique abaixo para continuar o procedimento relativo ao seu sistema operacional:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#criando-virtualenv-e-utilizando-o-pip-no-windows"&gt;Criando virtualenv e utilizando o pip no Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#criando-virtualenv-e-utilizando-o-pip-no-linux-e-mac-osx"&gt;Criando virtualenv e utilizando o pip no Linux e Mac OSX&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="criando-virtualenv-e-utilizando-o-pip-no-windows"&gt;
+&lt;h2&gt;Criando virtualenv e utilizando o pip no Windows&lt;/h2&gt;
+&lt;p&gt;Vamos criar o diretório do projeto &lt;tt class="docutils literal"&gt;myprojectA&lt;/tt&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;C:\Users\rafael&amp;gt; mkdir myprojectA
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos entrar nesta pasta:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;C:\Users\rafael&amp;gt; cd myprojectA
+C:\Users\rafael\myprojectA&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Posteriormente vamos criar um virtualenv:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;C:\Users\rafael\myprojectA&amp;gt; python -m venv .venv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como &lt;cite&gt;.venv&lt;/cite&gt;, como podemos ver abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;C:\Users\rafael\myprojectA&amp;gt; dir
+... linhas omitidas ...
+
+02/16/2016   10:36 PM   &amp;lt;DIR&amp;gt;        .venv
+
+... linhas omitidas ...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para começar a usar esse virtualenv temos que ativá-lo para isso execute:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;C:\Users\rafael\myprojectA&amp;gt; .venv\Scripts\activate.bat
+(.venv) C:\Users\rafael\myprojectA&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Perceba que o seu prompt vai ser modificado e o prefixo (.venv) será acrescentado no começo dele. Agora vamos instalar uma biblioteca, o ipython:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv) C:\Users\rafael\myprojectA&amp;gt; pip install ipython
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; tem várias dependências (que irão ser instaladas juntamente com ele, não se assuste) e sua função é seu um interpretador do Python com mais recursos. Quando eu não passo uma versão específica ao &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; ele vai instalar sempre a última versão estável da biblioteca, no momento que instalei no meu computador a versão corrente era a 4.1.1. Então neste projeto que chamei de &lt;tt class="docutils literal"&gt;myprojectA&lt;/tt&gt; teremos as seguintes bibliotecas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv) C:\Users\rafael\myprojectA&amp;gt; pip freeze
+decorator==4.0.9
+ipython==4.1.1
+ipython-genutils==0.1.0
+path.py==8.1.2
+pickeshare==0.6
+simplegeneric==0.8.1
+traitlets==4.1.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Com o comando acima &lt;tt class="docutils literal"&gt;pip freeze&lt;/tt&gt; veremos todas as bibliotecas instaladas nesse &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; e suas respectivas versões. Não vou detalhar neste post todos os poderes do &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt;, mas o parâmetro &lt;tt class="docutils literal"&gt;freeze&lt;/tt&gt; é extremamente importante para o desenvolvimento de sistemas em Python, futuramente posso fazer um post só explicando setup de projetos Python, se quiserem esse post rápido me dêem um toque ai nos comentários.&lt;/p&gt;
+&lt;p&gt;Para não ser muito repetitivo (&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself"&gt;DRY&lt;/a&gt;) no post e para aplicar um exercício de fixação ao mesmo tempo, refaça os passos com o diretório &lt;tt class="docutils literal"&gt;myprojectB&lt;/tt&gt; mas antes disso desative o &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; atual:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv) C:\Users\rafael\myprojectA&amp;gt; .venv\Scripts\deactivate.bat
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ao chegar no passo em que você instala o &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; pelo &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; não faça isso desta vez, quando chegar nesta etapa execute o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv) C:\Users\rafael\myprojectB&amp;gt; pip install ipython==3.0.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Desta forma vamos testemunhar o isolamento de ambientes! Ao terminar a instalaçào do &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; (versão 3.0.0), verifique o que você acabou de instalar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv) C:\Users\rafael\myprojectB&amp;gt; pip freeze
+ipython=3.0.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ai você vai me perguntar &amp;quot;ué!? cadê os requisitos!?&amp;quot; pois é... nesta versão do &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; ele não tinha tantos requisitos, só por essa demonstração já conseguimos ver o isolamento entre os ambientes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="criando-virtualenv-e-utilizando-o-pip-no-linux-e-mac-osx"&gt;
+&lt;h2&gt;Criando virtualenv e utilizando o pip no Linux e Mac OSX&lt;/h2&gt;
+&lt;p&gt;Vamos criar o diretório do projeto &lt;tt class="docutils literal"&gt;myprojectA&lt;/tt&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:~$ mkdir myprojectA
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos entrar nesta pasta:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:~$ cd myprojectA
+rafael@bloodmary:myprojectA$
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Posteriormente vamos criar um virtualenv:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:myprojectA$ python3 -m venv .venv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como &lt;cite&gt;.venv&lt;/cite&gt;, como podemos ver abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:myprojectA$ ls -a
+.  ..  .python-version  .venv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para começar a usar esse virtualenv temos que ativá-lo para isso execute:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:myprojectA$ source .venv/bin/activate
+(.venv)rafael@bloodmary:myprojectA$
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Perceba que o seu prompt vai ser modificado e o prefixo (.venv) será acrescentado no começo dele. Agora vamos instalar uma biblioteca, o ipython:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv)rafael@bloodmary:myprojectA$ pip install ipython
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; tem várias dependências (que irão ser instaladas juntamente com ele, não se assuste) e sua função é seu um interpretador do Python com mais recursos. Quando eu não passo uma versão específica ao &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; ele vai instalar sempre a última versão estável da biblioteca, no momento que instalei no meu computador a versão corrente era a 4.1.1. Então neste projeto que chamei de &lt;tt class="docutils literal"&gt;myprojectA&lt;/tt&gt; teremos as seguintes bibliotecas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv)rafael@bloodmary:myprojectA$ pip freeze
+decorator==4.0.9
+ipython==4.1.1
+ipython-genutils==0.1.0
+path.py==8.1.2
+pexpect==4.0.1
+pickleshare==0.6
+ptyprocess==0.5.1
+simplegeneric==0.8.1
+traitlets==4.1.0
+wheel==0.24.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Com o comando acima &lt;tt class="docutils literal"&gt;pip freeze&lt;/tt&gt; veremos todas as bibliotecas instaladas nesse &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; e suas respectivas versões. Não vou detalhar neste post todos os poderes do &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt;, mas o parâmetro &lt;tt class="docutils literal"&gt;freeze&lt;/tt&gt; é extremamente importante para o desenvolvimento de sistemas em Python, futuramente posso fazer um post só explicando setup de projetos Python, se quiserem esse post rápido me dêem um toque ai nos comentários.&lt;/p&gt;
+&lt;p&gt;Para não ser muito repetitivo (&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself"&gt;DRY&lt;/a&gt;) no post e para aplicar um exercício de fixação ao mesmo tempo, refaça os passos com o diretório &lt;tt class="docutils literal"&gt;myprojectB&lt;/tt&gt; mas antes disso desative o &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; atual:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv)rafael@bloodmary:myprojectA$ deactivate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ao chegar no passo em que você instala o &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; pelo &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; não faça isso desta vez, quando chegar nesta etapa execute o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv)rafael@bloodmary:myprojectB$ pip install ipython==3.0.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Desta forma vamos testemunhar o isolamento de ambientes! Ao terminar a instalaçào do &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; (versão 3.0.0), verifique o que você acabou de instalar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(.venv) rafael@bloodmary:myprojectB$ pip freeze
+ipython==3.0.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ai você vai me perguntar &amp;quot;ué!? cadê os requisitos!?&amp;quot; pois é... nesta versão do &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; ele não tinha tantos requisitos, só por essa demonstração já conseguimos ver o isolamento entre os ambientes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao"&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; são dois &amp;quot;utilitários&amp;quot; muito bacanas do Python, eles te ajudam muito na hora de criar qualquer projeto em Python, espero que esse post seja útil, apesar de ter ficado bem grandinho, mas é que tinha muita coisa pra escrever mesmo e ainda ficou faltando coisa.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="referencias-bacanas"&gt;
+&lt;h2&gt;Referências bacanas&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://garoa.net.br/wiki/Python/Ambiente_Virtual"&gt;https://garoa.net.br/wiki/Python/Ambiente_Virtual&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://virtualenv.readthedocs.org/en/latest/index.html"&gt;http://virtualenv.readthedocs.org/en/latest/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://virtualenvwrapper.readthedocs.org/en/latest/"&gt;https://virtualenvwrapper.readthedocs.org/en/latest/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="virtualenv"></category><category term="pip"></category></entry><entry><title>Instalando Python 3.5 no Windows 7</title><link href="http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html" rel="alternate"></link><updated>2016-02-16T21:09:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-16:instalando-python35-no-windows-7.html</id><summary type="html">&lt;p&gt;Muitos tem a dúvida de como instalar Python no Windows, hoje vou postar aqui um passo a passo bem básico pra que você consiga instalar Python3 no Windows 7.&lt;/p&gt;
 &lt;p&gt;Estou especificando as versões do Windows e a versão do Python pois como ambos evoluem com o tempo (e muito rapidamente) então creio eu que logo esse post irá ficar velho.&lt;/p&gt;
 &lt;p&gt;Ao escrever este post também tenho conhecimento que o Windows 10 é o Windows &amp;quot;da moda&amp;quot; porém neste momento só tenho uma máquina virtual de Windows 7 e estou sem tempo para criar uma máquina virtual de Windows 10, mas pelas pesquisas e googladas na internet creio que este post também será útil para outras versões do Windows.&lt;/p&gt;
 &lt;div class="section" id="baixando-o-python"&gt;

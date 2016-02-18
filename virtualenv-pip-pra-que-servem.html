@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>virtualenv/pip pra que servem? // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>fevereiro 17, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>virtualenv/pip pra que servem?</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/virtualenv.html">virtualenv</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/pip.html">pip</a>
+                        </p>
+                </header>
+            </section>
+            <p>Existem muitos posts pela internet afora dizendo como usar virtualenv e pip, e realmente é muito fácil. Mas para um iniciante a pergunta que vem a mente é... pra que serve virtualenv? Pra que serve pip?</p>
+<div class="section" id="explicando-para-quem-nunca-desenvolveu-em-python">
+<h2>Explicando para quem nunca desenvolveu em Python</h2>
+<p>Imagine que você tem um programa na sua máquina em uma versão 1.0.0 e em dado momento você quer instalar a versão 1.0.1, porém, você também precisa da versão 1.0.0 pois você tem algum arquivo que não abre na versão mais nova.</p>
+<p>Pois é, este problema também acontece com os desenvolvedores Python, e a solução criada para este problema foi o nosso amigo <tt class="docutils literal">virtualenv</tt>.</p>
+</div>
+<div class="section" id="o-virtualenv">
+<h2>O virtualenv</h2>
+<p>Uilizando o <tt class="docutils literal">virtualenv</tt> você consegue isolar as bibliotecas do projeto A em relação ao projeto B.</p>
+<p>Imagine que em determinado momento que o projeto A começou a ser desenvolvido você ainda não tinha Python3 e optou por usar Python2 e mais um monte de bibliotecas do Python2, porém o projeto B usa Python3 e obviamente você não vai querer usar as bibliotecas do Python2 pois você deu uma evoluída nesse projeto e quer usar tudo que existe de mais novo no mundo Python.</p>
+<p>Já imaginou a bagunça que seu sistema operacional vai fazer? O S.O. vai colocar a versão antiga e a nova no mesmo diretório e quando você chamar o comando <cite>import</cite> do Python para importar sua biblioteca você sempre ficará em dúvida de qual a versão você importou. Isso vira um caos com o passar do tempo, principalmente depois de você instalar muitas bibliotecas.</p>
+<p>Apenas fazendo um comentário pertinente, biblioteca também pode ser chamadas de módulos em Python e vice-versa. Estou chamando de biblioteca pois fica mais fácil para as pessoas que vem de outras linguagens entenderem.</p>
+</div>
+<div class="section" id="o-pip">
+<h2>O pip</h2>
+<p>Falei um pouco sobre <tt class="docutils literal">virtualenv</tt>, mas e o <tt class="docutils literal">pip</tt>?</p>
+<p>O <tt class="docutils literal">pip</tt> é o &quot;gerenciador de pacotes&quot; do Python. Assim como o <a class="reference external" href="https://www.debian.org/doc/manuals/apt-howto/ch-apt-get.pt-br.html">apt-get</a> e o <a class="reference external" href="http://brew.sh/">homebrew</a> que são os gerenciadores de pacotes do Ubuntu/Mac OSX o <a class="reference external" href="https://pypi.python.org/pypi/pip">pip</a> é o instalador de bibliotecas de terceiros padrão do Python.</p>
+<p>Com o pip você poderá instalar qualquer biblioteca disponível no famoso site de bibliotecas da Python Software Foundation o <a class="reference external" href="https://pypi.python.org/pypi">PyPi</a>. Eu não tenho ideia de como verificar quantas bibliotecas Python existem hoje no PyPi, mas posso dizer que são centenas, ou milhares! São muitos MESMO, para os mais variados fins.</p>
+</div>
+<div class="section" id="hands-on">
+<h2>Hands-on</h2>
+<p>Vamos criar um projeto chamado <tt class="docutils literal">myprojectA</tt> e outro chamado <tt class="docutils literal">myprojectB</tt> para demonstrar o uso do isolamento de ambientes que <tt class="docutils literal">virtualenv</tt> nos ajuda a fazer, também iremos instalar bibliotecas com o <tt class="docutils literal">pip</tt> durante o processo.</p>
+<p>Para executar este passo a passo estou usando Python 3:</p>
+<ul class="simple">
+<li>Se você não tem Python 3 instalado e usar Windows clique <a class="reference external" href="http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html">aqui</a> para ir ao post que escrevi ontem descrevendo este procedimento;</li>
+<li>Se você não tem Python 3 instalado e usar Linux ou Mac OSX você poderá usar o apt-get, yum ou homebrew para instalar Python3 no seu computador de forma absolutamente simples, porém ainda não fiz posts sobre isso.</li>
+</ul>
+<p>No Windows vou abrir o <tt class="docutils literal">Prompt de comandos</tt> que terá essa cara:</p>
+<img alt="prompt de comandos" src="images/prompt-windows-7.png" />
+<p>Onde <tt class="docutils literal">rafael</tt> é meu nome de usuário e o caminho padrão que usarei é <tt class="docutils literal"><span class="pre">C:\Users\rafael</span></tt>.</p>
+<p>No Linux/Mac OSX vamos abrir um terminal que terá esta aparência:</p>
+<img alt="terminal linux mac osx" src="images/terminal.png" />
+<p>Onde <tt class="docutils literal">rafael</tt> também é meu nome de usuário e o caminho padrão que usarei é <tt class="docutils literal">/home/rafael</tt>.</p>
+<p>Clique abaixo para continuar o procedimento relativo ao seu sistema operacional:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#criando-virtualenv-e-utilizando-o-pip-no-windows">Criando virtualenv e utilizando o pip no Windows</a></li>
+<li><a class="reference internal" href="#criando-virtualenv-e-utilizando-o-pip-no-linux-e-mac-osx">Criando virtualenv e utilizando o pip no Linux e Mac OSX</a></li>
+</ul>
+</div>
+<div class="section" id="criando-virtualenv-e-utilizando-o-pip-no-windows">
+<h2>Criando virtualenv e utilizando o pip no Windows</h2>
+<p>Vamos criar o diretório do projeto <tt class="docutils literal">myprojectA</tt>:</p>
+<div class="highlight"><pre>C:\Users\rafael&gt; mkdir myprojectA
+</pre></div>
+<p>Vamos entrar nesta pasta:</p>
+<div class="highlight"><pre>C:\Users\rafael&gt; cd myprojectA
+C:\Users\rafael\myprojectA&gt;
+</pre></div>
+<p>Posteriormente vamos criar um virtualenv:</p>
+<div class="highlight"><pre>C:\Users\rafael\myprojectA&gt; python -m venv .venv
+</pre></div>
+<p>Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como <cite>.venv</cite>, como podemos ver abaixo:</p>
+<div class="highlight"><pre>C:\Users\rafael\myprojectA&gt; dir
+... linhas omitidas ...
+
+02/16/2016   10:36 PM   &lt;DIR&gt;        .venv
+
+... linhas omitidas ...
+</pre></div>
+<p>Para começar a usar esse virtualenv temos que ativá-lo para isso execute:</p>
+<div class="highlight"><pre>C:\Users\rafael\myprojectA&gt; .venv\Scripts\activate.bat
+(.venv) C:\Users\rafael\myprojectA&gt;
+</pre></div>
+<p>Perceba que o seu prompt vai ser modificado e o prefixo (.venv) será acrescentado no começo dele. Agora vamos instalar uma biblioteca, o ipython:</p>
+<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectA&gt; pip install ipython
+</pre></div>
+<p>O <tt class="docutils literal">ipython</tt> tem várias dependências (que irão ser instaladas juntamente com ele, não se assuste) e sua função é seu um interpretador do Python com mais recursos. Quando eu não passo uma versão específica ao <tt class="docutils literal">pip</tt> ele vai instalar sempre a última versão estável da biblioteca, no momento que instalei no meu computador a versão corrente era a 4.1.1. Então neste projeto que chamei de <tt class="docutils literal">myprojectA</tt> teremos as seguintes bibliotecas:</p>
+<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectA&gt; pip freeze
+decorator==4.0.9
+ipython==4.1.1
+ipython-genutils==0.1.0
+path.py==8.1.2
+pickeshare==0.6
+simplegeneric==0.8.1
+traitlets==4.1.0
+</pre></div>
+<p>Com o comando acima <tt class="docutils literal">pip freeze</tt> veremos todas as bibliotecas instaladas nesse <tt class="docutils literal">virtualenv</tt> e suas respectivas versões. Não vou detalhar neste post todos os poderes do <tt class="docutils literal">pip</tt>, mas o parâmetro <tt class="docutils literal">freeze</tt> é extremamente importante para o desenvolvimento de sistemas em Python, futuramente posso fazer um post só explicando setup de projetos Python, se quiserem esse post rápido me dêem um toque ai nos comentários.</p>
+<p>Para não ser muito repetitivo (<a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>) no post e para aplicar um exercício de fixação ao mesmo tempo, refaça os passos com o diretório <tt class="docutils literal">myprojectB</tt> mas antes disso desative o <tt class="docutils literal">virtualenv</tt> atual:</p>
+<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectA&gt; .venv\Scripts\deactivate.bat
+</pre></div>
+<p>Ao chegar no passo em que você instala o <tt class="docutils literal">ipython</tt> pelo <tt class="docutils literal">pip</tt> não faça isso desta vez, quando chegar nesta etapa execute o comando abaixo:</p>
+<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectB&gt; pip install ipython==3.0.0
+</pre></div>
+<p>Desta forma vamos testemunhar o isolamento de ambientes! Ao terminar a instalaçào do <tt class="docutils literal">ipython</tt> (versão 3.0.0), verifique o que você acabou de instalar:</p>
+<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectB&gt; pip freeze
+ipython=3.0.0
+</pre></div>
+<p>Ai você vai me perguntar &quot;ué!? cadê os requisitos!?&quot; pois é... nesta versão do <tt class="docutils literal">ipython</tt> ele não tinha tantos requisitos, só por essa demonstração já conseguimos ver o isolamento entre os ambientes.</p>
+</div>
+<div class="section" id="criando-virtualenv-e-utilizando-o-pip-no-linux-e-mac-osx">
+<h2>Criando virtualenv e utilizando o pip no Linux e Mac OSX</h2>
+<p>Vamos criar o diretório do projeto <tt class="docutils literal">myprojectA</tt>:</p>
+<div class="highlight"><pre>rafael@bloodmary:~$ mkdir myprojectA
+</pre></div>
+<p>Vamos entrar nesta pasta:</p>
+<div class="highlight"><pre>rafael@bloodmary:~$ cd myprojectA
+rafael@bloodmary:myprojectA$
+</pre></div>
+<p>Posteriormente vamos criar um virtualenv:</p>
+<div class="highlight"><pre>rafael@bloodmary:myprojectA$ python3 -m venv .venv
+</pre></div>
+<p>Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como <cite>.venv</cite>, como podemos ver abaixo:</p>
+<div class="highlight"><pre>rafael@bloodmary:myprojectA$ ls -a
+.  ..  .python-version  .venv
+</pre></div>
+<p>Para começar a usar esse virtualenv temos que ativá-lo para isso execute:</p>
+<div class="highlight"><pre>rafael@bloodmary:myprojectA$ source .venv/bin/activate
+(.venv)rafael@bloodmary:myprojectA$
+</pre></div>
+<p>Perceba que o seu prompt vai ser modificado e o prefixo (.venv) será acrescentado no começo dele. Agora vamos instalar uma biblioteca, o ipython:</p>
+<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectA$ pip install ipython
+</pre></div>
+<p>O <tt class="docutils literal">ipython</tt> tem várias dependências (que irão ser instaladas juntamente com ele, não se assuste) e sua função é seu um interpretador do Python com mais recursos. Quando eu não passo uma versão específica ao <tt class="docutils literal">pip</tt> ele vai instalar sempre a última versão estável da biblioteca, no momento que instalei no meu computador a versão corrente era a 4.1.1. Então neste projeto que chamei de <tt class="docutils literal">myprojectA</tt> teremos as seguintes bibliotecas:</p>
+<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectA$ pip freeze
+decorator==4.0.9
+ipython==4.1.1
+ipython-genutils==0.1.0
+path.py==8.1.2
+pexpect==4.0.1
+pickleshare==0.6
+ptyprocess==0.5.1
+simplegeneric==0.8.1
+traitlets==4.1.0
+wheel==0.24.0
+</pre></div>
+<p>Com o comando acima <tt class="docutils literal">pip freeze</tt> veremos todas as bibliotecas instaladas nesse <tt class="docutils literal">virtualenv</tt> e suas respectivas versões. Não vou detalhar neste post todos os poderes do <tt class="docutils literal">pip</tt>, mas o parâmetro <tt class="docutils literal">freeze</tt> é extremamente importante para o desenvolvimento de sistemas em Python, futuramente posso fazer um post só explicando setup de projetos Python, se quiserem esse post rápido me dêem um toque ai nos comentários.</p>
+<p>Para não ser muito repetitivo (<a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>) no post e para aplicar um exercício de fixação ao mesmo tempo, refaça os passos com o diretório <tt class="docutils literal">myprojectB</tt> mas antes disso desative o <tt class="docutils literal">virtualenv</tt> atual:</p>
+<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectA$ deactivate
+</pre></div>
+<p>Ao chegar no passo em que você instala o <tt class="docutils literal">ipython</tt> pelo <tt class="docutils literal">pip</tt> não faça isso desta vez, quando chegar nesta etapa execute o comando abaixo:</p>
+<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectB$ pip install ipython==3.0.0
+</pre></div>
+<p>Desta forma vamos testemunhar o isolamento de ambientes! Ao terminar a instalaçào do <tt class="docutils literal">ipython</tt> (versão 3.0.0), verifique o que você acabou de instalar:</p>
+<div class="highlight"><pre>(.venv) rafael@bloodmary:myprojectB$ pip freeze
+ipython==3.0.0
+</pre></div>
+<p>Ai você vai me perguntar &quot;ué!? cadê os requisitos!?&quot; pois é... nesta versão do <tt class="docutils literal">ipython</tt> ele não tinha tantos requisitos, só por essa demonstração já conseguimos ver o isolamento entre os ambientes.</p>
+</div>
+<div class="section" id="conclusao">
+<h2>Conclusão</h2>
+<p><tt class="docutils literal">pip</tt> e <tt class="docutils literal">virtualenv</tt> são dois &quot;utilitários&quot; muito bacanas do Python, eles te ajudam muito na hora de criar qualquer projeto em Python, espero que esse post seja útil, apesar de ter ficado bem grandinho, mas é que tinha muita coisa pra escrever mesmo e ainda ficou faltando coisa.</p>
+</div>
+<div class="section" id="referencias-bacanas">
+<h2>Referências bacanas</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://garoa.net.br/wiki/Python/Ambiente_Virtual">https://garoa.net.br/wiki/Python/Ambiente_Virtual</a></li>
+<li><a class="reference external" href="http://virtualenv.readthedocs.org/en/latest/index.html">http://virtualenv.readthedocs.org/en/latest/index.html</a></li>
+<li><a class="reference external" href="https://virtualenvwrapper.readthedocs.org/en/latest/">https://virtualenvwrapper.readthedocs.org/en/latest/</a></li>
+</ul>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>
