@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>Django assertFormErrorCode com py.test e com TestCase // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>fevereiro 18, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Django assertFormErrorCode com py.test e com TestCase</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/django.html">django</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/pytest.html">pytest</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/testcase.html">testcase</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/tdd.html">tdd</a>
+                        </p>
+                </header>
+            </section>
+            <p>Estive trabalhando em um teste hoje utilizando py.test e queria usar assertFormErrorCode padrão da suite de testes do Django, porém não queria extender meu teste de TestCase, como fazer?</p>
+<p>Ta legal, se perdeu? Continue lendo abaixo que vou explicar o que é o assertFormErrorCode e também como utilizá-lo sem depender da suite de testes do Django.</p>
+<div class="section" id="introducao">
+<h2>Introdução</h2>
+<p>Aprendi a usar recentemente vários asserts poderosos que o Django já te dá de presente na sua suite de testes. Quem me mostrou isso foi o <a class="reference external" href="https://twitter.com/henriquebastos">Henrique Bastos</a> no curso <a class="reference external" href="http://welcometothedjango.com.br/">Welcome to the Django</a> o qual recomendo a todos que façam, pois é um ótimo curso, e gostaria de fazer um agradecimento especial neste post! Parabéns Henrique pelo ótimo curso!</p>
+</div>
+<div class="section" id="codigos-postados-aqui">
+<h2>Códigos postados aqui</h2>
+<p>Os códigos de exemplo deste post em sua maioria podem ser visualizados e estudados no github em um commit anterior ao atual do projeto wttd, clique <a class="reference external" href="https://github.com/rafaelhenrique/wttd/tree/85c702631923cd3b47ec992c4cfcb06d9f172827">aqui para visualizar o projeto como um todo.</a></p>
+</div>
+<div class="section" id="mas-o-que-e-assertformerrorcode">
+<h2>Mas o que é assertFormErrorCode?</h2>
+<p>Este assert é mais um dos asserts interessantíssimos que o Django tem na sua suite de testes. Vejamos um exemplo de como esse cara pode ser usado nos seus testes:</p>
+<p><tt class="docutils literal">Formulário básico de inscrição</tt></p>
+<p><tt class="docutils literal">wttd/eventex/subscriptions/forms.py</tt></p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+
+
+<span class="k">def</span> <span class="nf">validate_cpf</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;CPF deve conter apenas números&#39;</span><span class="p">,</span> <span class="s">&#39;digits&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">11</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;CPF deve ter 11 números&#39;</span><span class="p">,</span> <span class="s">&#39;length&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SubscriptionForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Nome&#39;</span><span class="p">)</span>
+    <span class="n">cpf</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;CPF&#39;</span><span class="p">,</span>
+                          <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">validate_cpf</span><span class="p">])</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Email&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">phone</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Telefone&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+</pre></div>
+<p>Perceba que este é um formulário bem básico onde podemos ver claramente que o campo <tt class="docutils literal">cpf</tt> é validado com regras bem básicas onde somente verificamos 2 coisas:</p>
+<ul class="simple">
+<li>se o cpf digitado não contem caracteres que não sejam números</li>
+<li>se o cpf tem 11 dígitos</li>
+</ul>
+<p>O que eu acho mais interessante deste código é a questão do <tt class="docutils literal">ErrorCode</tt>! Em todo <tt class="docutils literal">ValidationError</tt> de podemos passar um <tt class="docutils literal">ErrorCode</tt> como parâmetro, que no caso das duas validações acima, podemos visualizar os códigos de erro <tt class="docutils literal">digits</tt> e <tt class="docutils literal">length</tt>.</p>
+<p>Ta legal, você não curtiu? É eu também não via sentido nisso antes de ver o que era possível fazer com isso.</p>
+</div>
+<div class="section" id="pra-que-especificar-errorcodes-nos-seus-validationerror">
+<h2>Pra que especificar <tt class="docutils literal">ErrorCodes</tt> nos seus <tt class="docutils literal">ValidationError</tt>?</h2>
+<p>Quando você cria um teste comumente você vai querer saber quais as mensagens de erro o seu formulário está exibindo para os usuários, porém ai vem a questão, se você tem milhares de formulários com milhares de mensagens de erro, como é o trabalho que você terá?</p>
+<p>Se você mudar uma mensagem de erro você terá que sair garimpando no seu código onde você estava usando aquela mensagem para poder modificar para a nova e isso gasta TEMPO e consequentemente DINHEIRO! Fora que é chato pra caramba!</p>
+<p>Pensando nisso você pode criar seus testes apontando para o <tt class="docutils literal">ErrorCode</tt> assim se a mensagem mudar o <tt class="docutils literal">ErrorCode</tt> permanecerá o mesmo e você não quebra nenhum teste! Sensacional isso!</p>
+</div>
+<div class="section" id="show-me-the-code">
+<h2>Show me the code</h2>
+<p>Vejamos abaixo um teste criado no Django utilizando a verificação por <tt class="docutils literal">ErrorCode</tt>:</p>
+<p><tt class="docutils literal">Teste do formulário básico de inscrição</tt></p>
+<p><tt class="docutils literal">wttd/eventex/subscriptions/tests/test_form_subscription.py</tt></p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="kn">from</span> <span class="nn">eventex.subscriptions.forms</span> <span class="kn">import</span> <span class="n">SubscriptionForm</span>
+
+
+<span class="k">class</span> <span class="nc">SubscriptionFormTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">test_cpf_is_digit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;CPF must only accept digits&quot;&quot;&quot;</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_validated_form</span><span class="p">(</span><span class="n">cpf</span><span class="o">=</span><span class="s">&#39;ABCD5678901&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFormErrorCode</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="s">&#39;cpf&#39;</span><span class="p">,</span> <span class="s">&#39;digits&#39;</span><span class="p">)</span>
+
+    <span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+</pre></div>
+<p>Olha ai que bacana esse teste! Limpo! Se você mudar a mensagem de erro no form o teste independe da mensagem, ele sempre irá olhar para o <tt class="docutils literal">ErrorCode</tt>.</p>
+</div>
+<div class="section" id="tudo-bonito-e-maravilhoso-mas">
+<h2>Tudo bonito e maravilhoso mas...</h2>
+<p>Mas... se você não usar a suite de testes do Django (herdando a classe TestCase) você não ganha esse assert maravilhoso chamado <tt class="docutils literal">assertFormErrorCode</tt>. E agora?</p>
+</div>
+<div class="section" id="procurando-uma-solucao-que-funciona-independente-do-testcase">
+<h2>Procurando uma solução que funciona independente do TestCase</h2>
+<p>Depois de garimpar algum tempo na internet (e amolar um amigo do trabalho) achei este post <a class="reference external" href="http://stackoverflow.com/questions/18781492/forms-validationerror-and-error-code">aqui</a> no stack overflow, o padroeiro dos desenvolvedores de software.</p>
+<p>Neste post o cara colocou uma forma diferente de conseguir pegar o <tt class="docutils literal">ErrorCode</tt> que está na exception do <tt class="docutils literal">ValidationError</tt>, ele usou:</p>
+<div class="highlight"><pre>&gt;&gt;&gt; print(form.errors.as_json())
+{&quot;__all__&quot;: [
+    {&quot;message&quot;: &quot;Your account has not been activated.&quot;, &quot;code&quot;: &quot;inactive&quot;}
+]}
+</pre></div>
+<p>Desta forma o cara trouxe o erro do form em json e depois desta maneira ele consegue pegar uma key chamada &quot;code&quot; onde está o <tt class="docutils literal">ErrorCode</tt>. Achei bacana isso ai, porém não é tão simples como o cara postou (nunca é).</p>
+</div>
+<div class="section" id="minha-solucao">
+<h2>Minha solução</h2>
+<p>Criei uma classe de teste base minha chamada <tt class="docutils literal">BaseTest</tt>:</p>
+<p><tt class="docutils literal">Classe base de testes</tt></p>
+<p><tt class="docutils literal">este cara não está no github</tt></p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">Client</span>
+
+
+<span class="k">class</span> <span class="nc">BaseTest</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send post to form.</span>
+
+<span class="sd">            endpoint: url for endpoint to test</span>
+<span class="sd">            data: data to send to form</span>
+<span class="sd">            field_name: name of form field on Django.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s">&#39;context&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">context</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s">&#39;form&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">as_data</span><span class="p">()[</span><span class="n">field_name</span><span class="p">]</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="n">error</span><span class="o">.</span><span class="n">code</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">resp</span><span class="p">,</span> <span class="n">errors</span>
+</pre></div>
+<p>Meu problema era fazer um post retornar os <tt class="docutils literal">ErrorCodes</tt> de forma fácil, com essa classe <tt class="docutils literal">BaseTest</tt> consegui atingir meu objetivo. Explicando de forma detalhada:</p>
+<ul class="simple">
+<li>Primeiro importei o <tt class="docutils literal">Client</tt> do Django que é um cara que eu realmente queria usar para fazer meus requests;</li>
+<li>O <tt class="docutils literal">setup</tt> do py.test é tudo em minúsculo mesmo (diferente do Django);</li>
+<li>Ao colocar criar o <tt class="docutils literal">self.client</tt> consigo usar o mesmo client para o resto da classe em forma de atributo;</li>
+<li>Criei um método de post para ser usado pela classe filha, onde eu retorno resp que é o response do request que o <tt class="docutils literal">self.client.post</tt> executa e também retorno uma lista contendo os meus <tt class="docutils literal">ErrorCodes</tt> todos bonitos em uma única lista.</li>
+</ul>
+<p>Bem feito isso é só usar esse cara! Código de exemplo de uso:</p>
+<p><tt class="docutils literal">Teste que usa a classe BaseTest, baseada na classe SubscriptionFormTest</tt></p>
+<p><tt class="docutils literal">este cara não está no github</tt></p>
+<div class="highlight"><pre><span class="o">...</span><span class="n">linhas</span> <span class="n">omitidas</span><span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">TestSubscriptionForm</span><span class="p">(</span><span class="n">BaseTest</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_post_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">resp</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">ENDPOINT</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;cpf&quot;</span> <span class="p">:</span> <span class="s">&quot;ABC&quot;</span><span class="p">},</span> <span class="s">&#39;cpf&#39;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="k">assert</span> <span class="s">&#39;digits&#39;</span> <span class="ow">in</span> <span class="n">errors</span>
+
+<span class="o">...</span><span class="n">linhas</span> <span class="n">omitidas</span><span class="o">...</span>
+</pre></div>
+<p>Desta forma este teste só vai passar caso o <tt class="docutils literal">ErrorCode</tt> <tt class="docutils literal">digits</tt> sejá levantado como exceção do <tt class="docutils literal">ValidationError</tt>.</p>
+<p>Basicamente foi essa a brincadeira de hoje, eu achei bem legal, mesmo sem extender o TestCase padrão do Django conseguimos fazer a mesma coisa. Neste caso foi um pouco diferente pois o meu teste era pra validar um post e não propriamente um form, mas creio que a idéia tenha ficado clara, caso não, se não entenderem alguma coisa não deixem de me contatar.</p>
+</div>
+<div class="section" id="conclusao">
+<h2>Conclusão</h2>
+<p>Quando você não consegue usar um recurso padrão Django dentro do Django para fazer alguma coisa, nunca se esqueça que o Django é Python, e sempre você conseguirá fazer algo para contornar a situação de uma forma bacana.</p>
+<p>Bom é isso espero que tenham gostado do post! Deixem seus comentários!</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>

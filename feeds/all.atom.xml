@@ -1,5 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-02-17T21:18:00-02:00</updated><entry><title>virtualenv/pip pra que servem?</title><link href="http://blog.abraseucodigo.com.br/virtualenv-pip-pra-que-servem.html" rel="alternate"></link><updated>2016-02-17T21:18:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-17:virtualenv-pip-pra-que-servem.html</id><summary type="html">&lt;p&gt;Existem muitos posts pela internet afora dizendo como usar virtualenv e pip, e realmente é muito fácil. Mas para um iniciante a pergunta que vem a mente é... pra que serve virtualenv? Pra que serve pip?&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-02-18T21:16:00-02:00</updated><entry><title>Django assertFormErrorCode com py.test e com TestCase</title><link href="http://blog.abraseucodigo.com.br/django-assertformerrorcode-com-pytest-e-com-testcase.html" rel="alternate"></link><updated>2016-02-18T21:16:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-18:django-assertformerrorcode-com-pytest-e-com-testcase.html</id><summary type="html">&lt;p&gt;Estive trabalhando em um teste hoje utilizando py.test e queria usar assertFormErrorCode padrão da suite de testes do Django, porém não queria extender meu teste de TestCase, como fazer?&lt;/p&gt;
+&lt;p&gt;Ta legal, se perdeu? Continue lendo abaixo que vou explicar o que é o assertFormErrorCode e também como utilizá-lo sem depender da suite de testes do Django.&lt;/p&gt;
+&lt;div class="section" id="introducao"&gt;
+&lt;h2&gt;Introdução&lt;/h2&gt;
+&lt;p&gt;Aprendi a usar recentemente vários asserts poderosos que o Django já te dá de presente na sua suite de testes. Quem me mostrou isso foi o &lt;a class="reference external" href="https://twitter.com/henriquebastos"&gt;Henrique Bastos&lt;/a&gt; no curso &lt;a class="reference external" href="http://welcometothedjango.com.br/"&gt;Welcome to the Django&lt;/a&gt; o qual recomendo a todos que façam, pois é um ótimo curso, e gostaria de fazer um agradecimento especial neste post! Parabéns Henrique pelo ótimo curso!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="codigos-postados-aqui"&gt;
+&lt;h2&gt;Códigos postados aqui&lt;/h2&gt;
+&lt;p&gt;Os códigos de exemplo deste post em sua maioria podem ser visualizados e estudados no github em um commit anterior ao atual do projeto wttd, clique &lt;a class="reference external" href="https://github.com/rafaelhenrique/wttd/tree/85c702631923cd3b47ec992c4cfcb06d9f172827"&gt;aqui para visualizar o projeto como um todo.&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="mas-o-que-e-assertformerrorcode"&gt;
+&lt;h2&gt;Mas o que é assertFormErrorCode?&lt;/h2&gt;
+&lt;p&gt;Este assert é mais um dos asserts interessantíssimos que o Django tem na sua suite de testes. Vejamos um exemplo de como esse cara pode ser usado nos seus testes:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;Formulário básico de inscrição&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;wttd/eventex/subscriptions/forms.py&lt;/tt&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;validate_cpf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isdigit&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF deve conter apenas números&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF deve ter 11 números&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;length&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SubscriptionForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cpf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                          &lt;span class="n"&gt;validators&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;validate_cpf&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;EmailField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Email&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;phone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Telefone&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Perceba que este é um formulário bem básico onde podemos ver claramente que o campo &lt;tt class="docutils literal"&gt;cpf&lt;/tt&gt; é validado com regras bem básicas onde somente verificamos 2 coisas:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;se o cpf digitado não contem caracteres que não sejam números&lt;/li&gt;
+&lt;li&gt;se o cpf tem 11 dígitos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O que eu acho mais interessante deste código é a questão do &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt;! Em todo &lt;tt class="docutils literal"&gt;ValidationError&lt;/tt&gt; de podemos passar um &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt; como parâmetro, que no caso das duas validações acima, podemos visualizar os códigos de erro &lt;tt class="docutils literal"&gt;digits&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;length&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Ta legal, você não curtiu? É eu também não via sentido nisso antes de ver o que era possível fazer com isso.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="pra-que-especificar-errorcodes-nos-seus-validationerror"&gt;
+&lt;h2&gt;Pra que especificar &lt;tt class="docutils literal"&gt;ErrorCodes&lt;/tt&gt; nos seus &lt;tt class="docutils literal"&gt;ValidationError&lt;/tt&gt;?&lt;/h2&gt;
+&lt;p&gt;Quando você cria um teste comumente você vai querer saber quais as mensagens de erro o seu formulário está exibindo para os usuários, porém ai vem a questão, se você tem milhares de formulários com milhares de mensagens de erro, como é o trabalho que você terá?&lt;/p&gt;
+&lt;p&gt;Se você mudar uma mensagem de erro você terá que sair garimpando no seu código onde você estava usando aquela mensagem para poder modificar para a nova e isso gasta TEMPO e consequentemente DINHEIRO! Fora que é chato pra caramba!&lt;/p&gt;
+&lt;p&gt;Pensando nisso você pode criar seus testes apontando para o &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt; assim se a mensagem mudar o &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt; permanecerá o mesmo e você não quebra nenhum teste! Sensacional isso!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="show-me-the-code"&gt;
+&lt;h2&gt;Show me the code&lt;/h2&gt;
+&lt;p&gt;Vejamos abaixo um teste criado no Django utilizando a verificação por &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;Teste do formulário básico de inscrição&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;wttd/eventex/subscriptions/tests/test_form_subscription.py&lt;/tt&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;eventex.subscriptions.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SubscriptionForm&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SubscriptionFormTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_cpf_is_digit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;CPF must only accept digits&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;make_validated_form&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cpf&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ABCD5678901&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertFormErrorCode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;cpf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Olha ai que bacana esse teste! Limpo! Se você mudar a mensagem de erro no form o teste independe da mensagem, ele sempre irá olhar para o &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="tudo-bonito-e-maravilhoso-mas"&gt;
+&lt;h2&gt;Tudo bonito e maravilhoso mas...&lt;/h2&gt;
+&lt;p&gt;Mas... se você não usar a suite de testes do Django (herdando a classe TestCase) você não ganha esse assert maravilhoso chamado &lt;tt class="docutils literal"&gt;assertFormErrorCode&lt;/tt&gt;. E agora?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="procurando-uma-solucao-que-funciona-independente-do-testcase"&gt;
+&lt;h2&gt;Procurando uma solução que funciona independente do TestCase&lt;/h2&gt;
+&lt;p&gt;Depois de garimpar algum tempo na internet (e amolar um amigo do trabalho) achei este post &lt;a class="reference external" href="http://stackoverflow.com/questions/18781492/forms-validationerror-and-error-code"&gt;aqui&lt;/a&gt; no stack overflow, o padroeiro dos desenvolvedores de software.&lt;/p&gt;
+&lt;p&gt;Neste post o cara colocou uma forma diferente de conseguir pegar o &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt; que está na exception do &lt;tt class="docutils literal"&gt;ValidationError&lt;/tt&gt;, ele usou:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; print(form.errors.as_json())
+{&amp;quot;__all__&amp;quot;: [
+    {&amp;quot;message&amp;quot;: &amp;quot;Your account has not been activated.&amp;quot;, &amp;quot;code&amp;quot;: &amp;quot;inactive&amp;quot;}
+]}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Desta forma o cara trouxe o erro do form em json e depois desta maneira ele consegue pegar uma key chamada &amp;quot;code&amp;quot; onde está o &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt;. Achei bacana isso ai, porém não é tão simples como o cara postou (nunca é).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="minha-solucao"&gt;
+&lt;h2&gt;Minha solução&lt;/h2&gt;
+&lt;p&gt;Criei uma classe de teste base minha chamada &lt;tt class="docutils literal"&gt;BaseTest&lt;/tt&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;Classe base de testes&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;este cara não está no github&lt;/tt&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BaseTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;field_name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Send post to form.&lt;/span&gt;
+
+&lt;span class="sd"&gt;            endpoint: url for endpoint to test&lt;/span&gt;
+&lt;span class="sd"&gt;            data: data to send to form&lt;/span&gt;
+&lt;span class="sd"&gt;            field_name: name of form field on Django.&lt;/span&gt;
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;resp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;getattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;context&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_data&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="n"&gt;field_name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Meu problema era fazer um post retornar os &lt;tt class="docutils literal"&gt;ErrorCodes&lt;/tt&gt; de forma fácil, com essa classe &lt;tt class="docutils literal"&gt;BaseTest&lt;/tt&gt; consegui atingir meu objetivo. Explicando de forma detalhada:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Primeiro importei o &lt;tt class="docutils literal"&gt;Client&lt;/tt&gt; do Django que é um cara que eu realmente queria usar para fazer meus requests;&lt;/li&gt;
+&lt;li&gt;O &lt;tt class="docutils literal"&gt;setup&lt;/tt&gt; do py.test é tudo em minúsculo mesmo (diferente do Django);&lt;/li&gt;
+&lt;li&gt;Ao colocar criar o &lt;tt class="docutils literal"&gt;self.client&lt;/tt&gt; consigo usar o mesmo client para o resto da classe em forma de atributo;&lt;/li&gt;
+&lt;li&gt;Criei um método de post para ser usado pela classe filha, onde eu retorno resp que é o response do request que o &lt;tt class="docutils literal"&gt;self.client.post&lt;/tt&gt; executa e também retorno uma lista contendo os meus &lt;tt class="docutils literal"&gt;ErrorCodes&lt;/tt&gt; todos bonitos em uma única lista.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bem feito isso é só usar esse cara! Código de exemplo de uso:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;Teste que usa a classe BaseTest, baseada na classe SubscriptionFormTest&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;este cara não está no github&lt;/tt&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestSubscriptionForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseTest&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_post_error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENDPOINT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cpf&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ABC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;cpf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;
+        &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Desta forma este teste só vai passar caso o &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt; &lt;tt class="docutils literal"&gt;digits&lt;/tt&gt; sejá levantado como exceção do &lt;tt class="docutils literal"&gt;ValidationError&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Basicamente foi essa a brincadeira de hoje, eu achei bem legal, mesmo sem extender o TestCase padrão do Django conseguimos fazer a mesma coisa. Neste caso foi um pouco diferente pois o meu teste era pra validar um post e não propriamente um form, mas creio que a idéia tenha ficado clara, caso não, se não entenderem alguma coisa não deixem de me contatar.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao"&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Quando você não consegue usar um recurso padrão Django dentro do Django para fazer alguma coisa, nunca se esqueça que o Django é Python, e sempre você conseguirá fazer algo para contornar a situação de uma forma bacana.&lt;/p&gt;
+&lt;p&gt;Bom é isso espero que tenham gostado do post! Deixem seus comentários!&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="django"></category><category term="pytest"></category><category term="testcase"></category><category term="tdd"></category></entry><entry><title>virtualenv/pip pra que servem?</title><link href="http://blog.abraseucodigo.com.br/virtualenv-pip-pra-que-servem.html" rel="alternate"></link><updated>2016-02-17T21:18:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-17:virtualenv-pip-pra-que-servem.html</id><summary type="html">&lt;p&gt;Existem muitos posts pela internet afora dizendo como usar virtualenv e pip, e realmente é muito fácil. Mas para um iniciante a pergunta que vem a mente é... pra que serve virtualenv? Pra que serve pip?&lt;/p&gt;
 &lt;div class="section" id="explicando-para-quem-nunca-desenvolveu-em-python"&gt;
 &lt;h2&gt;Explicando para quem nunca desenvolveu em Python&lt;/h2&gt;
 &lt;p&gt;Imagine que você tem um programa na sua máquina em uma versão 1.0.0 e em dado momento você quer instalar a versão 1.0.1, porém, você também precisa da versão 1.0.0 pois você tem algum arquivo que não abre na versão mais nova.&lt;/p&gt;
