@@ -46,7 +46,11 @@ MENUITEMS = (
     ('Arquivo', 'archives.html'),
     ('Contato', 'pages/contato.html'),
     ('Sobre', 'pages/sobre.html'),
-    ('Blog antigo', 'http://abraseucodigo.blogspot.com')
+    ('Blog antigo', 'http://abraseucodigo.blogspot.com'),
+    ('Python Sorocaba',
+        'https://groups.google.com/forum/#!forum/python-sorocaba'),
+    ('Hacklab Sorocaba',
+        'https://groups.google.com/forum/?hl=pt#!forum/hackerspace-sorocaba')
 )
 
 # Social links
