@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/</loc>
-<lastmod>2016-02-20T13:15:25-00:00</lastmod>
+<lastmod>2016-02-20T13:37:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/archives.html</loc>
-<lastmod>2016-02-20T13:15:25-00:00</lastmod>
+<lastmod>2016-02-20T13:37:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/tags.html</loc>
-<lastmod>2016-02-20T13:15:25-00:00</lastmod>
+<lastmod>2016-02-20T13:37:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/categories.html</loc>
-<lastmod>2016-02-20T13:15:25-00:00</lastmod>
+<lastmod>2016-02-20T13:37:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/pages/contato.html</loc>
-<lastmod>2016-02-20T13:15:25-00:00</lastmod>
+<lastmod>2016-02-20T13:37:54-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -43,6 +43,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2015-09-19T17:27:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/como-enviar-seu-codigo-para-o-github.html</loc>
+<lastmod>2016-02-20T13:36:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -110,7 +117,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/category/git.html</loc>
-<lastmod>2015-03-24T10:16:00-03:06</lastmod>
+<lastmod>2016-02-20T13:36:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -138,21 +145,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/tag/git.html</loc>
-<lastmod>2015-03-24T10:16:00-03:06</lastmod>
+<lastmod>2016-02-20T13:36:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/sorocaba.html</loc>
-<lastmod>2016-02-20T13:02:00-03:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.abraseucodigo.com.br/tag/python.html</loc>
-<lastmod>2016-02-20T13:02:00-03:06</lastmod>
+<loc>http://blog.abraseucodigo.com.br/tag/testcase.html</loc>
+<lastmod>2016-02-18T21:16:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -165,8 +165,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/squash.html</loc>
-<lastmod>2015-03-24T10:16:00-03:06</lastmod>
+<loc>http://blog.abraseucodigo.com.br/tag/python.html</loc>
+<lastmod>2016-02-20T13:02:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/pytest.html</loc>
+<lastmod>2016-02-18T21:16:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -186,8 +193,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/testcase.html</loc>
-<lastmod>2016-02-18T21:16:00-03:06</lastmod>
+<loc>http://blog.abraseucodigo.com.br/tag/sorocaba.html</loc>
+<lastmod>2016-02-20T13:02:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -200,8 +207,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/pytest.html</loc>
-<lastmod>2016-02-18T21:16:00-03:06</lastmod>
+<loc>http://blog.abraseucodigo.com.br/tag/github.html</loc>
+<lastmod>2016-02-20T13:36:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/squash.html</loc>
+<lastmod>2015-03-24T10:16:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -228,13 +242,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/github.html</loc>
-<lastmod>2015-03-24T10:16:00-03:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://blog.abraseucodigo.com.br/tag/tsuru.html</loc>
 <lastmod>2015-09-22T22:48:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -243,7 +250,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html</loc>
-<lastmod>2016-02-20T13:02:00-03:06</lastmod>
+<lastmod>2016-02-20T13:36:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
