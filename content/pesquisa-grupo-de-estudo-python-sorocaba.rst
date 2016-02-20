@@ -2,7 +2,7 @@ Pesquisa Grupo de Estudo Python Sorocaba
 ########################################
 
 :date: 2016-02-20 13:02
-:tags: python, grupo de estudos python sorocaba, sorocaba
+:tags: python, grupo de estudos python, sorocaba
 :category: Python
 :slug: pesquisa-grupo-de-estudo-python-sorocaba
 :author: Rafael Henrique da Silva Correia
