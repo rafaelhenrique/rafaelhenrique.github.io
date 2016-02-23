@@ -7,6 +7,7 @@ Grupo de Estudos Python Aula 01
 :slug: grupo-de-estudos-python-aula-01
 :author: Rafael Henrique da Silva Correia
 :email:  rafael@abraseucodigo.com.br
+:summary: Hoje começamos a segunda turma de Introdução a Python no Grupo de Estudos Sorocaba.
 
 Hoje começamos a segunda turma de Introdução a Python no Grupo de Estudos Sorocaba. Segue vídeo gravado:
 
