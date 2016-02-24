@@ -1,4 +1,4 @@
-Vídeo 01 - Grupo de Estudos Python
+Vídeo: 01 - Grupo de Estudos Python
 ##################################
 
 :date: 2016-02-22 23:52
