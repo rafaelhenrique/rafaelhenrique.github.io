@@ -1,10 +1,10 @@
-Grupo de Estudos Python Aula 01
-################################
+Vídeo 01 - Grupo de Estudos Python
+##################################
 
 :date: 2016-02-22 23:52
 :tags: python, grupo de estudos python, sorocaba
 :category: Python
-:slug: grupo-de-estudos-python-aula-01
+:slug: video-01-grupo-de-estudos-python
 :author: Rafael Henrique da Silva Correia
 :email:  rafael@abraseucodigo.com.br
 :summary: Hoje começamos a segunda turma de Introdução a Python no Grupo de Estudos Sorocaba.
