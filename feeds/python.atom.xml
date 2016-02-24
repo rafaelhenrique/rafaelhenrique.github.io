@@ -132,10 +132,10 @@ Distribuição gratuita no &lt;a class="reference external" href="http://ark4n.w
 &lt;div class="section" id="hands-on"&gt;
 &lt;h2&gt;Hands-on&lt;/h2&gt;
 &lt;p&gt;Vamos criar um projeto chamado &lt;tt class="docutils literal"&gt;myprojectA&lt;/tt&gt; e outro chamado &lt;tt class="docutils literal"&gt;myprojectB&lt;/tt&gt; para demonstrar o uso do isolamento de ambientes que &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; nos ajuda a fazer, também iremos instalar bibliotecas com o &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; durante o processo.&lt;/p&gt;
-&lt;p&gt;Para executar este passo a passo estou usando Python 3:&lt;/p&gt;
+&lt;p&gt;Para executar este passo a passo estou usando Python 3.5.X:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Se você não tem Python 3 instalado e usar Windows clique &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html"&gt;aqui&lt;/a&gt; para ir ao post que escrevi ontem descrevendo este procedimento;&lt;/li&gt;
-&lt;li&gt;Se você não tem Python 3 instalado e usar Linux ou Mac OSX você poderá usar o apt-get, yum ou homebrew para instalar Python3 no seu computador de forma absolutamente simples, porém ainda não fiz posts sobre isso.&lt;/li&gt;
+&lt;li&gt;Se você não tem Python 3.5.X instalado e usar Windows clique &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html"&gt;aqui&lt;/a&gt; para ir ao post que escrevi ontem descrevendo este procedimento;&lt;/li&gt;
+&lt;li&gt;Se você não tem Python 3.5.X instalado e usar Linux ou Mac OSX você poderá usar o apt-get, yum ou homebrew para instalar Python3.5.X no seu computador de forma absolutamente simples, porém ainda não fiz posts sobre isso.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;No Windows vou abrir o &lt;tt class="docutils literal"&gt;Prompt de comandos&lt;/tt&gt; que terá essa cara:&lt;/p&gt;
 &lt;img alt="prompt de comandos" src="images/prompt-windows-7.png" /&gt;
@@ -209,7 +209,7 @@ ipython=3.0.0
 rafael@bloodmary:myprojectA$
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Posteriormente vamos criar um virtualenv:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:myprojectA$ python3 -m venv .venv
+&lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:myprojectA$ python3.5 -m venv .venv
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como &lt;cite&gt;.venv&lt;/cite&gt;, como podemos ver abaixo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;rafael@bloodmary:myprojectA$ ls -a
