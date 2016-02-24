@@ -2,7 +2,7 @@ Vídeo: Como enviar seu código para o github?
 ############################################
 
 :date: 2016-02-20 13:36
-:tags: git, github
+:tags: vídeo, git, github
 :category: GIT
 :slug: video-como-enviar-seu-codigo-para-o-github
 :author: Rafael Henrique da Silva Correia

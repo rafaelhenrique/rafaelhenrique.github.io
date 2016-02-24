@@ -2,7 +2,7 @@ Vídeo 01 - Grupo de Estudos Python
 ##################################
 
 :date: 2016-02-22 23:52
-:tags: python, grupo de estudos python, sorocaba
+:tags: vídeo, python, grupo de estudos python, sorocaba
 :category: Python
 :slug: video-01-grupo-de-estudos-python
 :author: Rafael Henrique da Silva Correia

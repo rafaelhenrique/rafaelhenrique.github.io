@@ -2,7 +2,7 @@ Vídeo: Wat by Gary Bernhardt
 ############################
 
 :date: 2016-02-23 22:51
-:tags: tipagem dinâmica, tipagem forte
+:tags: vídeo, tipagem dinâmica, tipagem forte
 :category: Programação
 :slug: video-wat-by-gary-bernhardt
 :author: Rafael Henrique da Silva Correia
