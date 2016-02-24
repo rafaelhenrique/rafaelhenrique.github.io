@@ -1,7 +1,7 @@
 Python uma linguagem de tipagem dinâmica e forte
 ################################################
 
-:date: 2016-02-20 22:25
+:date: 2016-02-23 22:43
 :tags: python, tipagem dinâmica, tipagem forte
 :category: Python
 :slug: python-uma-linguagem-de-tipagem-dinamica-e-forte
@@ -34,7 +34,7 @@ Vamos melhorar esta explicação com um exemplo de tipagem estática, a linguage
        printf("O resultado é: %d\n", i+j);
     }
 
-Ambos os programas acima fazem a mesma coisa, somam 10 e 20 e mostram um resultado na tela, a diferença é que em C os tipos são estáticos então é necessário que o programador diga quais os tipos que `i` e `j` receberão como valores aceitáveis.
+Ambos os programas acima fazem a mesma coisa, somam 10 e 20 e mostram um resultado na tela, a diferença é que em C os tipos são estáticos então é necessário que o programador diga quais os tipos que ``i`` e ``j`` receberão como valores aceitáveis.
 
 Tipagem forte
 -------------
@@ -50,9 +50,10 @@ Referenciando especificamente o Python para explicar a questão: Tipagem forte s
     print(j)
     print("O resultado é: ", i + j)
 
-Neste código acima definimos `i` como `10` e `j` como `"Rafael"`, desta forma temos um inteiro em `i` e uma string em `j`, ao executar este código veja o que acontece:
+Neste código acima definimos ``i`` como ``10`` e ``j`` como ``"Rafael"``, desta forma temos um inteiro em ``i`` e uma string em ``j``, ao executar este código veja o que acontece:
 
 .. code-block:: code
+
     $ python3 teste.py
     10
     Rafael
@@ -61,9 +62,9 @@ Neste código acima definimos `i` como `10` e `j` como `"Rafael"`, desta forma t
         print("O resultado é: ", i + j)
     TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
-Recebo uma exception chamada `TypeError` ou seja, ao fazer operações com tipos incompatíveis, o Python não converte automaticamente esses tipos pra você, ele vai dar erro! Isso é bom, pois assim você terá a certeza que o seu resultado é mais consistente.
+Recebo uma exception chamada ``TypeError`` ou seja, ao fazer operações com tipos incompatíveis, o Python não converte automaticamente esses tipos pra você, ele vai dar erro! Isso é bom, pois assim você terá a certeza que o seu resultado é mais consistente.
 
-Agora assim como temos linguagens com tipagem forte temos linguagens com tipagem fraca como por exemplo Javascript, vejamos o código Javascript a seguir:
+Agora assim como temos linguagens com tipagem forte, temos também linguagens com tipagem fraca como por exemplo Javascript, vejamos o código Javascript a seguir:
 
 .. code-block:: python
 
@@ -71,17 +72,18 @@ Agora assim como temos linguagens com tipagem forte temos linguagens com tipagem
     var j = "Rafael";
     console.log(i + j);
 
-Executando o código anterior obteríamos o resultado`10Rafael`. Isso prova que o Javascript diferente do Python converte (faz coerção de tipos) ao executar operações de forma automática, isso faz com que seja uma linguagem de tipagem fraca.
+Executando o código anterior obteríamos o resultado ``10Rafael``. Isso prova que o Javascript diferente do Python converte (faz coerção de tipos) ao executar operações de forma automática, isso faz com que seja uma linguagem de tipagem fraca.
 
 Conclusão
 ---------
 
 Espero que tenha ficado claro para você como é essa questão da tipagem do Python. Em caso de dúvidas/sugestão não deixe de fazer seu comentário abaixo do post.
 
-Referência
-----------
+Referências
+-----------
 
 Livro: Python para desenvolvedores 2.a edição.
 Autor: Luiz Eduardo Borges
-
 Distribuição gratuita no `site <http://ark4n.wordpress.com/python/>`_.
+
+Também tem um `vídeo <http://blog.abraseucodigo.com.br/video-wat.html>`_ muito interessante (e bem curtinho) que mostra mais coisas a respeito de como outras linguagens tratam alguns casos bem bizarros (alguns envolvendo tipagem fraca/forte estática/dinâmica).
