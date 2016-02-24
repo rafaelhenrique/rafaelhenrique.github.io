@@ -43,10 +43,10 @@ Hands-on
 
 Vamos criar um projeto chamado ``myprojectA`` e outro chamado ``myprojectB`` para demonstrar o uso do isolamento de ambientes que ``virtualenv`` nos ajuda a fazer, também iremos instalar bibliotecas com o ``pip`` durante o processo.
 
-Para executar este passo a passo estou usando Python 3:
+Para executar este passo a passo estou usando Python 3.5.X:
 
-* Se você não tem Python 3 instalado e usar Windows clique `aqui <http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html>`_ para ir ao post que escrevi ontem descrevendo este procedimento; 
-* Se você não tem Python 3 instalado e usar Linux ou Mac OSX você poderá usar o apt-get, yum ou homebrew para instalar Python3 no seu computador de forma absolutamente simples, porém ainda não fiz posts sobre isso.
+* Se você não tem Python 3.5.X instalado e usar Windows clique `aqui <http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html>`_ para ir ao post que escrevi ontem descrevendo este procedimento;
+* Se você não tem Python 3.5.X instalado e usar Linux ou Mac OSX você poderá usar o apt-get, yum ou homebrew para instalar Python3.5.X no seu computador de forma absolutamente simples, porém ainda não fiz posts sobre isso.
 
 No Windows vou abrir o ``Prompt de comandos`` que terá essa cara:
 
@@ -170,7 +170,7 @@ Posteriormente vamos criar um virtualenv:
 
 .. code-block:: command
 
-    rafael@bloodmary:myprojectA$ python3 -m venv .venv
+    rafael@bloodmary:myprojectA$ python3.5 -m venv .venv
 
 Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como `.venv`, como podemos ver abaixo:
 
