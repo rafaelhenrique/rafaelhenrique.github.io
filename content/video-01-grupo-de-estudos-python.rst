@@ -1,5 +1,5 @@
 Vídeo: 01 - Grupo de Estudos Python
-##################################
+###################################
 
 :date: 2016-02-22 23:52
 :tags: vídeo, python, grupo de estudos python, sorocaba
