@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>Instalando qualquer versão do Python no Linux/Mac OSX utilizando pyenv // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>fevereiro 24, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Instalando qualquer versão do Python no Linux/Mac OSX utilizando pyenv</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/linux.html">linux</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/instalar-python.html">instalar python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/pyenv.html">pyenv</a>
+                        </p>
+                </header>
+            </section>
+            <p>Muitos tem a dúvida de como instalar Python no Linux e Mac OSX, hoje vou postar aqui um passo a passo bem básico pra que você consiga instalar Python 3.5 (e qualquer outra) no Linux e com poucas modificações também no Mac OSX.</p>
+<p>Não abordarei especificamente o passo a passo para realizar a instalação no Mac OSX, pois no atual momento não disponho de um computador com tal Sistema operacional em mãos. Porém já ajudei alguns amigos a realizar o procedimento mostrado neste post também no Mac OSX, e sem muitas dores extras conseguimos realizar estes mesmos procedimentos no Mac OSX.</p>
+<p>Vou usar como Linux base a distribuição Debian (a qual gosto muito) na versão Jessie 8.3.0. Estou especificando a versão do Debian e a versão do Python (estável) pois como ambos evoluem com o tempo (e muito rapidamente) então creio eu que logo esse post irá ficar velho.</p>
+<div class="section" id="baixar-instalar-e-compilar">
+<h2>Baixar, instalar e compilar?</h2>
+<p>Para os usuários mais &quot;roots&quot; do sistema operacional Linux a primeira coisa que vem em mente é <tt class="docutils literal">&quot;vou baixar o tar.gz, descompactar, configurar e compilar e o negócio vai sair funcionando lindamente&quot;</tt>, e realmente este processo funciona. Porém somos programadores, e programadores pensam em fazer a coisa da forma mais fácil possível e mais durável possível.</p>
+<p>Agora imagina se você pudesse instalar diversas versões do Python digitando apenas um comando e que ainda você pudesse trocar de versão facilmente entre todas as instaladas no seu computador.... pensou?</p>
+<p>Pois é os caras que criaram o <tt class="docutils literal">pyenv</tt> também!</p>
+<p>Porém não confunda, <tt class="docutils literal">virtualenv</tt> é uma coisa e <tt class="docutils literal">pyenv</tt> é outra. Abordei o assunto <tt class="docutils literal">virtualenv</tt> em outro post, para <a class="reference external" href="http://blog.abraseucodigo.com.br/virtualenv-pip-pra-que-servem.html">entender melhor sobre o virtualenv clique aqui</a> .</p>
+</div>
+<div class="section" id="o-que-e-o-pyenv">
+<h2>O que é o pyenv?</h2>
+<p><tt class="docutils literal">Pyenv</tt> é um projeto muito legal que faz com que você consiga ter várias versões do Python na sua máquina e que eles coexistam em paz. Também torna mais fácil (absurdamente fácil) a instalação de QUALQUER distribuição do Python, inclusive as mais &quot;exóticas&quot; como o Anaconda, Miniconda, IronPython, Jython e o Pypy. Dentre estas versões possíveis também é possível instalar o Python 3.5.1 muito facilmente.</p>
+</div>
+<div class="section" id="instalando-pyenv">
+<h2>Instalando pyenv</h2>
+<p>Se você usa Mac OSX pode começar com este link:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/yyuu/pyenv#homebrew-on-mac-os-x">Homebrew on Mac OS X</a></li>
+</ul>
+<p>Se você usa Linux você vai começar instalando as dependências de um script que facilita a instalação do <tt class="docutils literal">pyenv</tt> pra você. Este script depende de dois comandos <tt class="docutils literal">git</tt> e <tt class="docutils literal">curl</tt>, caso você não os tenha instalados, execute o comando abaixo (este comando você precisa executar como root ou com sudo):</p>
+<div class="highlight"><pre># apt-get install curl git
+</pre></div>
+<p>Feito isso vamos prosseguir com instalação usando um script automatizado que a galera do <tt class="docutils literal">pyenv</tt> fez. Execute como usuário normal (não root e sem sudo) o seguinte script abaixo:</p>
+<div class="highlight"><pre>$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+</pre></div>
+<p>Ao terminar a execução deste script uma saída assim será exibida:</p>
+<div class="highlight"><pre>WARNING: seems you still have not added &#39;pyenv&#39; to the load path.
+
+# Load pyenv automatically by adding
+# the following to ~/.bash_profile:
+
+export PATH=&quot;/home/rafael/.pyenv/bin:$PATH&quot;
+eval &quot;$(pyenv init -)&quot;
+eval &quot;$(pyenv virtualenv-init -)&quot;
+</pre></div>
+<p>Obviamente que o caminho dentro da sua variável PATH estará diferente do meu, pois o meu usuário se chama <tt class="docutils literal">rafael</tt>.</p>
+<p>Basicamente ao final da instalação conforme mostrado acima o <tt class="docutils literal"><span class="pre">pyenv-installer</span></tt> manda você adicionar as linhas que ele te mostra no seu arquivo <tt class="docutils literal"><span class="pre">~/.bash_profile</span></tt>, eu sinceramente não gosto de adicionar essas coisas no <tt class="docutils literal"><span class="pre">~/.bash_profile</span></tt> ao invés disso eu sempre adiciono ao <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt>.</p>
+<p>Então vamos fazer isso, abra seu arquivo <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt> com seu editor favorito e adicione essas linhas no final do arquivo, conforme mostrado nesta imagem abaixo:</p>
+<img alt=".bashrc" src="images/instalando-qualquer-versao-do-python-no-linux-macosx-utilizando-pyenv/01.png" />
+<p>Fiz um comentário (linha em azul) apenas para informar que esta é a configuração do <tt class="docutils literal">pyenv</tt> e manter as coisas organizadas. Feita esta configuração basta executar (como usuário normal não root nem sudo) o comando abaixo, para que seu ambiente seja &quot;populado&quot; com as novas variáveis da configuração que você fez:</p>
+<div class="highlight"><pre>$ source ~/.bashrc
+</pre></div>
+<p>Desta forma você poderá chamar o comando <tt class="docutils literal">pyenv</tt> no seu terminal:</p>
+<div class="highlight"><pre>$ pyenv
+pyenv 20160202-10-ga6f1f48
+Usage: pyenv &lt;command&gt; [&lt;args&gt;]
+
+Some useful pyenv commands are:
+   commands    List all available pyenv commands
+   local       Set or show the local application-specific Python version
+   global      Set or show the global Python version
+   shell       Set or show the shell-specific Python version
+   install     Install a Python version using python-build
+   uninstall   Uninstall a specific Python version
+   rehash      Rehash pyenv shims (run this after installing executables)
+   version     Show the current Python version and its origin
+   versions    List all Python versions available to pyenv
+   which       Display the full path to an executable
+   whence      List all Python versions that contain the given executable
+
+See `pyenv help &lt;command&gt;&#39; for information on a specific command.
+For full documentation, see: https://github.com/yyuu/pyenv#readme
+</pre></div>
+<p>De cara você vai ter um help bem bacana para entender os comandos. Se quando você executou <tt class="docutils literal">pyenv</tt> a saída mostrada foi parecida, sua instalação correu perfeitamente bem! Caso tenha sido diferente e precisar de alguma ajuda, pode comentar abaixo do post ou me chamar am alguns dos contatos ao lado esquerdo do blog.</p>
+</div>
+<div class="section" id="verificando-as-versoes-disponiveis-para-instalacao">
+<h2>Verificando as versões disponíveis para instalação</h2>
+<div class="highlight"><pre>$ pyenv install -l
+Available versions:
+  .... linhas omitidas ....
+
+  3.0.1
+  3.1
+  3.1.1
+  3.1.2
+  3.1.3
+  3.1.4
+  3.1.5
+  3.2-dev
+  3.2
+  3.2.1
+  3.2.2
+  3.2.3
+  3.2.4
+  3.2.5
+  3.2.6
+  3.3.0
+  3.3-dev
+  3.3.1
+  3.3.2
+  3.3.3
+  3.3.4
+  3.3.5
+  3.3.6
+  3.4.0
+  3.4-dev
+  3.4.1
+  3.4.2
+  3.4.3
+  3.4.4
+  3.5.0
+  3.5-dev
+  3.5.1
+  3.6-dev
+
+  .... linhas omitidas ....
+</pre></div>
+<p>Omiti algumas linhas para que a saída não ficasse tão grande, pois realmente são muitas as versões.</p>
+</div>
+<div class="section" id="instalando-o-python-3-5-1">
+<h2>Instalando o Python 3.5.1</h2>
+<p>No Debian (Ubuntu também usa os mesmos pacotes) você precisará instalar algumas dependências para que o <tt class="docutils literal">pyenv</tt> compile o Python para você, como root ou usando sudo execute o comando abaixo:</p>
+<div class="highlight"><pre># apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
+</pre></div>
+<p>Caso você esteja usando outro sistema operacional que não seja o Debian, você poderá consultar as dependências que precisará instalar neste link:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/yyuu/pyenv/wiki/Common-build-problems">https://github.com/yyuu/pyenv/wiki/Common-build-problems</a></li>
+</ul>
+<p>Depois de instalar as dependências necessárias, execute (como usuário normal sem root e sem sudo) o comando para instalação do Python 3.5.1 conforme mostrado abaixo:</p>
+<div class="highlight"><pre>$ pyenv install 3.5.1
+</pre></div>
+<p>A saída será similar a esta:</p>
+<div class="highlight"><pre>Downloading Python-3.5.1.tgz...
+-&gt; https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
+Installing Python-3.5.1...
+Installed Python-3.5.1 to /home/rafael/.pyenv/versions/3.5.1
+</pre></div>
+<p>Se a sua saída foi similar a esta o Python 3.5.1 foi instalado com sucesso! Caso tenha sido diferente e precisar de alguma ajuda, pode comentar abaixo do post ou me chamar am alguns dos contatos ao lado esquerdo do blog.</p>
+</div>
+<div class="section" id="como-usar-o-s-python-s-instalado-s">
+<h2>Como usar o(s) Python(s) instalado(s)?</h2>
+<p>Todo sistema Linux/Mac OSX geralmente já vem com alguma versão do Python instalada (2.6, 2.7, 3 ou 3.4 geralmente), o <tt class="docutils literal">pyenv</tt> vai isolar a versão do Python do sistema operacional caso você precise dele posteriormente você conseguirá usá-lo sem problemas.</p>
+<p>Para ver as versões disponíveis para uso execute o comando abaixo:</p>
+<div class="highlight"><pre>$ pyenv versions
+* system (set by /home/rafael/.pyenv/version)
+  3.5.1
+</pre></div>
+<p>No caso agora no meu sistema eu tenho a versão <tt class="docutils literal">system</tt> que é a que estava instalada anteriormente com meu sistema operacional e também a versão 3.5.1. O símbolo <tt class="docutils literal">*</tt> especifica qual a versão você está utilizando neste momento.</p>
+<p>Você poderá mudar a versão utilizada usando o parâmetro <tt class="docutils literal">global</tt> do <tt class="docutils literal">pyenv</tt> desta maneira:</p>
+<div class="highlight"><pre>$ pyenv global 3.5.1
+$ pyenv versions
+  system
+* 3.5.1 (set by /home/rafael/.pyenv/version)
+</pre></div>
+<p>Observe que ao executar <tt class="docutils literal">pyenv versions</tt> novamente ele mostrou que a versão a ser utilizada agora é 3.5.1, vamos executar o interpretador Python para ver se tudo correu bem:</p>
+<div class="highlight"><pre>$ python
+Python 3.5.1 (default, Feb 24 2016, 21:38:32)
+[GCC 4.9.2] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</pre></div>
+<p>Perfeitamente bem! Agora vamos mudar para a versão <tt class="docutils literal">system</tt> e chamar o interpretador novamente para ver o que acontece:</p>
+<div class="highlight"><pre>$ pyenv global system
+$ pyenv versions
+* system (set by /home/rafael/.pyenv/version)
+  3.5.1
+$ python
+$ python
+Python 2.7.9 (default, Mar  1 2015, 12:57:24)
+[GCC 4.9.2] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</pre></div>
+<p>Funcionou perfeitamente bem novamente!</p>
+<p>Então agora você possui um <tt class="docutils literal">pyenv</tt> funcional juntamente com uma versão 3.5.1 do Python já instalada e apto a instalar qualquer outra disponível!</p>
+</div>
+<div class="section" id="voce-e-um-cara-preocupado-eu-tambem">
+<h2>Você é um cara preocupado? Eu também...</h2>
+<p>Outra coisa que você não precisa se preocupar é que o <tt class="docutils literal">pyenv</tt> instala e faz modificações no seu sistema a nível de usuário, ou seja, nada do que você faça com ele vai desgraçar seu sistema operacional inteiro, no máximo vai dar uma zuada na configuração do Python do seu usuário somente, em casos extremos você poderá desinstalar o <tt class="docutils literal">pyenv</tt> de forma fácil simplesmente apagando a pasta dele que fica em sua home:</p>
+<div class="highlight"><pre>$ rm -fr ~/.pyenv
+</pre></div>
+<p>E posteriormente remover as configurações de variáveis que colocamos no <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt>.</p>
+</div>
+<div class="section" id="conclusao">
+<h2>Conclusão</h2>
+<p>O <tt class="docutils literal">pyenv</tt> facilita muito as coisas pra nós, com ele podemos testar distribuições do Python das quais nunca ouvimos falar antes, sem o mínimo esforço para instalar e também para desinstalar (utilizando o parâmetro <tt class="docutils literal">uninstall</tt> do pyenv). Espero que tenham gostado do post! Deixem seus comentários!</p>
+</div>
+<div class="section" id="referencias">
+<h2>Referências</h2>
+<p>Links (ambos com documentações em seus próprios repositórios):</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/yyuu/pyenv">Repositório oficial do pyenv</a></li>
+<li><a class="reference external" href="https://github.com/yyuu/pyenv-installer">Repositório oficial do pyenv-installer</a></li>
+<li><a class="reference external" href="https://github.com/yyuu/pyenv/wiki/Common-build-problems">Problemas que você pode vir a encarar</a></li>
+</ul>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>

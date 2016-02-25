@@ -1,5 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-02-23T22:51:00-03:00</updated><entry><title>Vídeo: Wat</title><link href="http://blog.abraseucodigo.com.br/video-wat.html" rel="alternate"></link><updated>2016-02-23T22:51:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-23:video-wat.html</id><summary type="html">&lt;p&gt;Gary Bernhardt fez esta apresentação muito boa mostrando algumas coisas estranhas que acontecem em várias linguagens de programação quando executamos algumas operações &amp;quot;diferentes&amp;quot;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-02-24T21:21:00-03:00</updated><entry><title>Instalando qualquer versão do Python no Linux/Mac OSX utilizando pyenv</title><link href="http://blog.abraseucodigo.com.br/instalando-qualquer-versao-do-python-no-linux-macosx-utilizando-pyenv.html" rel="alternate"></link><updated>2016-02-24T21:21:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-24:instalando-qualquer-versao-do-python-no-linux-macosx-utilizando-pyenv.html</id><summary type="html">&lt;p&gt;Muitos tem a dúvida de como instalar Python no Linux e Mac OSX, hoje vou postar aqui um passo a passo bem básico pra que você consiga instalar Python 3.5 (e qualquer outra) no Linux e com poucas modificações também no Mac OSX.&lt;/p&gt;
+&lt;p&gt;Não abordarei especificamente o passo a passo para realizar a instalação no Mac OSX, pois no atual momento não disponho de um computador com tal Sistema operacional em mãos. Porém já ajudei alguns amigos a realizar o procedimento mostrado neste post também no Mac OSX, e sem muitas dores extras conseguimos realizar estes mesmos procedimentos no Mac OSX.&lt;/p&gt;
+&lt;p&gt;Vou usar como Linux base a distribuição Debian (a qual gosto muito) na versão Jessie 8.3.0. Estou especificando a versão do Debian e a versão do Python (estável) pois como ambos evoluem com o tempo (e muito rapidamente) então creio eu que logo esse post irá ficar velho.&lt;/p&gt;
+&lt;div class="section" id="baixar-instalar-e-compilar"&gt;
+&lt;h2&gt;Baixar, instalar e compilar?&lt;/h2&gt;
+&lt;p&gt;Para os usuários mais &amp;quot;roots&amp;quot; do sistema operacional Linux a primeira coisa que vem em mente é &lt;tt class="docutils literal"&gt;&amp;quot;vou baixar o tar.gz, descompactar, configurar e compilar e o negócio vai sair funcionando lindamente&amp;quot;&lt;/tt&gt;, e realmente este processo funciona. Porém somos programadores, e programadores pensam em fazer a coisa da forma mais fácil possível e mais durável possível.&lt;/p&gt;
+&lt;p&gt;Agora imagina se você pudesse instalar diversas versões do Python digitando apenas um comando e que ainda você pudesse trocar de versão facilmente entre todas as instaladas no seu computador.... pensou?&lt;/p&gt;
+&lt;p&gt;Pois é os caras que criaram o &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; também!&lt;/p&gt;
+&lt;p&gt;Porém não confunda, &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; é uma coisa e &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; é outra. Abordei o assunto &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; em outro post, para &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/virtualenv-pip-pra-que-servem.html"&gt;entender melhor sobre o virtualenv clique aqui&lt;/a&gt; .&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="o-que-e-o-pyenv"&gt;
+&lt;h2&gt;O que é o pyenv?&lt;/h2&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;Pyenv&lt;/tt&gt; é um projeto muito legal que faz com que você consiga ter várias versões do Python na sua máquina e que eles coexistam em paz. Também torna mais fácil (absurdamente fácil) a instalação de QUALQUER distribuição do Python, inclusive as mais &amp;quot;exóticas&amp;quot; como o Anaconda, Miniconda, IronPython, Jython e o Pypy. Dentre estas versões possíveis também é possível instalar o Python 3.5.1 muito facilmente.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalando-pyenv"&gt;
+&lt;h2&gt;Instalando pyenv&lt;/h2&gt;
+&lt;p&gt;Se você usa Mac OSX pode começar com este link:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/yyuu/pyenv#homebrew-on-mac-os-x"&gt;Homebrew on Mac OS X&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Se você usa Linux você vai começar instalando as dependências de um script que facilita a instalação do &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; pra você. Este script depende de dois comandos &lt;tt class="docutils literal"&gt;git&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;curl&lt;/tt&gt;, caso você não os tenha instalados, execute o comando abaixo (este comando você precisa executar como root ou com sudo):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# apt-get install curl git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Feito isso vamos prosseguir com instalação usando um script automatizado que a galera do &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; fez. Execute como usuário normal (não root e sem sudo) o seguinte script abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ao terminar a execução deste script uma saída assim será exibida:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;WARNING: seems you still have not added &amp;#39;pyenv&amp;#39; to the load path.
+
+# Load pyenv automatically by adding
+# the following to ~/.bash_profile:
+
+export PATH=&amp;quot;/home/rafael/.pyenv/bin:$PATH&amp;quot;
+eval &amp;quot;$(pyenv init -)&amp;quot;
+eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Obviamente que o caminho dentro da sua variável PATH estará diferente do meu, pois o meu usuário se chama &lt;tt class="docutils literal"&gt;rafael&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Basicamente ao final da instalação conforme mostrado acima o &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;pyenv-installer&lt;/span&gt;&lt;/tt&gt; manda você adicionar as linhas que ele te mostra no seu arquivo &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.bash_profile&lt;/span&gt;&lt;/tt&gt;, eu sinceramente não gosto de adicionar essas coisas no &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.bash_profile&lt;/span&gt;&lt;/tt&gt; ao invés disso eu sempre adiciono ao &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.bashrc&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Então vamos fazer isso, abra seu arquivo &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.bashrc&lt;/span&gt;&lt;/tt&gt; com seu editor favorito e adicione essas linhas no final do arquivo, conforme mostrado nesta imagem abaixo:&lt;/p&gt;
+&lt;img alt=".bashrc" src="images/instalando-qualquer-versao-do-python-no-linux-macosx-utilizando-pyenv/01.png" /&gt;
+&lt;p&gt;Fiz um comentário (linha em azul) apenas para informar que esta é a configuração do &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; e manter as coisas organizadas. Feita esta configuração basta executar (como usuário normal não root nem sudo) o comando abaixo, para que seu ambiente seja &amp;quot;populado&amp;quot; com as novas variáveis da configuração que você fez:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ source ~/.bashrc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Desta forma você poderá chamar o comando &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; no seu terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ pyenv
+pyenv 20160202-10-ga6f1f48
+Usage: pyenv &amp;lt;command&amp;gt; [&amp;lt;args&amp;gt;]
+
+Some useful pyenv commands are:
+   commands    List all available pyenv commands
+   local       Set or show the local application-specific Python version
+   global      Set or show the global Python version
+   shell       Set or show the shell-specific Python version
+   install     Install a Python version using python-build
+   uninstall   Uninstall a specific Python version
+   rehash      Rehash pyenv shims (run this after installing executables)
+   version     Show the current Python version and its origin
+   versions    List all Python versions available to pyenv
+   which       Display the full path to an executable
+   whence      List all Python versions that contain the given executable
+
+See `pyenv help &amp;lt;command&amp;gt;&amp;#39; for information on a specific command.
+For full documentation, see: https://github.com/yyuu/pyenv#readme
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;De cara você vai ter um help bem bacana para entender os comandos. Se quando você executou &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; a saída mostrada foi parecida, sua instalação correu perfeitamente bem! Caso tenha sido diferente e precisar de alguma ajuda, pode comentar abaixo do post ou me chamar am alguns dos contatos ao lado esquerdo do blog.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="verificando-as-versoes-disponiveis-para-instalacao"&gt;
+&lt;h2&gt;Verificando as versões disponíveis para instalação&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ pyenv install -l
+Available versions:
+  .... linhas omitidas ....
+
+  3.0.1
+  3.1
+  3.1.1
+  3.1.2
+  3.1.3
+  3.1.4
+  3.1.5
+  3.2-dev
+  3.2
+  3.2.1
+  3.2.2
+  3.2.3
+  3.2.4
+  3.2.5
+  3.2.6
+  3.3.0
+  3.3-dev
+  3.3.1
+  3.3.2
+  3.3.3
+  3.3.4
+  3.3.5
+  3.3.6
+  3.4.0
+  3.4-dev
+  3.4.1
+  3.4.2
+  3.4.3
+  3.4.4
+  3.5.0
+  3.5-dev
+  3.5.1
+  3.6-dev
+
+  .... linhas omitidas ....
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Omiti algumas linhas para que a saída não ficasse tão grande, pois realmente são muitas as versões.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalando-o-python-3-5-1"&gt;
+&lt;h2&gt;Instalando o Python 3.5.1&lt;/h2&gt;
+&lt;p&gt;No Debian (Ubuntu também usa os mesmos pacotes) você precisará instalar algumas dependências para que o &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; compile o Python para você, como root ou usando sudo execute o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Caso você esteja usando outro sistema operacional que não seja o Debian, você poderá consultar as dependências que precisará instalar neste link:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/yyuu/pyenv/wiki/Common-build-problems"&gt;https://github.com/yyuu/pyenv/wiki/Common-build-problems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Depois de instalar as dependências necessárias, execute (como usuário normal sem root e sem sudo) o comando para instalação do Python 3.5.1 conforme mostrado abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ pyenv install 3.5.1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A saída será similar a esta:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Downloading Python-3.5.1.tgz...
+-&amp;gt; https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
+Installing Python-3.5.1...
+Installed Python-3.5.1 to /home/rafael/.pyenv/versions/3.5.1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se a sua saída foi similar a esta o Python 3.5.1 foi instalado com sucesso! Caso tenha sido diferente e precisar de alguma ajuda, pode comentar abaixo do post ou me chamar am alguns dos contatos ao lado esquerdo do blog.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-usar-o-s-python-s-instalado-s"&gt;
+&lt;h2&gt;Como usar o(s) Python(s) instalado(s)?&lt;/h2&gt;
+&lt;p&gt;Todo sistema Linux/Mac OSX geralmente já vem com alguma versão do Python instalada (2.6, 2.7, 3 ou 3.4 geralmente), o &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; vai isolar a versão do Python do sistema operacional caso você precise dele posteriormente você conseguirá usá-lo sem problemas.&lt;/p&gt;
+&lt;p&gt;Para ver as versões disponíveis para uso execute o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ pyenv versions
+* system (set by /home/rafael/.pyenv/version)
+  3.5.1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;No caso agora no meu sistema eu tenho a versão &lt;tt class="docutils literal"&gt;system&lt;/tt&gt; que é a que estava instalada anteriormente com meu sistema operacional e também a versão 3.5.1. O símbolo &lt;tt class="docutils literal"&gt;*&lt;/tt&gt; especifica qual a versão você está utilizando neste momento.&lt;/p&gt;
+&lt;p&gt;Você poderá mudar a versão utilizada usando o parâmetro &lt;tt class="docutils literal"&gt;global&lt;/tt&gt; do &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; desta maneira:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ pyenv global 3.5.1
+$ pyenv versions
+  system
+* 3.5.1 (set by /home/rafael/.pyenv/version)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Observe que ao executar &lt;tt class="docutils literal"&gt;pyenv versions&lt;/tt&gt; novamente ele mostrou que a versão a ser utilizada agora é 3.5.1, vamos executar o interpretador Python para ver se tudo correu bem:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ python
+Python 3.5.1 (default, Feb 24 2016, 21:38:32)
+[GCC 4.9.2] on linux
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Perfeitamente bem! Agora vamos mudar para a versão &lt;tt class="docutils literal"&gt;system&lt;/tt&gt; e chamar o interpretador novamente para ver o que acontece:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ pyenv global system
+$ pyenv versions
+* system (set by /home/rafael/.pyenv/version)
+  3.5.1
+$ python
+$ python
+Python 2.7.9 (default, Mar  1 2015, 12:57:24)
+[GCC 4.9.2] on linux2
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Funcionou perfeitamente bem novamente!&lt;/p&gt;
+&lt;p&gt;Então agora você possui um &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; funcional juntamente com uma versão 3.5.1 do Python já instalada e apto a instalar qualquer outra disponível!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="voce-e-um-cara-preocupado-eu-tambem"&gt;
+&lt;h2&gt;Você é um cara preocupado? Eu também...&lt;/h2&gt;
+&lt;p&gt;Outra coisa que você não precisa se preocupar é que o &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; instala e faz modificações no seu sistema a nível de usuário, ou seja, nada do que você faça com ele vai desgraçar seu sistema operacional inteiro, no máximo vai dar uma zuada na configuração do Python do seu usuário somente, em casos extremos você poderá desinstalar o &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; de forma fácil simplesmente apagando a pasta dele que fica em sua home:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ rm -fr ~/.pyenv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E posteriormente remover as configurações de variáveis que colocamos no &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.bashrc&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao"&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;O &lt;tt class="docutils literal"&gt;pyenv&lt;/tt&gt; facilita muito as coisas pra nós, com ele podemos testar distribuições do Python das quais nunca ouvimos falar antes, sem o mínimo esforço para instalar e também para desinstalar (utilizando o parâmetro &lt;tt class="docutils literal"&gt;uninstall&lt;/tt&gt; do pyenv). Espero que tenham gostado do post! Deixem seus comentários!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="referencias"&gt;
+&lt;h2&gt;Referências&lt;/h2&gt;
+&lt;p&gt;Links (ambos com documentações em seus próprios repositórios):&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/yyuu/pyenv"&gt;Repositório oficial do pyenv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/yyuu/pyenv-installer"&gt;Repositório oficial do pyenv-installer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/yyuu/pyenv/wiki/Common-build-problems"&gt;Problemas que você pode vir a encarar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="linux"></category><category term="instalar python"></category><category term="pyenv"></category></entry><entry><title>Vídeo: Wat</title><link href="http://blog.abraseucodigo.com.br/video-wat.html" rel="alternate"></link><updated>2016-02-23T22:51:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-23:video-wat.html</id><summary type="html">&lt;p&gt;Gary Bernhardt fez esta apresentação muito boa mostrando algumas coisas estranhas que acontecem em várias linguagens de programação quando executamos algumas operações &amp;quot;diferentes&amp;quot;.&lt;/p&gt;
 &lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/20BySC_6HyY" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><category term="vídeo"></category><category term="tipagem dinâmica"></category><category term="tipagem forte"></category></entry><entry><title>Python uma linguagem de tipagem dinâmica e forte</title><link href="http://blog.abraseucodigo.com.br/python-uma-linguagem-de-tipagem-dinamica-e-forte.html" rel="alternate"></link><updated>2016-02-23T22:43:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-23:python-uma-linguagem-de-tipagem-dinamica-e-forte.html</id><summary type="html">&lt;p&gt;Todos que começam a estudar Python lêem que &amp;quot;Python é uma linguagem de tipagem dinâmica e forte&amp;quot; mas o que isso significa?&lt;/p&gt;
 &lt;div class="section" id="tipagem-dinamica"&gt;
 &lt;h2&gt;Tipagem dinâmica&lt;/h2&gt;
@@ -402,9 +589,10 @@ ipython==3.0.0
 &lt;div class="section" id="referencias-bacanas"&gt;
 &lt;h2&gt;Referências bacanas&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://garoa.net.br/wiki/Python/Ambiente_Virtual"&gt;https://garoa.net.br/wiki/Python/Ambiente_Virtual&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://virtualenv.readthedocs.org/en/latest/index.html"&gt;http://virtualenv.readthedocs.org/en/latest/index.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://virtualenvwrapper.readthedocs.org/en/latest/"&gt;https://virtualenvwrapper.readthedocs.org/en/latest/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://garoa.net.br/wiki/Python/Ambiente_Virtual"&gt;Explicação sobre Ambiente Virtual contida na página do Garoa Hacker Clube de SP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://virtualenv.readthedocs.org/en/latest/index.html"&gt;Documentação oficial do virtualenv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://virtualenvwrapper.readthedocs.org/en/latest/"&gt;Documentação oficial do virtualenvwrapper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.python.org/3/library/venv.html"&gt;Documentação oficial do Python explicando sobre virtualenv&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </summary><category term="python"></category><category term="virtualenv"></category><category term="pip"></category></entry><entry><title>Instalando Python 3.5 no Windows 7</title><link href="http://blog.abraseucodigo.com.br/instalando-python35-no-windows-7.html" rel="alternate"></link><updated>2016-02-16T21:09:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-16:instalando-python35-no-windows-7.html</id><summary type="html">&lt;p&gt;Muitos tem a dúvida de como instalar Python no Windows, hoje vou postar aqui um passo a passo bem básico pra que você consiga instalar Python3 no Windows 7.&lt;/p&gt;
