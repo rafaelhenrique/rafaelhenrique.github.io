@@ -240,6 +240,7 @@ Conclusão
 Referências bacanas
 -------------------
 
-* `https://garoa.net.br/wiki/Python/Ambiente_Virtual <https://garoa.net.br/wiki/Python/Ambiente_Virtual>`_
-* `http://virtualenv.readthedocs.org/en/latest/index.html <http://virtualenv.readthedocs.org/en/latest/index.html>`_
-* `https://virtualenvwrapper.readthedocs.org/en/latest/ <https://virtualenvwrapper.readthedocs.org/en/latest/>`_
+* `Explicação sobre Ambiente Virtual contida na página do Garoa Hacker Clube de SP <https://garoa.net.br/wiki/Python/Ambiente_Virtual>`_
+* `Documentação oficial do virtualenv <http://virtualenv.readthedocs.org/en/latest/index.html>`_
+* `Documentação oficial do virtualenvwrapper <https://virtualenvwrapper.readthedocs.org/en/latest/>`_
+* `Documentação oficial do Python explicando sobre virtualenv <https://docs.python.org/3/library/venv.html>`_
