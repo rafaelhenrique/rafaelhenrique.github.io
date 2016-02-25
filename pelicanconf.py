@@ -50,7 +50,8 @@ MENUITEMS = (
     ('Python Sorocaba',
         'https://groups.google.com/forum/#!forum/python-sorocaba'),
     ('Hacklab Sorocaba',
-        'https://groups.google.com/forum/?hl=pt#!forum/hackerspace-sorocaba')
+        'https://groups.google.com/forum/?hl=pt#!forum/hackerspace-sorocaba'),
+    ('GruPy-SP', 'http://www.meetup.com/pt-BR/Grupy-SP/')
 )
 
 # Social links
