@@ -640,6 +640,12 @@ ipython==3.0.0
 &lt;li&gt;&lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt;: Um cara &amp;quot;separador&amp;quot; de ambientes, não faz muito tempo este cara foi incorporado ao Python (antes ele era um cara fora do Python), ele serve para que você tenha diversas versões da mesma biblioteca para projetos diferentes sem que elas colidam e briguem entre si para ver qual a versão vai assumir e ficar a frente quando você chamar um &lt;tt class="docutils literal"&gt;import&lt;/tt&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
+&lt;div class="section" id="referencia"&gt;
+&lt;h2&gt;Referência&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.python.org/3/using/windows.html"&gt;Documentação oficial do uso do Python no Windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;div class="section" id="conclusao"&gt;
 &lt;h2&gt;Conclusão&lt;/h2&gt;
 &lt;p&gt;Não é difícil instalar Python no Windows, mas tem que se atentar a alguns detalhes bem simples. No próximo post pretendo descrever como e pra que serve o &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; que você acabou de instalar.&lt;/p&gt;
