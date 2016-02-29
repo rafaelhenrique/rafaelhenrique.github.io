@@ -79,6 +79,11 @@ Para começar seus estudos em Python é importante saber que a partir desta inst
 * ``pip``: Um poderoso gerenciador de pacotes/bibliotecas do Python, com ele você pode instalar muitas e muitas bibliotecas de terceiros;
 * ``virtualenv``: Um cara "separador" de ambientes, não faz muito tempo este cara foi incorporado ao Python (antes ele era um cara fora do Python), ele serve para que você tenha diversas versões da mesma biblioteca para projetos diferentes sem que elas colidam e briguem entre si para ver qual a versão vai assumir e ficar a frente quando você chamar um ``import``.
 
+Referência
+----------
+
+* `Documentação oficial do uso do Python no Windows <https://docs.python.org/3/using/windows.html>`_
+
 Conclusão
 ---------
 
