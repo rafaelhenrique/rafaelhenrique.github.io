@@ -53,6 +53,17 @@ Onde consigo o material das palestras anteriores?
 
 O Grupy-SP tem um repositório no `Github <https://github.com/grupy-sp/>`_ onde tem um material bem bacana. Se quiser ir direto verificar o material de encontros anteriores `clique aqui <https://github.com/grupy-sp/encontros>`_.
 
+Como entrar em contato com os membros do Grupy-SP?
+--------------------------------------------------
+
+* Github - `https://github.com/grupy-sp/encontros <https://github.com/grupy-sp/encontros>`_
+* Facebook - `https://www.facebook.com/grupysp <https://www.facebook.com/grupysp>`_
+* Twitter - `https://twitter.com/grupysp <https://twitter.com/grupysp>`_
+* Slack - `https://grupysp.herokuapp.com <https://grupysp.herokuapp.com>`_
+* Meetup - `http://www.meetup.com/pt/Grupy-SP/ <http://www.meetup.com/pt/Grupy-SP/>`_
+* Google Groups - `https://groups.google.com/forum/#!forum/grupy-sp <https://groups.google.com/forum/#!forum/grupy-sp>`_
+* Site - `http://grupy-sp.github.io/ <http://grupy-sp.github.io/>`_
+
 Concluindo
 ----------
 
