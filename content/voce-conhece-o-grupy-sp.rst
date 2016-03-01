@@ -46,7 +46,7 @@ Geralmente sempre tem um espaço para a galera bater papo (o que eu acho sensaci
 Quando é o próximo encontro?
 ----------------------------
 
-O ideal é sempre ficar de olho no `Meetup do Grupy-SP <http://www.meetup.com/pt-BR/Grupy-SP/>`_ o próximo encontro agora é dia 12/03/2015 e acontecerá na USP Leste em SP.
+O ideal é sempre ficar de olho no `Meetup do Grupy-SP <http://www.meetup.com/pt-BR/Grupy-SP/>`_ o próximo encontro agora é dia 12/03/2016 e acontecerá na USP Leste em SP.
 
 Onde consigo o material das palestras anteriores?
 -------------------------------------------------
