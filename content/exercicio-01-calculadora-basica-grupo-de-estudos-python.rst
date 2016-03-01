@@ -29,4 +29,8 @@ Baseado no script abaixo:
 Vamos terminar a calculadora básica (com as 4 operações pelo menos) em Python?
 Se precisar de ajuda para resolver o exercício me contate ou assista o vídeo (que está upando neste momento) da aula 02 do Grupo de Estudos Python.
 
+Se você quiser estudar um pouquinho mais e não somente resolver o exercício você poderá acrescentar novas funcionalidades a nossa calculadora, tais como: fazer exponenciação, calcular seno, calcular coseno ... etc
+
+Para facilitar seu divertimento use a biblioteca `math <https://docs.python.org/3.5/library/math.html>`_ padrão do Python.
+
 Semana que vem posto a resolução (todas as resoluções que conseguirmos).
