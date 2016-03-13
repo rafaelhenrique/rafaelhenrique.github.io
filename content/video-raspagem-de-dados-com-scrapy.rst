@@ -15,6 +15,6 @@ Em uma ajuda ao meu amigo Régis via Hangout gravei uma "aula" de Scrapy. Criamo
 
 Infelizmente o vídeo cortou um pouquinho enquanto eu explicava o projeto `members_grupy_sp <https://github.com/rafaelhenrique/members_grupy_sp>`_, este projeto é didático e seu objetivo é descobrir qual o membro mais participativo no Grupy-SP. Este projeto foi mostrado em um dos Grupys e os slides estão disponíveis `aqui <https://speakerdeck.com/rafaelhenrique/raspagem-de-dados-com-scrapy>`_.
 
-Também tenho outro projeto no github chamado `curse_spider <https://github.com/rafaelhenrique/curse_spider>`_ que surgiu através de minha ira por não conseguir usar o programa `curse client <http://mods.curse.com/client>` no Linux, o curse_spider faz a mesma coisa que o curse client (mantêm meus addons do World of Warcraft atualizados).
+Também tenho outro projeto no github chamado `curse_spider <https://github.com/rafaelhenrique/curse_spider>`_ que surgiu através de minha ira por não conseguir usar o programa `curse client <http://mods.curse.com/client>`_ no Linux, o curse_spider faz a mesma coisa que o curse client (mantêm meus addons do World of Warcraft atualizados).
 
 That's all folks.
