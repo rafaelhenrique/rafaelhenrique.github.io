@@ -1,5 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-03-16T20:54:00-03:00</updated><entry><title>Resolução exercício: 01 - Calculadora básica - Grupo de Estudos Python</title><link href="http://blog.abraseucodigo.com.br/resolucao-01-calculadora-basica-grupo-de-estudos.html" rel="alternate"></link><updated>2016-03-16T20:54:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-03-16:resolucao-01-calculadora-basica-grupo-de-estudos.html</id><summary type="html">&lt;p&gt;Dia 29/02 postei um exercício para resolução, uma calculadora básica, o post contendo o enunciado pode ser &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/exercicio-01-calculadora-basica-grupo-de-estudos-python.html"&gt;visto aqui&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-03-16T21:56:00-03:00</updated><entry><title>Resolução exercício: 02 - Média de alunos - Grupo de Estudos Python</title><link href="http://blog.abraseucodigo.com.br/resolucao-02-media-de-alunos-grupo-de-estudos-python.html" rel="alternate"></link><updated>2016-03-16T21:56:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-03-16:resolucao-02-media-de-alunos-grupo-de-estudos-python.html</id><summary type="html">&lt;p&gt;Dia 07/03 postei um exercício para resolução, fazer um cálculo de média ponderada de notas de alunos, o post contendo o enunciado pode ser &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/exercicio-02-media-de-alunos-grupo-de-estudos-python.html"&gt;visto aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="o-codigo-lixo-que-eu-fiz-no-hangout"&gt;
+&lt;h2&gt;O código lixo que eu fiz no Hangout&lt;/h2&gt;
+&lt;p&gt;Lixo é um nome muito forte, vamos chamar de RUIM somente por favor. Quando brincamos de live coding as coisas todas são diferentes do seu mundo real, devido a pressão, ou alguma coisa que passa na sua cabeça.&lt;/p&gt;
+&lt;p&gt;No live coding que fiz no Hangout tentei focar em muitas técnicas para manipulação de dicionários e listas, espero que isso tenha ficado claro no vídeo da &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/video-04-grupo-de-estudos-python.html"&gt;aula 04 disponível neste post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Então vamos ao código que mencionei:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="n"&gt;bimestre_final&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
+
+&lt;span class="n"&gt;notas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;aluno1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;aluno2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;notas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="n"&gt;alunos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Alexsandro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Arieh&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;bimestres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{} Bim&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numero&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;numero&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="c"&gt;# esse é o for sem a list comprehenssion ai de cima&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="c"&gt;# bimestres = []&lt;/span&gt;
+&lt;span class="c"&gt;# for numero in range(1, 7):&lt;/span&gt;
+&lt;span class="c"&gt;#    bimestres.append(&amp;quot;{} Bim&amp;quot;.format(numero))&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+
+&lt;span class="n"&gt;pesos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;1 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;2 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;3 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;4 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;5 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;6 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;aluno&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alunos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Aluno: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;notas&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;bimestre&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;bimestres&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite a nota do {}: &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bimestre&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nota&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;notas&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;bimestre&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt;
+
+&lt;span class="c"&gt;# (7*2 + 5*3 + 3*3 + 10*4 + 9*5 + 8*5) /&lt;/span&gt;
+&lt;span class="c"&gt;# (2 + 3 + 3 + 4 + 5 + 5) = 7.40&lt;/span&gt;
+&lt;span class="n"&gt;numerador&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="n"&gt;denominador&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;aluno&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alunos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;numerador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="n"&gt;denominador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;bimestre&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;notas&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;peso&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pesos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;bimestre&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;numerador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;peso&lt;/span&gt;
+        &lt;span class="n"&gt;denominador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;peso&lt;/span&gt;
+
+&lt;span class="n"&gt;resultado_final&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;aluno&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alunos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;resultado_final&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;numerador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;denominador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;# Nota maior que 9 teve menção A&lt;/span&gt;
+&lt;span class="c"&gt;# Nota maior que 7 e menor ou igual a 9 teve menção B&lt;/span&gt;
+&lt;span class="c"&gt;# Nota maior que 5 e menor ou igual a 7 teve menção C&lt;/span&gt;
+&lt;span class="c"&gt;# Nota menor que 5 teve menção D&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;resultado_final&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota final {}: {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota A&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota B&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota C&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota D&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos analisar os problemas deste código acima:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Tem muitos fors ai galera, isso vai ficar lento, bem lento mesmo;&lt;/li&gt;
+&lt;li&gt;As exceptions não estão tratadas de forma legal, mas você poderá estudar mais sobre isso lendo &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/resolucao-01-calculadora-basica-grupo-de-estudos.html"&gt;este post&lt;/a&gt;, considere isso um exercício;&lt;/li&gt;
+&lt;li&gt;O código não está pythônico, limpo e claro, tem muita coisa que faz muita coisa.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="refatorando-as-variaveis-e-dicionarios"&gt;
+&lt;h2&gt;Refatorando as variáveis e dicionários&lt;/h2&gt;
+&lt;p&gt;Começando do início:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="n"&gt;bimestre_final&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
+
+&lt;span class="n"&gt;notas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;aluno1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;aluno2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este dicionário de &lt;tt class="docutils literal"&gt;notas&lt;/tt&gt; não é muito necessário, pois quando eu recebo a nota do aluno eu já posso ir calculando durante a execução do primeiro for, isso é legal pois vai fazer com que a gente ganhe velocidade.&lt;/p&gt;
+&lt;p&gt;A variável &lt;tt class="docutils literal"&gt;bimestre_final&lt;/tt&gt; é inútil também, pois como tenho uma lista com todos os bimestres abaixo deste trecho eu sei o número de bimestres que eu tenho a partir do dicionário intitulado como &lt;tt class="docutils literal"&gt;bimestres&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Só ai já eliminei duas coisas inúteis no script. Continuando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="n"&gt;bimestres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{} Bim&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numero&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;numero&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O que acham deste &lt;a class="reference external" href="https://docs.python.org/3.5/tutorial/datastructures.html#list-comprehensions"&gt;list comprehenssion&lt;/a&gt;? Este cara está mais ou menos bacana. Existem outras formas mais simples de escrever este cara, justamente porque são somente 6 bimestres. Soluções aceitáveis:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Primeira forma: Mais legível&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="n"&gt;bimestres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;1 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;2 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;3 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;4 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;5 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;6 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Segunda forma: Mais &amp;quot;chata&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="n"&gt;bimestres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;numero&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="n"&gt;bimestres&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{} Bim&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numero&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Terceira forma: &amp;quot;Splitada&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="n"&gt;bimestres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1-Bim 2-Bim 3-Bim 4-Bim 5-Bim 6-Bim&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Eu particularmente opto pela &lt;tt class="docutils literal"&gt;Primeira forma&lt;/tt&gt; ou pela &lt;tt class="docutils literal"&gt;Terceira forma&lt;/tt&gt; como estou optando por legibilidade e sem muita complexidade para este post vou escolher a primeira.&lt;/p&gt;
+&lt;p&gt;A &lt;tt class="docutils literal"&gt;Terceira forma&lt;/tt&gt; achei legal mostrar, pois o bacana disso é que o &lt;a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.split"&gt;split&lt;/a&gt; (que pode ser usado com strings) irá dividir a string onde tem os espaços, transformando assim essa string comprida em uma lista, que praticamente daria o mesmo resultado também (exceto pelo sinal do hífen).&lt;/p&gt;
+&lt;p&gt;O caso do dicionário &lt;tt class="docutils literal"&gt;pesos&lt;/tt&gt; achei bacana, não vou mexer, mas aceito sugestões, se acharem uma solução mais legal me contem por favor.&lt;/p&gt;
+&lt;p&gt;Depois dessa primeira refatorada, comecei a criar um novo script, que ficou com o começo deste jeito:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="n"&gt;alunos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Rafael1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Rafael2&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;bimestres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;1 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;2 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;3 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;4 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;5 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;6 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;pesos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;1 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;2 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;3 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;4 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;5 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;6 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;numerador&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="n"&gt;denominador&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pesos&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Eu particularmente achei bem mais bonito e claro de entender as coisas. Só tem uma coisa diferente ai, que a é função &lt;tt class="docutils literal"&gt;sum&lt;/tt&gt; que já é padrão do Python e faz soma de valores de um iterador, vamos ver como isso funciona:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python
+&lt;span class="go"&gt;Python 3.5.1 (default, Feb 22 2016, 23:22:06)&lt;/span&gt;
+&lt;span class="go"&gt;[GCC 4.9.2] on linux&lt;/span&gt;
+&lt;span class="go"&gt;Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; &lt;span class="nv"&gt;pesos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="go"&gt;...         &amp;quot;1 Bim&amp;quot;: 2.0,&lt;/span&gt;
+&lt;span class="go"&gt;...         &amp;quot;2 Bim&amp;quot;: 3.0,&lt;/span&gt;
+&lt;span class="go"&gt;...         &amp;quot;3 Bim&amp;quot;: 3.0,&lt;/span&gt;
+&lt;span class="go"&gt;...         &amp;quot;4 Bim&amp;quot;: 4.0,&lt;/span&gt;
+&lt;span class="go"&gt;...         &amp;quot;5 Bim&amp;quot;: 5.0,&lt;/span&gt;
+&lt;span class="go"&gt;...         &amp;quot;6 Bim&amp;quot;: 5.0,&lt;/span&gt;
+&lt;span class="go"&gt;...     }&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; pesos.values&lt;span class="o"&gt;()&lt;/span&gt;
+&lt;span class="go"&gt;dict_values([5.0, 2.0, 4.0, 5.0, 3.0, 3.0])&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;pesos.values&lt;span class="o"&gt;())&lt;/span&gt;
+&lt;span class="go"&gt;&amp;lt;class &amp;#39;dict_values&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; sum&lt;span class="o"&gt;(&lt;/span&gt;pesos.values&lt;span class="o"&gt;())&lt;/span&gt;
+&lt;span class="go"&gt;22.0&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; &lt;span class="nv"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;1, 2, 3, 4, 5, 6&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; sum&lt;span class="o"&gt;(&lt;/span&gt;lista&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;21&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; sum&lt;span class="o"&gt;(&lt;/span&gt;range&lt;span class="o"&gt;(&lt;/span&gt;1,100&lt;span class="o"&gt;))&lt;/span&gt;
+&lt;span class="go"&gt;4950&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; pesos.keys&lt;span class="o"&gt;()&lt;/span&gt;
+&lt;span class="go"&gt;dict_keys([&amp;#39;5 Bim&amp;#39;, &amp;#39;1 Bim&amp;#39;, &amp;#39;4 Bim&amp;#39;, &amp;#39;6 Bim&amp;#39;, &amp;#39;3 Bim&amp;#39;, &amp;#39;2 Bim&amp;#39;])&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt;&amp;gt;&amp;gt; sum&lt;span class="o"&gt;(&lt;/span&gt;pesos.keys&lt;span class="o"&gt;())&lt;/span&gt;
+&lt;span class="go"&gt;Traceback (most recent call last):&lt;/span&gt;
+&lt;span class="go"&gt;  File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;TypeError: unsupported operand type(s) for +: &amp;#39;int&amp;#39; and &amp;#39;str&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Olhe que curioso esse teste acima, quando uso &lt;tt class="docutils literal"&gt;pesos.values()&lt;/tt&gt; pego todos os valores do dicionário pesos em forma de iterável (assunto pra outra hora o que é um iterável), ai quando uso &lt;tt class="docutils literal"&gt;sum&lt;/tt&gt; somo todos esses valores e o resultado é 22.&lt;/p&gt;
+&lt;p&gt;Consigo somar também listas, e também consigo somar um range de números gerados a partir da função &lt;tt class="docutils literal"&gt;range&lt;/tt&gt;. Porém quando tento somar strings (que são minhas keys do dicionário pesos) isso me retorna um erro dizendo que não consigo somar int e strings, essa soma não é possível. Espero que com esse exemplo tenha ficado claro o uso da função &lt;tt class="docutils literal"&gt;sum&lt;/tt&gt;. Mais informações na &lt;a class="reference external" href="https://docs.python.org/3/library/functions.html#sum"&gt;documentação do Python&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="refatorando-os-loops"&gt;
+&lt;h2&gt;Refatorando os loops&lt;/h2&gt;
+&lt;p&gt;Depois de organizar melhor as variáveis/dicionários e listas que vamos trabalhar fica mais fácil organizar os nossos loops, vamos ver como ficou o script completo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="n"&gt;alunos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Rafael1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Rafael2&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;bimestres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;1 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;2 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;3 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;4 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;5 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;6 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;pesos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;1 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;2 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;3 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;4 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;5 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;6 Bim&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;5.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;numerador&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="n"&gt;denominador&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pesos&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;aluno&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;alunos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Aluno: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;numerador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;bimestre&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;bimestres&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite a nota do {}: &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bimestre&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nota&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;numerador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;nota&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;pesos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;bimestre&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;media&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;numerador&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;denominador&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota final {}: {:.2f}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aluno&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;media&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota A&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;media&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota B&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;media&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota C&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Nota D&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora sim! Ficou um script clean, mais pythônico do que era antes. De 6 loops reduzi para 2 loops somente.&lt;/p&gt;
+&lt;p&gt;A criação de um dicionário dinamicamente ainda é usada na linha &lt;tt class="docutils literal"&gt;numerador[aluno] = 0&lt;/tt&gt; porém de forma bem mais simples, somente é inicializado com 0 para poder ir somando as notas do aluno no numerador da nossa equação. Para entender como ficou a estrutura do nosso dicionário numerador veja o exemplo abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python media_alunos_dict.py
+&lt;span class="go"&gt;Aluno:  Rafael1&lt;/span&gt;
+&lt;span class="go"&gt;Digite a nota do 1 Bim: 7&lt;/span&gt;
+&lt;span class="go"&gt;Digite a nota do 2 Bim: 5&lt;/span&gt;
+&lt;span class="go"&gt;Digite a nota do 3 Bim: 3&lt;/span&gt;
+&lt;span class="go"&gt;Digite a nota do 4 Bim: 10&lt;/span&gt;
+&lt;span class="go"&gt;Digite a nota do 5 Bim: 9&lt;/span&gt;
+&lt;span class="go"&gt;Digite a nota do 6 Bim: 8&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; /home/rafael/Dropbox/Grupo de estudos Python/nivel_mediano/media_ponderada/media_alunos_dict.py&lt;span class="o"&gt;(&lt;/span&gt;35&lt;span class="o"&gt;)&lt;/span&gt;&amp;lt;module&amp;gt;&lt;span class="o"&gt;()&lt;/span&gt;
+&lt;span class="go"&gt;     34     import ipdb; ipdb.set_trace()&lt;/span&gt;
+&lt;span class="go"&gt;---&amp;gt; 35     media = numerador[aluno] / denominador&lt;/span&gt;
+&lt;span class="go"&gt;     36     print(&amp;quot;Nota final {}: {:.2f}&amp;quot;.format(aluno, media))&lt;/span&gt;
+
+&lt;span class="go"&gt;ipdb&amp;gt; numerador&lt;/span&gt;
+&lt;span class="go"&gt;{&amp;#39;Rafael1&amp;#39;: 163.0}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O numerador terá uma chave para cada nome de aluno contendo a soma total realizada. Neste exemplo foi realizado o seguinte cálculo no numerador do aluno &lt;tt class="docutils literal"&gt;Rafael1&lt;/tt&gt;: &lt;tt class="docutils literal"&gt;(7*2 + 5*3 + 3*3 + 10*4 + 9*5 + 8*5) = 163.0&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;Quando continuo a execução do script temos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ipdb&amp;gt; numerador
+{&amp;#39;Rafael1&amp;#39;: 163.0, &amp;#39;Rafael2&amp;#39;: 158.0}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Neste caso cálculo realizado para o aluno &lt;tt class="docutils literal"&gt;Rafael2&lt;/tt&gt; é: &lt;tt class="docutils literal"&gt;(5*2 + 4*3 + 6*3 + 7*4 + 8*5 + 10*5) = 158.0&lt;/tt&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao"&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Espero que ao final dessa solução refatorada do live coding que rolou na &lt;a class="reference external" href="http://localhost:8000/video-04-grupo-de-estudos-python.html"&gt;aula 04&lt;/a&gt;, você tenha entendido mais coisas sobre listas, dicionários e estruturas de repetição. Caso tenha alguma dúvida/sugestão/crítica comenta ai.&lt;/p&gt;
+&lt;p&gt;That's all folks!&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="exercício"></category><category term="python"></category><category term="grupo de estudos python"></category><category term="sorocaba"></category><category term="estruturas de repetição"></category><category term="for"></category><category term="lista"></category><category term="dicionários"></category></entry><entry><title>Resolução exercício: 01 - Calculadora básica - Grupo de Estudos Python</title><link href="http://blog.abraseucodigo.com.br/resolucao-01-calculadora-basica-grupo-de-estudos.html" rel="alternate"></link><updated>2016-03-16T20:54:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-03-16:resolucao-01-calculadora-basica-grupo-de-estudos.html</id><summary type="html">&lt;p&gt;Dia 29/02 postei um exercício para resolução, uma calculadora básica, o post contendo o enunciado pode ser &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/exercicio-01-calculadora-basica-grupo-de-estudos-python.html"&gt;visto aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Resolução simples do exercício:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 

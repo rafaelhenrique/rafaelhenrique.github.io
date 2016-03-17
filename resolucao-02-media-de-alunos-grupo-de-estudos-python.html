@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>Resolução exercício: 02 - Média de alunos - Grupo de Estudos Python // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>março 16, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Resolução exercício: 02 - Média de alunos - Grupo de Estudos Python</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/exercicio.html">exercício</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/grupo-de-estudos-python.html">grupo de estudos python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/sorocaba.html">sorocaba</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/estruturas-de-repeticao.html">estruturas de repetição</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/for.html">for</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/lista.html">lista</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/dicionarios.html">dicionários</a>
+                        </p>
+                </header>
+            </section>
+            <p>Dia 07/03 postei um exercício para resolução, fazer um cálculo de média ponderada de notas de alunos, o post contendo o enunciado pode ser <a class="reference external" href="http://blog.abraseucodigo.com.br/exercicio-02-media-de-alunos-grupo-de-estudos-python.html">visto aqui</a>.</p>
+<div class="section" id="o-codigo-lixo-que-eu-fiz-no-hangout">
+<h2>O código lixo que eu fiz no Hangout</h2>
+<p>Lixo é um nome muito forte, vamos chamar de RUIM somente por favor. Quando brincamos de live coding as coisas todas são diferentes do seu mundo real, devido a pressão, ou alguma coisa que passa na sua cabeça.</p>
+<p>No live coding que fiz no Hangout tentei focar em muitas técnicas para manipulação de dicionários e listas, espero que isso tenha ficado claro no vídeo da <a class="reference external" href="http://blog.abraseucodigo.com.br/video-04-grupo-de-estudos-python.html">aula 04 disponível neste post</a>.</p>
+<p>Então vamos ao código que mencionei:</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="n">bimestre_final</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">notas</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;aluno1&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s">&quot;aluno2&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">}</span>
+
+<span class="n">notas</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">alunos</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Alexsandro&quot;</span><span class="p">,</span> <span class="s">&quot;Arieh&quot;</span><span class="p">]</span>
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;{} Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+
+<span class="c"># esse é o for sem a list comprehenssion ai de cima</span>
+<span class="c">#</span>
+<span class="c"># bimestres = []</span>
+<span class="c"># for numero in range(1, 7):</span>
+<span class="c">#    bimestres.append(&quot;{} Bim&quot;.format(numero))</span>
+<span class="c">#</span>
+
+<span class="n">pesos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;1 Bim&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s">&quot;2 Bim&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s">&quot;3 Bim&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s">&quot;4 Bim&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="s">&quot;5 Bim&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s">&quot;6 Bim&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">aluno</span> <span class="ow">in</span> <span class="n">alunos</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Aluno: &quot;</span><span class="p">,</span> <span class="n">aluno</span><span class="p">)</span>
+    <span class="n">notas</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">bimestre</span> <span class="ow">in</span> <span class="n">bimestres</span><span class="p">:</span>
+        <span class="n">nota</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&quot;Digite a nota do {}: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bimestre</span><span class="p">))</span>
+        <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nota</span><span class="p">)</span>
+        <span class="n">notas</span><span class="p">[</span><span class="n">aluno</span><span class="p">][</span><span class="n">bimestre</span><span class="p">]</span> <span class="o">=</span> <span class="n">nota</span>
+
+<span class="c"># (7*2 + 5*3 + 3*3 + 10*4 + 9*5 + 8*5) /</span>
+<span class="c"># (2 + 3 + 3 + 4 + 5 + 5) = 7.40</span>
+<span class="n">numerador</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">denominador</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">aluno</span> <span class="ow">in</span> <span class="n">alunos</span><span class="p">:</span>
+    <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">denominador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">bimestre</span><span class="p">,</span> <span class="n">nota</span> <span class="ow">in</span> <span class="n">notas</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">peso</span> <span class="o">=</span> <span class="n">pesos</span><span class="p">[</span><span class="n">bimestre</span><span class="p">]</span>
+        <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nota</span> <span class="o">*</span> <span class="n">peso</span>
+        <span class="n">denominador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">+=</span> <span class="n">peso</span>
+
+<span class="n">resultado_final</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">aluno</span> <span class="ow">in</span> <span class="n">alunos</span><span class="p">:</span>
+    <span class="n">resultado_final</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">=</span> <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">/</span> <span class="n">denominador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span>
+
+<span class="c"># Nota maior que 9 teve menção A</span>
+<span class="c"># Nota maior que 7 e menor ou igual a 9 teve menção B</span>
+<span class="c"># Nota maior que 5 e menor ou igual a 7 teve menção C</span>
+<span class="c"># Nota menor que 5 teve menção D</span>
+
+<span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">nota</span> <span class="ow">in</span> <span class="n">resultado_final</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota final {}: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nome</span><span class="p">,</span> <span class="n">nota</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota A&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="mi">9</span> <span class="o">&gt;=</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota B&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="mi">7</span> <span class="o">&gt;=</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota C&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota D&quot;</span><span class="p">)</span>
+</pre></div>
+<p>Vamos analisar os problemas deste código acima:</p>
+<ol class="arabic simple">
+<li>Tem muitos fors ai galera, isso vai ficar lento, bem lento mesmo;</li>
+<li>As exceptions não estão tratadas de forma legal, mas você poderá estudar mais sobre isso lendo <a class="reference external" href="http://blog.abraseucodigo.com.br/resolucao-01-calculadora-basica-grupo-de-estudos.html">este post</a>, considere isso um exercício;</li>
+<li>O código não está pythônico, limpo e claro, tem muita coisa que faz muita coisa.</li>
+</ol>
+</div>
+<div class="section" id="refatorando-as-variaveis-e-dicionarios">
+<h2>Refatorando as variáveis e dicionários</h2>
+<p>Começando do início:</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="n">bimestre_final</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">notas</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;aluno1&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s">&quot;aluno2&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">}</span>
+
+<span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+</pre></div>
+<p>Este dicionário de <tt class="docutils literal">notas</tt> não é muito necessário, pois quando eu recebo a nota do aluno eu já posso ir calculando durante a execução do primeiro for, isso é legal pois vai fazer com que a gente ganhe velocidade.</p>
+<p>A variável <tt class="docutils literal">bimestre_final</tt> é inútil também, pois como tenho uma lista com todos os bimestres abaixo deste trecho eu sei o número de bimestres que eu tenho a partir do dicionário intitulado como <tt class="docutils literal">bimestres</tt>.</p>
+<p>Só ai já eliminei duas coisas inúteis no script. Continuando:</p>
+<div class="highlight"><pre><span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;{} Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+
+<span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+</pre></div>
+<p>O que acham deste <a class="reference external" href="https://docs.python.org/3.5/tutorial/datastructures.html#list-comprehensions">list comprehenssion</a>? Este cara está mais ou menos bacana. Existem outras formas mais simples de escrever este cara, justamente porque são somente 6 bimestres. Soluções aceitáveis:</p>
+<ul class="simple">
+<li>Primeira forma: Mais legível</li>
+</ul>
+<div class="highlight"><pre><span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;1 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;2 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;3 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;4 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;5 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;6 Bim&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+</pre></div>
+<ul class="simple">
+<li>Segunda forma: Mais &quot;chata&quot;</li>
+</ul>
+<div class="highlight"><pre><span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+   <span class="n">bimestres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;{} Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">))</span>
+
+<span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+</pre></div>
+<ul class="simple">
+<li>Terceira forma: &quot;Splitada&quot;</li>
+</ul>
+<div class="highlight"><pre><span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+
+<span class="n">bimestres</span> <span class="o">=</span> <span class="s">&quot;1-Bim 2-Bim 3-Bim 4-Bim 5-Bim 6-Bim&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
+</pre></div>
+<p>Eu particularmente opto pela <tt class="docutils literal">Primeira forma</tt> ou pela <tt class="docutils literal">Terceira forma</tt> como estou optando por legibilidade e sem muita complexidade para este post vou escolher a primeira.</p>
+<p>A <tt class="docutils literal">Terceira forma</tt> achei legal mostrar, pois o bacana disso é que o <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.split">split</a> (que pode ser usado com strings) irá dividir a string onde tem os espaços, transformando assim essa string comprida em uma lista, que praticamente daria o mesmo resultado também (exceto pelo sinal do hífen).</p>
+<p>O caso do dicionário <tt class="docutils literal">pesos</tt> achei bacana, não vou mexer, mas aceito sugestões, se acharem uma solução mais legal me contem por favor.</p>
+<p>Depois dessa primeira refatorada, comecei a criar um novo script, que ficou com o começo deste jeito:</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="n">alunos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;Rafael1&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Rafael2&quot;</span>
+<span class="p">]</span>
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;1 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;2 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;3 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;4 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;5 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;6 Bim&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">pesos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;1 Bim&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s">&quot;2 Bim&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s">&quot;3 Bim&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s">&quot;4 Bim&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="s">&quot;5 Bim&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s">&quot;6 Bim&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">numerador</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">denominador</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pesos</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+<p>Eu particularmente achei bem mais bonito e claro de entender as coisas. Só tem uma coisa diferente ai, que a é função <tt class="docutils literal">sum</tt> que já é padrão do Python e faz soma de valores de um iterador, vamos ver como isso funciona:</p>
+<div class="highlight"><pre><span class="gp">$</span> python
+<span class="go">Python 3.5.1 (default, Feb 22 2016, 23:22:06)</span>
+<span class="go">[GCC 4.9.2] on linux</span>
+<span class="go">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span>
+<span class="gp">&gt;</span>&gt;&gt; <span class="nv">pesos</span> <span class="o">=</span> <span class="o">{</span>
+<span class="go">...         &quot;1 Bim&quot;: 2.0,</span>
+<span class="go">...         &quot;2 Bim&quot;: 3.0,</span>
+<span class="go">...         &quot;3 Bim&quot;: 3.0,</span>
+<span class="go">...         &quot;4 Bim&quot;: 4.0,</span>
+<span class="go">...         &quot;5 Bim&quot;: 5.0,</span>
+<span class="go">...         &quot;6 Bim&quot;: 5.0,</span>
+<span class="go">...     }</span>
+<span class="gp">&gt;</span>&gt;&gt; pesos.values<span class="o">()</span>
+<span class="go">dict_values([5.0, 2.0, 4.0, 5.0, 3.0, 3.0])</span>
+<span class="gp">&gt;</span>&gt;&gt; <span class="nb">type</span><span class="o">(</span>pesos.values<span class="o">())</span>
+<span class="go">&lt;class &#39;dict_values&#39;&gt;</span>
+<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>pesos.values<span class="o">())</span>
+<span class="go">22.0</span>
+<span class="gp">&gt;</span>&gt;&gt; <span class="nv">lista</span> <span class="o">=</span> <span class="o">[</span>1, 2, 3, 4, 5, 6<span class="o">]</span>
+<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>lista<span class="o">)</span>
+<span class="go">21</span>
+<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>range<span class="o">(</span>1,100<span class="o">))</span>
+<span class="go">4950</span>
+<span class="gp">&gt;</span>&gt;&gt; pesos.keys<span class="o">()</span>
+<span class="go">dict_keys([&#39;5 Bim&#39;, &#39;1 Bim&#39;, &#39;4 Bim&#39;, &#39;6 Bim&#39;, &#39;3 Bim&#39;, &#39;2 Bim&#39;])</span>
+<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>pesos.keys<span class="o">())</span>
+<span class="go">Traceback (most recent call last):</span>
+<span class="go">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="go">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
+</pre></div>
+<p>Olhe que curioso esse teste acima, quando uso <tt class="docutils literal">pesos.values()</tt> pego todos os valores do dicionário pesos em forma de iterável (assunto pra outra hora o que é um iterável), ai quando uso <tt class="docutils literal">sum</tt> somo todos esses valores e o resultado é 22.</p>
+<p>Consigo somar também listas, e também consigo somar um range de números gerados a partir da função <tt class="docutils literal">range</tt>. Porém quando tento somar strings (que são minhas keys do dicionário pesos) isso me retorna um erro dizendo que não consigo somar int e strings, essa soma não é possível. Espero que com esse exemplo tenha ficado claro o uso da função <tt class="docutils literal">sum</tt>. Mais informações na <a class="reference external" href="https://docs.python.org/3/library/functions.html#sum">documentação do Python</a>.</p>
+</div>
+<div class="section" id="refatorando-os-loops">
+<h2>Refatorando os loops</h2>
+<p>Depois de organizar melhor as variáveis/dicionários e listas que vamos trabalhar fica mais fácil organizar os nossos loops, vamos ver como ficou o script completo:</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="n">alunos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;Rafael1&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Rafael2&quot;</span>
+<span class="p">]</span>
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;1 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;2 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;3 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;4 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;5 Bim&quot;</span><span class="p">,</span>
+    <span class="s">&quot;6 Bim&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">pesos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;1 Bim&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s">&quot;2 Bim&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s">&quot;3 Bim&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s">&quot;4 Bim&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="s">&quot;5 Bim&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s">&quot;6 Bim&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">numerador</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">denominador</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pesos</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">aluno</span> <span class="ow">in</span> <span class="n">alunos</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Aluno: &quot;</span><span class="p">,</span> <span class="n">aluno</span><span class="p">)</span>
+    <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">bimestre</span> <span class="ow">in</span> <span class="n">bimestres</span><span class="p">:</span>
+        <span class="n">nota</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&quot;Digite a nota do {}: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bimestre</span><span class="p">))</span>
+        <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nota</span><span class="p">)</span>
+        <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nota</span> <span class="o">*</span> <span class="n">pesos</span><span class="p">[</span><span class="n">bimestre</span><span class="p">]</span>
+
+    <span class="n">media</span> <span class="o">=</span> <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">/</span> <span class="n">denominador</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota final {}: {:.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aluno</span><span class="p">,</span> <span class="n">media</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">media</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota A&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="mi">9</span> <span class="o">&gt;=</span> <span class="n">media</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota B&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="mi">7</span> <span class="o">&gt;=</span> <span class="n">media</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota C&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Nota D&quot;</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+<p>Agora sim! Ficou um script clean, mais pythônico do que era antes. De 6 loops reduzi para 2 loops somente.</p>
+<p>A criação de um dicionário dinamicamente ainda é usada na linha <tt class="docutils literal">numerador[aluno] = 0</tt> porém de forma bem mais simples, somente é inicializado com 0 para poder ir somando as notas do aluno no numerador da nossa equação. Para entender como ficou a estrutura do nosso dicionário numerador veja o exemplo abaixo:</p>
+<div class="highlight"><pre><span class="gp">$</span> python media_alunos_dict.py
+<span class="go">Aluno:  Rafael1</span>
+<span class="go">Digite a nota do 1 Bim: 7</span>
+<span class="go">Digite a nota do 2 Bim: 5</span>
+<span class="go">Digite a nota do 3 Bim: 3</span>
+<span class="go">Digite a nota do 4 Bim: 10</span>
+<span class="go">Digite a nota do 5 Bim: 9</span>
+<span class="go">Digite a nota do 6 Bim: 8</span>
+<span class="gp">&gt;</span> /home/rafael/Dropbox/Grupo de estudos Python/nivel_mediano/media_ponderada/media_alunos_dict.py<span class="o">(</span>35<span class="o">)</span>&lt;module&gt;<span class="o">()</span>
+<span class="go">     34     import ipdb; ipdb.set_trace()</span>
+<span class="go">---&gt; 35     media = numerador[aluno] / denominador</span>
+<span class="go">     36     print(&quot;Nota final {}: {:.2f}&quot;.format(aluno, media))</span>
+
+<span class="go">ipdb&gt; numerador</span>
+<span class="go">{&#39;Rafael1&#39;: 163.0}</span>
+</pre></div>
+<p>O numerador terá uma chave para cada nome de aluno contendo a soma total realizada. Neste exemplo foi realizado o seguinte cálculo no numerador do aluno <tt class="docutils literal">Rafael1</tt>: <tt class="docutils literal">(7*2 + 5*3 + 3*3 + 10*4 + 9*5 + 8*5) = 163.0</tt></p>
+<p>Quando continuo a execução do script temos:</p>
+<div class="highlight"><pre>ipdb&gt; numerador
+{&#39;Rafael1&#39;: 163.0, &#39;Rafael2&#39;: 158.0}
+</pre></div>
+<p>Neste caso cálculo realizado para o aluno <tt class="docutils literal">Rafael2</tt> é: <tt class="docutils literal">(5*2 + 4*3 + 6*3 + 7*4 + 8*5 + 10*5) = 158.0</tt></p>
+</div>
+<div class="section" id="conclusao">
+<h2>Conclusão</h2>
+<p>Espero que ao final dessa solução refatorada do live coding que rolou na <a class="reference external" href="http://localhost:8000/video-04-grupo-de-estudos-python.html">aula 04</a>, você tenha entendido mais coisas sobre listas, dicionários e estruturas de repetição. Caso tenha alguma dúvida/sugestão/crítica comenta ai.</p>
+<p>That's all folks!</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>
