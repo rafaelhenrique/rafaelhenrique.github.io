@@ -33,4 +33,4 @@ Se você quiser estudar um pouquinho mais e não somente resolver o exercício v
 
 Para facilitar seu divertimento use a biblioteca `math <https://docs.python.org/3.5/library/math.html>`_ padrão do Python.
 
-Semana que vem posto a resolução (todas as resoluções que conseguirmos).
+Você poderá ver a `resolução aqui <http://blog.abraseucodigo.com.br/resolucao-01-calculadora-basica-grupo-de-estudos.html>`_.
