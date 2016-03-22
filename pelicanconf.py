@@ -60,6 +60,7 @@ LINKEDIN_PROFILE = (
 
 SOCIAL = (
     ('twitter', 'https://twitter.com/rafaelhenrique'),
+    ('youtube', 'https://www.youtube.com/channel/UCclCntdMj9nhhTEnuR5m42A'),
     ('github', 'https://github.com/rafaelhenrique'),
     ('linkedin', LINKEDIN_PROFILE),
     ('rss', 'feeds/all.atom.xml'),
