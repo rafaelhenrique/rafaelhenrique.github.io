@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>Exercício: 03 - Blackjack parte 01 - Grupo de Estudos Python // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>março 22, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Exercício: 03 - Blackjack parte 01 - Grupo de Estudos Python</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/exercicio.html">exercício</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/grupo-de-estudos-python.html">grupo de estudos python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/sorocaba.html">sorocaba</a>
+                        </p>
+                </header>
+            </section>
+            <p>Como exercício desta semana gostaria que vocês começassem a implementação de um jogo de Blackjack, também conhecido como 21 (aqui no Brasil).</p>
+<p>As regras do Blackjack que usaremos como base são essas da <a class="reference external" href="https://pt.wikipedia.org/wiki/Blackjack">Wikipédia</a>. Também tem um joguinho pronto nos jogos da UOL que pode ser usado para entender melhor como é o jogo, <a class="reference external" href="http://jogosonline.uol.com.br/blackjack_2654.html">clique aqui</a> pra ver o jogo.</p>
+<div class="section" id="recomendacoes">
+<h2>Recomendações</h2>
+<p>Como o jogo é complexo vamos fazer algumas regras primeiro, e em outro momento escrevemos outras, até terminar o jogo todo, BABY STEPS (passos de bebê, pé ante pé, bem devagar porém com segurança).</p>
+<p>Lembre-se de usar a técnica de <a class="reference external" href="https://pt.wikipedia.org/wiki/Test_Driven_Development">TDD</a> para exercitar sua cabeça a pensar em testes, escreva sempre os testes primeiro para depois começar a programar algo realmente útil.</p>
+<p>Utilize o módulo <tt class="docutils literal">doctest</tt> do Python conforme mencionei na <a class="reference external" href="http://blog.abraseucodigo.com.br/video-05-grupo-de-estudos-python.html">Aula 05</a> para escrever seus testes de maneira básica.</p>
+<p>Ressalto aqui, o jogo não precisa estar pronto até o final! Escrevam testes para as funções mencionadas abaixo e as implemente. Nem precisa ter nada abaixo do <tt class="docutils literal">if __name__ == &quot;__main__&quot;</tt>.</p>
+</div>
+<div class="section" id="o-exercicio">
+<h2>O exercício</h2>
+<p>Na <a class="reference external" href="http://blog.abraseucodigo.com.br/video-05-grupo-de-estudos-python.html">aula 05</a> nós já implementamos um baralho simples, conforme vemos o código abaixo:</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Doctest deck</span>
+
+<span class="sd">&gt;&gt;&gt; deck = create_deck()  # Test create_deck</span>
+<span class="sd">&gt;&gt;&gt; len(deck)</span>
+<span class="sd">52</span>
+<span class="sd">&gt;&gt;&gt; ten_firsts = deck[0:10]  # Test shuffle</span>
+<span class="sd">&gt;&gt;&gt; shuffle(deck)</span>
+<span class="sd">&gt;&gt;&gt; deck[0:10] != ten_firsts</span>
+<span class="sd">True</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">create_deck</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This function create an deck with 52 cards&quot;&quot;&quot;</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;6&quot;</span><span class="p">,</span>
+               <span class="s">&quot;7&quot;</span><span class="p">,</span> <span class="s">&quot;8&quot;</span><span class="p">,</span> <span class="s">&quot;9&quot;</span><span class="p">,</span> <span class="s">&quot;10&quot;</span><span class="p">,</span> <span class="s">&quot;Q&quot;</span><span class="p">,</span> <span class="s">&quot;J&quot;</span><span class="p">,</span>
+               <span class="s">&quot;K&quot;</span><span class="p">]</span>
+    <span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;♣&quot;</span><span class="p">,</span> <span class="s">&quot;♦&quot;</span><span class="p">,</span> <span class="s">&quot;♥&quot;</span><span class="p">,</span> <span class="s">&quot;♠&quot;</span><span class="p">]</span>
+
+    <span class="n">deck</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="n">suits</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+            <span class="n">deck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;{}{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">suit</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">deck</span>
+
+<span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function shuffle one deck&quot;&quot;&quot;</span>
+    <span class="n">deck</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">deck</span> <span class="o">=</span> <span class="n">create_deck</span><span class="p">()</span>
+    <span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+</pre></div>
+<p>** Também serve de exercício dar uma olhada nessas funções acima e refatorá-las, sempre da pra melhorar!</p>
+<p>Como exercício implementem as funções abaixo:</p>
+<ol class="arabic">
+<li><p class="first">função <tt class="docutils literal">hit</tt>: Nesta função você comprará cartas e irá sempre remover uma carta do baralho original, pois no momento que você compra uma carta a mesma não poderá existir mais no mesmo baralho (pista: dê uma lida na documentação do módulo <a class="reference external" href="https://docs.python.org/3/library/random.html">random</a>);</p>
+</li>
+<li><p class="first">função <tt class="docutils literal">show_hand</tt>: Nesta função você deverá mostrar quantas cartas você já comprou e quais são elas;</p>
+</li>
+<li><dl class="first docutils">
+<dt>função <tt class="docutils literal">show_points</tt>: Nesta função você deverá mostrar quantos pontos acumulados você tem com as cartas que você já comprou;</dt>
+<dd><ul class="first last simple">
+<li>Ás vale 1 ponto;</li>
+<li>Cartas de números valem a mesma quantidade do número;</li>
+<li>Cartas de figuras (K, J, Q) valem 10.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">função <tt class="docutils literal">surrender</tt>: Mostra os pontos que você conseguiu até agora e finaliza a execução do jogo.</p>
+</li>
+<li><p class="first">função <tt class="docutils literal">show_money</tt>: Mostrar seu saldo atual (em dinheiro), o saldo inicial deverá ser 2000 reais, que pode ser representado por uma variável simples que será lida como uma variável global ao longo de todo sistema;</p>
+</li>
+<li><dl class="first docutils">
+<dt>função <tt class="docutils literal">bet</tt>: Esta é uma das funções mais complexas e legais do jogo, nela você deverá ver o seu saldo atual (em dinheiro) e comprar o número de fichas correspondentes com a aposta em dinheiro. Imagine assim:</dt>
+<dd><ul class="first last simple">
+<li>Eu tenho 2000 reais iniciais;</li>
+<li>Eu posso comprar fichas de 1, 5, 25 e 100 reais;</li>
+<li>Eu posos comprar fichas (por enquanto) a hora que eu quiser e bem entender;</li>
+<li>Se meu dinheiro for menor do que o valor em fichas que eu quero comprar, eu não posso comprar.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Acho que por enquanto essas 5 funções serão suficientes para o divertimento garantido hehehe. E não se esqueça: ESCREVA OS TESTES PRIMEIRO, ANTES DE SAIR PROGRAMANDO IGUAL UM MALUCO!</p>
+<p>Senão...</p>
+<img alt="TDD" src="images/exercicio-03-blackjack-parte-01-grupo-de-estudos-python.png" />
+<p>** Sobre TDD aqui tem um texto muito bacana intitulado <a class="reference external" href="http://tableless.com.br/tdd-por-que-usar/">TDD, por que usar?</a></p>
+<p>Em caso de dúvidas estou aqui para lhes auxiliar no processo, não deixem de me perguntar caso fiquem perdidos em algum ponto.</p>
+<p>Gostaria MUITO que vocês terminassem este exercício até dia 28/03/2016 que vai ser a nossa próxima aula, sem fazer este exercício vocês não irão conseguir medir o quanto aprenderam até agora sobre Python.</p>
+<p>Vamos considerar que esse é o primeiro exercício IMPORTANTE que passei pra vocês pois com ele vocês terão a possibilidade de usar TODOS os conhecimentos vistos até agora: Tipos básicos, Dicionários, Listas, Estrutura condicional, Estruturas de repetição, Testes (com doctest) e Funções.</p>
+<p>Então... mãos a obra.</p>
+<p>That's all folks.</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>
