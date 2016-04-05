@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/python.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-03-30T21:22:00-03:00</updated><entry><title>Vídeo: 06 - Grupo de Estudos Python</title><link href="http://blog.abraseucodigo.com.br/video-06-grupo-de-estudos-python.html" rel="alternate"></link><updated>2016-03-30T21:22:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-03-30:video-06-grupo-de-estudos-python.html</id><summary type="html">&lt;p&gt;Sexta aula de Python da segunda turma de Introdução a Python no Grupo de Estudos Sorocaba.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/python.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-04-04T16:36:00-03:00</updated><entry><title>O que são métodos/funções in-place no Python?</title><link href="http://blog.abraseucodigo.com.br/o-que-sao-metodos-funcoes-inplace-no-python.html" rel="alternate"></link><updated>2016-04-04T16:36:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-04-04:o-que-sao-metodos-funcoes-inplace-no-python.html</id><summary type="html">&lt;p&gt;Métodos/funções in-place no Python são carinhas que alteram o objeto original ao executar determinada funcionalidade.&lt;/p&gt;
+&lt;div class="section" id="in-place"&gt;
+&lt;h2&gt;IN PLACE&lt;/h2&gt;
+&lt;p&gt;Vamos a um exemplo prático:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; ipython
+&lt;span class="go"&gt;Python 3.5.1 (default, Feb 10 2016, 10:59:15)&lt;/span&gt;
+&lt;span class="go"&gt;Type &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.&lt;/span&gt;
+
+&lt;span class="go"&gt;IPython 4.1.2 -- An enhanced Interactive Python.&lt;/span&gt;
+&lt;span class="go"&gt;?         -&amp;gt; Introduction and overview of IPython&amp;#39;s features.&lt;/span&gt;
+&lt;span class="gp"&gt;%&lt;/span&gt;quickref -&amp;gt; Quick reference.
+&lt;span class="go"&gt;help      -&amp;gt; Python&amp;#39;s own help system.&lt;/span&gt;
+&lt;span class="go"&gt;object?   -&amp;gt; Details about &amp;#39;object&amp;#39;, use &amp;#39;object??&amp;#39; for extra details.&lt;/span&gt;
+
+&lt;span class="go"&gt;In [1]: teste = [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;]&lt;/span&gt;
+
+&lt;span class="go"&gt;In [2]: teste.reverse&lt;/span&gt;
+&lt;span class="go"&gt;teste.reverse&lt;/span&gt;
+
+&lt;span class="go"&gt;In [2]: teste.reverse?&lt;/span&gt;
+&lt;span class="go"&gt;Docstring: L.reverse() -- reverse *IN PLACE*&lt;/span&gt;
+&lt;span class="go"&gt;Type:      builtin_function_or_method&lt;/span&gt;
+
+&lt;span class="go"&gt;In [3]: reversed?&lt;/span&gt;
+&lt;span class="go"&gt;Init signature: reversed(self, /, *args, **kwargs)&lt;/span&gt;
+&lt;span class="go"&gt;Docstring:&lt;/span&gt;
+&lt;span class="go"&gt;reversed(sequence) -&amp;gt; reverse iterator over values of the sequence&lt;/span&gt;
+
+&lt;span class="go"&gt;Return a reverse iterator&lt;/span&gt;
+&lt;span class="go"&gt;Type:           type&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;** Neste exemplo (utilizando o ipython) usei um recurso bem bacana do ipython que mostra a docstring de um método/função python utilizando o caractere &lt;tt class="docutils literal"&gt;?&lt;/tt&gt;, usem isso é bem legal :)&lt;/p&gt;
+&lt;p&gt;Podemos ver que de acordo com a docstring do método &lt;a class="reference external" href="https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists"&gt;reverse&lt;/a&gt; de uma lista chamada &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; o método &lt;tt class="docutils literal"&gt;reverse&lt;/tt&gt; é IN PLACE, ao contrário da função &lt;a class="reference external" href="https://docs.python.org/3/library/functions.html#reversed"&gt;reversed&lt;/a&gt; (builtin do Python) que não é IN PLACE. Bem ai já temos uma ideia de como começar nossos estudos. Vamos ver o que o método &lt;tt class="docutils literal"&gt;reverse&lt;/tt&gt; da lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; é capaz de fazer:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="go"&gt;In [6]: id(teste)&lt;/span&gt;
+&lt;span class="go"&gt;Out[6]: 140323076029960&lt;/span&gt;
+
+&lt;span class="go"&gt;In [7]: teste&lt;/span&gt;
+&lt;span class="go"&gt;Out[7]: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;]&lt;/span&gt;
+
+&lt;span class="go"&gt;In [8]: teste.reverse()&lt;/span&gt;
+
+&lt;span class="go"&gt;In [9]: id(teste)&lt;/span&gt;
+&lt;span class="go"&gt;Out[9]: 140323076029960&lt;/span&gt;
+
+&lt;span class="go"&gt;In [10]: teste&lt;/span&gt;
+&lt;span class="go"&gt;Out[10]: [&amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;execução [6]: eu usei uma função também builtin do Python chamada &lt;a class="reference external" href="https://docs.python.org/3/library/functions.html#id"&gt;id&lt;/a&gt; que retorna a identidade de um objeto Python, o endereço retornado é o endereço do objeto em memória, um objeto diferente não possui o mesmo endereço de id NUNCA;&lt;/li&gt;
+&lt;li&gt;execução [7]: podemos visualizar quais dados temos na lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt;;&lt;/li&gt;
+&lt;li&gt;execução [8]: aplico o reverse na lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; e podemos ver que este método não retorna dados pois não temos a linha Out após sua execução;&lt;/li&gt;
+&lt;li&gt;execução [9]: podemos ver que o id continua o mesmo, logo podemos concluir que nosso objeto ainda é o mesmo objeto (em memória);&lt;/li&gt;
+&lt;li&gt;execução [10]: nossa lista chamada &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; foi modificada IN PLACE, ou seja, no mesmo objeto em que foi chamado o método reverse.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Observação importante: Nem todo IN PLACE mantêm o id do objeto original, a regra é o método/função alterar o objeto dentro dele mesmo, mas isso não significa que o id será sempre o mesmo, pois ele poderá criar um novo objeto e depositar esse objeto SOBRESCREVENDO sua variável antiga.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="o-que-nao-e-in-place"&gt;
+&lt;h2&gt;O que não é IN PLACE&lt;/h2&gt;
+&lt;p&gt;Um método/função não IN PLACE não modifica o objeto original para aplicar suas funcionalidades, mas sim cria um novo objeto! Vamos ao exemplo, pegando o gancho do exemplo acima:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="go"&gt;In [15]: teste&lt;/span&gt;
+&lt;span class="go"&gt;Out[15]: [&amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;]&lt;/span&gt;
+
+&lt;span class="go"&gt;In [16]: id(teste)&lt;/span&gt;
+&lt;span class="go"&gt;Out[16]: 140323076029960&lt;/span&gt;
+
+&lt;span class="go"&gt;In [17]: reversed(teste)&lt;/span&gt;
+&lt;span class="go"&gt;Out[17]: &amp;lt;list_reverseiterator at 0x7f9f8313c9b0&amp;gt;&lt;/span&gt;
+
+&lt;span class="go"&gt;In [18]: teste&lt;/span&gt;
+&lt;span class="go"&gt;Out[18]: [&amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;]&lt;/span&gt;
+
+&lt;span class="go"&gt;In [19]: id(teste)&lt;/span&gt;
+&lt;span class="go"&gt;Out[19]: 140323076029960&lt;/span&gt;
+
+&lt;span class="go"&gt;In [20]: teste2 = list(reversed(teste))&lt;/span&gt;
+
+&lt;span class="go"&gt;In [21]: teste2&lt;/span&gt;
+&lt;span class="go"&gt;Out[21]: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;]&lt;/span&gt;
+
+&lt;span class="go"&gt;In [22]: id(teste)&lt;/span&gt;
+&lt;span class="go"&gt;Out[22]: 140323076029960&lt;/span&gt;
+
+&lt;span class="go"&gt;In [23]: id(teste2)&lt;/span&gt;
+&lt;span class="go"&gt;Out[23]: 140323075691656&lt;/span&gt;
+
+&lt;span class="go"&gt;In [24]: teste&lt;/span&gt;
+&lt;span class="go"&gt;Out[24]: [&amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;]&lt;/span&gt;
+
+&lt;span class="go"&gt;In [25]: teste2&lt;/span&gt;
+&lt;span class="go"&gt;Out[25]: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;execução [15]: temos a nossa mesma lista com os mesmos elementos, na mesma ordem;&lt;/li&gt;
+&lt;li&gt;execução [16]: temos o mesmo id da nossa lista original;&lt;/li&gt;
+&lt;li&gt;execução [17]: executamos o &lt;tt class="docutils literal"&gt;reversed&lt;/tt&gt; na lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; e o resultado de Out é outro tipo de objeto chamado &lt;tt class="docutils literal"&gt;list_reverseiterator&lt;/tt&gt;, um objeto em diferente do que tínhamos anteriormente;&lt;/li&gt;
+&lt;li&gt;execução [18]: nossa lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; continua com os elementos na mesma posição após a execução da função;&lt;/li&gt;
+&lt;li&gt;execução [19]: o id da nossa lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; também continua sendo o mesmo;&lt;/li&gt;
+&lt;li&gt;execução [20]: agora vou guardar o resultado da função &lt;tt class="docutils literal"&gt;reversed&lt;/tt&gt; aplicar outra função &lt;tt class="docutils literal"&gt;list&lt;/tt&gt; para criar um novo objeto &lt;tt class="docutils literal"&gt;teste2&lt;/tt&gt; a partir da lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt;;&lt;/li&gt;
+&lt;li&gt;execução [21]: aqui temos uma nova lista ordenada de forma diferente da &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt;;&lt;/li&gt;
+&lt;li&gt;execução [22]: o id da lista &lt;tt class="docutils literal"&gt;teste&lt;/tt&gt; ainda permanece o mesmo;&lt;/li&gt;
+&lt;li&gt;execução [23]: o id da lista &lt;tt class="docutils literal"&gt;teste2&lt;/tt&gt; é outro, pois ele é outro objeto;&lt;/li&gt;
+&lt;li&gt;execução [24][25]: por fim vemos que os resultados das duas listas são diferentes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao"&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Entender o que é um método/função IN PLACE e como isso funciona no Python é muito importante para o aprendizado da linguagem e também evita o aparecimento de bugs :P.&lt;/p&gt;
+&lt;p&gt;That's all folks&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="inplace"></category><category term="metodos"></category><category term="builtin"></category><category term="in-place"></category></entry><entry><title>Vídeo: 06 - Grupo de Estudos Python</title><link href="http://blog.abraseucodigo.com.br/video-06-grupo-de-estudos-python.html" rel="alternate"></link><updated>2016-03-30T21:22:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-03-30:video-06-grupo-de-estudos-python.html</id><summary type="html">&lt;p&gt;Sexta aula de Python da segunda turma de Introdução a Python no Grupo de Estudos Sorocaba.&lt;/p&gt;
 &lt;p&gt;Parte 01:&lt;/p&gt;
 &lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/L48rYYEH8_Q" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Parte 02:&lt;/p&gt;
 &lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/FsgFZDpxHWk" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;That's all folks!&lt;/p&gt;

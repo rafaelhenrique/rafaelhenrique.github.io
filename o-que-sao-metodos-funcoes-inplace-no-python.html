@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>O que são métodos/funções in-place no Python? // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Developer #Python on @luizalabs! Gamer into World of Warcraft!</small>
+                <h5>Published</h5>
+                <p>abril 04, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>O que são métodos/funções in-place no Python?</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/inplace.html">inplace</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/metodos.html">metodos</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/builtin.html">builtin</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/in-place.html">in-place</a>
+                        </p>
+                </header>
+            </section>
+            <p>Métodos/funções in-place no Python são carinhas que alteram o objeto original ao executar determinada funcionalidade.</p>
+<div class="section" id="in-place">
+<h2>IN PLACE</h2>
+<p>Vamos a um exemplo prático:</p>
+<div class="highlight"><pre><span class="gp">$</span> ipython
+<span class="go">Python 3.5.1 (default, Feb 10 2016, 10:59:15)</span>
+<span class="go">Type &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span>
+
+<span class="go">IPython 4.1.2 -- An enhanced Interactive Python.</span>
+<span class="go">?         -&gt; Introduction and overview of IPython&#39;s features.</span>
+<span class="gp">%</span>quickref -&gt; Quick reference.
+<span class="go">help      -&gt; Python&#39;s own help system.</span>
+<span class="go">object?   -&gt; Details about &#39;object&#39;, use &#39;object??&#39; for extra details.</span>
+
+<span class="go">In [1]: teste = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+
+<span class="go">In [2]: teste.reverse</span>
+<span class="go">teste.reverse</span>
+
+<span class="go">In [2]: teste.reverse?</span>
+<span class="go">Docstring: L.reverse() -- reverse *IN PLACE*</span>
+<span class="go">Type:      builtin_function_or_method</span>
+
+<span class="go">In [3]: reversed?</span>
+<span class="go">Init signature: reversed(self, /, *args, **kwargs)</span>
+<span class="go">Docstring:</span>
+<span class="go">reversed(sequence) -&gt; reverse iterator over values of the sequence</span>
+
+<span class="go">Return a reverse iterator</span>
+<span class="go">Type:           type</span>
+</pre></div>
+<p>** Neste exemplo (utilizando o ipython) usei um recurso bem bacana do ipython que mostra a docstring de um método/função python utilizando o caractere <tt class="docutils literal">?</tt>, usem isso é bem legal :)</p>
+<p>Podemos ver que de acordo com a docstring do método <a class="reference external" href="https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists">reverse</a> de uma lista chamada <tt class="docutils literal">teste</tt> o método <tt class="docutils literal">reverse</tt> é IN PLACE, ao contrário da função <a class="reference external" href="https://docs.python.org/3/library/functions.html#reversed">reversed</a> (builtin do Python) que não é IN PLACE. Bem ai já temos uma ideia de como começar nossos estudos. Vamos ver o que o método <tt class="docutils literal">reverse</tt> da lista <tt class="docutils literal">teste</tt> é capaz de fazer:</p>
+<div class="highlight"><pre><span class="go">In [6]: id(teste)</span>
+<span class="go">Out[6]: 140323076029960</span>
+
+<span class="go">In [7]: teste</span>
+<span class="go">Out[7]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+
+<span class="go">In [8]: teste.reverse()</span>
+
+<span class="go">In [9]: id(teste)</span>
+<span class="go">Out[9]: 140323076029960</span>
+
+<span class="go">In [10]: teste</span>
+<span class="go">Out[10]: [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+</pre></div>
+<ul class="simple">
+<li>execução [6]: eu usei uma função também builtin do Python chamada <a class="reference external" href="https://docs.python.org/3/library/functions.html#id">id</a> que retorna a identidade de um objeto Python, o endereço retornado é o endereço do objeto em memória, um objeto diferente não possui o mesmo endereço de id NUNCA;</li>
+<li>execução [7]: podemos visualizar quais dados temos na lista <tt class="docutils literal">teste</tt>;</li>
+<li>execução [8]: aplico o reverse na lista <tt class="docutils literal">teste</tt> e podemos ver que este método não retorna dados pois não temos a linha Out após sua execução;</li>
+<li>execução [9]: podemos ver que o id continua o mesmo, logo podemos concluir que nosso objeto ainda é o mesmo objeto (em memória);</li>
+<li>execução [10]: nossa lista chamada <tt class="docutils literal">teste</tt> foi modificada IN PLACE, ou seja, no mesmo objeto em que foi chamado o método reverse.</li>
+</ul>
+<p>Observação importante: Nem todo IN PLACE mantêm o id do objeto original, a regra é o método/função alterar o objeto dentro dele mesmo, mas isso não significa que o id será sempre o mesmo, pois ele poderá criar um novo objeto e depositar esse objeto SOBRESCREVENDO sua variável antiga.</p>
+</div>
+<div class="section" id="o-que-nao-e-in-place">
+<h2>O que não é IN PLACE</h2>
+<p>Um método/função não IN PLACE não modifica o objeto original para aplicar suas funcionalidades, mas sim cria um novo objeto! Vamos ao exemplo, pegando o gancho do exemplo acima:</p>
+<div class="highlight"><pre><span class="go">In [15]: teste</span>
+<span class="go">Out[15]: [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+
+<span class="go">In [16]: id(teste)</span>
+<span class="go">Out[16]: 140323076029960</span>
+
+<span class="go">In [17]: reversed(teste)</span>
+<span class="go">Out[17]: &lt;list_reverseiterator at 0x7f9f8313c9b0&gt;</span>
+
+<span class="go">In [18]: teste</span>
+<span class="go">Out[18]: [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+
+<span class="go">In [19]: id(teste)</span>
+<span class="go">Out[19]: 140323076029960</span>
+
+<span class="go">In [20]: teste2 = list(reversed(teste))</span>
+
+<span class="go">In [21]: teste2</span>
+<span class="go">Out[21]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+
+<span class="go">In [22]: id(teste)</span>
+<span class="go">Out[22]: 140323076029960</span>
+
+<span class="go">In [23]: id(teste2)</span>
+<span class="go">Out[23]: 140323075691656</span>
+
+<span class="go">In [24]: teste</span>
+<span class="go">Out[24]: [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+
+<span class="go">In [25]: teste2</span>
+<span class="go">Out[25]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</pre></div>
+<ul class="simple">
+<li>execução [15]: temos a nossa mesma lista com os mesmos elementos, na mesma ordem;</li>
+<li>execução [16]: temos o mesmo id da nossa lista original;</li>
+<li>execução [17]: executamos o <tt class="docutils literal">reversed</tt> na lista <tt class="docutils literal">teste</tt> e o resultado de Out é outro tipo de objeto chamado <tt class="docutils literal">list_reverseiterator</tt>, um objeto em diferente do que tínhamos anteriormente;</li>
+<li>execução [18]: nossa lista <tt class="docutils literal">teste</tt> continua com os elementos na mesma posição após a execução da função;</li>
+<li>execução [19]: o id da nossa lista <tt class="docutils literal">teste</tt> também continua sendo o mesmo;</li>
+<li>execução [20]: agora vou guardar o resultado da função <tt class="docutils literal">reversed</tt> aplicar outra função <tt class="docutils literal">list</tt> para criar um novo objeto <tt class="docutils literal">teste2</tt> a partir da lista <tt class="docutils literal">teste</tt>;</li>
+<li>execução [21]: aqui temos uma nova lista ordenada de forma diferente da <tt class="docutils literal">teste</tt>;</li>
+<li>execução [22]: o id da lista <tt class="docutils literal">teste</tt> ainda permanece o mesmo;</li>
+<li>execução [23]: o id da lista <tt class="docutils literal">teste2</tt> é outro, pois ele é outro objeto;</li>
+<li>execução [24][25]: por fim vemos que os resultados das duas listas são diferentes.</li>
+</ul>
+</div>
+<div class="section" id="conclusao">
+<h2>Conclusão</h2>
+<p>Entender o que é um método/função IN PLACE e como isso funciona no Python é muito importante para o aprendizado da linguagem e também evita o aparecimento de bugs :P.</p>
+<p>That's all folks</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>
