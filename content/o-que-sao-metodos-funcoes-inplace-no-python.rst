@@ -47,7 +47,7 @@ Vamos a um exemplo prático:
 
 ** Neste exemplo (utilizando o ipython) usei um recurso bem bacana do ipython que mostra a docstring de um método/função python utilizando o caractere ``?``, usem isso é bem legal :)
 
-Podemos ver que de acordo com a docstring do método ``reverse`` de uma lista chamada ``teste`` o método ``reverse`` é IN PLACE, ao contrário da função `reversed <https://docs.python.org/3/library/functions.html#reversed>`_ (builtin do Python) que não é IN PLACE. Bem ai já temos uma ideia de como começar nossos estudos. Vamos ver o que o método ``reverse`` da lista ``teste`` é capaz de fazer:
+Podemos ver que de acordo com a docstring do método `reverse <https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists>`_ de uma lista chamada ``teste`` o método ``reverse`` é IN PLACE, ao contrário da função `reversed <https://docs.python.org/3/library/functions.html#reversed>`_ (builtin do Python) que não é IN PLACE. Bem ai já temos uma ideia de como começar nossos estudos. Vamos ver o que o método ``reverse`` da lista ``teste`` é capaz de fazer:
 
 .. code-block:: console
 
