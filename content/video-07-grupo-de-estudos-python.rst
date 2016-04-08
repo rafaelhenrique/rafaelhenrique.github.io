@@ -13,4 +13,8 @@ Sétima aula de Python da segunda turma de Introdução a Python no Grupo de Est
 
 .. youtube:: nXHh9yiBi_I
 
+Finalizando o exercício do Blackjack:
+
+.. youtube:: amulYdX9XHM
+
 That's all folks!
