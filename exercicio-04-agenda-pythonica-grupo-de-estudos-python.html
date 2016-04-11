@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Por um mundo livre e inteligente">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>Exercício: 04 - Agenda Pythônica - Grupo de Estudos Python // Abra seu Código!!! // Por um mundo livre e inteligente</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Pythonista, Linuxista, Gamer, Programador e.... Cervejeiro!</small>
+                <h5>Published</h5>
+                <p>abril 10, 2016</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Exercício: 04 - Agenda Pythônica - Grupo de Estudos Python</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/exercicio.html">exercício</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/python.html">python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/grupo-de-estudos-python.html">grupo de estudos python</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/sorocaba.html">sorocaba</a>
+                        </p>
+                </header>
+            </section>
+            <p>Vamos fazer uma agenda!</p>
+<div class="section" id="passo-a-passo">
+<h2>Passo a passo...</h2>
+<ul>
+<li><dl class="first docutils">
+<dt>Passo 1: Primeiro receberemos os campos que o usuário vai querer na agenda. O usuário poderá digitar uma quantidade variável de campos. Exemplo de campos: data, nome, compromisso, observação, prioridade e etc.</dt>
+<dd><ul class="first last simple">
+<li>Após receber estes campos você deverá criar as chaves respectivas de um dicionário usando estes nomes;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Passo 2: Salve o formato (as keys do seu dicionário) da sua agenda em um arquivo texto (se quiser inovar pode ser um banco de dados também);</p>
+</li>
+<li><p class="first">Passo 3: Faça seu sistema ler o formato do dicionário e criar as keys quando ele rodar, caso ele não ache o arquivo com o formato ele deverá executar o passo 1 e 2 de novo;</p>
+</li>
+<li><p class="first">Passo 4: Depois que seu sistema leu o formato, receba as informações de compromisso (respeitando as keys do dicionário) do usuário e salve essas informações em outro arquivo (ou pode ser no mesmo apesar de eu achar isso mais complexo);</p>
+</li>
+<li><p class="first">Passo 5: Crie uma opção para que o usuário possa ler os compromissos cadastrados.</p>
+</li>
+</ul>
+<p>Para facilitar a resolução pense em dicionários, listas, tuplas e estruturas de repetição (for e while).</p>
+</div>
+<div class="section" id="importante">
+<h2>Importante</h2>
+<p><strong>TODOS os passos devem ser feitos utilizando TDD, sempre pensando no teste primeiro e codificar depois! Esse exercício serve para ajudar a fixar a prática do TDD!</strong></p>
+<p>Pode ser usado doctest e/ou unittest ou outra ferramenta qualquer que vocês queiram estudar/aprender. Entre doctest e unittest prefiro que vocês desenvolvam com unittest, pois é uma ferramenta melhor/mais usada (vocês conseguem vagas de emprego com isso) para vocês aplicarem no &quot;mundo real&quot;.</p>
+<p>Se ainda não se sentem confortáveis com o unittest é melhor entender bem o funcionamento dele antes de estudar novas ferramentas para teste.</p>
+<p>Se vocês quiserem &quot;inovar&quot; e aprender ferramentas novas para teste recomendo algumas:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://pytest.org/latest/">Pytest</a></li>
+<li><a class="reference external" href="http://nose.readthedocs.org/en/latest/">Nose</a></li>
+<li><a class="reference external" href="http://pythonhosted.org/behave/tutorial.html">Behave</a></li>
+<li><a class="reference external" href="http://lettuce.it/tutorial/simple.html">Lettuce</a></li>
+</ul>
+<p>Não estou tirando o crédito do unittest, pelo contrário, acho uma ótima ferramenta, porém caso queiram estudar MAIS ou caso estejam com tempo sobrando convêm dar uma olhada nessas outras ferramentas.</p>
+</div>
+<div class="section" id="dicas-extras">
+<h2>Dicas extras</h2>
+<p>Você poderá estudar o módulo <a class="reference external" href="https://docs.python.org/3/library/json.html">json</a> e o <a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects">file object</a> do Python 3 para te ajudar na resolução.</p>
+<p>A saída do seu sistema deverá ser algo similar a esta abaixo:</p>
+<div class="highlight"><pre><span class="gp">$</span> ls
+<span class="go">agenda.py</span>
+
+<span class="gp">$</span> python agenda.py
+<span class="go">Digite um campo novo [c=cancelar]: nome</span>
+<span class="go">Digite um campo novo [c=cancelar]: dia</span>
+<span class="go">Digite um campo novo [c=cancelar]: compromisso</span>
+<span class="go">Digite um campo novo [c=cancelar]: ano</span>
+<span class="go">Digite um campo novo [c=cancelar]: mes</span>
+<span class="go">Digite um campo novo [c=cancelar]: c</span>
+
+<span class="gp">$</span> ls
+<span class="go">agenda.py  structure.json</span>
+
+<span class="gp">$</span> python agenda.py
+<span class="go">O que deseja fazer?</span>
+<span class="go">1. Acrescentar compromissos</span>
+<span class="go">2. Ler compromissos</span>
+<span class="go">3. Sair</span>
+<span class="go">2</span>
+<span class="go">Nenhum compromisso cadastrado!</span>
+<span class="go">O que deseja fazer?</span>
+<span class="go">1. Acrescentar compromissos</span>
+<span class="go">2. Ler compromissos</span>
+<span class="go">3. Sair</span>
+<span class="go">1</span>
+<span class="go">Digite um novo valor para nome: Rafael</span>
+<span class="go">Digite um novo valor para mes: Abril</span>
+<span class="go">Digite um novo valor para ano: 2016</span>
+<span class="go">Digite um novo valor para compromisso: Ir dormir</span>
+<span class="go">Digite um novo valor para dia: 10</span>
+<span class="go">O que deseja fazer?</span>
+<span class="go">1. Acrescentar compromissos</span>
+<span class="go">2. Ler compromissos</span>
+<span class="go">3. Sair</span>
+<span class="go">2</span>
+<span class="go">nome: Rafael</span>
+<span class="go">mes: Abril</span>
+<span class="go">ano: 2016</span>
+<span class="go">compromisso: Ir dormir</span>
+<span class="go">dia: 10</span>
+<span class="go">-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~</span>
+<span class="go">O que deseja fazer?</span>
+<span class="go">1. Acrescentar compromissos</span>
+<span class="go">2. Ler compromissos</span>
+<span class="go">3. Sair</span>
+<span class="go">3</span>
+
+<span class="gp">$</span> ls
+<span class="go">agenda.py  structure.json  tasks.json</span>
+</pre></div>
+<p>** Preste atenção ao <tt class="docutils literal">ls</tt> que executei, em um primeiro momento criei somente o arquivo de estrutura (structure.json) e depois criei o arquivo contendo as tarefas (tasks.json)</p>
+<p>Semana que vem posto a resolução!</p>
+<p>That's all folks!</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66364849-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+</body>
+</html>
