@@ -1596,7 +1596,7 @@ ipython==3.0.0
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Destas 17 linhas as variáveis que resolveram minha vira foram &lt;code&gt;host_ip&lt;/code&gt; e &lt;code&gt;private_ip&lt;/code&gt;, nestas duas eu setei meu ip &lt;strong&gt;EXTERNO (ou seja o ip que a galera de fora da sua rede vê)&lt;/strong&gt;, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site &lt;a href="https://www.whatismyip.com/"&gt;What Is My Ip?&lt;/a&gt; que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;).&lt;/p&gt;
+&lt;p&gt;Destas 17 linhas as variáveis que resolveram minha vida foram &lt;code&gt;host_ip&lt;/code&gt; e &lt;code&gt;private_ip&lt;/code&gt;, nestas duas eu setei meu ip &lt;strong&gt;EXTERNO (ou seja o ip que a galera de fora da sua rede vê)&lt;/strong&gt;, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site &lt;a href="https://www.whatismyip.com/"&gt;What Is My Ip?&lt;/a&gt; que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;).&lt;/p&gt;
 &lt;p&gt;Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando sudo):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;# bash run.bash --host-ip &amp;lt;meu ip externo&amp;gt; | tee log_run.log
 &lt;/pre&gt;&lt;/div&gt;
