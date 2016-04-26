@@ -126,7 +126,7 @@ Nas primeiras linhas do script chamado `run.bash` tem algumas variáveis interes
 17 set_interface=""
 ```
 
-Destas 17 linhas as variáveis que resolveram minha vira foram `host_ip` e `private_ip`, nestas duas eu setei meu ip **EXTERNO (ou seja o ip que a galera de fora da sua rede vê)**, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site [What Is My Ip?](https://www.whatismyip.com/) que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru :joy:).
+Destas 17 linhas as variáveis que resolveram minha vida foram `host_ip` e `private_ip`, nestas duas eu setei meu ip **EXTERNO (ou seja o ip que a galera de fora da sua rede vê)**, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site [What Is My Ip?](https://www.whatismyip.com/) que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru :joy:).
 
 Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando sudo):
 
