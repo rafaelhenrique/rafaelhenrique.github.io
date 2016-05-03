@@ -63,6 +63,7 @@ SOCIAL = (
     ('youtube', 'https://www.youtube.com/channel/UCclCntdMj9nhhTEnuR5m42A'),
     ('github', 'https://github.com/rafaelhenrique'),
     ('linkedin', LINKEDIN_PROFILE),
+    ('graduation-cap', 'https://speakerdeck.com/rafaelhenrique'),
     ('rss', 'feeds/all.atom.xml'),
 )
 
