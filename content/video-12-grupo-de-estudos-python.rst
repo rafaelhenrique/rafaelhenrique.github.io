@@ -13,4 +13,9 @@ Décima primeira aula de Python! Turma de Introdução a Python no Grupo de Estu
 
 .. youtube:: FS6ago_wR10
 
+Assista também (dois ótimos vídeos):
+
+.. youtube:: BwAF7ke7Px0
+.. youtube:: o9pEzgHorH0
+
 That's all folks!
