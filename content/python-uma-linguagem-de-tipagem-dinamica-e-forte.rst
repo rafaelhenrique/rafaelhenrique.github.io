@@ -86,4 +86,4 @@ Livro: Python para desenvolvedores 2.a edição.
 Autor: Luiz Eduardo Borges
 Distribuição gratuita no `site <http://ark4n.wordpress.com/python/>`_.
 
-Também tem um `vídeo <http://blog.abraseucodigo.com.br/video-wat.html>`_ muito interessante (e bem curtinho) que mostra mais coisas a respeito de como outras linguagens tratam alguns casos bem bizarros (alguns envolvendo tipagem fraca/forte estática/dinâmica).
+Também tem um `vídeo <https://www.destroyallsoftware.com/talks/wat>`_ muito interessante (e bem curtinho) que mostra mais coisas a respeito de como outras linguagens tratam alguns casos bem bizarros (alguns envolvendo tipagem fraca/forte estática/dinâmica).

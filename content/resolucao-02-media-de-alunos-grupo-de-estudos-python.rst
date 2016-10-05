@@ -16,7 +16,7 @@ O código lixo que eu fiz no Hangout
 
 Lixo é um nome muito forte, vamos chamar de RUIM somente por favor. Quando brincamos de live coding as coisas todas são diferentes do seu mundo real, devido a pressão, ou alguma coisa que passa na sua cabeça.
 
-No live coding que fiz no Hangout tentei focar em muitas técnicas para manipulação de dicionários e listas, espero que isso tenha ficado claro no vídeo da `aula 04 disponível neste post <http://blog.abraseucodigo.com.br/video-04-grupo-de-estudos-python.html>`_. 
+No live coding que fiz no Hangout tentei focar em muitas técnicas para manipulação de dicionários e listas, espero que isso tenha ficado claro no vídeo da `aula 04 disponível neste post <https://www.youtube.com/watch?v=kZbIeqcycPU>`_. 
 
 Então vamos ao código que mencionei:
 
@@ -349,6 +349,6 @@ Neste caso cálculo realizado para o aluno ``Rafael2`` é: ``(5*2 + 4*3 + 6*3 + 
 Conclusão
 ---------
 
-Espero que ao final dessa solução refatorada do live coding que rolou na `aula 04 <http://localhost:8000/video-04-grupo-de-estudos-python.html>`_, você tenha entendido mais coisas sobre listas, dicionários e estruturas de repetição. Caso tenha alguma dúvida/sugestão/crítica comenta ai.
+Espero que ao final dessa solução refatorada do live coding que rolou na `aula 04 <https://www.youtube.com/watch?v=kZbIeqcycPU>`_, você tenha entendido mais coisas sobre listas, dicionários e estruturas de repetição. Caso tenha alguma dúvida/sugestão/crítica comenta ai.
 
 That's all folks!
