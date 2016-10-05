@@ -5,7 +5,7 @@
                 <img class="avatar" alt="{{ article.author }}" src="{{ article.author_gravatar }}">
             {% endif %}
         </a>
-        <h5><a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+        <h5><a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
             <p class="post-meta">{{ article.summary }}</p>
             <p class="post-meta">
                 in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a> &middot; {{ article.locale_date }}
