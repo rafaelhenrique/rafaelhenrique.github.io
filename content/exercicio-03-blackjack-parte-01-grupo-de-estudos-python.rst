@@ -20,14 +20,14 @@ Como o jogo é complexo vamos fazer algumas regras primeiro, e em outro momento 
 
 Lembre-se de usar a técnica de `TDD <https://pt.wikipedia.org/wiki/Test_Driven_Development>`_ para exercitar sua cabeça a pensar em testes, escreva sempre os testes primeiro para depois começar a programar algo realmente útil.
 
-Utilize o módulo ``doctest`` do Python conforme mencionei na `Aula 05 <http://blog.abraseucodigo.com.br/video-05-grupo-de-estudos-python.html>`_ para escrever seus testes de maneira básica.
+Utilize o módulo ``doctest`` do Python conforme mencionei na `Aula 05 <https://www.youtube.com/watch?v=OLTUoD4jaGA>`_ para escrever seus testes de maneira básica.
 
 Ressalto aqui, o jogo não precisa estar pronto até o final! Escrevam testes para as funções mencionadas abaixo e as implemente. Nem precisa ter nada abaixo do ``if __name__ == "__main__"``.
 
 O exercício
 -----------
 
-Na `aula 05 <http://blog.abraseucodigo.com.br/video-05-grupo-de-estudos-python.html>`_ nós já implementamos um baralho simples, conforme vemos o código abaixo:
+Na `aula 05 <https://www.youtube.com/watch?v=OLTUoD4jaGA>`_ nós já implementamos um baralho simples, conforme vemos o código abaixo:
 
 .. code-block:: python
 
