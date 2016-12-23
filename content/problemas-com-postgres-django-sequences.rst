@@ -57,12 +57,12 @@ Como consigo ver este efeito acontecer? Simples, basta tentar persistir uma pess
     django.db.utils.IntegrityError: duplicate key value violates unique constraint "core_pessoa_pkey"
     DETAIL:  Key (id)=(1) already exists.
 
-Este efeito foi observado no PostgreeSQL e não sei se aconteceria usando MySQL ou outros SGBDs por exemplo... é questão de experimentar e ver o efeito.
+Este efeito foi observado no PostgreSQL e não sei se aconteceria usando MySQL ou outros SGBDs por exemplo... é questão de experimentar e ver o efeito.
 
 Como eu resolvo isso?
 ---------------------
 
-Você conseguirá resolver este problema setando um valor NA MÃO para a sua sequence que não foi incrementada. No PostgreeSQL até que foi simples, primeiro fiz uma query para descobrir quais eram TODAS as minhas sequences:
+Você conseguirá resolver este problema setando um valor NA MÃO para a sua sequence que não foi incrementada. No PostgreSQL até que foi simples, primeiro fiz uma query para descobrir quais eram TODAS as minhas sequences:
 
 .. code-block:: command
 
