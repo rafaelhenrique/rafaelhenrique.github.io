@@ -95,17 +95,17 @@
 <div class="section" id="criando-virtualenv-e-utilizando-o-pip-no-windows">
 <h2>Criando virtualenv e utilizando o pip no Windows</h2>
 <p>Vamos criar o diretório do projeto <tt class="docutils literal">myprojectA</tt>:</p>
-<div class="highlight"><pre>C:\Users\rafael&gt; mkdir myprojectA
+<div class="highlight"><pre><span></span>C:\Users\rafael&gt; mkdir myprojectA
 </pre></div>
 <p>Vamos entrar nesta pasta:</p>
-<div class="highlight"><pre>C:\Users\rafael&gt; cd myprojectA
+<div class="highlight"><pre><span></span>C:\Users\rafael&gt; cd myprojectA
 C:\Users\rafael\myprojectA&gt;
 </pre></div>
 <p>Posteriormente vamos criar um virtualenv:</p>
-<div class="highlight"><pre>C:\Users\rafael\myprojectA&gt; python -m venv .venv
+<div class="highlight"><pre><span></span>C:\Users\rafael\myprojectA&gt; python -m venv .venv
 </pre></div>
 <p>Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como <cite>.venv</cite>, como podemos ver abaixo:</p>
-<div class="highlight"><pre>C:\Users\rafael\myprojectA&gt; dir
+<div class="highlight"><pre><span></span>C:\Users\rafael\myprojectA&gt; dir
 ... linhas omitidas ...
 
 02/16/2016   10:36 PM   &lt;DIR&gt;        .venv
@@ -113,14 +113,14 @@ C:\Users\rafael\myprojectA&gt;
 ... linhas omitidas ...
 </pre></div>
 <p>Para começar a usar esse virtualenv temos que ativá-lo para isso execute:</p>
-<div class="highlight"><pre>C:\Users\rafael\myprojectA&gt; .venv\Scripts\activate.bat
+<div class="highlight"><pre><span></span>C:\Users\rafael\myprojectA&gt; .venv\Scripts\activate.bat
 (.venv) C:\Users\rafael\myprojectA&gt;
 </pre></div>
 <p>Perceba que o seu prompt vai ser modificado e o prefixo (.venv) será acrescentado no começo dele. Agora vamos instalar uma biblioteca, o ipython:</p>
-<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectA&gt; pip install ipython
+<div class="highlight"><pre><span></span>(.venv) C:\Users\rafael\myprojectA&gt; pip install ipython
 </pre></div>
 <p>O <tt class="docutils literal">ipython</tt> tem várias dependências (que irão ser instaladas juntamente com ele, não se assuste) e sua função é seu um interpretador do Python com mais recursos. Quando eu não passo uma versão específica ao <tt class="docutils literal">pip</tt> ele vai instalar sempre a última versão estável da biblioteca, no momento que instalei no meu computador a versão corrente era a 4.1.1. Então neste projeto que chamei de <tt class="docutils literal">myprojectA</tt> teremos as seguintes bibliotecas:</p>
-<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectA&gt; pip freeze
+<div class="highlight"><pre><span></span>(.venv) C:\Users\rafael\myprojectA&gt; pip freeze
 decorator==4.0.9
 ipython==4.1.1
 ipython-genutils==0.1.0
@@ -131,13 +131,13 @@ traitlets==4.1.0
 </pre></div>
 <p>Com o comando acima <tt class="docutils literal">pip freeze</tt> veremos todas as bibliotecas instaladas nesse <tt class="docutils literal">virtualenv</tt> e suas respectivas versões. Não vou detalhar neste post todos os poderes do <tt class="docutils literal">pip</tt>, mas o parâmetro <tt class="docutils literal">freeze</tt> é extremamente importante para o desenvolvimento de sistemas em Python, futuramente posso fazer um post só explicando setup de projetos Python, se quiserem esse post rápido me dêem um toque ai nos comentários.</p>
 <p>Para não ser muito repetitivo (<a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>) no post e para aplicar um exercício de fixação ao mesmo tempo, refaça os passos com o diretório <tt class="docutils literal">myprojectB</tt> mas antes disso desative o <tt class="docutils literal">virtualenv</tt> atual:</p>
-<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectA&gt; .venv\Scripts\deactivate.bat
+<div class="highlight"><pre><span></span>(.venv) C:\Users\rafael\myprojectA&gt; .venv\Scripts\deactivate.bat
 </pre></div>
 <p>Ao chegar no passo em que você instala o <tt class="docutils literal">ipython</tt> pelo <tt class="docutils literal">pip</tt> não faça isso desta vez, quando chegar nesta etapa execute o comando abaixo:</p>
-<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectB&gt; pip install ipython==3.0.0
+<div class="highlight"><pre><span></span>(.venv) C:\Users\rafael\myprojectB&gt; pip install ipython==3.0.0
 </pre></div>
 <p>Desta forma vamos testemunhar o isolamento de ambientes! Ao terminar a instalaçào do <tt class="docutils literal">ipython</tt> (versão 3.0.0), verifique o que você acabou de instalar:</p>
-<div class="highlight"><pre>(.venv) C:\Users\rafael\myprojectB&gt; pip freeze
+<div class="highlight"><pre><span></span>(.venv) C:\Users\rafael\myprojectB&gt; pip freeze
 ipython=3.0.0
 </pre></div>
 <p>Ai você vai me perguntar &quot;ué!? cadê os requisitos!?&quot; pois é... nesta versão do <tt class="docutils literal">ipython</tt> ele não tinha tantos requisitos, só por essa demonstração já conseguimos ver o isolamento entre os ambientes.</p>
@@ -145,28 +145,28 @@ ipython=3.0.0
 <div class="section" id="criando-virtualenv-e-utilizando-o-pip-no-linux-e-mac-osx">
 <h2>Criando virtualenv e utilizando o pip no Linux e Mac OSX</h2>
 <p>Vamos criar o diretório do projeto <tt class="docutils literal">myprojectA</tt>:</p>
-<div class="highlight"><pre>rafael@bloodmary:~$ mkdir myprojectA
+<div class="highlight"><pre><span></span>rafael@bloodmary:~$ mkdir myprojectA
 </pre></div>
 <p>Vamos entrar nesta pasta:</p>
-<div class="highlight"><pre>rafael@bloodmary:~$ cd myprojectA
+<div class="highlight"><pre><span></span>rafael@bloodmary:~$ cd myprojectA
 rafael@bloodmary:myprojectA$
 </pre></div>
 <p>Posteriormente vamos criar um virtualenv:</p>
-<div class="highlight"><pre>rafael@bloodmary:myprojectA$ python3.5 -m venv .venv
+<div class="highlight"><pre><span></span>rafael@bloodmary:myprojectA$ python3.5 -m venv .venv
 </pre></div>
 <p>Pronto criamos um virtualenv onde este cara ficará armazenado em uma pasta nomeado como <cite>.venv</cite>, como podemos ver abaixo:</p>
-<div class="highlight"><pre>rafael@bloodmary:myprojectA$ ls -a
+<div class="highlight"><pre><span></span>rafael@bloodmary:myprojectA$ ls -a
 .  ..  .python-version  .venv
 </pre></div>
 <p>Para começar a usar esse virtualenv temos que ativá-lo para isso execute:</p>
-<div class="highlight"><pre>rafael@bloodmary:myprojectA$ source .venv/bin/activate
+<div class="highlight"><pre><span></span>rafael@bloodmary:myprojectA$ source .venv/bin/activate
 (.venv)rafael@bloodmary:myprojectA$
 </pre></div>
 <p>Perceba que o seu prompt vai ser modificado e o prefixo (.venv) será acrescentado no começo dele. Agora vamos instalar uma biblioteca, o ipython:</p>
-<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectA$ pip install ipython
+<div class="highlight"><pre><span></span>(.venv)rafael@bloodmary:myprojectA$ pip install ipython
 </pre></div>
 <p>O <tt class="docutils literal">ipython</tt> tem várias dependências (que irão ser instaladas juntamente com ele, não se assuste) e sua função é seu um interpretador do Python com mais recursos. Quando eu não passo uma versão específica ao <tt class="docutils literal">pip</tt> ele vai instalar sempre a última versão estável da biblioteca, no momento que instalei no meu computador a versão corrente era a 4.1.1. Então neste projeto que chamei de <tt class="docutils literal">myprojectA</tt> teremos as seguintes bibliotecas:</p>
-<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectA$ pip freeze
+<div class="highlight"><pre><span></span>(.venv)rafael@bloodmary:myprojectA$ pip freeze
 decorator==4.0.9
 ipython==4.1.1
 ipython-genutils==0.1.0
@@ -180,13 +180,13 @@ wheel==0.24.0
 </pre></div>
 <p>Com o comando acima <tt class="docutils literal">pip freeze</tt> veremos todas as bibliotecas instaladas nesse <tt class="docutils literal">virtualenv</tt> e suas respectivas versões. Não vou detalhar neste post todos os poderes do <tt class="docutils literal">pip</tt>, mas o parâmetro <tt class="docutils literal">freeze</tt> é extremamente importante para o desenvolvimento de sistemas em Python, futuramente posso fazer um post só explicando setup de projetos Python, se quiserem esse post rápido me dêem um toque ai nos comentários.</p>
 <p>Para não ser muito repetitivo (<a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>) no post e para aplicar um exercício de fixação ao mesmo tempo, refaça os passos com o diretório <tt class="docutils literal">myprojectB</tt> mas antes disso desative o <tt class="docutils literal">virtualenv</tt> atual:</p>
-<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectA$ deactivate
+<div class="highlight"><pre><span></span>(.venv)rafael@bloodmary:myprojectA$ deactivate
 </pre></div>
 <p>Ao chegar no passo em que você instala o <tt class="docutils literal">ipython</tt> pelo <tt class="docutils literal">pip</tt> não faça isso desta vez, quando chegar nesta etapa execute o comando abaixo:</p>
-<div class="highlight"><pre>(.venv)rafael@bloodmary:myprojectB$ pip install ipython==3.0.0
+<div class="highlight"><pre><span></span>(.venv)rafael@bloodmary:myprojectB$ pip install ipython==3.0.0
 </pre></div>
 <p>Desta forma vamos testemunhar o isolamento de ambientes! Ao terminar a instalaçào do <tt class="docutils literal">ipython</tt> (versão 3.0.0), verifique o que você acabou de instalar:</p>
-<div class="highlight"><pre>(.venv) rafael@bloodmary:myprojectB$ pip freeze
+<div class="highlight"><pre><span></span>(.venv) rafael@bloodmary:myprojectB$ pip freeze
 ipython==3.0.0
 </pre></div>
 <p>Ai você vai me perguntar &quot;ué!? cadê os requisitos!?&quot; pois é... nesta versão do <tt class="docutils literal">ipython</tt> ele não tinha tantos requisitos, só por essa demonstração já conseguimos ver o isolamento entre os ambientes.</p>

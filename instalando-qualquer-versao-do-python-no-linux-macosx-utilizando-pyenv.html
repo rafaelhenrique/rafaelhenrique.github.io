@@ -75,13 +75,13 @@
 <li><a class="reference external" href="https://github.com/yyuu/pyenv#homebrew-on-mac-os-x">Homebrew on Mac OS X</a></li>
 </ul>
 <p>Se você usa Linux você vai começar instalando as dependências de um script que facilita a instalação do <tt class="docutils literal">pyenv</tt> pra você. Este script depende de dois comandos <tt class="docutils literal">git</tt> e <tt class="docutils literal">curl</tt>, caso você não os tenha instalados, execute o comando abaixo (este comando você precisa executar como root ou com sudo):</p>
-<div class="highlight"><pre># apt-get install curl git
+<div class="highlight"><pre><span></span># apt-get install curl git
 </pre></div>
 <p>Feito isso vamos prosseguir com instalação usando um script automatizado que a galera do <tt class="docutils literal">pyenv</tt> fez. Execute como usuário normal (não root e sem sudo) o seguinte script abaixo:</p>
-<div class="highlight"><pre>$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+<div class="highlight"><pre><span></span>$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 </pre></div>
 <p>Ao terminar a execução deste script uma saída assim será exibida:</p>
-<div class="highlight"><pre>WARNING: seems you still have not added &#39;pyenv&#39; to the load path.
+<div class="highlight"><pre><span></span>WARNING: seems you still have not added &#39;pyenv&#39; to the load path.
 
 # Load pyenv automatically by adding
 # the following to ~/.bash_profile:
@@ -95,10 +95,10 @@ eval &quot;$(pyenv virtualenv-init -)&quot;
 <p>Então vamos fazer isso, abra seu arquivo <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt> com seu editor favorito e adicione essas linhas no final do arquivo, conforme mostrado nesta imagem abaixo:</p>
 <img alt=".bashrc" src="images/instalando-qualquer-versao-do-python-no-linux-macosx-utilizando-pyenv/01.png" />
 <p>Fiz um comentário (linha em azul) apenas para informar que esta é a configuração do <tt class="docutils literal">pyenv</tt> e manter as coisas organizadas. Feita esta configuração basta executar (como usuário normal não root nem sudo) o comando abaixo, para que seu ambiente seja &quot;populado&quot; com as novas variáveis da configuração que você fez:</p>
-<div class="highlight"><pre>$ source ~/.bashrc
+<div class="highlight"><pre><span></span>$ source ~/.bashrc
 </pre></div>
 <p>Desta forma você poderá chamar o comando <tt class="docutils literal">pyenv</tt> no seu terminal:</p>
-<div class="highlight"><pre>$ pyenv
+<div class="highlight"><pre><span></span>$ pyenv
 pyenv 20160202-10-ga6f1f48
 Usage: pyenv &lt;command&gt; [&lt;args&gt;]
 
@@ -122,7 +122,7 @@ For full documentation, see: https://github.com/yyuu/pyenv#readme
 </div>
 <div class="section" id="verificando-as-versoes-disponiveis-para-instalacao">
 <h2>Verificando as versões disponíveis para instalação</h2>
-<div class="highlight"><pre>$ pyenv install -l
+<div class="highlight"><pre><span></span>$ pyenv install -l
 Available versions:
   .... linhas omitidas ....
 
@@ -167,17 +167,17 @@ Available versions:
 <div class="section" id="instalando-o-python-3-5-1">
 <h2>Instalando o Python 3.5.1</h2>
 <p>No Debian (Ubuntu também usa os mesmos pacotes) você precisará instalar algumas dependências para que o <tt class="docutils literal">pyenv</tt> compile o Python para você, como root ou usando sudo execute o comando abaixo:</p>
-<div class="highlight"><pre># apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
+<div class="highlight"><pre><span></span># apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
 </pre></div>
 <p>Caso você esteja usando outro sistema operacional que não seja o Debian, você poderá consultar as dependências que precisará instalar neste link:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/yyuu/pyenv/wiki/Common-build-problems">https://github.com/yyuu/pyenv/wiki/Common-build-problems</a></li>
 </ul>
 <p>Depois de instalar as dependências necessárias, execute (como usuário normal sem root e sem sudo) o comando para instalação do Python 3.5.1 conforme mostrado abaixo:</p>
-<div class="highlight"><pre>$ pyenv install 3.5.1
+<div class="highlight"><pre><span></span>$ pyenv install 3.5.1
 </pre></div>
 <p>A saída será similar a esta:</p>
-<div class="highlight"><pre>Downloading Python-3.5.1.tgz...
+<div class="highlight"><pre><span></span>Downloading Python-3.5.1.tgz...
 -&gt; https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
 Installing Python-3.5.1...
 Installed Python-3.5.1 to /home/rafael/.pyenv/versions/3.5.1
@@ -188,26 +188,26 @@ Installed Python-3.5.1 to /home/rafael/.pyenv/versions/3.5.1
 <h2>Como usar o(s) Python(s) instalado(s)?</h2>
 <p>Todo sistema Linux/Mac OSX geralmente já vem com alguma versão do Python instalada (2.6, 2.7, 3 ou 3.4 geralmente), o <tt class="docutils literal">pyenv</tt> vai isolar a versão do Python do sistema operacional caso você precise dele posteriormente você conseguirá usá-lo sem problemas.</p>
 <p>Para ver as versões disponíveis para uso execute o comando abaixo:</p>
-<div class="highlight"><pre>$ pyenv versions
+<div class="highlight"><pre><span></span>$ pyenv versions
 * system (set by /home/rafael/.pyenv/version)
   3.5.1
 </pre></div>
 <p>No caso agora no meu sistema eu tenho a versão <tt class="docutils literal">system</tt> que é a que estava instalada anteriormente com meu sistema operacional e também a versão 3.5.1. O símbolo <tt class="docutils literal">*</tt> especifica qual a versão você está utilizando neste momento.</p>
 <p>Você poderá mudar a versão utilizada usando o parâmetro <tt class="docutils literal">global</tt> do <tt class="docutils literal">pyenv</tt> desta maneira:</p>
-<div class="highlight"><pre>$ pyenv global 3.5.1
+<div class="highlight"><pre><span></span>$ pyenv global 3.5.1
 $ pyenv versions
   system
 * 3.5.1 (set by /home/rafael/.pyenv/version)
 </pre></div>
 <p>Observe que ao executar <tt class="docutils literal">pyenv versions</tt> novamente ele mostrou que a versão a ser utilizada agora é 3.5.1, vamos executar o interpretador Python para ver se tudo correu bem:</p>
-<div class="highlight"><pre>$ python
+<div class="highlight"><pre><span></span>$ python
 Python 3.5.1 (default, Feb 24 2016, 21:38:32)
 [GCC 4.9.2] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt;
 </pre></div>
 <p>Perfeitamente bem! Agora vamos mudar para a versão <tt class="docutils literal">system</tt> e chamar o interpretador novamente para ver o que acontece:</p>
-<div class="highlight"><pre>$ pyenv global system
+<div class="highlight"><pre><span></span>$ pyenv global system
 $ pyenv versions
 * system (set by /home/rafael/.pyenv/version)
   3.5.1
@@ -224,7 +224,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <div class="section" id="voce-e-um-cara-preocupado-eu-tambem">
 <h2>Você é um cara preocupado? Eu também...</h2>
 <p>Outra coisa que você não precisa se preocupar é que o <tt class="docutils literal">pyenv</tt> instala e faz modificações no seu sistema a nível de usuário, ou seja, nada do que você faça com ele vai desgraçar seu sistema operacional inteiro, no máximo vai dar uma zuada na configuração do Python do seu usuário somente, em casos extremos você poderá desinstalar o <tt class="docutils literal">pyenv</tt> de forma fácil simplesmente apagando a pasta dele que fica em sua home:</p>
-<div class="highlight"><pre>$ rm -fr ~/.pyenv
+<div class="highlight"><pre><span></span>$ rm -fr ~/.pyenv
 </pre></div>
 <p>E posteriormente remover as configurações de variáveis que colocamos no <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt>.</p>
 </div>

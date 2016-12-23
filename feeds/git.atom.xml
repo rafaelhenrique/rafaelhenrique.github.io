@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/git.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-03-24T10:16:00-03:00</updated><entry><title>Git squash?? WTF?</title><link href="http://blog.abraseucodigo.com.br/git-squash-wtf.html" rel="alternate"></link><updated>2015-03-24T10:16:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-03-24:git-squash-wtf.html</id><summary type="html">&lt;p&gt;Galera conforme mencionei no post anterior.. estou contribuindo com o &lt;a href="https://github.com/puppet-community/puppetboard/"&gt;puppetboard&lt;/a&gt; (mais informações no post abaixo desse :P). E fiz meu primeiro Pull Request e talz resolvendo uma questão que estava na issue para acrescentar uma nova funcionalidade ao projeto. Porém quando eu fiz meu PR (Pull Request) teve um cara que me disse o seguinte:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/git.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-03-24T10:16:00-03:00</updated><entry><title>Git squash?? WTF?</title><link href="http://blog.abraseucodigo.com.br/git-squash-wtf.html" rel="alternate"></link><published>2015-03-24T10:16:00-03:00</published><updated>2015-03-24T10:16:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-03-24:git-squash-wtf.html</id><summary type="html">&lt;p&gt;Galera conforme mencionei no post anterior.. estou contribuindo com o &lt;a href="https://github.com/puppet-community/puppetboard/"&gt;puppetboard&lt;/a&gt; (mais informações no post abaixo desse :P). E fiz meu primeiro Pull Request e talz resolvendo uma questão que estava na issue para acrescentar uma nova funcionalidade ao projeto. Porém quando eu fiz meu PR (Pull Request) teve um cara que me disse o seguinte:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="comment-github-image" src="/images/git-squash-wtf_01.png" title="comment-github-image" /&gt;
 **&lt;a href="http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits"&gt;squash&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ai eu pensei como qualquer ótimo conhecedor do Git que porras é essa de squash?&lt;/p&gt;
 &lt;p&gt;O squash é uma prática utilizada para combinar mais de um commit em um commit só, desta forma eliminando "lixos" do projeto. Agora aqui neste post explicarei como raios você faz isso, pois não achei uma documentação simples que explicasse a uma pessoa normal como fazer isso, e após aprender, decidi TENTAR explicar de uma forma simples &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;.&lt;/p&gt;
 &lt;h2&gt;O projeto&lt;/h2&gt;
 &lt;p&gt;Primeiro obviamente você precisa ter um repositório git, para isso eu criei um repositório BEEEM simples:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir teste  
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;teste  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git init  
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Rafael&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git add README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Rafael&amp;quot;&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir teste  
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; teste  
+$ git init  
+$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Rafael&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
+$ git add README  
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Rafael&amp;quot;&lt;/span&gt; 
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Henrique&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git add README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Henrique&amp;quot;&lt;/span&gt; 
+$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Henrique&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
+$ git add README  
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Henrique&amp;quot;&lt;/span&gt; 
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;da&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README
-&lt;span class="nv"&gt;$ &lt;/span&gt;git add README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado da&amp;quot;&lt;/span&gt; 
+$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;da&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README
+$ git add README  
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado da&amp;quot;&lt;/span&gt; 
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Silva&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git add README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Silva&amp;quot;&lt;/span&gt; 
+$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Silva&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
+$ git add README  
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Silva&amp;quot;&lt;/span&gt; 
 
-&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Correia&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git add README  
-&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Correia&amp;quot;&lt;/span&gt;
+$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Correia&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; README  
+$ git add README  
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Adicionado Correia&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Feito isso terei o seguinte histórico de commits:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git log --oneline  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git log --oneline  
 4c03027 Adicionado Correia  
 e23576b Adicionado Silva  
 769bda9 Adicionado da  
@@ -43,12 +43,12 @@ e23576b Adicionado Silva
 
 &lt;h2&gt;O squash&lt;/h2&gt;
 &lt;p&gt;Agora vamos imaginar que eu quero fazer um squash a partir de Henrique, ou seja quero que os commits 2a71622, 769bda9, e23576b e 4c03027 sejam um só, pois todos tratam da adição do sobrenome no arquivo README. Para isso precisarei usar o comando rebase do git no commit que eu desejo, no caso a partir do Henrique (como é a partir do Henrique deveremos pegar 1 commit antes):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git rebase -i 5ebadcd
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rebase -i 5ebadcd
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Após executar este comando será aberto um arquivo temporário para podermos fazer as alterações desejadas, o arquivo será similar a este abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pick 2a71622 Adicionado Henrique  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pick 2a71622 Adicionado Henrique  
 pick 769bda9 Adicionado da  
 pick e23576b Adicionado Silva  
 pick 4c03027 Adicionado Correia 
@@ -74,7 +74,7 @@ pick 4c03027 Adicionado Correia 
 
 
 &lt;p&gt;Neste mesmo arquivo já podemos visualizar algumas opções do que fazer com esses commits, para este post utilizaremos somente o squash, mas vale a pena conhecer as outras opções descritas abaixo de commands. Agora altere este arquivo da seguinte maneira:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pick 2a71622 Adicionado Henrique  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pick 2a71622 Adicionado Henrique  
 squash 769bda9 Adicionado da  
 squash e23576b Adicionado Silva  
 squash 4c03027 Adicionado Correia 
@@ -100,7 +100,7 @@ squash 4c03027 Adicionado Correia 
 
 
 &lt;p&gt;As linhas dos commits 769bda9, e23576b e 4c03027 foram mudadas para squash, portanto serão combinados ao commit que possui a o nome pick, então o commit 2a71622 agora será unido aos 3 commits abaixo dele. É importante comentar que o squash não remove os logs (mensagens dos commits) conforme a descrição do "Commands" já a opção fixup descarta os logs. Feita esta alteração basta salvar o arquivo e sair. Feito isso será apresentado outro arquivo similar a este abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;# This is a combination of 4 commits.  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# This is a combination of 4 commits.  
 # The first commit&amp;#39;s message is:  
 Adicionado Henrique  
 # This is the 2nd commit message:  
@@ -121,14 +121,14 @@ Adicionado Correia
 
 
 &lt;p&gt;Neste arquivo você poderá mudar as mensagens de log (mensagens dos commits) caso desejar, se desejar mude alguma coisa e salve e saia do arquivo. Terminada a edição/salvamento deste arquivo você acabou o squash! Podemos ver no log como ficou a nova estrutura:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git log --oneline  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git log --oneline  
 f4c9d80 Adicionado Henrique  
 5ebadcd Adicionado Rafael 
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ou:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git log  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git log  
 commit f4c9d80a089ee35fca0eb7c6e5aabcb435fb9bb4  
 Author: Rafael Henrique da Silva Correia &amp;lt;rafael@abraseucodigo.com.br&amp;gt;  
 Date:   Tue Mar &lt;span class="m"&gt;24&lt;/span&gt; 11:08:29 &lt;span class="m"&gt;2015&lt;/span&gt; -0300  

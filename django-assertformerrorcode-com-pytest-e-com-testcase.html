@@ -70,24 +70,24 @@
 <p>Este assert é mais um dos asserts interessantíssimos que o Django tem na sua suite de testes. Vejamos um exemplo de como esse cara pode ser usado nos seus testes:</p>
 <p><tt class="docutils literal">Formulário básico de inscrição</tt></p>
 <p><tt class="docutils literal">wttd/eventex/subscriptions/forms.py</tt></p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
 
 
 <span class="k">def</span> <span class="nf">validate_cpf</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;CPF deve conter apenas números&#39;</span><span class="p">,</span> <span class="s">&#39;digits&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;CPF deve conter apenas números&#39;</span><span class="p">,</span> <span class="s1">&#39;digits&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">11</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;CPF deve ter 11 números&#39;</span><span class="p">,</span> <span class="s">&#39;length&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;CPF deve ter 11 números&#39;</span><span class="p">,</span> <span class="s1">&#39;length&#39;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">SubscriptionForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Nome&#39;</span><span class="p">)</span>
-    <span class="n">cpf</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;CPF&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Nome&#39;</span><span class="p">)</span>
+    <span class="n">cpf</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;CPF&#39;</span><span class="p">,</span>
                           <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">validate_cpf</span><span class="p">])</span>
-    <span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Email&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">phone</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Telefone&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Email&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">phone</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Telefone&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
     <span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
 </pre></div>
@@ -110,7 +110,7 @@
 <p>Vejamos abaixo um teste criado no Django utilizando a verificação por <tt class="docutils literal">ErrorCode</tt>:</p>
 <p><tt class="docutils literal">Teste do formulário básico de inscrição</tt></p>
 <p><tt class="docutils literal">wttd/eventex/subscriptions/tests/test_form_subscription.py</tt></p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
 
 <span class="kn">from</span> <span class="nn">eventex.subscriptions.forms</span> <span class="kn">import</span> <span class="n">SubscriptionForm</span>
 
@@ -120,8 +120,8 @@
 
     <span class="k">def</span> <span class="nf">test_cpf_is_digit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;CPF must only accept digits&quot;&quot;&quot;</span>
-        <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_validated_form</span><span class="p">(</span><span class="n">cpf</span><span class="o">=</span><span class="s">&#39;ABCD5678901&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertFormErrorCode</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="s">&#39;cpf&#39;</span><span class="p">,</span> <span class="s">&#39;digits&#39;</span><span class="p">)</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_validated_form</span><span class="p">(</span><span class="n">cpf</span><span class="o">=</span><span class="s1">&#39;ABCD5678901&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFormErrorCode</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="s1">&#39;cpf&#39;</span><span class="p">,</span> <span class="s1">&#39;digits&#39;</span><span class="p">)</span>
 
     <span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
 </pre></div>
@@ -135,7 +135,7 @@
 <h2>Procurando uma solução que funciona independente do TestCase</h2>
 <p>Depois de garimpar algum tempo na internet (e amolar um amigo do trabalho) achei este post <a class="reference external" href="http://stackoverflow.com/questions/18781492/forms-validationerror-and-error-code">aqui</a> no stack overflow, o padroeiro dos desenvolvedores de software.</p>
 <p>Neste post o cara colocou uma forma diferente de conseguir pegar o <tt class="docutils literal">ErrorCode</tt> que está na exception do <tt class="docutils literal">ValidationError</tt>, ele usou:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; print(form.errors.as_json())
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; print(form.errors.as_json())
 {&quot;__all__&quot;: [
     {&quot;message&quot;: &quot;Your account has not been activated.&quot;, &quot;code&quot;: &quot;inactive&quot;}
 ]}
@@ -147,7 +147,7 @@
 <p>Criei uma classe de teste base minha chamada <tt class="docutils literal">BaseTest</tt>:</p>
 <p><tt class="docutils literal">Classe base de testes</tt></p>
 <p><tt class="docutils literal">este cara não está no github</tt></p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">Client</span>
 
 
 <span class="k">class</span> <span class="nc">BaseTest</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -164,10 +164,10 @@
 <span class="sd">            field_name: name of form field on Django.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s">&#39;context&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s1">&#39;context&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">context</span><span class="p">:</span>
-            <span class="n">errors</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s">&#39;form&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">as_data</span><span class="p">()[</span><span class="n">field_name</span><span class="p">]</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">as_data</span><span class="p">()[</span><span class="n">field_name</span><span class="p">]</span>
             <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="n">error</span><span class="o">.</span><span class="n">code</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">resp</span><span class="p">,</span> <span class="n">errors</span>
 </pre></div>
@@ -181,13 +181,13 @@
 <p>Bem feito isso é só usar esse cara! Código de exemplo de uso:</p>
 <p><tt class="docutils literal">Teste que usa a classe BaseTest, baseada na classe SubscriptionFormTest</tt></p>
 <p><tt class="docutils literal">este cara não está no github</tt></p>
-<div class="highlight"><pre><span class="o">...</span><span class="n">linhas</span> <span class="n">omitidas</span><span class="o">...</span>
+<div class="highlight"><pre><span></span><span class="o">...</span><span class="n">linhas</span> <span class="n">omitidas</span><span class="o">...</span>
 
 <span class="k">class</span> <span class="nc">TestSubscriptionForm</span><span class="p">(</span><span class="n">BaseTest</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">test_post_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">resp</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">ENDPOINT</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;cpf&quot;</span> <span class="p">:</span> <span class="s">&quot;ABC&quot;</span><span class="p">},</span> <span class="s">&#39;cpf&#39;</span><span class="p">)</span>
+        <span class="n">resp</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">ENDPOINT</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;cpf&quot;</span> <span class="p">:</span> <span class="s2">&quot;ABC&quot;</span><span class="p">},</span> <span class="s1">&#39;cpf&#39;</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
-        <span class="k">assert</span> <span class="s">&#39;digits&#39;</span> <span class="ow">in</span> <span class="n">errors</span>
+        <span class="k">assert</span> <span class="s1">&#39;digits&#39;</span> <span class="ow">in</span> <span class="n">errors</span>
 
 <span class="o">...</span><span class="n">linhas</span> <span class="n">omitidas</span><span class="o">...</span>
 </pre></div>

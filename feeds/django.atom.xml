@@ -1,5 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/django.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-02-18T21:16:00-02:00</updated><entry><title>Django assertFormErrorCode com py.test e com TestCase</title><link href="http://blog.abraseucodigo.com.br/django-assertformerrorcode-com-pytest-e-com-testcase.html" rel="alternate"></link><updated>2016-02-18T21:16:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-18:django-assertformerrorcode-com-pytest-e-com-testcase.html</id><summary type="html">&lt;p&gt;Estive trabalhando em um teste hoje utilizando py.test e queria usar assertFormErrorCode padrão da suite de testes do Django, porém não queria extender meu teste de TestCase, como fazer?&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/django.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2016-12-22T10:58:00-02:00</updated><entry><title>Problemas com sequences no PostgreSQL usando Django</title><link href="http://blog.abraseucodigo.com.br/problemas-com-postgres-django-sequences.html" rel="alternate"></link><published>2016-12-22T10:58:00-02:00</published><updated>2016-12-22T10:58:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-12-22:problemas-com-postgres-django-sequences.html</id><summary type="html">&lt;p&gt;Tive um problema bem estranho estes dias, fui criar um novo objeto de model Django e persistí-lo no banco com o método &lt;cite&gt;.save()&lt;/cite&gt; (como todos vocês devem fazer milhares de vezes por dia), porém isso não aconteceu e recebi um erro deste tipo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;IntegrityError: duplicate key value violates unique constraint &amp;quot;core_pessoa_pkey&amp;quot;
+DETAIL:  Key (id)=(2) already exists.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos entender por que isso aconteceu.&lt;/p&gt;
+&lt;div class="section" id="qual-a-causa-para-isso-ter-acontecido"&gt;
+&lt;h2&gt;Qual a causa para isso ter acontecido?&lt;/h2&gt;
+&lt;p&gt;Você sempre se faz essa pergunta quando se depara com uma situação bizarra? Bem, eu também. A uns dias atrás precisei rodar um script no Django que inseria vários objetos no banco de dados, porém como esta operação já havia sido testada e retestada em outra máquina os objetos já tinham uma pk associada, então imagine um model do Django hipotético com esta estrutura:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;class Pessoa(models.Model):
+    nome = models.CharField(max_length=50)
+    idade = models.IntegerField()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E para persistir um novo objeto no banco você faz:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; from django-test.core.models import Pessoa
+&amp;gt;&amp;gt;&amp;gt; p = Pessoa(id=1, nome=&amp;quot;Rafael&amp;quot;, idade=28)
+&amp;gt;&amp;gt;&amp;gt; p.save()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Desta maneira iríamos persistir esta pessoa na nossa base de dados PostgreSQL tranquilamente. Porém!!! Porém!!! Porém!!! Isso tem um problema. Quando criamos um objeto novo já com uma pk (o id do nosso exemplo) associada e persistimos este objeto a sequence dele NÃO É INCREMENTADA! Ou seja, quando você for persistir um outro objeto sem passar a pk o Django te mandará esta exception abaixo bem no meio da sua cara:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;IntegrityError: duplicate key value violates unique constraint &amp;quot;core_pessoa_pkey&amp;quot;
+DETAIL:  Key (id)=(1) already exists.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Como consigo ver este efeito acontecer? Simples, basta tentar persistir uma pessoa sem passar a pk:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; from pessoa.models import Pessoa
+&amp;gt;&amp;gt;&amp;gt; p1 = Pessoa(id=2, nome=&amp;quot;Rafael&amp;quot;, idade=28)
+&amp;gt;&amp;gt;&amp;gt; p1.save()
+&amp;gt;&amp;gt;&amp;gt; p2 = Pessoa(nome=&amp;quot;Rafael&amp;quot;, idade=28)
+&amp;gt;&amp;gt;&amp;gt; p2.save()
+django.db.utils.IntegrityError: duplicate key value violates unique constraint &amp;quot;core_pessoa_pkey&amp;quot;
+DETAIL:  Key (id)=(1) already exists.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este efeito foi observado no PostgreeSQL e não sei se aconteceria usando MySQL ou outros SGBDs por exemplo... é questão de experimentar e ver o efeito.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-eu-resolvo-isso"&gt;
+&lt;h2&gt;Como eu resolvo isso?&lt;/h2&gt;
+&lt;p&gt;Você conseguirá resolver este problema setando um valor NA MÃO para a sua sequence que não foi incrementada. No PostgreeSQL até que foi simples, primeiro fiz uma query para descobrir quais eram TODAS as minhas sequences:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT c.relname FROM pg_class c WHERE c.relkind = &amp;#39;S&amp;#39;;
+
+      relname
+-----------------------------------
+ django_migrations_id_seq
+ django_content_type_id_seq
+ auth_permission_id_seq
+ auth_group_id_seq
+ auth_group_permissions_id_seq
+ auth_user_id_seq
+ auth_user_groups_id_seq
+ auth_user_user_permissions_id_seq
+ django_admin_log_id_seq
+ core_pessoa_id_seq
+(10 registros)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Neste caso a sequence que queremos é a do &lt;cite&gt;id&lt;/cite&gt; que está na app chamada &lt;cite&gt;core&lt;/cite&gt; e no model &lt;cite&gt;Pessoa&lt;/cite&gt;, que se chama &lt;cite&gt;core_pessoa_id_seq&lt;/cite&gt; no meu exemplo. Vamos dar uma olhada como esta sequence está no momento:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT * FROM core_pessoa_id_seq;
+
+   sequence_name    | last_value | start_value | increment_by |      max_value      | min_value | cache_value | log_cnt | is_cycled | is_called
+--------------------+------------+-------------+--------------+---------------------+-----------+-------------+---------+-----------+-----------
+ core_pessoa_id_seq |          1 |           1 |            1 | 9223372036854775807 |         1 |           1 |      32 | f         | t
+(1 registro)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Perceba que nossa sequence possui o valor &lt;cite&gt;last_value&lt;/cite&gt; igual a 1, o que não é verdade pois já temos 2 objetos na nossa tabela &lt;cite&gt;pessoa&lt;/cite&gt;, como podemos ver na query abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT * FROM core_pessoa;
+
+ id |  nome  | idade
+----+--------+-------
+  1 | Rafael |    28
+  2 | Rafael |    28
+(2 registros)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para verificar isso mais facilmente (em caso de muitos registros) também podemos usar um count nesta query:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT count(*) FROM core_pessoa;
+
+ count
+-------
+     2
+(1 registro)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora o próximo passo é setar o &lt;cite&gt;last_value&lt;/cite&gt; de maneira correta, para isso vamos executar o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT setval(&amp;#39;core_pessoa_id_seq&amp;#39;, 2);
+
+ setval
+--------
+      2
+(1 registro)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Depois podemos consultar o valor da nossa sequence de novo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT * FROM core_pessoa_id_seq;
+
+   sequence_name    | last_value | start_value | increment_by |      max_value      | min_value | cache_value | log_cnt | is_cycled | is_called
+--------------------+------------+-------------+--------------+---------------------+-----------+-------------+---------+-----------+-----------
+ core_pessoa_id_seq |          2 |           1 |            1 | 9223372036854775807 |         1 |           1 |       0 | f         | t
+(1 registro)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Podemos ver que foi alterado de fato! Agora vamos tentar inserir um objeto sem id novamente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; from pessoa.models import Pessoa
+&amp;gt;&amp;gt;&amp;gt; p = Pessoa(nome=&amp;quot;Rafael&amp;quot;, idade=28)
+&amp;gt;&amp;gt;&amp;gt; p.save()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E tudo funcionou normalmente de novo como deveria ser!! Dúvidas/sugestões e críticas?? Use essa caixinha mágica ai em baixo :)&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="django"></category><category term="postgresql"></category><category term="sequences"></category></entry><entry><title>Django assertFormErrorCode com py.test e com TestCase</title><link href="http://blog.abraseucodigo.com.br/django-assertformerrorcode-com-pytest-e-com-testcase.html" rel="alternate"></link><published>2016-02-18T21:16:00-02:00</published><updated>2016-02-18T21:16:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2016-02-18:django-assertformerrorcode-com-pytest-e-com-testcase.html</id><summary type="html">&lt;p&gt;Estive trabalhando em um teste hoje utilizando py.test e queria usar assertFormErrorCode padrão da suite de testes do Django, porém não queria extender meu teste de TestCase, como fazer?&lt;/p&gt;
 &lt;p&gt;Ta legal, se perdeu? Continue lendo abaixo que vou explicar o que é o assertFormErrorCode e também como utilizá-lo sem depender da suite de testes do Django.&lt;/p&gt;
 &lt;div class="section" id="introducao"&gt;
 &lt;h2&gt;Introdução&lt;/h2&gt;
@@ -14,24 +113,24 @@
 &lt;p&gt;Este assert é mais um dos asserts interessantíssimos que o Django tem na sua suite de testes. Vejamos um exemplo de como esse cara pode ser usado nos seus testes:&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;Formulário básico de inscrição&lt;/tt&gt;&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;wttd/eventex/subscriptions/forms.py&lt;/tt&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;
 
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;validate_cpf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isdigit&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF deve conter apenas números&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;CPF deve conter apenas números&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF deve ter 11 números&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;length&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;ValidationError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;CPF deve ter 11 números&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;length&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SubscriptionForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;cpf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cpf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;CPF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                           &lt;span class="n"&gt;validators&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;validate_cpf&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-    &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;EmailField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Email&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;phone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Telefone&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;EmailField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Email&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;phone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Telefone&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -54,7 +153,7 @@
 &lt;p&gt;Vejamos abaixo um teste criado no Django utilizando a verificação por &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;Teste do formulário básico de inscrição&lt;/tt&gt;&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;wttd/eventex/subscriptions/tests/test_form_subscription.py&lt;/tt&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;eventex.subscriptions.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SubscriptionForm&lt;/span&gt;
 
@@ -64,8 +163,8 @@
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_cpf_is_digit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;CPF must only accept digits&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-        &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;make_validated_form&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cpf&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ABCD5678901&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertFormErrorCode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;cpf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;make_validated_form&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cpf&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ABCD5678901&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertFormErrorCode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;cpf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -79,7 +178,7 @@
 &lt;h2&gt;Procurando uma solução que funciona independente do TestCase&lt;/h2&gt;
 &lt;p&gt;Depois de garimpar algum tempo na internet (e amolar um amigo do trabalho) achei este post &lt;a class="reference external" href="http://stackoverflow.com/questions/18781492/forms-validationerror-and-error-code"&gt;aqui&lt;/a&gt; no stack overflow, o padroeiro dos desenvolvedores de software.&lt;/p&gt;
 &lt;p&gt;Neste post o cara colocou uma forma diferente de conseguir pegar o &lt;tt class="docutils literal"&gt;ErrorCode&lt;/tt&gt; que está na exception do &lt;tt class="docutils literal"&gt;ValidationError&lt;/tt&gt;, ele usou:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; print(form.errors.as_json())
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; print(form.errors.as_json())
 {&amp;quot;__all__&amp;quot;: [
     {&amp;quot;message&amp;quot;: &amp;quot;Your account has not been activated.&amp;quot;, &amp;quot;code&amp;quot;: &amp;quot;inactive&amp;quot;}
 ]}
@@ -91,7 +190,7 @@
 &lt;p&gt;Criei uma classe de teste base minha chamada &lt;tt class="docutils literal"&gt;BaseTest&lt;/tt&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;Classe base de testes&lt;/tt&gt;&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;este cara não está no github&lt;/tt&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;
 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BaseTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -108,10 +207,10 @@
 &lt;span class="sd"&gt;            field_name: name of form field on Django.&lt;/span&gt;
 &lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
         &lt;span class="n"&gt;resp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;getattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;context&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;getattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;context&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_data&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="n"&gt;field_name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;form&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_data&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="n"&gt;field_name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
             &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -125,13 +224,13 @@
 &lt;p&gt;Bem feito isso é só usar esse cara! Código de exemplo de uso:&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;Teste que usa a classe BaseTest, baseada na classe SubscriptionFormTest&lt;/tt&gt;&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;este cara não está no github&lt;/tt&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestSubscriptionForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseTest&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_post_error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENDPOINT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cpf&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ABC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;cpf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENDPOINT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;cpf&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ABC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;cpf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;
-        &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;
+        &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;digits&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt;
 
 &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;

@@ -99,7 +99,7 @@
 <h2>Problemas encontrados logo no começo</h2>
 <p>No repositório do <a href="https://github.com/tsuru/now">github do Tsuru Now</a> tem algumas informações faltantes a respeito da compatibilidade com os Sistemas operacionais. Lá no README ele menciona que este script funciona em Debian e Ubuntu, mas não diz a versão <img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/pensive.png">.</p>
 <p>Eu como um bom paranóico amante de Debian, fui logo criando um droplet na Digital Ocean com o Debian mais novo que encontrei o 8.1~8.2 (Jessie Stable), ai rodei o script conforme manda o README:</p>
-<div class="highlight"><pre># curl -sL https://raw.githubusercontent.com/tsuru/now/master/run.bash | bash
+<div class="highlight"><pre><span></span># curl -sL https://raw.githubusercontent.com/tsuru/now/master/run.bash | bash
 </pre></div>
 
 
@@ -110,12 +110,12 @@
 <p>Ai começa meu instinto de programador maluco e fui depurando a parada. Pelo que pude ver o script não estava pegando meu ip externo adequadamente.</p>
 <h2>Variáveis/adaptação e funcionamento completo</h2>
 <p>Como o Tsuru Now não conseguia pegar meu ip corretamente fui lá e comecei a testar coisas de modo que fizesse o filho da mãe funcionar. Eis que por fim eu consegui, e vou dar a receita de bolo pra vocês. Clone o repositório do Tsuru Now inicialmente:</p>
-<div class="highlight"><pre># git clone git@github.com:tsuru/now.git
+<div class="highlight"><pre><span></span># git clone git@github.com:tsuru/now.git
 </pre></div>
 
 
 <p>Nas primeiras linhas do script chamado <code>run.bash</code> tem algumas variáveis interessantes:</p>
-<div class="highlight"><pre>1  #!/bin/bash -ue
+<div class="highlight"><pre><span></span>1  #!/bin/bash -ue
 2 
 3  # Copyright 2015 tsuru-now authors. All rights reserved.
 4  # Use of this source code is governed by a BSD-style
@@ -137,7 +137,7 @@
 
 <p>Destas 17 linhas as variáveis que resolveram minha vida foram <code>host_ip</code> e <code>private_ip</code>, nestas duas eu setei meu ip <strong>EXTERNO (ou seja o ip que a galera de fora da sua rede vê)</strong>, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site <a href="https://www.whatismyip.com/">What Is My Ip?</a> que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru <img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png">).</p>
 <p>Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando sudo):</p>
-<div class="highlight"><pre># bash run.bash --host-ip &lt;meu ip externo&gt; | tee log_run.log
+<div class="highlight"><pre><span></span># bash run.bash --host-ip &lt;meu ip externo&gt; | tee log_run.log
 </pre></div>
 
 
@@ -146,7 +146,7 @@
 <p>Usei o comando <code>| tee log_run.log</code> para que ele gere um arquivo contendo todo output (erros e não erros) do script, se você quiser analisar depois como foi a instalação ficará mais fácil você ler este arquivo.</p>
 <h2>Finish him!</h2>
 <p>Se tudo correr bem ao fim dessa execução seu Tsuru já vai estar funcionando de forma básica pronta para testes bacaninhas. É importante em um primeiro momento alterar a senha do admin e rodar <code>source ~/.bashrc</code> conforme manda o próprio Tsuru Now:</p>
-<div class="highlight"><pre>######################## DONE! ########################
+<div class="highlight"><pre><span></span>######################## DONE! ########################
 
 Some information about your tsuru installation:
 

@@ -66,7 +66,7 @@
 <div class="section" id="o-exercicio">
 <h2>O exercício</h2>
 <p>Na <a class="reference external" href="https://www.youtube.com/watch?v=OLTUoD4jaGA">aula 05</a> nós já implementamos um baralho simples, conforme vemos o código abaixo:</p>
-<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Doctest deck</span>
 
@@ -82,36 +82,34 @@
 
 <span class="k">def</span> <span class="nf">create_deck</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;This function create an deck with 52 cards&quot;&quot;&quot;</span>
-    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;6&quot;</span><span class="p">,</span>
-               <span class="s">&quot;7&quot;</span><span class="p">,</span> <span class="s">&quot;8&quot;</span><span class="p">,</span> <span class="s">&quot;9&quot;</span><span class="p">,</span> <span class="s">&quot;10&quot;</span><span class="p">,</span> <span class="s">&quot;Q&quot;</span><span class="p">,</span> <span class="s">&quot;J&quot;</span><span class="p">,</span>
-               <span class="s">&quot;K&quot;</span><span class="p">]</span>
-    <span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;♣&quot;</span><span class="p">,</span> <span class="s">&quot;♦&quot;</span><span class="p">,</span> <span class="s">&quot;♥&quot;</span><span class="p">,</span> <span class="s">&quot;♠&quot;</span><span class="p">]</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;K&quot;</span><span class="p">]</span>
+    <span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;♣&quot;</span><span class="p">,</span> <span class="s2">&quot;♦&quot;</span><span class="p">,</span> <span class="s2">&quot;♥&quot;</span><span class="p">,</span> <span class="s2">&quot;♠&quot;</span><span class="p">]</span>
 
     <span class="n">deck</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="n">suits</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-            <span class="n">deck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;{}{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">suit</span><span class="p">))</span>
+            <span class="n">deck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;{}{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">suit</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">deck</span>
 
 <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This function shuffle one deck&quot;&quot;&quot;</span>
     <span class="n">deck</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">deck</span> <span class="o">=</span> <span class="n">create_deck</span><span class="p">()</span>
     <span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
 </pre></div>
 <p>** Também serve de exercício dar uma olhada nessas funções acima e refatorá-las, sempre da pra melhorar!</p>
 <p>Como exercício implementem as funções abaixo:</p>
-<ol class="arabic">
-<li><p class="first">função <tt class="docutils literal">hit</tt>: Nesta função você comprará cartas e irá sempre remover uma carta do baralho original, pois no momento que você compra uma carta a mesma não poderá existir mais no mesmo baralho (pista: dê uma lida na documentação do módulo <a class="reference external" href="https://docs.python.org/3/library/random.html">random</a>);</p>
-</li>
-<li><p class="first">função <tt class="docutils literal">show_hand</tt>: Nesta função você deverá mostrar quantas cartas você já comprou e quais são elas;</p>
-</li>
+<ol class="arabic simple">
+<li>função <tt class="docutils literal">hit</tt>: Nesta função você comprará cartas e irá sempre remover uma carta do baralho original, pois no momento que você compra uma carta a mesma não poderá existir mais no mesmo baralho (pista: dê uma lida na documentação do módulo <a class="reference external" href="https://docs.python.org/3/library/random.html">random</a>);</li>
+<li>função <tt class="docutils literal">show_hand</tt>: Nesta função você deverá mostrar quantas cartas você já comprou e quais são elas;</li>
 <li><dl class="first docutils">
 <dt>função <tt class="docutils literal">show_points</tt>: Nesta função você deverá mostrar quantos pontos acumulados você tem com as cartas que você já comprou;</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Ás vale 1 ponto;</li>
 <li>Cartas de números valem a mesma quantidade do número;</li>
 <li>Cartas de figuras (K, J, Q) valem 10.</li>
@@ -119,13 +117,11 @@
 </dd>
 </dl>
 </li>
-<li><p class="first">função <tt class="docutils literal">surrender</tt>: Mostra os pontos que você conseguiu até agora e finaliza a execução do jogo.</p>
-</li>
-<li><p class="first">função <tt class="docutils literal">show_money</tt>: Mostrar seu saldo atual (em dinheiro), o saldo inicial deverá ser 2000 reais, que pode ser representado por uma variável simples que será lida como uma variável global ao longo de todo sistema;</p>
-</li>
+<li>função <tt class="docutils literal">surrender</tt>: Mostra os pontos que você conseguiu até agora e finaliza a execução do jogo.</li>
+<li>função <tt class="docutils literal">show_money</tt>: Mostrar seu saldo atual (em dinheiro), o saldo inicial deverá ser 2000 reais, que pode ser representado por uma variável simples que será lida como uma variável global ao longo de todo sistema;</li>
 <li><dl class="first docutils">
 <dt>função <tt class="docutils literal">bet</tt>: Esta é uma das funções mais complexas e legais do jogo, nela você deverá ver o seu saldo atual (em dinheiro) e comprar o número de fichas correspondentes com a aposta em dinheiro. Imagine assim:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Eu tenho 2000 reais iniciais;</li>
 <li>Eu posso comprar fichas de 1, 5, 25 e 100 reais;</li>
 <li>Eu posos comprar fichas (por enquanto) a hora que eu quiser e bem entender;</li>

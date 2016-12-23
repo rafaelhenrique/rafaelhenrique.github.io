@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/deploy.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-09-22T22:48:00-03:00</updated><entry><title>Como criar seu PaaS com Tsuru</title><link href="http://blog.abraseucodigo.com.br/como-criar-seu-paas-com-tsuru.html" rel="alternate"></link><updated>2015-09-22T22:48:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-09-22:como-criar-seu-paas-com-tsuru.html</id><summary type="html">&lt;p&gt;Começo este post dizendo que gostei bastante da proposta do Tsuru. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/deploy.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-09-22T22:48:00-03:00</updated><entry><title>Como criar seu PaaS com Tsuru</title><link href="http://blog.abraseucodigo.com.br/como-criar-seu-paas-com-tsuru.html" rel="alternate"></link><published>2015-09-22T22:48:00-03:00</published><updated>2015-09-22T22:48:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-09-22:como-criar-seu-paas-com-tsuru.html</id><summary type="html">&lt;p&gt;Começo este post dizendo que gostei bastante da proposta do Tsuru. &lt;/p&gt;
 &lt;h2&gt;Mas o que é o Tsuru?&lt;/h2&gt;
 &lt;p&gt;Tsuru é um software que você pode criar seu próprio &lt;a href="https://en.wikipedia.org/wiki/Platform_as_a_service"&gt;PaaS&lt;/a&gt; explicando de forma simples, você tem um &lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt;/&lt;a href="https://www.openshift.com"&gt;Openshift&lt;/a&gt; pessoal onde você tem controle completo na máquina e você pode fazer o que bem entender.&lt;/p&gt;
 &lt;h2&gt;E pra que serve esse tal Tsuru?&lt;/h2&gt;
@@ -45,7 +45,7 @@
 &lt;h2&gt;Problemas encontrados logo no começo&lt;/h2&gt;
 &lt;p&gt;No repositório do &lt;a href="https://github.com/tsuru/now"&gt;github do Tsuru Now&lt;/a&gt; tem algumas informações faltantes a respeito da compatibilidade com os Sistemas operacionais. Lá no README ele menciona que este script funciona em Debian e Ubuntu, mas não diz a versão &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/pensive.png"&gt;.&lt;/p&gt;
 &lt;p&gt;Eu como um bom paranóico amante de Debian, fui logo criando um droplet na Digital Ocean com o Debian mais novo que encontrei o 8.1~8.2 (Jessie Stable), ai rodei o script conforme manda o README:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;# curl -sL https://raw.githubusercontent.com/tsuru/now/master/run.bash | bash
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# curl -sL https://raw.githubusercontent.com/tsuru/now/master/run.bash | bash
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -56,12 +56,12 @@
 &lt;p&gt;Ai começa meu instinto de programador maluco e fui depurando a parada. Pelo que pude ver o script não estava pegando meu ip externo adequadamente.&lt;/p&gt;
 &lt;h2&gt;Variáveis/adaptação e funcionamento completo&lt;/h2&gt;
 &lt;p&gt;Como o Tsuru Now não conseguia pegar meu ip corretamente fui lá e comecei a testar coisas de modo que fizesse o filho da mãe funcionar. Eis que por fim eu consegui, e vou dar a receita de bolo pra vocês. Clone o repositório do Tsuru Now inicialmente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;# git clone git@github.com:tsuru/now.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# git clone git@github.com:tsuru/now.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Nas primeiras linhas do script chamado &lt;code&gt;run.bash&lt;/code&gt; tem algumas variáveis interessantes:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;1  #!/bin/bash -ue
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1  #!/bin/bash -ue
 2 
 3  # Copyright 2015 tsuru-now authors. All rights reserved.
 4  # Use of this source code is governed by a BSD-style
@@ -83,7 +83,7 @@
 
 &lt;p&gt;Destas 17 linhas as variáveis que resolveram minha vida foram &lt;code&gt;host_ip&lt;/code&gt; e &lt;code&gt;private_ip&lt;/code&gt;, nestas duas eu setei meu ip &lt;strong&gt;EXTERNO (ou seja o ip que a galera de fora da sua rede vê)&lt;/strong&gt;, caso você tenha dúvidas qual é seu ip externo recomendo olhar no site &lt;a href="https://www.whatismyip.com/"&gt;What Is My Ip?&lt;/a&gt; que lá ele vai te mostrar o seu ip externo(mas faz o favor de olhar da máquina que você está instalando o Tsuru &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/joy.png"&gt;).&lt;/p&gt;
 &lt;p&gt;Feito isso rodei o script novamente da seguinte maneira (você precisará executar como root, ou usando sudo):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;# bash run.bash --host-ip &amp;lt;meu ip externo&amp;gt; | tee log_run.log
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# bash run.bash --host-ip &amp;lt;meu ip externo&amp;gt; | tee log_run.log
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -92,7 +92,7 @@
 &lt;p&gt;Usei o comando &lt;code&gt;| tee log_run.log&lt;/code&gt; para que ele gere um arquivo contendo todo output (erros e não erros) do script, se você quiser analisar depois como foi a instalação ficará mais fácil você ler este arquivo.&lt;/p&gt;
 &lt;h2&gt;Finish him!&lt;/h2&gt;
 &lt;p&gt;Se tudo correr bem ao fim dessa execução seu Tsuru já vai estar funcionando de forma básica pronta para testes bacaninhas. É importante em um primeiro momento alterar a senha do admin e rodar &lt;code&gt;source ~/.bashrc&lt;/code&gt; conforme manda o próprio Tsuru Now:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;######################## DONE! ########################
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;######################## DONE! ########################
 
 Some information about your tsuru installation:
 

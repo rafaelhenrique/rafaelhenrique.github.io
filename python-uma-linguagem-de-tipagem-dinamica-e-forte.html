@@ -58,15 +58,15 @@
 <h2>Tipagem dinâmica</h2>
 <p>Assim como Python hoje existem inúmeras linguagens no mercado que são dinamicamente tipadas.</p>
 <p>Referenciando especificamente o Python para explicar a questão: Tipagem dinâmica significa que o próprio interpretador do Python infere o tipo dos dados que uma variável recebe, sem a necessidade que você, o usuário da linguagem diga de que tipo determinada variável é. Exemplo de um script Python:</p>
-<div class="highlight"><pre><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
 </pre></div>
 <p>Vamos melhorar esta explicação com um exemplo de tipagem estática, a linguagem C. A linguagem C é estaticamente tipada, isso significa que deveremos sempre determinar qual o tipo de dados uma variável irá receber, exemplo de um programa em C:</p>
-<div class="highlight"><pre><span class="c">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
 
 <span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
    <span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;O resultado é: </span><span class="si">%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;O resultado é: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 <p>Ambos os programas acima fazem a mesma coisa, somam 10 e 20 e mostram um resultado na tela, a diferença é que em C os tipos são estáticos então é necessário que o programador diga quais os tipos que <tt class="docutils literal">i</tt> e <tt class="docutils literal">j</tt> receberão como valores aceitáveis.</p>
@@ -75,13 +75,13 @@
 <h2>Tipagem forte</h2>
 <p>Assim como Python hoje existem inúmeras linguagens no mercado que são fortemente tipadas.</p>
 <p>Referenciando especificamente o Python para explicar a questão: Tipagem forte significa que o interpretador do Python avalia as expressões (evaluate) e não faz coerções automáticas entre tipos não compatíveis (conversões de valores), ou seja:</p>
-<div class="highlight"><pre><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Rafael&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Rafael&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
 </pre></div>
 <p>Neste código acima definimos <tt class="docutils literal">i</tt> como <tt class="docutils literal">10</tt> e <tt class="docutils literal">j</tt> como <tt class="docutils literal">&quot;Rafael&quot;</tt>, desta forma temos um inteiro em <tt class="docutils literal">i</tt> e uma string em <tt class="docutils literal">j</tt>, ao executar este código veja o que acontece:</p>
-<div class="highlight"><pre>$ python3 teste.py
+<div class="highlight"><pre><span></span>$ python3 teste.py
 10
 Rafael
 Traceback (most recent call last):
@@ -91,8 +91,8 @@ TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
 </pre></div>
 <p>Recebo uma exception chamada <tt class="docutils literal">TypeError</tt> ou seja, ao fazer operações com tipos incompatíveis, o Python não converte automaticamente esses tipos pra você, ele vai dar erro! Isso é bom, pois assim você terá a certeza que o seu resultado é mais consistente.</p>
 <p>Agora assim como temos linguagens com tipagem forte, temos também linguagens com tipagem fraca como por exemplo Javascript, vejamos o código Javascript a seguir:</p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="n">var</span> <span class="n">j</span> <span class="o">=</span> <span class="s">&quot;Rafael&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">j</span> <span class="o">=</span> <span class="s2">&quot;Rafael&quot;</span><span class="p">;</span>
 <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">);</span>
 </pre></div>
 <p>Executando o código anterior obteríamos o resultado <tt class="docutils literal">10Rafael</tt>. Isso prova que o Javascript diferente do Python converte (faz coerção de tipos) ao executar operações de forma automática, isso faz com que seja uma linguagem de tipagem fraca.</p>

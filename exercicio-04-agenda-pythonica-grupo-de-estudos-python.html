@@ -57,23 +57,19 @@
             <p>Vamos fazer uma agenda!</p>
 <div class="section" id="passo-a-passo">
 <h2>Passo a passo...</h2>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Passo 1: Primeiro receberemos os campos que o usuário vai querer na agenda. O usuário poderá digitar uma quantidade variável de campos. Exemplo de campos: data, nome, compromisso, observação, prioridade e etc.</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Após receber estes campos você deverá criar as chaves respectivas de um dicionário usando estes nomes;</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">Passo 2: Salve o formato (as keys do seu dicionário) da sua agenda em um arquivo texto (se quiser inovar pode ser um banco de dados também);</p>
-</li>
-<li><p class="first">Passo 3: Faça seu sistema ler o formato do dicionário e criar as keys quando ele rodar, caso ele não ache o arquivo com o formato ele deverá executar o passo 1 e 2 de novo;</p>
-</li>
-<li><p class="first">Passo 4: Depois que seu sistema leu o formato, receba as informações de compromisso (respeitando as keys do dicionário) do usuário e salve essas informações em outro arquivo (ou pode ser no mesmo apesar de eu achar isso mais complexo);</p>
-</li>
-<li><p class="first">Passo 5: Crie uma opção para que o usuário possa ler os compromissos cadastrados.</p>
-</li>
+<li>Passo 2: Salve o formato (as keys do seu dicionário) da sua agenda em um arquivo texto (se quiser inovar pode ser um banco de dados também);</li>
+<li>Passo 3: Faça seu sistema ler o formato do dicionário e criar as keys quando ele rodar, caso ele não ache o arquivo com o formato ele deverá executar o passo 1 e 2 de novo;</li>
+<li>Passo 4: Depois que seu sistema leu o formato, receba as informações de compromisso (respeitando as keys do dicionário) do usuário e salve essas informações em outro arquivo (ou pode ser no mesmo apesar de eu achar isso mais complexo);</li>
+<li>Passo 5: Crie uma opção para que o usuário possa ler os compromissos cadastrados.</li>
 </ul>
 <p>Para facilitar a resolução pense em dicionários, listas, tuplas e estruturas de repetição (for e while).</p>
 </div>
@@ -95,7 +91,7 @@
 <h2>Dicas extras</h2>
 <p>Você poderá estudar o módulo <a class="reference external" href="https://docs.python.org/3/library/json.html">json</a> e o <a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects">file object</a> do Python 3 para te ajudar na resolução.</p>
 <p>A saída do seu sistema deverá ser algo similar a esta abaixo:</p>
-<div class="highlight"><pre><span class="gp">$</span> ls
+<div class="highlight"><pre><span></span><span class="gp">$</span> ls
 <span class="go">agenda.py</span>
 
 <span class="gp">$</span> python agenda.py
