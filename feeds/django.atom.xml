@@ -29,11 +29,11 @@ DETAIL:  Key (id)=(1) already exists.
 django.db.utils.IntegrityError: duplicate key value violates unique constraint &amp;quot;core_pessoa_pkey&amp;quot;
 DETAIL:  Key (id)=(1) already exists.
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Este efeito foi observado no PostgreeSQL e não sei se aconteceria usando MySQL ou outros SGBDs por exemplo... é questão de experimentar e ver o efeito.&lt;/p&gt;
+&lt;p&gt;Este efeito foi observado no PostgreSQL e não sei se aconteceria usando MySQL ou outros SGBDs por exemplo... é questão de experimentar e ver o efeito.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="como-eu-resolvo-isso"&gt;
 &lt;h2&gt;Como eu resolvo isso?&lt;/h2&gt;
-&lt;p&gt;Você conseguirá resolver este problema setando um valor NA MÃO para a sua sequence que não foi incrementada. No PostgreeSQL até que foi simples, primeiro fiz uma query para descobrir quais eram TODAS as minhas sequences:&lt;/p&gt;
+&lt;p&gt;Você conseguirá resolver este problema setando um valor NA MÃO para a sua sequence que não foi incrementada. No PostgreSQL até que foi simples, primeiro fiz uma query para descobrir quais eram TODAS as minhas sequences:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT c.relname FROM pg_class c WHERE c.relkind = &amp;#39;S&amp;#39;;
 
       relname
