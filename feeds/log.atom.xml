@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/log.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2017-01-14T10:43:00-02:00</updated><entry><title>A importância de um log</title><link href="http://blog.abraseucodigo.com.br/a-importancia-de-um-log.html" rel="alternate"></link><published>2017-01-14T10:43:00-02:00</published><updated>2017-01-14T10:43:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2017-01-14:a-importancia-de-um-log.html</id><summary type="html">&lt;p&gt;Imagine que você criou uma aplicação Web (independente da linguagem de programação) e que durante o seu desenvolvimento você usou &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/Test_Driven_Development"&gt;TDD&lt;/a&gt; bem certinho, como deve ser. Usando &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Code_coverage"&gt;testes de cobertura&lt;/a&gt; junto ao TDD você consegue garantir que um determinado percentual do seu código está assegurado pelos testes que você escreveu, e isso é lindo!&lt;/p&gt;
+&lt;p&gt;Porém o que você não consegue garantir com TDD é se o teu usuário final está acessando sua aplicação da maneira que você programou para ele acessar, exceções sempre vão acontecer meu amigo! Esta é a vida dura de um desenvolvedor.&lt;/p&gt;
+&lt;p&gt;Seja por um desvio de comunicação entre quem programa e quem irá usar o programa, ou seja por um deslize qualquer que você como programador tenha cometido, exceções sempre irão acontecer, não adianta falar que não!&lt;/p&gt;
+&lt;p&gt;Agora cabe a você entender e tratar estas exceções, mas como? Sua aplicação está lá longe de você, rodando em alguma máquina em alguma Cloud XYZ e você está aqui &amp;quot;cego&amp;quot;, você não vê as exceções acontecerem e quando elas acontecem, quem vê geralmente é o teu cliente, e provavelmente quando ele ver a exceção acontecer isso irá gerar insatisfação e até falta de segurança pra ele.&lt;/p&gt;
+&lt;p&gt;Como resolver isso? Como visualizar suas exceções para que elas não aconteçam mais? A resposta é simples meu amigo! Faça com que sua aplicação gere logs!&lt;/p&gt;
+&lt;div class="section" id="o-que-e-um-log"&gt;
+&lt;h2&gt;O que é um log?&lt;/h2&gt;
+&lt;p&gt;Log por essência é um arquivo de texto puro, com linhas, onde cada linha tem hora e data de uma ação que tem determinada importância na aplicação.&lt;/p&gt;
+&lt;p&gt;Hoje existem formas mais legais do que simplesmente armazenar em um arquivo texto, dentre as opções que temos você pode mandar estes logs para o &lt;a class="reference external" href="https://logentries.com/"&gt;Logentries&lt;/a&gt;, podemos mandar logs como se fossem mensagens para o &lt;a class="reference external" href="https://slack.com/"&gt;Slack&lt;/a&gt; ou &lt;a class="reference external" href="https://telegram.org/"&gt;Telegram&lt;/a&gt;, mandar o arquivo de log para o &lt;a class="reference external" href="https://aws.amazon.com/pt/s3/"&gt;S3&lt;/a&gt; e analisar com alguma ferramenta sua, ou pode usar a stack da &lt;a class="reference external" href="https://www.elastic.co/"&gt;Elastic&lt;/a&gt; (Logstash, Kibana e Elasticsearch) entre outras inúmeras opções.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="o-que-eu-preciso-logar"&gt;
+&lt;h2&gt;O que eu preciso logar?&lt;/h2&gt;
+&lt;p&gt;Você deve logar tudo que é importante para o bom funcionamento das operações que sua aplicação executa, entretanto, quando você não sabe o que é importante, tudo é importante.&lt;/p&gt;
+&lt;p&gt;Quando você não sabe o que logar, faça log de tudo! Sim, isso mesmo!&lt;/p&gt;
+&lt;p&gt;Isso vai ser chato no no começo, pois tudo que acontecer no sistema vai aparecer pra você e você terá que analisar, mas uma coisa é certa, a primeira vez que você ler um log que contêm tudo da sua aplicação algumas coisas vão acontecer com certeza:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Um entendimento melhor sobre o seu sistema: Quando você loga tudo, você consegue ver o comportamento real do seu sistema, como ele está funcionando de verdade, qual o fluxo das operações que ele faz e baseado nisso você consegue melhorar as operações e o fluxo como um todo de maneira que tenha um melhor desempenho para você e também para o seu cliente (até em termos de usabilidade);&lt;/li&gt;
+&lt;li&gt;Chateação: Quando você chega ao momento de se perguntar &lt;cite&gt;Por que eu estou logando essa ação?&lt;/cite&gt; provavelmente essa linha de log não é importante pra você, pense sobre isso e veja se realmente faz diferença pra você, se não é importante, prontamente pare de logar isso, a leitura do log ficará mais fácil;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ainda sobre &lt;cite&gt;Chateação&lt;/cite&gt; existem algumas abordagens para resolver isso, uma delas é você separar os logs por nível de importância.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="separar-por-nivel-de-importancia"&gt;
+&lt;h2&gt;Separar por nível de importância&lt;/h2&gt;
+&lt;p&gt;No Python temos alguns loglevels que podemos usar:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;info / debug: Usado para propósitos informativos, onde info é para informações menos detalhadas e debug para informações mais detalhadas;&lt;/li&gt;
+&lt;li&gt;warning: Usado para logar uma ação que precisa ser notada, mas não é algo crítico ainda;&lt;/li&gt;
+&lt;li&gt;error / exception / critical: Erros e problemas críticos no geral, usamos error para problemas que não são críticos, critical para problemas críticos e exception para logar exceptions juntamente ao Traceback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Porém é mais fácil entender isso na prática.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="saindo-um-pouco-da-teoria-e-indo-para-a-pratica"&gt;
+&lt;h2&gt;Saindo um pouco da teoria e indo para a prática&lt;/h2&gt;
+&lt;p&gt;Vamos imaginar que já temos um programa que é nada mais nada menos do que uma calculadora:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;div&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ZeroDivisionError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Impossível dividir por 0!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ao executar este nosso programinha teríamos a seguinte saída:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python calc.py
+12
+32
+2.0
+Impossível dividir por 0!
+None
+4
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Até ai tudo bem certo? Tudo bem pois não vamos executar cálculos &amp;quot;ilegais&amp;quot;, agora se você fosse um usuário desavisado com certeza você tentaria fazer operações deste tipo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ou seja, este cálculo resultaria em uma exceção não tratada por você o que resultaria em problema e insatisfação por parte do usuário.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-logar-as-acoes-da-nossa-calculadora"&gt;
+&lt;h2&gt;Como logar as ações da nossa calculadora?&lt;/h2&gt;
+&lt;p&gt;Para isso vamos usar o módulo &lt;a class="reference external" href="https://docs.python.org/3/howto/logging.html"&gt;logger&lt;/a&gt; embutido (built-in) no Python.&lt;/p&gt;
+&lt;p&gt;Vamos ver como fica:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logging&lt;/span&gt;
+ &lt;span class="mi"&gt;2&lt;/span&gt;  &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basicConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mycalculator.log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;3&lt;/span&gt;                      &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%(asctime)s&lt;/span&gt;&lt;span class="s1"&gt; &lt;/span&gt;&lt;span class="si"&gt;%(levelname)s&lt;/span&gt;&lt;span class="s1"&gt; &lt;/span&gt;&lt;span class="si"&gt;%(funcName)s&lt;/span&gt;&lt;span class="s1"&gt; =&amp;gt; &lt;/span&gt;&lt;span class="si"&gt;%(message)s&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mi"&gt;4&lt;/span&gt;
+ &lt;span class="mi"&gt;5&lt;/span&gt;
+ &lt;span class="mi"&gt;6&lt;/span&gt;  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+ &lt;span class="mi"&gt;7&lt;/span&gt;      &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paramethers: x={}, y={}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="mi"&gt;8&lt;/span&gt;      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+ &lt;span class="mi"&gt;9&lt;/span&gt;
+&lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="mi"&gt;11&lt;/span&gt;  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="mi"&gt;12&lt;/span&gt;      &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paramethers: x={}, y={}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;13&lt;/span&gt;      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+&lt;span class="mi"&gt;14&lt;/span&gt;
+&lt;span class="mi"&gt;15&lt;/span&gt;
+&lt;span class="mi"&gt;16&lt;/span&gt;  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="mi"&gt;17&lt;/span&gt;      &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paramethers: x={}, y={}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;18&lt;/span&gt;      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+&lt;span class="mi"&gt;19&lt;/span&gt;
+&lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;span class="mi"&gt;21&lt;/span&gt;  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;div&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="mi"&gt;22&lt;/span&gt;      &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;23&lt;/span&gt;          &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paramethers: x={}, y={}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;24&lt;/span&gt;          &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+&lt;span class="mi"&gt;25&lt;/span&gt;      &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ZeroDivisionError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;26&lt;/span&gt;          &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paramethers: x={}, y={}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;27&lt;/span&gt;          &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Impossível dividir por 0!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;28&lt;/span&gt;
+&lt;span class="mi"&gt;29&lt;/span&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="mi"&gt;30&lt;/span&gt;      &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;31&lt;/span&gt;      &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;32&lt;/span&gt;      &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;33&lt;/span&gt;      &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;34&lt;/span&gt;      &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Explicando separadamente:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Linha 1: Faço o import do módulo de logging;&lt;/li&gt;
+&lt;li&gt;&lt;dl class="first docutils"&gt;
+&lt;dt&gt;Linha 2: Defino como será o meu log:&lt;/dt&gt;
+&lt;dd&gt;&lt;ul class="first last"&gt;
+&lt;li&gt;&lt;cite&gt;filename&lt;/cite&gt;: Qual será o nome do meu arquivo de log;&lt;/li&gt;
+&lt;li&gt;&lt;cite&gt;format&lt;/cite&gt;: Qual o formato as linhas do meu log serão gravadas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/li&gt;
+&lt;li&gt;Linha 7, 12, 17: Ao chamar a função &lt;cite&gt;add&lt;/cite&gt; será gravado um log de debug com os parâmetros que usamos para chamar a função;&lt;/li&gt;
+&lt;li&gt;Linha 26: Quando a função &lt;cite&gt;div&lt;/cite&gt; causar &lt;cite&gt;ZeroDivisionError&lt;/cite&gt; esta exceção será gravada no log juntamente com o traceback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ao executar este programinha um arquivo &lt;cite&gt;mycalculator.log&lt;/cite&gt; será gerado com o log das operações executadas, veja só:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python calc.py
+12
+32
+2.0
+Impossível dividir por 0!
+None
+4
+$ cat mycalculator.log
+2017-01-14 14:06:44,351 DEBUG add =&amp;gt; paramethers: x=8, y=4
+2017-01-14 14:06:44,351 DEBUG mul =&amp;gt; paramethers: x=8, y=4
+2017-01-14 14:06:44,351 DEBUG div =&amp;gt; paramethers: x=8, y=4
+2017-01-14 14:06:44,351 DEBUG div =&amp;gt; paramethers: x=8, y=0
+2017-01-14 14:06:44,351 ERROR div =&amp;gt; paramethers: x=8, y=0
+Traceback (most recent call last):
+  File &amp;quot;calc.py&amp;quot;, line 24, in div
+    return x / y
+ZeroDivisionError: division by zero
+2017-01-14 14:06:44,352 DEBUG sub =&amp;gt; paramethers: x=8, y=4
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Repare que o traceback da função &lt;cite&gt;div&lt;/cite&gt; foi gravado quando a exceção ocorreu.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-mitigar-excecoes-desconhecidas"&gt;
+&lt;h2&gt;Como mitigar exceções desconhecidas?&lt;/h2&gt;
+&lt;p&gt;Um pouco mais acima eu havia dito que se você não sabe o que é importante é legal fazer log de tudo e com o tempo remover o que você achar desnecessário.&lt;/p&gt;
+&lt;p&gt;Esta prática é muito útil quando você não tem pleno conhecimento do funcionamento da aplicação em que você vai trabalhar (supondo que ela não tenha log de nada).&lt;/p&gt;
+&lt;p&gt;Podemos logar todas as exceções não tratadas para irmos resolvendo ao longo do tempo, para fazer isso é simples, vamos ver como isso ficaria na nossa função &lt;cite&gt;add&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paramethers: x={}, y={}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Unknown exception&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="n"&gt;linhas&lt;/span&gt; &lt;span class="n"&gt;omitidas&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O que aconteceu agora? Todas as exceções &amp;quot;genéricas&amp;quot; serão gravadas no nosso log para fazermos uma análise do que aconteceu. Vamos observar o efeito disso:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python calc.py
+12
+Traceback (most recent call last):
+  File &amp;quot;calc.py&amp;quot;, line 33, in &amp;lt;module&amp;gt;
+    print(add(8, &amp;#39;a&amp;#39;))
+  File &amp;quot;calc.py&amp;quot;, line 9, in add
+    return x + y
+TypeError: unsupported operand type(s) for +: &amp;#39;int&amp;#39; and &amp;#39;str&amp;#39;
+
+$ cat mycalculator.log
+2017-01-14 14:15:10,939 DEBUG add =&amp;gt; paramethers: x=8, y=4
+2017-01-14 14:15:10,939 DEBUG add =&amp;gt; paramethers: x=8, y=a
+2017-01-14 14:15:10,939 ERROR add =&amp;gt; Unknown exception
+Traceback (most recent call last):
+  File &amp;quot;calc.py&amp;quot;, line 9, in add
+    return x + y
+TypeError: unsupported operand type(s) for +: &amp;#39;int&amp;#39; and &amp;#39;str&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="cuidado-que-voce-deve-ter-ao-logar-as-excecoes-genericamente"&gt;
+&lt;h2&gt;Cuidado que você deve ter ao logar as exceções genericamente&lt;/h2&gt;
+&lt;p&gt;Perceba que usamos o &lt;cite&gt;raise&lt;/cite&gt; após logar a exceção para propagar a exceção, pois quando ela é uma exceção desconhecida não podemos ignorá-la, o código abaixo é considerado uma má prática:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ISSO NÃO DEVE SER FEITO&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paramethers: x={}, y={}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Unknown exception&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ISSO NÃO DEVE SER FEITO&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Desta forma acima quando o nosso código levantar uma exceção irá retornar &lt;cite&gt;None&lt;/cite&gt; seja ela qual for! Isso é horrível! Dificulta a programação e a depuração em diversos aspectos.&lt;/p&gt;
+&lt;p&gt;Se você tomar esta precaução não terá problema você fazer logs para exceções genéricas e isso te ajudará muito (principalmente quando você não conhece o sistema como um todo), e você poderá ir criando exceções mais claras posteriormente quando você já tiver um entendimento legal do código :).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao"&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Criar logs te ajuda a entender mais sobre o sistema e não é uma tarefa complexa, comece aos poucos e logo você estará viciado em fazer logs pois você verá por si a vantagem que te proporciona no dia a dia.&lt;/p&gt;
+&lt;p&gt;Dúvidas, sugestões e críticas deixe seu comentário abaixo!&lt;/p&gt;
+&lt;p&gt;Espero que tenham gostado! ;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="referencias"&gt;
+&lt;h2&gt;Referências&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.python.org/3/howto/logging.html#when-to-use-logging"&gt;When to use logging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.python.org/3/howto/logging.html"&gt;Logging HOWTO&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="log"></category><category term="python"></category></entry></feed>
