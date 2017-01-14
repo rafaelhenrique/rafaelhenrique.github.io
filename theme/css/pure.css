@@ -229,6 +229,15 @@ pre {
     height: 70px;
 }
 
+.gravatar {
+    float: center;
+    border-radius: 50px;
+    margin-left: 16px;
+    margin-top: 7px;
+    width: 50%;
+    height: 50%;
+}
+
 .archive-meta {
     color: #999;
     font-size: 80%;
