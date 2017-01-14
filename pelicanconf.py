@@ -12,19 +12,19 @@ AUTHOR = u'Rafael Henrique da Silva Correia'
 AUTHOR_EMAIL = u'rafael@abraseucodigo.com.br'
 AUTHOR_USERNAME = u'@rafaelhenrique'
 AUTHOR_DESCRIPTION = (
-    "Pythonista, Linuxista, Gamer, Programador e.... Cervejeiro!"
+    "Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja"
 )
 DEFAULT_METADATA = (
     ('about_author',
-        u"Pythonista, Linuxista, Gamer, Programador e.... Cervejeiro!"),
+        u"Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja"),
 )
 
 # Site info
 
 SITENAME = u'Abra seu C\xf3digo!!!'
 SITEURL = u'http://blog.abraseucodigo.com.br'
-SITEDESCRIPTION = u'Por um mundo livre e inteligente'
-TAGLINE = u'Por um mundo livre e inteligente'
+SITEDESCRIPTION = u'Programando, jogando e devopando eventualmente'
+TAGLINE = u'Programando, jogando e devopando eventualmente'
 
 PATH = 'content'
 TIMEZONE = 'America/Sao_Paulo'
@@ -43,15 +43,13 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 MENUITEMS = (
-    ('Arquivo', 'archives.html'),
-    ('Contato', 'pages/contato.html'),
-    ('Sobre', 'pages/sobre.html'),
-    ('Blog antigo', 'http://abraseucodigo.blogspot.com'),
+    # ('Contato', 'pages/contato.html'),
+    # ('Sobre', 'pages/sobre.html'),
+    # ('Blog antigo', 'http://abraseucodigo.blogspot.com'),
     ('Python Sorocaba',
         'https://groups.google.com/forum/#!forum/python-sorocaba'),
-    ('Hacklab Sorocaba',
-        'https://groups.google.com/forum/?hl=pt#!forum/hackerspace-sorocaba'),
-    ('GruPy-SP', 'http://www.meetup.com/pt-BR/Grupy-SP/')
+    ('GruPy-SP', 'http://www.meetup.com/pt-BR/Grupy-SP/'),
+    ('Arquivo', 'archives.html'),
 )
 
 # Social links
@@ -60,8 +58,8 @@ LINKEDIN_PROFILE = (
 
 SOCIAL = (
     ('twitter', 'https://twitter.com/rafaelhenrique'),
-    ('youtube', 'https://www.youtube.com/channel/UCclCntdMj9nhhTEnuR5m42A'),
     ('github', 'https://github.com/rafaelhenrique'),
+    ('youtube', 'https://www.youtube.com/rafaelhenriqu'),
     ('linkedin', LINKEDIN_PROFILE),
     ('speakerdeck', 'https://speakerdeck.com/rafaelhenrique'),
     ('rss', 'feeds/all.atom.xml'),
