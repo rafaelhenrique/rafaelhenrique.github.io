@@ -1,14 +1,13 @@
 <section class="post">
     <header class="post-header">
-        <a href="{{ SITEURL }}/{{ article.author.url }}" title="See posts by {{ article.author }}">
-            {% if article.author_gravatar %}
-                <img class="avatar" alt="{{ article.author }}" src="{{ article.author_gravatar }}">
-            {% endif %}
-        </a>
-        <h5><a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
-            <p class="post-meta">{{ article.summary }}</p>
-            <p class="post-meta">
-                # category <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a> &middot; {{ article.locale_date }}
-            </p>
+        <!-- <a href="{{ SITEURL }}/{{ article.author.url }}" title="See posts by {{ article.author }}"> -->
+            {#% if article.author_gravatar %#}
+                <!-- <img class="avatar" alt="{#{ article.author }#}" src="{#{ article.author_gravatar }#}"> -->
+            {#% endif %#}
+        <!-- </a> -->
+        <h5 class="archive-date">{{ article.date|strftime('%Y') }}</h5>
+        <h4 class="archive-date">{{ article.date|strftime('%d %B') }}</h4>
+        <div class="archive-post"><a href="{{ article.url }}">{{ article.title }}</a></div>
+        <p class="archive-meta">{{ article.author }} in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></p>
     </header>
 </section>

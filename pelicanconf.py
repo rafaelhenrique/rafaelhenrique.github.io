@@ -49,7 +49,7 @@ MENUITEMS = (
     ('Python Sorocaba',
         'https://groups.google.com/forum/#!forum/python-sorocaba'),
     ('GruPy-SP', 'http://www.meetup.com/pt-BR/Grupy-SP/'),
-    ('Arquivo', 'archives.html'),
+    # ('Arquivo', 'archives.html'),
 )
 
 # Social links
