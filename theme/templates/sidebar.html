@@ -14,9 +14,15 @@
                     {% endfor %}
                     <p class="social">
                     {% for title, link in SOCIAL %}
+                        {% if title == "speakerdeck" %}
+                        <a href="{{ link }}" title="{{ title }}">
+                            <img src="{{ SITEURL }}/theme/images/speakerdeck.png" style="max-height:12%; max-width:12%;">
+                        </a>
+                        {% else %}
                         <a href="{{ link }}" title="{{title}}">
                             <i class="fa fa-{{ title }} fa-2x"></i>
                         </a>
+                        {% endif %}
                     {% endfor %}
                     <p>
                     <p class="tagline">
