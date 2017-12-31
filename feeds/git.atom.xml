@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/git.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-03-24T10:16:00-03:00</updated><entry><title>Git squash?? WTF?</title><link href="http://blog.abraseucodigo.com.br/git-squash-wtf.html" rel="alternate"></link><published>2015-03-24T10:16:00-03:00</published><updated>2015-03-24T10:16:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-03-24:git-squash-wtf.html</id><summary type="html">&lt;p&gt;Galera conforme mencionei no post anterior.. estou contribuindo com o &lt;a href="https://github.com/puppet-community/puppetboard/"&gt;puppetboard&lt;/a&gt; (mais informações no post abaixo desse :P). E fiz meu primeiro Pull Request e talz resolvendo uma questão que estava na issue para acrescentar uma nova funcionalidade ao projeto. Porém quando eu fiz meu PR (Pull Request) teve um cara que me disse o seguinte:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="comment-github-image" src="/images/git-squash-wtf_01.png" title="comment-github-image" /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!! - GIT</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/git.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2015-03-24T10:16:00-03:00</updated><entry><title>Git squash?? WTF?</title><link href="http://blog.abraseucodigo.com.br/git-squash-wtf.html" rel="alternate"></link><published>2015-03-24T10:16:00-03:00</published><updated>2015-03-24T10:16:00-03:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2015-03-24:/git-squash-wtf.html</id><summary type="html">&lt;p&gt;Como fazer e pra que serve esse tal de git squash?&lt;/p&gt;</summary><content type="html">&lt;p&gt;Galera conforme mencionei no post anterior.. estou contribuindo com o &lt;a href="https://github.com/puppet-community/puppetboard/"&gt;puppetboard&lt;/a&gt; (mais informações no post abaixo desse :P). E fiz meu primeiro Pull Request e talz resolvendo uma questão que estava na issue para acrescentar uma nova funcionalidade ao projeto. Porém quando eu fiz meu PR (Pull Request) teve um cara que me disse o seguinte:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="comment-github-image" src="/images/git-squash-wtf_01.png" title="comment-github-image"&gt;
 **&lt;a href="http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits"&gt;squash&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ai eu pensei como qualquer ótimo conhecedor do Git que porras é essa de squash?&lt;/p&gt;
 &lt;p&gt;O squash é uma prática utilizada para combinar mais de um commit em um commit só, desta forma eliminando "lixos" do projeto. Agora aqui neste post explicarei como raios você faz isso, pois não achei uma documentação simples que explicasse a uma pessoa normal como fazer isso, e após aprender, decidi TENTAR explicar de uma forma simples &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;.&lt;/p&gt;
@@ -131,7 +131,7 @@ f4c9d80 Adicionado Henrique
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git log  
 commit f4c9d80a089ee35fca0eb7c6e5aabcb435fb9bb4  
 Author: Rafael Henrique da Silva Correia &amp;lt;rafael@abraseucodigo.com.br&amp;gt;  
-Date:   Tue Mar &lt;span class="m"&gt;24&lt;/span&gt; 11:08:29 &lt;span class="m"&gt;2015&lt;/span&gt; -0300  
+Date:   Tue Mar &lt;span class="m"&gt;24&lt;/span&gt; &lt;span class="m"&gt;11&lt;/span&gt;:08:29 &lt;span class="m"&gt;2015&lt;/span&gt; -0300  
     Adicionado Henrique  
 
     Adicionado da  
@@ -142,10 +142,10 @@ Date:   Tue Mar &lt;span class="m"&gt;24&lt;/span&gt; 11:08:29 &lt;span class="
 
 commit 5ebadcde3eb8c006bd33ee4c62f9cbb359822d6e  
 Author: Rafael Henrique da Silva Correia &amp;lt;rafael@abraseucodigo.com.br&amp;gt;  
-Date:   Tue Mar &lt;span class="m"&gt;24&lt;/span&gt; 11:08:14 &lt;span class="m"&gt;2015&lt;/span&gt; -0300  
+Date:   Tue Mar &lt;span class="m"&gt;24&lt;/span&gt; &lt;span class="m"&gt;11&lt;/span&gt;:08:14 &lt;span class="m"&gt;2015&lt;/span&gt; -0300  
     Adicionado Rafael
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Conclusão&lt;/h2&gt;
-&lt;p&gt;Esta prática é bem interessante e deixa o repositório do git mais limpo, é MUITO válida principalmente em projetos grandes onde se tem muitos contribuidores (principalmente em projetos open source &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;).&lt;/p&gt;</summary><category term="git"></category><category term="squash"></category><category term="github"></category></entry></feed>
+&lt;p&gt;Esta prática é bem interessante e deixa o repositório do git mais limpo, é MUITO válida principalmente em projetos grandes onde se tem muitos contribuidores (principalmente em projetos open source &lt;img style="margin-bottom: -0.25em;height:1.5em;             display:inline-block;" src="/emojis/smile.png"&gt;).&lt;/p&gt;</content><category term="git"></category><category term="squash"></category><category term="github"></category></entry></feed>
