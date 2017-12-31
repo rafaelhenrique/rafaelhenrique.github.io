@@ -7,29 +7,26 @@ import os
 BASE = os.path.dirname(__file__)
 
 # Author info
-
-AUTHOR = u'Rafael Henrique da Silva Correia'
-AUTHOR_EMAIL = u'rafael@abraseucodigo.com.br'
-AUTHOR_USERNAME = u'@rafaelhenrique'
+AUTHOR = 'Rafael Henrique da Silva Correia'
+AUTHOR_EMAIL = 'rafael@abraseucodigo.com.br'
+AUTHOR_USERNAME = '@rafaelhenrique'
 AUTHOR_DESCRIPTION = (
-    "Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja"
+    'Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja'
 )
 DEFAULT_METADATA = (
-    ('about_author',
-        u"Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja"),
+    ('about_author', 'Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja'),
 )
 
 # Site info
-
-SITENAME = u'Abra seu C\xf3digo!!!'
-SITEURL = u'http://blog.abraseucodigo.com.br'
-SITEDESCRIPTION = u'Programando, jogando e devopando eventualmente'
-TAGLINE = u'Programando, jogando e devopando eventualmente'
+SITENAME = 'Abra seu Código!!!'
+SITEURL = 'http://blog.abraseucodigo.com.br'
+SITEDESCRIPTION = 'Programando, jogando e devopando eventualmente'
+TAGLINE = 'Programando, jogando e devopando eventualmente'
 
 PATH = 'content'
 TIMEZONE = 'America/Sao_Paulo'
 
-DEFAULT_LANG = u'pt'
+DEFAULT_LANG = 'pt'
 DATE_FORMATS = {'pt': '%B %d, %Y', }
 
 USE_FOLDER_AS_CATEGORY = True
@@ -43,30 +40,21 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 MENUITEMS = (
-    # ('Contato', 'pages/contato.html'),
-    # ('Sobre', 'pages/sobre.html'),
-    # ('Blog antigo', 'http://abraseucodigo.blogspot.com'),
-    ('Python Sorocaba',
-        'https://groups.google.com/forum/#!forum/python-sorocaba'),
+    ('Python Sorocaba', 'https://groups.google.com/forum/#!forum/python-sorocaba'),
     ('GruPy-SP', 'http://www.meetup.com/pt-BR/Grupy-SP/'),
-    # ('Arquivo', 'archives.html'),
 )
 
 # Social links
-LINKEDIN_PROFILE = (
-    u'http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3')
-
 SOCIAL = (
     ('twitter', 'https://twitter.com/rafaelhenrique'),
     ('github', 'https://github.com/rafaelhenrique'),
     ('youtube', 'https://www.youtube.com/rafaelhenriqu'),
-    ('linkedin', LINKEDIN_PROFILE),
+    ('linkedin', 'http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3'),
     ('speakerdeck', 'https://speakerdeck.com/rafaelhenrique'),
     ('rss', 'feeds/all.atom.xml'),
 )
 
-
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 5
 
 SITEMAP = {
     'format': 'xml',
@@ -110,7 +98,10 @@ THEME = 'theme'
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 STATIC_PATHS = [
-    'images', 'extras/favicon.ico', 'extras/CNAME', 'extras/robots.txt']
+    'images',
+    'extras/favicon.ico',
+    'extras/CNAME',
+    'extras/robots.txt']
 
 EXTRA_PATH_METADATA = {
     'extras/CNAME': {'path': 'CNAME'},
@@ -118,13 +109,10 @@ EXTRA_PATH_METADATA = {
 }
 
 TEMPLATE_PAGES = {
-    os.path.join(BASE, 'theme/templates/search.html'): (
-        os.path.join(BASE, 'output/pages/search.html'))
+    os.path.join(BASE, 'theme/templates/search.html'): (os.path.join(BASE, 'output/pages/search.html'))
 }
-
 RANDOM_ARTICLES = 10
-
-COVER_IMG_URL = (u"http://i.imgur.com/SxhRd03.png")
+COVER_IMG_URL = ("http://i.imgur.com/SxhRd03.png")
 
 # Geracao de PDF
 # PDF_GENERATOR = True
