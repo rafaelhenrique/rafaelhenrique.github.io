@@ -894,7 +894,7 @@ dict = {
 
 
 def test(sender):
-    print "%s initialized !!" % sender
+    print("%s initialized !!" % sender)
 
 
 def register():
@@ -903,7 +903,7 @@ def register():
 
 
 def mangle(generator):
-    print "generator", generator
+    print("generator", generator)
 
 
 def emojify(content):
