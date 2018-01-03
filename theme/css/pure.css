@@ -320,8 +320,8 @@ pre {
     }
 
     .cover-img {
-        background-position: 0;
-        background-size: cover;
+        background-size: 20%;
+        background-position: left center;
     }
 
     .avatar {
