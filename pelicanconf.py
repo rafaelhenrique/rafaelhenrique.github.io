@@ -112,7 +112,7 @@ TEMPLATE_PAGES = {
     os.path.join(BASE, 'theme/templates/search.html'): (os.path.join(BASE, 'output/pages/search.html'))
 }
 RANDOM_ARTICLES = 10
-COVER_IMG_URL = ("http://i.imgur.com/SxhRd03.png")
+COVER_IMG_URL = ("http://i.imgur.com/slRvZdw.png")
 
 # Geracao de PDF
 # PDF_GENERATOR = True
