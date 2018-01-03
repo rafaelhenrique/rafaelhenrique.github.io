@@ -19,6 +19,7 @@ DEFAULT_METADATA = (
 
 # Site info
 SITENAME = 'Abra seu Código!!!'
+SITEREPO = 'https://github.com/rafaelhenrique/rafaelhenrique.github.io/tree/pelican'
 SITEURL = 'http://blog.abraseucodigo.com.br'
 SITEDESCRIPTION = 'Programando, jogando e devopando eventualmente'
 TAGLINE = 'Programando, jogando e devopando eventualmente'
