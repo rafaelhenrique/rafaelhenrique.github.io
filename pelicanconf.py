@@ -21,8 +21,8 @@ DEFAULT_METADATA = (
 SITENAME = 'Abra seu Código!!!'
 SITEREPO = 'https://github.com/rafaelhenrique/rafaelhenrique.github.io/tree/pelican'
 SITEURL = 'http://blog.abraseucodigo.com.br'
-SITEDESCRIPTION = 'Programando, jogando e devopando eventualmente'
-TAGLINE = 'Programando, jogando e devopando eventualmente'
+SITEDESCRIPTION = 'Programando, devopando e deixando minha barba mais frondosa'
+TAGLINE = 'Programando, devopando e deixando minha barba mais frondosa'
 
 PATH = 'content'
 TIMEZONE = 'America/Sao_Paulo'
