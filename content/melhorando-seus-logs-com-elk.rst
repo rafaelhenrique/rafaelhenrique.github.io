@@ -1,8 +1,8 @@
 Melhorando seus logs com Elasticsearch + Kibana + Logstash
 ##########################################################
 
-:date: 2017-01-16 16:27
-:tags: python, logstash, kibana, elasticsearch, log
+:date: 2018-01-03 23:50
+:tags: python, logstash, kibana, filebeat, elasticsearch, log
 :category: Log
 :slug: melhorando-seus-logs-com-elk
 :author: Rafael Henrique da Silva Correia
@@ -11,18 +11,19 @@ Melhorando seus logs com Elasticsearch + Kibana + Logstash
 
 Em meu último post `A importância de um log <http://blog.abraseucodigo.com.br/a-importancia-de-um-log.html>`_ expliquei um pouco porque é importante ter logs em uma aplicação.
 
-Neste post demonstrarei como centralizar seus logfiles usando a stack da Elastic (Logstash + Kibana + Elasticsearch). Existem ferramentas que já salvam o log da aplicação diretamente no Logstash, este não será o foco deste post, quem sabe um próximo ;).
+Neste post demonstrarei como centralizar seus logfiles usando a stack ELK (Elasticsearch + Logstash + Kibana). Existem ferramentas que já salvam o log da aplicação diretamente no Logstash, este não será o foco deste post, quem sabe um próximo ;).
+
+AVISO IMPORTANTE: Faz algum tempo que venho guardando este post, e mesmo ele estando incompleto (me desculpem pelo perfeccionismo) já vou postar logo, pois eu mesmo sinto falta de ler o que está aqui, já precisei subir essa stack 2 vezes e tive que consultar um arquivo markdown meio feio. Então colaborem! Quando quiserem me perguntem qualquer coisa sobre o assunto e estarei disposto a ajudar e a melhorar o que escrevi aqui.
 
 Antes de mais nada...
 ---------------------
 
 O que é Elastic? A `Elastic <https://www.elastic.co/>`_ é uma empresa sensacional (opinião minha) que criou várias ferramentas interessantes para facilitar a vida do desenvolvedor :). Os produtos que serão abordados neste post são:
 
-- Elasticsearch: Uma ferramenta muito utilizada para indexar/armazenar dados e devolvê-los de forma rápida a quem consulta estes dados;
-- Logstash: Recebe dados de diversas fontes diferentes, simultaneamente, processa e armazena estes dados em algum `stash <https://www.elastic.co/guide/en/logstash/current/output-plugins.html>`_, ao mesmo este cara trabalha muito bem com o Elasticsearch, o qual já disponibiliza estes dados indexados para uma consulta muitooooo rápida posteriormente;
-
-
-
+- Elasticsearch: Uma ferramenta muito utilizada para indexar/armazenar dados e devolvê-los de forma rápida a quem consulta estes dados através de uma API bem poderosa;
+- Logstash: Recebe dados de diversas fontes diferentes, simultaneamente, processa e armazena estes dados em algum `lugar <https://www.elastic.co/guide/en/logstash/current/output-plugins.html>`_, funciona como se fosse analogamente um "roteador de logs";
+- Kibana: Nosso visualizador de logs que consome a api do Elasticsearch e mostra essa informação em forma gráfica ou textual;
+- Filebeat: Um client que lê logs de algum host e os envia para o logstash.
 
 Instalar JDK
 ------------
@@ -33,12 +34,10 @@ Instalar JDK
 
 Elastic search 2.x não funciona com Java9.
 
-Ref: https://github.com/elastic/elasticsearch/issues/18761
+Referência: https://github.com/elastic/elasticsearch/issues/18761
 
 Instalar Elasticsearch
 ----------------------
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
 
 .. code-block:: command
 
@@ -57,12 +56,12 @@ Configurar arquivo `/etc/elasticsearch/elasticsearch.yml` com a entrada:
 
 Isso serve para não abrir o elastic search para fora, senão outras pessoas podem controlar o cluster.
 
-Ref: https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
+Referências:
+- https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
 
 Instalar Kibana
 ---------------
-
-https://www.elastic.co/guide/en/kibana/current/setup-repositories.html
 
 .. code-block:: command
 
@@ -72,7 +71,6 @@ https://www.elastic.co/guide/en/kibana/current/setup-repositories.html
     /bin/systemctl daemon-reload
     /bin/systemctl enable kibana.service
 
-
 Configurar arquivo `/opt/kibana/config/kibana.yml` com a entrada:
 
 .. code-block:: command
@@ -81,10 +79,10 @@ Configurar arquivo `/opt/kibana/config/kibana.yml` com a entrada:
 
 Para deixar Kibana acessível somente a localhost, para sair externamente vamos usar um proxy reverso no Nginx.
 
+Referência: https://www.elastic.co/guide/en/kibana/current/setup-repositories.html
+
 Instalar Nginx
 --------------
-
-https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
 
 .. code-block:: command
 
@@ -126,20 +124,13 @@ Criar link simbólico:
 
     ln -sf /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana
 
-
 Reiniciar o serviço do Nginx para aplicar nova configuração:
 
 .. code-block:: command
 
     sudo service nginx restart
 
-
-Esta configuração faz com que o Nginx se comporte como um `websocket-proxy` em que após a autenticação o usuário seja redirectionado para o painel do Kibana.
-
-Ref:
-    - https://www.nginx.com/blog/websocket-nginx/
-    - https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
-
+Esta configuração faz com que o Nginx se comporte como um `websocket-proxy` em que após a autenticação o usuário seja redirecionado para o painel do Kibana.
 
 Após fazer esta configuração você poderá testar no seu browser se o painel está acessível da forma que você configurou:
 
@@ -149,10 +140,12 @@ Após fazer esta configuração você poderá testar no seu browser se o painel 
 .. image:: images/melhorando-seus-logs-com-elk/02.png
    :alt: painel kibana
 
+Referências:
+  - https://www.nginx.com/blog/websocket-nginx/
+  - https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
+
 Instalar logstash
 -----------------
-
-https://www.elastic.co/guide/en/logstash/current/installing-logstash.html
 
 .. code-block:: command
 
@@ -161,6 +154,9 @@ https://www.elastic.co/guide/en/logstash/current/installing-logstash.html
     sudo apt-get update && sudo apt-get install logstash
 
 Logstash está instalado mas ainda não foi configurado, será configurado mais abaixo neste mesmo post. :)
+
+Referência:
+- https://www.elastic.co/guide/en/logstash/current/installing-logstash.html
 
 Gerando certificados SSL
 ------------------------
@@ -461,7 +457,25 @@ Descubra seus indexes:
 
 .. code-block:: command
 
-    curl -X GET http://localhost:9200/_cat/indices
+    curl -X GET http://localhost:9200/_cat/indices?v
+
+Consulte dados dos nós do elasticsearch indexes:
+
+.. code-block:: command
+
+  curl -X GET http://localhost:9200/_cat/nodes?v
+
+Consulte a saúde do cluster:
+
+.. code-block:: command
+
+  curl -X GET http://localhost:9200/_cat/health?v
+
+Apagando indexes:
+
+.. code-block:: command
+
+    curl -X DELETE "http://localhost:9200/*meta*"
 
 Consulte dados dos seus indexes:
 
@@ -515,14 +529,7 @@ Consulte dados dos seus indexes:
 
     ... linhas omitidas...
 
-
-Apagando indexes:
-
-.. code-block:: command
-
-    curl -X DELETE "http://localhost:9200/*meta*"
-
-Se esta busca trouxe 0 registros então Elasticsearch não está recebendo/indexando seus logs como deveria.
+Se esta consulta dos indexes trouxe 0 registros então Elasticsearch não está recebendo/indexando seus logs como deveria.
 
 Setando seu index principal
 ---------------------------
@@ -538,8 +545,8 @@ Feito isso agora basta criar seus dashboards personalizados e trabalhar com quer
 
 - https://www.elastic.co/guide/index.html
 
-Erros
------
+Em caso de erros
+----------------
 
 Depurar filebeat:
 
@@ -547,7 +554,7 @@ Depurar filebeat:
 
     filebeat -e -v -d '*' -c /etc/filebeat/filebeat.yml
 
-No meu notebook deu problema pois ele tentava bater no elasticsearch pela localhost:9200 e dava erro, removi essa conf e tudo ficou bem.
+No meu notebook deu problema pois o filebeat tentava bater no elasticsearch pela localhost:9200 e dava erro, removi essa conf e tudo ficou bem.
 
 Pela minha análise preliminar se ele não alcança algum host ele não sobe log pra nenhum.
 
