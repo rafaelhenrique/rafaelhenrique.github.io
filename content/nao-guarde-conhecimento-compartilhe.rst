@@ -23,7 +23,7 @@ Sempre quando eu vou escrever um post, ou qualquer outra coisa que fique públic
 
 Essas perguntas te TRAVAM e fazem com que você demore mais a compartilhar o conhecimento que você tem. Cheguei a esta conclusão a pouco pois guardei um `post <http://blog.abraseucodigo.com.br/melhorando-seus-logs-com-elk.html>`_ deste blog por 1 ANO! 1 ANO! Isso é MUITO tempo! Eu poderia ter ajudado muitas pessoas neste 1 ano parado :(.
 
-Eis que me lembrei do meu blog antigo, que era feito no blogger e ainda vive `até hoje <http://abraseucodigo.blogspot.com.br/>`_, olhei mais uma vez pra ele e pensei "porra Rafael, naquela época você compartilhava conhecimento baseado em porra nenhuma", e ao meu ver esse é o espírito de um blog que talvez eu tenha esquecido, o espírito é o que sempre ouço na `empresa que trabalho <https://cargobr.com/>`_ atualmente que o "feito é melhor que o perfeito!".
+Eis que me lembrei do meu blog antigo, que era feito no blogger e ainda vive `até hoje <http://abraseucodigo.blogspot.com.br/>`_, olhei mais uma vez pra ele e pensei "porra Rafael, naquela época você compartilhava conhecimento baseado em porra nenhuma", e ao meu ver esse é o espírito de um blog que talvez eu tenha esquecido, o espírito é o que sempre ouço na `empresa que trabalho <https://cargobr.com/>`_ atualmente, que o "feito é melhor que o perfeito!".
 
 Filosofando sobre o que acontece com o conhecimento
 ---------------------------------------------------
