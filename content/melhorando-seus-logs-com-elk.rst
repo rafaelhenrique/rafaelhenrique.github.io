@@ -57,6 +57,7 @@ Configurar arquivo `/etc/elasticsearch/elasticsearch.yml` com a entrada:
 Isso serve para não abrir o elastic search para fora, senão outras pessoas podem controlar o cluster.
 
 Referências:
+
 - https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
 - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
 
@@ -141,8 +142,9 @@ Após fazer esta configuração você poderá testar no seu browser se o painel 
    :alt: painel kibana
 
 Referências:
-  - https://www.nginx.com/blog/websocket-nginx/
-  - https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
+
+- https://www.nginx.com/blog/websocket-nginx/
+- https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04
 
 Instalar logstash
 -----------------
@@ -156,6 +158,7 @@ Instalar logstash
 Logstash está instalado mas ainda não foi configurado, será configurado mais abaixo neste mesmo post. :)
 
 Referência:
+
 - https://www.elastic.co/guide/en/logstash/current/installing-logstash.html
 
 Gerando certificados SSL
@@ -279,8 +282,9 @@ Agora alguns indexes vão estar disponíveis no painel do Kibana:
 .. image:: images/melhorando-seus-logs-com-elk/03.png
    :alt: indexes painel kibana
 
-Ref:
-    - https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html
+Referência:
+
+- https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html
 
 Adicionando o certificado nos clientes
 --------------------------------------
