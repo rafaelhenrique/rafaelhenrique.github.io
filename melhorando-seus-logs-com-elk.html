@@ -89,9 +89,11 @@ update-rc.d elasticsearch defaults 95 10
 <div class="highlight"><pre><span></span>network.host: localhost
 </pre></div>
 <p>Isso serve para não abrir o elastic search para fora, senão outras pessoas podem controlar o cluster.</p>
-<p>Referências:
-- <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04">https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04</a>
-- <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html</a></p>
+<p>Referências:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04">https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04</a></li>
+<li><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html</a></li>
+</ul>
 </div>
 <div class="section" id="instalar-kibana">
 <h2>Instalar Kibana</h2>
@@ -144,14 +146,11 @@ unlink /etc/nginx/sites-enabled/default
 <p>Após fazer esta configuração você poderá testar no seu browser se o painel está acessível da forma que você configurou:</p>
 <img alt="login painel kibana" src="images/melhorando-seus-logs-com-elk/01.png" />
 <img alt="painel kibana" src="images/melhorando-seus-logs-com-elk/02.png" />
-<dl class="docutils">
-<dt>Referências:</dt>
-<dd><ul class="first last simple">
+<p>Referências:</p>
+<ul class="simple">
 <li><a class="reference external" href="https://www.nginx.com/blog/websocket-nginx/">https://www.nginx.com/blog/websocket-nginx/</a></li>
 <li><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04">https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04</a></li>
 </ul>
-</dd>
-</dl>
 </div>
 <div class="section" id="instalar-logstash">
 <h2>Instalar logstash</h2>
@@ -160,8 +159,10 @@ echo &quot;deb https://packages.elastic.co/logstash/2.4/debian stable main&quot;
 sudo apt-get update &amp;&amp; sudo apt-get install logstash
 </pre></div>
 <p>Logstash está instalado mas ainda não foi configurado, será configurado mais abaixo neste mesmo post. :)</p>
-<p>Referência:
-- <a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html">https://www.elastic.co/guide/en/logstash/current/installing-logstash.html</a></p>
+<p>Referência:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html">https://www.elastic.co/guide/en/logstash/current/installing-logstash.html</a></li>
+</ul>
 </div>
 <div class="section" id="gerando-certificados-ssl">
 <h2>Gerando certificados SSL</h2>
@@ -242,13 +243,10 @@ update-rc.d logstash defaults 95 10
 </pre></div>
 <p>Agora alguns indexes vão estar disponíveis no painel do Kibana:</p>
 <img alt="indexes painel kibana" src="images/melhorando-seus-logs-com-elk/03.png" />
-<dl class="docutils">
-<dt>Ref:</dt>
-<dd><ul class="first last simple">
+<p>Referência:</p>
+<ul class="simple">
 <li><a class="reference external" href="https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html">https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html</a></li>
 </ul>
-</dd>
-</dl>
 </div>
 <div class="section" id="adicionando-o-certificado-nos-clientes">
 <h2>Adicionando o certificado nos clientes</h2>

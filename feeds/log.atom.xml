@@ -33,9 +33,11 @@ update-rc.d elasticsearch defaults 95 10
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;network.host: localhost
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Isso serve para não abrir o elastic search para fora, senão outras pessoas podem controlar o cluster.&lt;/p&gt;
-&lt;p&gt;Referências:
-- &lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"&gt;https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04&lt;/a&gt;
-- &lt;a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html"&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Referências:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"&gt;https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html"&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instalar-kibana"&gt;
 &lt;h2&gt;Instalar Kibana&lt;/h2&gt;
@@ -88,14 +90,11 @@ unlink /etc/nginx/sites-enabled/default
 &lt;p&gt;Após fazer esta configuração você poderá testar no seu browser se o painel está acessível da forma que você configurou:&lt;/p&gt;
 &lt;img alt="login painel kibana" src="images/melhorando-seus-logs-com-elk/01.png" /&gt;
 &lt;img alt="painel kibana" src="images/melhorando-seus-logs-com-elk/02.png" /&gt;
-&lt;dl class="docutils"&gt;
-&lt;dt&gt;Referências:&lt;/dt&gt;
-&lt;dd&gt;&lt;ul class="first last simple"&gt;
+&lt;p&gt;Referências:&lt;/p&gt;
+&lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.nginx.com/blog/websocket-nginx/"&gt;https://www.nginx.com/blog/websocket-nginx/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"&gt;https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instalar-logstash"&gt;
 &lt;h2&gt;Instalar logstash&lt;/h2&gt;
@@ -104,8 +103,10 @@ echo &amp;quot;deb https://packages.elastic.co/logstash/2.4/debian stable main&a
 sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install logstash
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Logstash está instalado mas ainda não foi configurado, será configurado mais abaixo neste mesmo post. :)&lt;/p&gt;
-&lt;p&gt;Referência:
-- &lt;a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html"&gt;https://www.elastic.co/guide/en/logstash/current/installing-logstash.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Referência:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html"&gt;https://www.elastic.co/guide/en/logstash/current/installing-logstash.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="gerando-certificados-ssl"&gt;
 &lt;h2&gt;Gerando certificados SSL&lt;/h2&gt;
@@ -186,13 +187,10 @@ update-rc.d logstash defaults 95 10
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora alguns indexes vão estar disponíveis no painel do Kibana:&lt;/p&gt;
 &lt;img alt="indexes painel kibana" src="images/melhorando-seus-logs-com-elk/03.png" /&gt;
-&lt;dl class="docutils"&gt;
-&lt;dt&gt;Ref:&lt;/dt&gt;
-&lt;dd&gt;&lt;ul class="first last simple"&gt;
+&lt;p&gt;Referência:&lt;/p&gt;
+&lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html"&gt;https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
 &lt;/div&gt;
 &lt;div class="section" id="adicionando-o-certificado-nos-clientes"&gt;
 &lt;h2&gt;Adicionando o certificado nos clientes&lt;/h2&gt;
