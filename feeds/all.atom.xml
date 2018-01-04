@@ -1,5 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2017-01-14T10:43:00-02:00</updated><entry><title>A importância de um log</title><link href="http://blog.abraseucodigo.com.br/a-importancia-de-um-log.html" rel="alternate"></link><published>2017-01-14T10:43:00-02:00</published><updated>2017-01-14T10:43:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2017-01-14:/a-importancia-de-um-log.html</id><summary type="html">&lt;p class="first last"&gt;O que é log? E pra que logar?&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2018-01-03T23:50:00-02:00</updated><entry><title>Melhorando seus logs com Elasticsearch + Kibana + Logstash</title><link href="http://blog.abraseucodigo.com.br/melhorando-seus-logs-com-elk.html" rel="alternate"></link><published>2018-01-03T23:50:00-02:00</published><updated>2018-01-03T23:50:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2018-01-03:/melhorando-seus-logs-com-elk.html</id><summary type="html">&lt;p class="first last"&gt;Deixe seus logs mais legíveis, rastreáveis e bonitos&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Em meu último post &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/a-importancia-de-um-log.html"&gt;A importância de um log&lt;/a&gt; expliquei um pouco porque é importante ter logs em uma aplicação.&lt;/p&gt;
+&lt;p&gt;Neste post demonstrarei como centralizar seus logfiles usando a stack ELK (Elasticsearch + Logstash + Kibana). Existem ferramentas que já salvam o log da aplicação diretamente no Logstash, este não será o foco deste post, quem sabe um próximo ;).&lt;/p&gt;
+&lt;p&gt;AVISO IMPORTANTE: Faz algum tempo que venho guardando este post, e mesmo ele estando incompleto (me desculpem pelo perfeccionismo) já vou postar logo, pois eu mesmo sinto falta de ler o que está aqui, já precisei subir essa stack 2 vezes e tive que consultar um arquivo markdown meio feio. Então colaborem! Quando quiserem me perguntem qualquer coisa sobre o assunto e estarei disposto a ajudar e a melhorar o que escrevi aqui.&lt;/p&gt;
+&lt;div class="section" id="antes-de-mais-nada"&gt;
+&lt;h2&gt;Antes de mais nada...&lt;/h2&gt;
+&lt;p&gt;O que é Elastic? A &lt;a class="reference external" href="https://www.elastic.co/"&gt;Elastic&lt;/a&gt; é uma empresa sensacional (opinião minha) que criou várias ferramentas interessantes para facilitar a vida do desenvolvedor :). Os produtos que serão abordados neste post são:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Elasticsearch: Uma ferramenta muito utilizada para indexar/armazenar dados e devolvê-los de forma rápida a quem consulta estes dados através de uma API bem poderosa;&lt;/li&gt;
+&lt;li&gt;Logstash: Recebe dados de diversas fontes diferentes, simultaneamente, processa e armazena estes dados em algum &lt;a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html"&gt;lugar&lt;/a&gt;, funciona como se fosse analogamente um &amp;quot;roteador de logs&amp;quot;;&lt;/li&gt;
+&lt;li&gt;Kibana: Nosso visualizador de logs que consome a api do Elasticsearch e mostra essa informação em forma gráfica ou textual;&lt;/li&gt;
+&lt;li&gt;Filebeat: Um client que lê logs de algum host e os envia para o logstash.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalar-jdk"&gt;
+&lt;h2&gt;Instalar JDK&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install openjdk-8-jre-headless
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Elastic search 2.x não funciona com Java9.&lt;/p&gt;
+&lt;p&gt;Referência: &lt;a class="reference external" href="https://github.com/elastic/elasticsearch/issues/18761"&gt;https://github.com/elastic/elasticsearch/issues/18761&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalar-elasticsearch"&gt;
+&lt;h2&gt;Instalar Elasticsearch&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo &amp;quot;deb https://packages.elastic.co/elasticsearch/2.x/debian stable main&amp;quot; | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+apt-get update &amp;amp;&amp;amp; sudo apt-get install elasticsearch
+update-rc.d elasticsearch defaults 95 10
+/bin/systemctl daemon-reload
+/bin/systemctl enable elasticsearch.service
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Configurar arquivo &lt;cite&gt;/etc/elasticsearch/elasticsearch.yml&lt;/cite&gt; com a entrada:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;network.host: localhost
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Isso serve para não abrir o elastic search para fora, senão outras pessoas podem controlar o cluster.&lt;/p&gt;
+&lt;p&gt;Referências:
+- &lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"&gt;https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04&lt;/a&gt;
+- &lt;a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html"&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalar-kibana"&gt;
+&lt;h2&gt;Instalar Kibana&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo &amp;quot;deb https://packages.elastic.co/kibana/4.6/debian stable main&amp;quot; | sudo tee -a /etc/apt/sources.list.d/kibana.list
+apt-get update &amp;amp;&amp;amp; sudo apt-get install kibana
+update-rc.d kibana defaults 95 10
+/bin/systemctl daemon-reload
+/bin/systemctl enable kibana.service
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Configurar arquivo &lt;cite&gt;/opt/kibana/config/kibana.yml&lt;/cite&gt; com a entrada:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;server.host: &amp;quot;localhost&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para deixar Kibana acessível somente a localhost, para sair externamente vamos usar um proxy reverso no Nginx.&lt;/p&gt;
+&lt;p&gt;Referência: &lt;a class="reference external" href="https://www.elastic.co/guide/en/kibana/current/setup-repositories.html"&gt;https://www.elastic.co/guide/en/kibana/current/setup-repositories.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalar-nginx"&gt;
+&lt;h2&gt;Instalar Nginx&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install nginx apache2-utils
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Gerar senha/usuário para acesso ao painel do kibana:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;htpasswd -c /etc/nginx/htpasswd.users kibanaadmin
+unlink /etc/nginx/sites-enabled/default
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Configurar/criar o arquivo &lt;cite&gt;/etc/nginx/sites-available/kibana&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;server {
+    listen 80;
+
+    # server_name example.com;
+
+    auth_basic &amp;quot;Restricted Access&amp;quot;;
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &amp;#39;upgrade&amp;#39;;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Criar link simbólico:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Reiniciar o serviço do Nginx para aplicar nova configuração:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service nginx restart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Esta configuração faz com que o Nginx se comporte como um &lt;cite&gt;websocket-proxy&lt;/cite&gt; em que após a autenticação o usuário seja redirecionado para o painel do Kibana.&lt;/p&gt;
+&lt;p&gt;Após fazer esta configuração você poderá testar no seu browser se o painel está acessível da forma que você configurou:&lt;/p&gt;
+&lt;img alt="login painel kibana" src="images/melhorando-seus-logs-com-elk/01.png" /&gt;
+&lt;img alt="painel kibana" src="images/melhorando-seus-logs-com-elk/02.png" /&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Referências:&lt;/dt&gt;
+&lt;dd&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.nginx.com/blog/websocket-nginx/"&gt;https://www.nginx.com/blog/websocket-nginx/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"&gt;https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalar-logstash"&gt;
+&lt;h2&gt;Instalar logstash&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo &amp;quot;deb https://packages.elastic.co/logstash/2.4/debian stable main&amp;quot; | sudo tee -a /etc/apt/sources.list
+sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install logstash
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Logstash está instalado mas ainda não foi configurado, será configurado mais abaixo neste mesmo post. :)&lt;/p&gt;
+&lt;p&gt;Referência:
+- &lt;a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html"&gt;https://www.elastic.co/guide/en/logstash/current/installing-logstash.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="gerando-certificados-ssl"&gt;
+&lt;h2&gt;Gerando certificados SSL&lt;/h2&gt;
+&lt;p&gt;Para começar a usar o Filebeat nos nossos servers clientes &amp;quot;conectados&amp;quot; ao nosso servidor Elastic, nós precisamos criar um par de certificados SSL. O certificado é usado pelo Filebeat para verificar a identidade no servidor Elastic. Crie os diretórios segundo os comandos abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p /etc/pki/tls/certs
+mkdir /etc/pki/tls/private
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Nós faremos a configuração baseada em IP pois vamos partir do pressuposto que você não tenha DNS caso você esteja usando DNS (com resolução de nomes tudo bonitinho) nos seus servidores então siga os passos da &lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04#generate-ssl-certificates"&gt;Option 2&lt;/a&gt; do tutorial da Digital Ocean.&lt;/p&gt;
+&lt;p&gt;Vamos adicionar nosso ip privado ao subjectAltName (SAN), para fazer isso vamos editar o arquivo &lt;cite&gt;/etc/ssl/openssl.cnf&lt;/cite&gt;, encontre a sessão &lt;cite&gt;[ v3_ca ]&lt;/cite&gt; e adicione seu ip conforme mostrado abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;subjectAltName = IP: ELK_server_private_IP
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora gere os certificados e chaves privadas nos locais apropriados (/etc/pki/tls) com os comandos abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /etc/pki/tls
+sudo openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O certificado &lt;cite&gt;logstash-forwarder.crt&lt;/cite&gt; será copiado para todos os servidores que irão enviar log para o Logstash.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="configurando-logstash"&gt;
+&lt;h2&gt;Configurando Logstash&lt;/h2&gt;
+&lt;p&gt;A configuração é feita em formato JSON, e fica em &lt;cite&gt;/etc/logstash/conf.d&lt;/cite&gt;. A configuração consiste em três seções: entradas (inputs), filtros (filters) e saídas (outputs).&lt;/p&gt;
+&lt;p&gt;Vamos criar um arquivo de configuração chamado &lt;cite&gt;/etc/logstash/conf.d/02-beats-input.conf&lt;/cite&gt; e setar nossa entrada &lt;cite&gt;Filebeat&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;input {
+  beats {
+    port =&amp;gt; 5044
+    ssl =&amp;gt; true
+    ssl_certificate =&amp;gt; &amp;quot;/etc/pki/tls/certs/logstash-forwarder.crt&amp;quot;
+    ssl_key =&amp;gt; &amp;quot;/etc/pki/tls/private/logstash-forwarder.key&amp;quot;
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Esta configuração especifica que o entrada do &lt;cite&gt;beats&lt;/cite&gt; irá escutar na porta 5044 e irá usar nosso certificado e chave privada criados anteriormente.&lt;/p&gt;
+&lt;p&gt;Agora vamos criar uma configuração chamada &lt;cite&gt;/etc/logstash/conf.d/10-syslog-filter.conf&lt;/cite&gt;, onde nós vamos adicionar um &lt;cite&gt;filter&lt;/cite&gt; para as nossas mensagens de syslog:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;filter {
+  if [type] == &amp;quot;syslog&amp;quot; {
+    grok {
+      match =&amp;gt; { &amp;quot;message&amp;quot; =&amp;gt; &amp;quot;%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}&amp;quot; }
+      add_field =&amp;gt; [ &amp;quot;received_at&amp;quot;, &amp;quot;%{@timestamp}&amp;quot; ]
+      add_field =&amp;gt; [ &amp;quot;received_from&amp;quot;, &amp;quot;%{host}&amp;quot; ]
+    }
+    syslog_pri { }
+    date {
+      match =&amp;gt; [ &amp;quot;syslog_timestamp&amp;quot;, &amp;quot;MMM  d HH:mm:ss&amp;quot;, &amp;quot;MMM dd HH:mm:ss&amp;quot; ]
+    }
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este &lt;cite&gt;filter&lt;/cite&gt; analisa os logs rotulados como tipo &amp;quot;syslog&amp;quot; e tenta usar &lt;cite&gt;grok&lt;/cite&gt; para parsear os logs entrantes para deixá-los estruturados e &lt;cite&gt;queryáveis&lt;/cite&gt; (pesquisáveis via query).&lt;/p&gt;
+&lt;p&gt;Agora por fim vamos criar uma configuração chamada &lt;cite&gt;/etc/logstash/conf.d/30-elasticsearch-output.conf&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;output {
+  elasticsearch {
+    hosts =&amp;gt; [&amp;quot;localhost:9200&amp;quot;]
+    sniffing =&amp;gt; true
+    manage_template =&amp;gt; false
+    index =&amp;gt; &amp;quot;%{[@metadata][beat]}-%{+YYYY.MM.dd}&amp;quot;
+    document_type =&amp;gt; &amp;quot;%{[@metadata][type]}&amp;quot;
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este &lt;cite&gt;output&lt;/cite&gt; basicamente configura o Logstash para armazenar os dados do beats no Elasticsearch que está rodando em &lt;cite&gt;localhost:9200&lt;/cite&gt; e indexa por nome posteriormente.&lt;/p&gt;
+&lt;p&gt;Agora vamos testar a configuração criada com o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service logstash configtest
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se a configuração estiver OK então prossiga com os comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service logstash restart
+update-rc.d logstash defaults 95 10
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="baixar-e-instalar-dashboards-do-kibana"&gt;
+&lt;h2&gt;Baixar e instalar Dashboards do Kibana&lt;/h2&gt;
+&lt;p&gt;Elastic provê diversos exemplos de Dashboard do Kibana e padrões de index do Beats para te ajudar a iniciar com o Kibana.&lt;/p&gt;
+&lt;p&gt;Baixe os dashboards no diretório home:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# cd ~
+# curl -L -O http://download.elastic.co/beats/dashboards/beats-dashboards-1.3.1.zip
+# apt-get install unzip
+# unzip beats-dashboards-1.3.1.zip
+# cd beats-dashboards-1.3.1/
+# ./load.sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora alguns indexes vão estar disponíveis no painel do Kibana:&lt;/p&gt;
+&lt;img alt="indexes painel kibana" src="images/melhorando-seus-logs-com-elk/03.png" /&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Ref:&lt;/dt&gt;
+&lt;dd&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html"&gt;https://www.elastic.co/guide/en/beats/libbeat/current/load-kibana-dashboards.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class="section" id="adicionando-o-certificado-nos-clientes"&gt;
+&lt;h2&gt;Adicionando o certificado nos clientes&lt;/h2&gt;
+&lt;p&gt;Copie o certificado para o servidor cliente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;scp /etc/pki/tls/certs/logstash-forwarder.crt user@client_server_private_address:/tmp
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Trocar &lt;cite&gt;user&lt;/cite&gt; por um usuário válido e &lt;cite&gt;client_server_private_address&lt;/cite&gt; por um IP privado válido.&lt;/p&gt;
+&lt;p&gt;No cliente mova o certificado para o local correto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p /etc/pki/tls/certs
+cp /tmp/logstash-forwarder.crt /etc/pki/tls/certs/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalando-filebeat-nos-clientes"&gt;
+&lt;h2&gt;Instalando Filebeat nos clientes&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://www.elastic.co/guide/en/beats/libbeat/1.3/setup-repositories.html"&gt;https://www.elastic.co/guide/en/beats/libbeat/1.3/setup-repositories.html&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+echo &amp;quot;deb https://packages.elastic.co/beats/apt stable main&amp;quot; |  sudo tee -a /etc/apt/sources.list.d/beats.list
+sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install filebeat
+sudo update-rc.d filebeat defaults 95 10
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="configurando-filebeat-nos-clientes"&gt;
+&lt;h2&gt;Configurando Filebeat nos clientes&lt;/h2&gt;
+&lt;p&gt;Agora precisamos configurar o Filebeat para que ele conecte no nosso servidor Elastic. Vamos configurar o Filebeat, a configuração fica em &lt;cite&gt;/etc/filebeat/filebeat.yml&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota importante: O arquivo de configuração do Filebeat é em formato YAML a indentação é muito importante! Se a configuração não for indentada adequadamente os procedimentos abaixo poderão não funcionar.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Abaixo da seção &lt;cite&gt;prospectors&lt;/cite&gt; do arquivo podemos ver a seção &lt;cite&gt;paths&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;############################# Filebeat ######################################
+filebeat:
+  # List of prospectors to fetch data.
+  prospectors:
+    # Each - is a prospector. Below are the prospector specific configurations
+    -
+      # Paths that should be crawled and fetched. Glob based paths.
+      # To fetch all &amp;quot;.log&amp;quot; files from a specific level of subdirectories
+      # /var/log/*/*.log can be used.
+      # For each file found under this path, a harvester is started.
+      # Make sure not file is defined twice as this can lead to unexpected behaviour.
+      paths:
+        - /var/log/*.log
+        #- c:\programdata\elasticsearch\logs\*
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A configuração padrão faz com que o Filebeat receba todos os logs de &lt;cite&gt;/var/log/&lt;/cite&gt; justamente por isso é usado o wildcard &lt;cite&gt;*.log&lt;/cite&gt;. Para que não sejam enviados todos os logs podemos especificar os arquivos desejados, como por exemplo o arquivo &lt;cite&gt;auth.log&lt;/cite&gt; que armazena registros de autenticação do sistema operacional. Vamos modificar este trecho do arquivo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;############################# Filebeat ######################################
+filebeat:
+  # List of prospectors to fetch data.
+  prospectors:
+    # Each - is a prospector. Below are the prospector specific configurations
+    -
+      # Paths that should be crawled and fetched. Glob based paths.
+      # To fetch all &amp;quot;.log&amp;quot; files from a specific level of subdirectories
+      # /var/log/*/*.log can be used.
+      # For each file found under this path, a harvester is started.
+      # Make sure not file is defined twice as this can lead to unexpected behaviour.
+      paths:
+        - /var/log/auth.log
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos procurar uma linha onde tem um parâmetro chamado &lt;cite&gt;document_type&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Type to be published in the &amp;#39;type&amp;#39; field. For Elasticsearch output,
+# the type defines the document type these entries should be stored
+# in. Default: log
+#document_type: log
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Altere esta linha para:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Type to be published in the &amp;#39;type&amp;#39; field. For Elasticsearch output,
+# the type defines the document type these entries should be stored
+# in. Default: log
+document_type: syslog
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Isso especifica para o servidor Elastic que este tipo de log se refere ao &lt;cite&gt;syslog&lt;/cite&gt;. Podem ser criados outros &lt;cite&gt;prospectors&lt;/cite&gt; com diferentes tipos de log, mas cuidado com a indentação do arquivo sempre!&lt;/p&gt;
+&lt;p&gt;Agora próximo da seção &lt;cite&gt;output&lt;/cite&gt; na seção &lt;cite&gt;#logstash&lt;/cite&gt; temos as seguintes linhas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Configure what outputs to use when sending the data collected by the beat.
+# Multiple outputs may be used.
+output:
+
+
+  .. linhas omitidas ..
+
+  ### Logstash as output
+  #logstash:
+    # The Logstash hosts
+    #hosts: [&amp;quot;localhost:5044&amp;quot;]
+
+    # Number of workers per Logstash host.
+    #worker: 1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos descomentar a linha da seção do &lt;cite&gt;logstash&lt;/cite&gt; para habilitar esta seção e modificar o parâmetro &lt;cite&gt;hosts&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Configure what outputs to use when sending the data collected by the beat.
+# Multiple outputs may be used.
+output:
+
+
+  .. linhas omitidas ..
+
+  ### Logstash as output
+  logstash:
+    # The Logstash hosts
+    hosts: [&amp;quot;ELK_server_private_IP:5044&amp;quot;]
+
+    # Number of workers per Logstash host.
+    #worker: 1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Na seção &lt;cite&gt;tls&lt;/cite&gt; temos o seguinte trecho:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#tls:
+  # List of root certificates for HTTPS server verifications
+  #certificate_authorities: [&amp;quot;/etc/pki/root/ca.pem&amp;quot;]
+
+  # Certificate for TLS client authentication
+  #certificate: &amp;quot;/etc/pki/client/cert.pem&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Iremos descomentar a linha &lt;cite&gt;tls&lt;/cite&gt; para habilitarmos a seção e vamos acrescentar o nosso certificado no parâmetro &lt;cite&gt;certificate_authorities&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tls:
+  # List of root certificates for HTTPS server verifications
+  certificate_authorities: [&amp;quot;/etc/pki/tls/certs/logstash-forwarder.crt&amp;quot;]
+
+  # Certificate for TLS client authentication
+  #certificate: &amp;quot;/etc/pki/client/cert.pem&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora execute os comandos abaixo antes de continuar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service filebeat restart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="testando-a-instalacao-do-filebeat"&gt;
+&lt;h2&gt;Testando a instalação do Filebeat&lt;/h2&gt;
+&lt;p&gt;Descubra seus indexes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -X GET http://localhost:9200/_cat/indices?v
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Consulte dados dos nós do elasticsearch indexes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -X GET http://localhost:9200/_cat/nodes?v
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Consulte a saúde do cluster:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -X GET http://localhost:9200/_cat/health?v
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Apagando indexes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -X DELETE &amp;quot;http://localhost:9200/*meta*&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Consulte dados dos seus indexes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -X GET &amp;#39;http://localhost:9200/filebeat-*/_search?pretty&amp;#39;
+{
+  &amp;quot;took&amp;quot; : 1,
+  &amp;quot;timed_out&amp;quot; : false,
+  &amp;quot;_shards&amp;quot; : {
+    &amp;quot;total&amp;quot; : 25,
+    &amp;quot;successful&amp;quot; : 25,
+    &amp;quot;failed&amp;quot; : 0
+  },
+  &amp;quot;hits&amp;quot; : {
+    &amp;quot;total&amp;quot; : 1342,
+    &amp;quot;max_score&amp;quot; : 1.0,
+    &amp;quot;hits&amp;quot; : [ {
+      &amp;quot;_index&amp;quot; : &amp;quot;filebeat-2016.10.12&amp;quot;,
+      &amp;quot;_type&amp;quot; : &amp;quot;syslog&amp;quot;,
+      &amp;quot;_id&amp;quot; : &amp;quot;AVfTM99Ff0lITMzrGB2j&amp;quot;,
+      &amp;quot;_score&amp;quot; : 1.0,
+      &amp;quot;_source&amp;quot; : {
+        &amp;quot;message&amp;quot; : &amp;quot;Oct 12 11:37:06 bloodmary mate-screensaver-dialog: gkr-pam: unlocked login keyring&amp;quot;,
+        &amp;quot;@version&amp;quot; : &amp;quot;1&amp;quot;,
+        &amp;quot;@timestamp&amp;quot; : &amp;quot;2016-10-12T15:37:06.000Z&amp;quot;,
+        &amp;quot;source&amp;quot; : &amp;quot;/var/log/auth.log&amp;quot;,
+        &amp;quot;offset&amp;quot; : 1063,
+        &amp;quot;fields&amp;quot; : null,
+        &amp;quot;beat&amp;quot; : {
+          &amp;quot;hostname&amp;quot; : &amp;quot;bloodmary&amp;quot;,
+          &amp;quot;name&amp;quot; : &amp;quot;bloodmary&amp;quot;
+        },
+        &amp;quot;type&amp;quot; : &amp;quot;syslog&amp;quot;,
+        &amp;quot;input_type&amp;quot; : &amp;quot;log&amp;quot;,
+        &amp;quot;count&amp;quot; : 1,
+        &amp;quot;host&amp;quot; : &amp;quot;bloodmary&amp;quot;,
+        &amp;quot;tags&amp;quot; : [ &amp;quot;beats_input_codec_plain_applied&amp;quot; ],
+        &amp;quot;syslog_timestamp&amp;quot; : &amp;quot;Oct 12 11:37:06&amp;quot;,
+        &amp;quot;syslog_hostname&amp;quot; : &amp;quot;bloodmary&amp;quot;,
+        &amp;quot;syslog_program&amp;quot; : &amp;quot;mate-screensaver-dialog&amp;quot;,
+        &amp;quot;syslog_message&amp;quot; : &amp;quot;gkr-pam: unlocked login keyring&amp;quot;,
+        &amp;quot;received_at&amp;quot; : &amp;quot;2016-10-17T15:12:51.070Z&amp;quot;,
+        &amp;quot;received_from&amp;quot; : &amp;quot;bloodmary&amp;quot;,
+        &amp;quot;syslog_severity_code&amp;quot; : 5,
+        &amp;quot;syslog_facility_code&amp;quot; : 1,
+        &amp;quot;syslog_facility&amp;quot; : &amp;quot;user-level&amp;quot;,
+        &amp;quot;syslog_severity&amp;quot; : &amp;quot;notice&amp;quot;
+      }
+    },
+
+... linhas omitidas...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se esta consulta dos indexes trouxe 0 registros então Elasticsearch não está recebendo/indexando seus logs como deveria.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="setando-seu-index-principal"&gt;
+&lt;h2&gt;Setando seu index principal&lt;/h2&gt;
+&lt;p&gt;Para poder visualizar seus logs no menu Discover do Kibana basta setar seu index principal conforme mostrando no gif abaixo:&lt;/p&gt;
+&lt;img alt="setando index principal" src="images/melhorando-seus-logs-com-elk/04.gif" /&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Esta imagem foi copiada do tutorial da digital ocean a qual esse post se baseou&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Feito isso agora basta criar seus dashboards personalizados e trabalhar com queries para analisar seus logs :)... quem sabe em um futuro próximo eu posto sobre isso também, mas pra você não ficar ai esperando leia a documentação da Elastic, pois é muito boa! Segue o link da doc oficial para continuar os estudos:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.elastic.co/guide/index.html"&gt;https://www.elastic.co/guide/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="em-caso-de-erros"&gt;
+&lt;h2&gt;Em caso de erros&lt;/h2&gt;
+&lt;p&gt;Depurar filebeat:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;filebeat -e -v -d &amp;#39;*&amp;#39; -c /etc/filebeat/filebeat.yml
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;No meu notebook deu problema pois o filebeat tentava bater no elasticsearch pela localhost:9200 e dava erro, removi essa conf e tudo ficou bem.&lt;/p&gt;
+&lt;p&gt;Pela minha análise preliminar se ele não alcança algum host ele não sobe log pra nenhum.&lt;/p&gt;
+&lt;p&gt;Para depurar a conexão SSL: &lt;a class="reference external" href="https://www.elastic.co/guide/en/beats/filebeat/current/configuring-tls-logstash.html"&gt;https://www.elastic.co/guide/en/beats/filebeat/current/configuring-tls-logstash.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="python"></category><category term="logstash"></category><category term="kibana"></category><category term="filebeat"></category><category term="elasticsearch"></category><category term="log"></category></entry><entry><title>A importância de um log</title><link href="http://blog.abraseucodigo.com.br/a-importancia-de-um-log.html" rel="alternate"></link><published>2017-01-14T10:43:00-02:00</published><updated>2017-01-14T10:43:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2017-01-14:/a-importancia-de-um-log.html</id><summary type="html">&lt;p class="first last"&gt;O que é log? E pra que logar?&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Imagine que você criou uma aplicação Web (independente da linguagem de programação) e que durante o seu desenvolvimento você usou &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/Test_Driven_Development"&gt;TDD&lt;/a&gt; bem certinho, como deve ser. Usando &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Code_coverage"&gt;testes de cobertura&lt;/a&gt; junto ao TDD você consegue garantir que um determinado percentual do seu código está assegurado pelos testes que você escreveu, e isso é lindo!&lt;/p&gt;
 &lt;p&gt;Porém o que você não consegue garantir com TDD é se o teu usuário final está acessando sua aplicação da maneira que você programou para ele acessar, exceções sempre vão acontecer meu amigo! Esta é a vida dura de um desenvolvedor.&lt;/p&gt;
 &lt;p&gt;Seja por um desvio de comunicação entre quem programa e quem irá usar o programa, ou seja por um deslize qualquer que você como programador tenha cometido, exceções sempre irão acontecer, não adianta falar que não!&lt;/p&gt;
