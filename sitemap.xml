@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/</loc>
-<lastmod>2018-01-04T00:29:15-00:00</lastmod>
+<lastmod>2018-01-05T13:59:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/archives.html</loc>
-<lastmod>2018-01-04T00:29:15-00:00</lastmod>
+<lastmod>2018-01-05T13:59:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/tags.html</loc>
-<lastmod>2018-01-04T00:29:15-00:00</lastmod>
+<lastmod>2018-01-05T13:59:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/categories.html</loc>
-<lastmod>2018-01-04T00:29:15-00:00</lastmod>
+<lastmod>2018-01-05T13:59:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/pages/contato.html</loc>
-<lastmod>2018-01-04T00:29:15-00:00</lastmod>
+<lastmod>2018-01-05T13:59:28-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -235,7 +235,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/category/pensamento.html</loc>
+<loc>http://blog.abraseucodigo.com.br/category/opiniao.html</loc>
 <lastmod>2018-01-03T23:52:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -263,7 +263,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.abraseucodigo.com.br/tag/pensamento.html</loc>
+<loc>http://blog.abraseucodigo.com.br/tag/opiniao.html</loc>
 <lastmod>2018-01-03T23:52:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
