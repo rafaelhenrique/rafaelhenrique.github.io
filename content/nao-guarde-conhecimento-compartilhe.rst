@@ -2,8 +2,8 @@ Não guarde conhecimento! Compartilhe!
 #####################################
 
 :date: 2018-01-03 23:52
-:tags: conhecimento, perfeccionismo, pensamento
-:category: Pensamento
+:tags: conhecimento, perfeccionismo, opinião
+:category: Opinião
 :slug: nao-guarde-conhecimento-compartilhe
 :author: Rafael Henrique da Silva Correia
 :email:  rafael@abraseucodigo.com.br
