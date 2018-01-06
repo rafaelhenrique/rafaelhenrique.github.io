@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/</loc>
-<lastmod>2018-01-05T13:59:28-00:00</lastmod>
+<lastmod>2018-01-06T20:11:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/archives.html</loc>
-<lastmod>2018-01-05T13:59:28-00:00</lastmod>
+<lastmod>2018-01-06T20:11:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/tags.html</loc>
-<lastmod>2018-01-05T13:59:28-00:00</lastmod>
+<lastmod>2018-01-06T20:11:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/categories.html</loc>
-<lastmod>2018-01-05T13:59:28-00:00</lastmod>
+<lastmod>2018-01-06T20:11:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/pages/contato.html</loc>
-<lastmod>2018-01-05T13:59:28-00:00</lastmod>
+<lastmod>2018-01-06T20:11:53-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -43,6 +43,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2015-09-19T17:27:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/ponteiros-sao-legais.html</loc>
+<lastmod>2018-01-06T19:03:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -228,6 +235,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://blog.abraseucodigo.com.br/category/golang.html</loc>
+<lastmod>2018-01-06T19:03:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://blog.abraseucodigo.com.br/category/log.html</loc>
 <lastmod>2018-01-03T23:50:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -244,6 +258,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.abraseucodigo.com.br/category/python.html</loc>
 <lastmod>2016-04-10T23:53:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/go.html</loc>
+<lastmod>2018-01-06T19:03:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/golang.html</loc>
+<lastmod>2018-01-06T19:03:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/ponteiros.html</loc>
+<lastmod>2018-01-06T19:03:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -593,7 +628,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html</loc>
-<lastmod>2018-01-03T23:52:00-03:06</lastmod>
+<lastmod>2018-01-06T19:03:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
