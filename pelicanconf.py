@@ -14,7 +14,7 @@ AUTHOR_DESCRIPTION = (
     'Pythonista, Gopher, Linuxista, Gamer, Devopeiro e bebedor de Cerveja'
 )
 DEFAULT_METADATA = (
-    ('about_author', 'Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja'),
+    ('about_author', 'Pythonista, Gopher, Linuxista, Gamer, Devopeiro e bebedor de Cerveja'),
 )
 
 # Site info
