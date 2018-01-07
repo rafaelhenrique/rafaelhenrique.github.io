@@ -11,7 +11,7 @@ AUTHOR = 'Rafael Henrique da Silva Correia'
 AUTHOR_EMAIL = 'rafael@abraseucodigo.com.br'
 AUTHOR_USERNAME = '@rafaelhenrique'
 AUTHOR_DESCRIPTION = (
-    'Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja'
+    'Pythonista, Linuxista, Gamer, Programador, Devopeiro e bebedor de Cerveja'
 )
 DEFAULT_METADATA = (
     ('about_author', 'Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja'),
