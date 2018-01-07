@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!! - Linux</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/linux.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2018-01-07T12:04:00-02:00</updated><entry><title>systemd um caso de amor e ódio</title><link href="http://blog.abraseucodigo.com.br/systemd-amor-e-odio.html" rel="alternate"></link><published>2018-01-07T12:04:00-02:00</published><updated>2018-01-07T12:04:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2018-01-07:/systemd-amor-e-odio.html</id><summary type="html">&lt;p class="first last"&gt;Por que amar e odiar o systemd?&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Um fato é que na computação tudo muda a todo instante e mudanças sempre devem ser analisadas e estudadas antes de termos uma opinião.&lt;/p&gt;
+&lt;p&gt;Eu já odiei systemd pois não tinha parado para estudar e sempre tentava fazer as coisas utilizando o SysV Init e pensava que tudo ia funcionar, porém OS DOIS SÃO MUITO DIFERENTES! Não adianta ficar com raiva do systemd, basta entender que ele é uma outra coisa e que ele não é o SysV Init ai você começará a gostar dele :D.&lt;/p&gt;
+&lt;p&gt;Quando estudei para a minha primeira certificação &lt;a class="reference external" href="http://www.lpi.org/"&gt;LPI&lt;/a&gt; as distribuições GNU/Linux como um todo usavam o padrão de inicialização do sistema SysV Init, hoje isso mudou e a maioria das distribuições usam o padrão systemd.&lt;/p&gt;
+&lt;div class="section" id="qual-a-diferenca"&gt;
+&lt;h2&gt;Qual a diferença?&lt;/h2&gt;
+&lt;p&gt;Em termos técnicos de baixo nível eu não sei a diferença por que nunca parei para estudar profundamente isso (se alguém quiser rolar um papo a gente conversa nos comments abaixo do post), mas no nível superficial o que mudou foi:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Arquivos de configuração;&lt;/li&gt;
+&lt;li&gt;Comandos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Achei umas referências bacanas nestes links para quem quiser se aprofundar mais o assunto:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.ibm.com/developerworks/community/blogs/752a690f-8e93-4948-b7a3-c060117e8665/entry/comparativo_upstart_sysvinit_systemd_openrc?lang=en"&gt;Comparativo: upstart, sysvinit, systemd, openrc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.ibm.com/developerworks/mydeveloperworks/blogs/752a690f-8e93-4948-b7a3-c060117e8665/entry/systemd_parte_1?lang=pt_br"&gt;Bê-á-bá do Systemd, parte 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files"&gt;Understanding Systemd Units and Unit Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://stato.blog.br/wordpress/systemd-versus-sysvinit/"&gt;Systemd versus SysVinit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-criar-um-servico"&gt;
+&lt;h2&gt;Como criar um serviço?&lt;/h2&gt;
+&lt;p&gt;A um tempinho atrás precisei criar um serviço para o tsurud que é o &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/Daemon_(computa%C3%A7%C3%A3o)"&gt;daemon (se não sabe o que é daemon clica neste link)&lt;/a&gt; do &lt;a class="reference external" href="http://blog.abraseucodigo.com.br/como-criar-seu-paas-com-tsuru.html"&gt;Tsuru PaaS&lt;/a&gt; pois quando fui subir o PaaS ele não iniciava esse processo sozinho e não achei isso muito legal. Para criar o serviço eu comecei criando o arquivo &lt;cite&gt;tsuru-server-api.service&lt;/cite&gt; da seguinte forma:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# vim /etc/systemd/system/tsuru-server-api.service
+
+[Unit]
+Description=Tsuru (tsuru-server-api)
+After=network.target
+Requires=mongod.service redis.service
+Documentation=https://tsuru.io/
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tsurud api --config=/etc/tsuru/tsuru.conf
+PIDFile=/var/run/tsuru-server-api.pid
+Restart=always
+User=tsuru
+Group=tsuru
+
+[Install]
+WantedBy=default.target
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Cada serviço é atrelado a uma Unit do systemd. Dito isso vamos a explicação.&lt;/p&gt;
+&lt;p&gt;Explicando:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Unit: Define metadados sobre a Unit;&lt;/li&gt;
+&lt;li&gt;Description: Apenas uma descrição da sua Unit;&lt;/li&gt;
+&lt;li&gt;After: Diz que este serviço só subirá depois que subir network.target, pois é um serviço que precisa de rede funcionando;&lt;/li&gt;
+&lt;li&gt;Requires: Diz que se mongod.service ou redis.service falhar esse serviço também irá falhar, e ficará parado (não será iniciado);&lt;/li&gt;
+&lt;li&gt;Documentation: Uma url de documentação para o serviço;&lt;/li&gt;
+&lt;li&gt;Service: Define o serviço daquela unit;&lt;/li&gt;
+&lt;li&gt;Type: O tipo &lt;cite&gt;simple&lt;/cite&gt; faz com que systemd considere que o serviço deve ser iniciado imediatamente (mais &lt;a class="reference external" href="https://wiki.archlinux.org/index.php/Systemd_(Portugu%C3%AAs)#Tipo"&gt;opções aqui&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;ExecStart: Comando que deve iniciar o daemon em questão;&lt;/li&gt;
+&lt;li&gt;PIDFile: Arquivo que armazenará o &lt;a class="reference external" href="https://pt.stackoverflow.com/questions/191815/o-que-seria-um-pid"&gt;PID (não sabe o que é PID clique aqui)&lt;/a&gt; do processo;&lt;/li&gt;
+&lt;li&gt;Restart: Seguir a tabelinha contida &lt;a class="reference external" href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#Restart="&gt;aqui&lt;/a&gt; para entender melhor essa configuração.&lt;/li&gt;
+&lt;li&gt;User: Usuário dono do processo;&lt;/li&gt;
+&lt;li&gt;Group: Grupo dono do processo;&lt;/li&gt;
+&lt;li&gt;Install: Esta seção é opcional e é usada para definir o comportamento de uma unit;&lt;/li&gt;
+&lt;li&gt;WantedBy: Especifica como a unit deve ser habilitada, no caso está configurada da maneira default pelo valor &lt;cite&gt;default.target&lt;/cite&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Preferi colocar esse exemplo mais realista para vocês entenderem melhor, porém qualquer serviço pode ser criado baseado neste do Tsuru que eu criei, basta trocar os valores das configurações.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="comandos"&gt;
+&lt;h2&gt;Comandos&lt;/h2&gt;
+&lt;p&gt;Depois de criar a sua unit com o seu service basta fazer reload do daemon do systemd para ele conseguir &amp;quot;enxergar&amp;quot; esse novo service:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;systemctl daemon-reload
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Outros comandos úteis:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# iniciar um service
+systemctl start &amp;lt;service&amp;gt;
+
+# ver status do service
+systemctl status &amp;lt;service&amp;gt;
+
+# parar um service
+systemctl stop &amp;lt;service&amp;gt;
+
+# listar dependências de um service
+systemctl list-dependencies tsuru-server-api
+
+# re-habilitar uma unit que foi modificada
+systemctl reenable &amp;lt;service&amp;gt;
+
+# visualizar todos os services do sistema
+systemctl -a
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Últimas referências:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Unit_Files.html#sect-Managing_Services_with_systemd-Unit_File_Create"&gt;9.6.2. Creating Custom Unit Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://superuser.com/questions/955922/enabled-systemd-unit-does-not-start-at-boot"&gt;enabled systemd unit does not start at boot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Gostou? Deixa seu comment ai ;)&lt;/p&gt;
+&lt;p&gt;Flw!&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="linux"></category><category term="systemd"></category></entry></feed>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Programando, devopando e deixando minha barba mais frondosa">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>systemd um caso de amor e ódio // Abra seu Código!!! // Programando, devopando e deixando minha barba mais frondosa</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/custom.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Pythonista, Linuxista, Gamer, Programador e bebedor de Cerveja</small>
+                <h5>Published</h5>
+                <p>janeiro 07, 2018</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>systemd um caso de amor e ódio</h1>
+                        <p class="post-meta">
+                            # related tags                                 <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/linux.html">linux</a>
+                                <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/systemd.html">systemd</a>
+                        </p>
+                </header>
+            </section>
+            <p>Um fato é que na computação tudo muda a todo instante e mudanças sempre devem ser analisadas e estudadas antes de termos uma opinião.</p>
+<p>Eu já odiei systemd pois não tinha parado para estudar e sempre tentava fazer as coisas utilizando o SysV Init e pensava que tudo ia funcionar, porém OS DOIS SÃO MUITO DIFERENTES! Não adianta ficar com raiva do systemd, basta entender que ele é uma outra coisa e que ele não é o SysV Init ai você começará a gostar dele :D.</p>
+<p>Quando estudei para a minha primeira certificação <a class="reference external" href="http://www.lpi.org/">LPI</a> as distribuições GNU/Linux como um todo usavam o padrão de inicialização do sistema SysV Init, hoje isso mudou e a maioria das distribuições usam o padrão systemd.</p>
+<div class="section" id="qual-a-diferenca">
+<h2>Qual a diferença?</h2>
+<p>Em termos técnicos de baixo nível eu não sei a diferença por que nunca parei para estudar profundamente isso (se alguém quiser rolar um papo a gente conversa nos comments abaixo do post), mas no nível superficial o que mudou foi:</p>
+<ul class="simple">
+<li>Arquivos de configuração;</li>
+<li>Comandos.</li>
+</ul>
+<p>Achei umas referências bacanas nestes links para quem quiser se aprofundar mais o assunto:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.ibm.com/developerworks/community/blogs/752a690f-8e93-4948-b7a3-c060117e8665/entry/comparativo_upstart_sysvinit_systemd_openrc?lang=en">Comparativo: upstart, sysvinit, systemd, openrc</a></li>
+<li><a class="reference external" href="https://www.ibm.com/developerworks/mydeveloperworks/blogs/752a690f-8e93-4948-b7a3-c060117e8665/entry/systemd_parte_1?lang=pt_br">Bê-á-bá do Systemd, parte 1</a></li>
+<li><a class="reference external" href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">Understanding Systemd Units and Unit Files</a></li>
+<li><a class="reference external" href="http://stato.blog.br/wordpress/systemd-versus-sysvinit/">Systemd versus SysVinit</a></li>
+</ul>
+</div>
+<div class="section" id="como-criar-um-servico">
+<h2>Como criar um serviço?</h2>
+<p>A um tempinho atrás precisei criar um serviço para o tsurud que é o <a class="reference external" href="https://pt.wikipedia.org/wiki/Daemon_(computa%C3%A7%C3%A3o)">daemon (se não sabe o que é daemon clica neste link)</a> do <a class="reference external" href="http://blog.abraseucodigo.com.br/como-criar-seu-paas-com-tsuru.html">Tsuru PaaS</a> pois quando fui subir o PaaS ele não iniciava esse processo sozinho e não achei isso muito legal. Para criar o serviço eu comecei criando o arquivo <cite>tsuru-server-api.service</cite> da seguinte forma:</p>
+<div class="highlight"><pre><span></span># vim /etc/systemd/system/tsuru-server-api.service
+
+[Unit]
+Description=Tsuru (tsuru-server-api)
+After=network.target
+Requires=mongod.service redis.service
+Documentation=https://tsuru.io/
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tsurud api --config=/etc/tsuru/tsuru.conf
+PIDFile=/var/run/tsuru-server-api.pid
+Restart=always
+User=tsuru
+Group=tsuru
+
+[Install]
+WantedBy=default.target
+</pre></div>
+<p>Cada serviço é atrelado a uma Unit do systemd. Dito isso vamos a explicação.</p>
+<p>Explicando:</p>
+<ul class="simple">
+<li>Unit: Define metadados sobre a Unit;</li>
+<li>Description: Apenas uma descrição da sua Unit;</li>
+<li>After: Diz que este serviço só subirá depois que subir network.target, pois é um serviço que precisa de rede funcionando;</li>
+<li>Requires: Diz que se mongod.service ou redis.service falhar esse serviço também irá falhar, e ficará parado (não será iniciado);</li>
+<li>Documentation: Uma url de documentação para o serviço;</li>
+<li>Service: Define o serviço daquela unit;</li>
+<li>Type: O tipo <cite>simple</cite> faz com que systemd considere que o serviço deve ser iniciado imediatamente (mais <a class="reference external" href="https://wiki.archlinux.org/index.php/Systemd_(Portugu%C3%AAs)#Tipo">opções aqui</a>)</li>
+<li>ExecStart: Comando que deve iniciar o daemon em questão;</li>
+<li>PIDFile: Arquivo que armazenará o <a class="reference external" href="https://pt.stackoverflow.com/questions/191815/o-que-seria-um-pid">PID (não sabe o que é PID clique aqui)</a> do processo;</li>
+<li>Restart: Seguir a tabelinha contida <a class="reference external" href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#Restart=">aqui</a> para entender melhor essa configuração.</li>
+<li>User: Usuário dono do processo;</li>
+<li>Group: Grupo dono do processo;</li>
+<li>Install: Esta seção é opcional e é usada para definir o comportamento de uma unit;</li>
+<li>WantedBy: Especifica como a unit deve ser habilitada, no caso está configurada da maneira default pelo valor <cite>default.target</cite>.</li>
+</ul>
+<p>Preferi colocar esse exemplo mais realista para vocês entenderem melhor, porém qualquer serviço pode ser criado baseado neste do Tsuru que eu criei, basta trocar os valores das configurações.</p>
+</div>
+<div class="section" id="comandos">
+<h2>Comandos</h2>
+<p>Depois de criar a sua unit com o seu service basta fazer reload do daemon do systemd para ele conseguir &quot;enxergar&quot; esse novo service:</p>
+<div class="highlight"><pre><span></span>systemctl daemon-reload
+</pre></div>
+<p>Outros comandos úteis:</p>
+<div class="highlight"><pre><span></span># iniciar um service
+systemctl start &lt;service&gt;
+
+# ver status do service
+systemctl status &lt;service&gt;
+
+# parar um service
+systemctl stop &lt;service&gt;
+
+# listar dependências de um service
+systemctl list-dependencies tsuru-server-api
+
+# re-habilitar uma unit que foi modificada
+systemctl reenable &lt;service&gt;
+
+# visualizar todos os services do sistema
+systemctl -a
+</pre></div>
+<p>Últimas referências:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Unit_Files.html#sect-Managing_Services_with_systemd-Unit_File_Create">9.6.2. Creating Custom Unit Files</a></li>
+<li><a class="reference external" href="https://superuser.com/questions/955922/enabled-systemd-unit-does-not-start-at-boot">enabled systemd unit does not start at boot</a></li>
+</ul>
+<p>Gostou? Deixa seu comment ai ;)</p>
+<p>Flw!</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+    <p>Create your blog too, <a href="https://github.com/rafaelhenrique/rafaelhenrique.github.io/tree/pelican">just clone this blog</a></p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-66364849-1', 'blog.abraseucodigo.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+    </script>
+</body>
+</html>
