@@ -37,11 +37,18 @@
             <section class="post">
                 <header class="post-header">
                     <h1>{{ article.title }}</h1>
-                        <p class="post-meta">
-                            # related tags {% for tag in article.tags %}
-                                <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-                            {% endfor %}
-                        </p>
+                    <p class="post-meta">
+                        # tags {% for tag in article.tags %}
+                        <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                        {% endfor %}
+                        {% if article.share_post and article.status != 'draft' %}
+                        # compartilhar
+                        <a style="padding-right: 4px;" href="{{article.share_post['twitter']}}" target="_blank" title="Compartilhar no Twitter"><i class="fa fa-twitter fa-2x"></i></a>
+                        <a style="padding-right: 4px;" href="{{article.share_post['facebook']}}" target="_blank" title="Compartilhar no Facebook"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a style="padding-right: 4px;" href="{{article.share_post['google-plus']}}" target="_blank" title="Compartilhar no Google Plus"><i class="fa fa-google-plus fa-2x"></i></a>
+                        <a style="padding-right: 4px;" href="{{article.share_post['email']}}" target="_blank" title="Compartilhar via Email"><i class="fa fa-envelope fa-2x"></i></a>
+                        {% endif %}
+                    </p>
                 </header>
             </section>
             {{ article.content }}

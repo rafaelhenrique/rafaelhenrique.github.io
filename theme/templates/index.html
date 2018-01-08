@@ -37,7 +37,7 @@
                 {% for article in articles_page.object_list %}
                     {% include 'post.html' %}
                     {% if MATH is defined and not MATH['auto_insert'] %}
-			{% if page and page.mathjax or article and article.mathjax %}
+			            {% if page and page.mathjax or article and article.mathjax %}
                             {% set mathjax = True %}
                         {% endif %}
                     {% endif %}

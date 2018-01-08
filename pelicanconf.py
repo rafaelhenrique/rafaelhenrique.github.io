@@ -85,7 +85,8 @@ PLUGINS = [
     'pelican_vimeo',  # funciona somente com arquivos rst
     'json_articles',
     'emoji',
-    'gzip_cache'  # deve ser o ultimo plugin
+    'gzip_cache',  # deve ser o ultimo plugin
+    'share_post',
     # 'pdf', # funciona somente com arquivos rst
 ]
 
