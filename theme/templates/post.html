@@ -1,24 +1,9 @@
-<!-- <section class="post">
-    <header class="post-header">
-        <div class="archive-post"><a href="{{ article.url }}">{{ article.title }}</a></div>
-        <p class="archive-meta">{{ article.author }} {{ article.date|strftime('%d/%m/%Y') }} in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></p>
-    </header>
-</section>
- -->
-
 <section class="post">
     <header class="post-header">
         <h3><a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
             <p class="post-meta">{{ article.summary }}</p>
             <p class="post-meta">
                 em <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a> &middot; {{ article.locale_date }}
-                {% if article.share_post and article.status != 'draft' %}
-                | compartilhar post
-                <a style="padding-right: 4px;" href="{{article.share_post['twitter']}}" target="_blank" title="Compartilhar no Twitter"><i class="fa fa-twitter fa-1x"></i></a>
-                <a style="padding-right: 4px;" href="{{article.share_post['facebook']}}" target="_blank" title="Compartilhar no Facebook"><i class="fa fa-facebook fa-1x"></i></a>
-                <a style="padding-right: 4px;" href="{{article.share_post['google-plus']}}" target="_blank" title="Compartilhar no Google Plus"><i class="fa fa-google-plus fa-1x"></i></a>
-                <a style="padding-right: 4px;" href="{{article.share_post['email']}}" target="_blank" title="Compartilhar via Email"><i class="fa fa-envelope fa-1x"></i></a>
-                {% endif %}
             </p>
     </header>
 </section>
