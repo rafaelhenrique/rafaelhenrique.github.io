@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!! - Shell Script</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/shell-script.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2018-01-09T20:33:00-02:00</updated><entry><title>Usando vetores em Shell Script</title><link href="http://blog.abraseucodigo.com.br/usando-vetores-em-shell-script.html" rel="alternate"></link><published>2018-01-09T20:33:00-02:00</published><updated>2018-01-09T20:33:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2018-01-09:/usando-vetores-em-shell-script.html</id><summary type="html">&lt;p class="first last"&gt;Como usar vetores em Shell Script e como eles podem me ajudar?&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Eu assumo! Eu sou um shelleiro!&lt;/p&gt;
+&lt;p&gt;Gosto muito de Shell Script e já cheguei a trabalhar cerca de 2 anos programando com Shell Script em uma empresa muito massa chamada &lt;a class="reference external" href="http://www.automalogica.com.br/"&gt;Automalógica&lt;/a&gt;, onde eu desenvolvia scripts em Shell para geração de bases de um sistema &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/Sistemas_de_Supervis%C3%A3o_e_Aquisi%C3%A7%C3%A3o_de_Dados"&gt;SCADA&lt;/a&gt; em específico chamado &lt;a class="reference external" href="http://www.cepel.br/produtos/sage-sistema-aberto-de-gerenciamento-de-energia.htm"&gt;SAGE&lt;/a&gt;, muitos e muitos parsers desenvolvidos.&lt;/p&gt;
+&lt;p&gt;Como eu gosto muito de Shell sempre vejo algumas vantagens no seu uso como:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Ser uma ótima linguagem de programação (me desculpem os puristas que não gostam que fale que Shell é uma linguagem) para administração de sistemas GNU/Linux, pois você consegue usar todos os comandos disponíveis dentro da programação;&lt;/li&gt;
+&lt;li&gt;Ser rápida para codificar coisas simples;&lt;/li&gt;
+&lt;li&gt;Funciona em todo sistema operacional Linux e até alguns que não são Linux, pois geralmente a galera usa &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/Bash"&gt;Bash (Bourne again Shell)&lt;/a&gt; para codificar.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Porém cuidado! Muito Shell pode dificultar sua vida. Shell não tem estruturas complexas de dados e muito menos orientação a objeto e coisas do tipo o que faz com que programas muito grandes fiquem impossíveis de serem mantidos.&lt;/p&gt;
+&lt;div class="section" id="para-que-voce-pode-usar-vetores-em-shell-script"&gt;
+&lt;h2&gt;Para que você pode usar vetores em Shell Script?&lt;/h2&gt;
+&lt;p&gt;Vetores ou arrays são conhecidos em muitas linguagens de programação principalmente para a finalidade de iterar sobre um conjunto de elementos usando alguma estrutura de iteração (for, while, do/while, etc), e em Shell Script não é diferente.&lt;/p&gt;
+&lt;p&gt;Vamos a um exemplo didático disso, imagine que eu gostaria de pegar a primeira coluna de um csv e criar pastas/diretórios com esses nomes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="nv"&gt;FIRST_COLUMN&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;awk -F&lt;span class="s2"&gt;&amp;quot;,&amp;quot;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;(NR&amp;gt;1){print $1}&amp;#39;&lt;/span&gt; arquivo.csv&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="o"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;cont&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;cont&amp;lt;&lt;span class="si"&gt;${#&lt;/span&gt;&lt;span class="nv"&gt;FIRST_COLUMN&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;cont++&lt;span class="o"&gt;))&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    mkdir &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;FIRST_COLUMN&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$cont&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Considerando que a estrutura do meu arquivo csv fosse algo parecido com isso abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat arquivo.csv
+diretorios,status
+teste1,false
+teste2,false
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ao executar este script eu teria os seguintes diretórios criados: &lt;cite&gt;teste1&lt;/cite&gt; e &lt;cite&gt;teste2&lt;/cite&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-essa-magica-acontece"&gt;
+&lt;h2&gt;Como essa mágica acontece?&lt;/h2&gt;
+&lt;p&gt;Para entender como isso acontece primeiro temos que entender como criamos um vetor em Shell Script, vamos criar um vetor que contem as strings &lt;cite&gt;a&lt;/cite&gt;, &lt;cite&gt;b&lt;/cite&gt; e &lt;cite&gt;c&lt;/cite&gt; em nosso terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ MEU_VETOR=(&amp;#39;a&amp;#39; &amp;#39;b&amp;#39; &amp;#39;c&amp;#39;)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Estou usando &lt;cite&gt;$&lt;/cite&gt; somente para representar que estou digitando um comando em meu terminal do sistema, não é necessário você escrever este &lt;cite&gt;$&lt;/cite&gt;. Repare que nem preciso criar um arquivo de Shell Script (.sh) para fazer isso, posso fazer diretamente no terminal.&lt;/p&gt;
+&lt;p&gt;Os elementos do vetor são separados por espaços, para pegar cada elemento separadamente podemos fazer assim:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ echo ${MEU_VETOR[0]}
+a
+$ echo ${MEU_VETOR[1]}
+b
+$ echo ${MEU_VETOR[2]}
+c
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para pegar todos os elementos de uma vez podemos fazer:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ echo ${MEU_VETOR[@]}
+a b c
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E por fim para pegar a quantidade de elementos que temos neste vetor podemos fazer:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ echo ${#MEU_VETOR[@]}
+3
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Sabendo desses conceitos separadamente fica fácil iterar no vetor, veja só:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ for ((cont=0; cont&amp;lt;${#MEU_VETOR[@]}; cont++)); do echo &amp;quot;-&amp;gt; ${MEU_VETOR[$cont]}&amp;quot;; done
+-&amp;gt; a
+-&amp;gt; b
+-&amp;gt; c
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Coloquei uma setinha &lt;cite&gt;-&amp;gt;&lt;/cite&gt; no comando &lt;cite&gt;echo&lt;/cite&gt; só para ficar mais bonito :), mas não é necessário.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="entendendo-o-awk-que-foi-usado-no-primeiro-exemplo"&gt;
+&lt;h2&gt;Entendendo o awk que foi usado no primeiro exemplo&lt;/h2&gt;
+&lt;p&gt;O &lt;a class="reference external" href="http://tldp.org/LDP/abs/html/awk.html"&gt;awk&lt;/a&gt; é um comando muito poderoso do GNU/Linux e novamente me desculpem os puristas, mas pra mim é uma outra linguagem de programação, pois tem loops, condicionais e etc apesar de ter uma característica similar ao Shell Script em ser muito ruim para criar sistemas grandes, pois não possui estruturas de dados complexas.&lt;/p&gt;
+&lt;p&gt;No primeiro exemplo usei 0,00000001% do que o awk oferece, ele até é digno de outro post no futuro. Vamos as explicações, se você executar o awk de forma bem simplista no arquivo exemplo olhe o que vai acontecer:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat arquivo.csv # somente para vcs lembrarem da estrutura do arquivo
+diretorios,status
+teste1,false
+teste2,false
+
+$ awk -F&amp;quot;,&amp;quot; &amp;#39;{print $1}&amp;#39; arquivo.csv
+diretorios
+teste1
+teste2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Bem simples né? Ele usa como delimitador dos campos a vírgula devido ao parâmetro &lt;cite&gt;-F&lt;/cite&gt; e faz um &lt;cite&gt;print&lt;/cite&gt; da primeira coluna. Agora o legal é que da pra ignorar a primeira linha com o &lt;cite&gt;NR&lt;/cite&gt; que é um nome reservado do awk que significa &lt;cite&gt;NUMBER ROW&lt;/cite&gt;, veja só:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ awk -F&amp;quot;,&amp;quot; &amp;#39;(NR&amp;gt;1) {print $1}&amp;#39; arquivo.csv
+teste1
+teste2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora é simples! É só jogar o resultado deste comando em um vetor e é só alegria.... veja:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ MEU_VETOR=( $(awk -F&amp;quot;,&amp;quot; &amp;#39;(NR&amp;gt;1) {print $1}&amp;#39; arquivo.csv) )
+teste1
+teste2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O &lt;cite&gt;$(&amp;lt;comando&amp;gt;)&lt;/cite&gt; é uma sintaxe do bash para executar um comando e trazer seu resultado para uma variável, que no caso nossa variável é o nosso vetor e justamente por isso preciso dos parênteses para especificar que é um vetor.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao"&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Este foi apenas um exemplo simples de como os vetores em Shell Script podem lhe ajudar no dia a dia, exemplos de outras coisas em que já precisei usá-los:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Rodar vários comandos de banco de dados iterando comando a comando;&lt;/li&gt;
+&lt;li&gt;Copiar arquivos para diversas máquinas ao mesmo tempo por ssh iterando pelas máquinas;&lt;/li&gt;
+&lt;li&gt;Criar backup de diversos diretórios iterando um a um para realizar o backup.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As opções são infinitas!&lt;/p&gt;
+&lt;p&gt;Como recomendações finais, se você gostou desse post &lt;a class="reference external" href="https://www.youtube.com/watch?v=XBkBnKmu94U"&gt;clique aqui veja esta palestra do Aurélio Jargas no FISL 17&lt;/a&gt;, é muito massa! Também deixo a dica do Canivete Suíço do Shell (Bash) também do Aurélio, &lt;a class="reference external" href="http://aurelio.net/shell/canivete/"&gt;clique aqui&lt;/a&gt; para dar uma conferida.&lt;/p&gt;
+&lt;p&gt;Conta aqui pra nós depois nos comments pra que você precisou usar ou está afim de usar Shell Script e seus vetores ;)&lt;/p&gt;
+&lt;p&gt;Flw!&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="shell script"></category><category term="bash"></category><category term="shell"></category></entry></feed>

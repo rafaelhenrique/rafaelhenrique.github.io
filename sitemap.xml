@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/</loc>
-<lastmod>2018-01-07T23:06:01-00:00</lastmod>
+<lastmod>2018-01-09T22:07:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/archives.html</loc>
-<lastmod>2018-01-07T23:06:01-00:00</lastmod>
+<lastmod>2018-01-09T22:07:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/tags.html</loc>
-<lastmod>2018-01-07T23:06:01-00:00</lastmod>
+<lastmod>2018-01-09T22:07:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/categories.html</loc>
-<lastmod>2018-01-07T23:06:01-00:00</lastmod>
+<lastmod>2018-01-09T22:07:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/pages/contato.html</loc>
-<lastmod>2018-01-07T23:06:01-00:00</lastmod>
+<lastmod>2018-01-09T22:07:26-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
@@ -43,6 +43,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2015-09-19T17:27:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/usando-vetores-em-shell-script.html</loc>
+<lastmod>2018-01-09T20:33:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -272,6 +279,34 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.abraseucodigo.com.br/category/python.html</loc>
 <lastmod>2016-04-10T23:53:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/category/shell-script.html</loc>
+<lastmod>2018-01-09T20:33:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/shell-script.html</loc>
+<lastmod>2018-01-09T20:33:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/bash.html</loc>
+<lastmod>2018-01-09T20:33:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.abraseucodigo.com.br/tag/shell.html</loc>
+<lastmod>2018-01-09T20:33:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -649,7 +684,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html</loc>
-<lastmod>2018-01-07T12:04:00-03:06</lastmod>
+<lastmod>2018-01-09T20:33:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
