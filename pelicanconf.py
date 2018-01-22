@@ -52,6 +52,7 @@ SOCIAL = (
     ('youtube', 'https://www.youtube.com/rafaelhenriqu'),
     ('linkedin', 'http://www.linkedin.com/pub/rafael-henrique-da-silva-correia/35/67a/5b3'),
     ('speakerdeck', 'https://speakerdeck.com/rafaelhenrique'),
+    ('telegram', 'https://t.me/abraseucodigo'),
     ('rss', 'feeds/all.atom.xml'),
 )
 
