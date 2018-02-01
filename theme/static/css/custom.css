@@ -6,3 +6,8 @@
 .gsc-search-box * {
   box-sizing: initial;
 }
+.align-center {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
