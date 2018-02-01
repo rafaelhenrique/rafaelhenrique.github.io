@@ -1,7 +1,7 @@
 Como gerenciar minhas senhas?
 ###############################
 
-:date: 2018-01-25 19:00
+:date: 2018-02-01 00:05
 :tags: gpg, oathtool, pwgen, segurança, senhas
 :category: Senhas
 :slug: como-gerenciar-minhas-senhas
