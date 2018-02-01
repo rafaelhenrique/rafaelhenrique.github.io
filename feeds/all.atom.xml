@@ -1,5 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2018-01-09T20:33:00-02:00</updated><entry><title>Usando vetores em Shell Script</title><link href="http://blog.abraseucodigo.com.br/usando-vetores-em-shell-script.html" rel="alternate"></link><published>2018-01-09T20:33:00-02:00</published><updated>2018-01-09T20:33:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2018-01-09:/usando-vetores-em-shell-script.html</id><summary type="html">&lt;p class="first last"&gt;Como usar vetores em Shell Script e como eles podem me ajudar?&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Abra seu Código!!!</title><link href="http://blog.abraseucodigo.com.br/" rel="alternate"></link><link href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" rel="self"></link><id>http://blog.abraseucodigo.com.br/</id><updated>2018-02-01T00:05:00-02:00</updated><entry><title>Como gerenciar minhas senhas?</title><link href="http://blog.abraseucodigo.com.br/como-gerenciar-minhas-senhas.html" rel="alternate"></link><published>2018-02-01T00:05:00-02:00</published><updated>2018-02-01T00:05:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2018-02-01:/como-gerenciar-minhas-senhas.html</id><summary type="html">&lt;p class="first last"&gt;Mostrando um pouquinho do gpg, oathtool e pwgen que eu uso para gerenciar minhas senhas&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Esses dias em uma call no Hangout com alguns colegas estive falando sobre senhas, gpg, two-factor-authentication e essas coisas.&lt;/p&gt;
+&lt;p&gt;Eis que pensei que esse papo rápido deveria virar um post detalhado, pois percebi que muitos dos colegas que ali falavam comigo não conheciam algumas palavrinhas mágicas que eu estava falando.&lt;/p&gt;
+&lt;p&gt;Nesse post vou explicar o que EU faço para gerenciar minhas senhas, se vocês quiserem usar TUDO que eu falar aqui fiquem a vontade, a maioria das ferramentas aqui citadas funcionam lindamente em ambientes Linux, não faço ideia se vão funcionar em Mac OSX e Windows.&lt;/p&gt;
+&lt;div class="section" id="como-gerar-senhas-seguras"&gt;
+&lt;h2&gt;Como gerar senhas seguras?&lt;/h2&gt;
+&lt;p&gt;Gosto bastante de um comandinho mágico chamado &lt;cite&gt;pwgen&lt;/cite&gt; que é facilmente instalado pelo pacote de mesmo nome em sistemas Debian-like pelo comando apt-get:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install pwgen
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este comando é muito simples de usar, basta abrir um terminar e digitar o seu respectivo nome:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pwgen
+&lt;span class="go"&gt;ki8eTeef Acho1or1 oophuGh5 shawoe6F ahmi9ieG Iej3ohmi oS3unais ve0eiv5X&lt;/span&gt;
+&lt;span class="go"&gt;iew5gaiP othai7Ch UFoh1eep naid5Sho Koo5Hai9 cohThaa8 eiBok1ae koofei8S&lt;/span&gt;
+&lt;span class="go"&gt;Dae8Wai1 Pae1lo8u Iega7uah uNoawae8 Ood7uiN0 raiQu3ai wae6ca4U ohNg9aer&lt;/span&gt;
+&lt;span class="go"&gt;Shahbio9 taeP9Oku weo7Rapa iu3yieC6 oThi2gen ahK4ahsa Dah3shei nai2Baiy&lt;/span&gt;
+&lt;span class="go"&gt;ohz5Wur8 eeShee6x Ahyah0Be ieYo9Ail hoo6tooP aej7ToPh Veith3do Ro0fahv8&lt;/span&gt;
+&lt;span class="go"&gt;Mie4meeK aeghooR0 sha6eeVo uc1Juish eeXui7le IeY5eiY5 queT7Iev Pha4ahvu&lt;/span&gt;
+&lt;span class="go"&gt;eXah4ulu Oong9eig IoNgie9e Ieng0pie mah3Einu jeiwen6U bu5Ohw4d VeeXak2a&lt;/span&gt;
+&lt;span class="go"&gt;bohse7uY EiJee2Ie xae0aiSh huo3Yei5 leCh7ezu Soh2thoh Chughei2 Yu7ahHed&lt;/span&gt;
+&lt;span class="go"&gt;Audutee4 naN5aequ upu3Ka8z Choh6Chu nae9ic1E Heewuy7A quai5Te2 Oebai8ae&lt;/span&gt;
+&lt;span class="go"&gt;ux0Xieng Hoong6pi Ezoh1aid eiVe1Ue2 IetaB3ei eib4Phee go6ooRee ool0aiWi&lt;/span&gt;
+&lt;span class="go"&gt;uN4pua8y Icheiy5w EiK3aeci pae1Eej9 ao3Phaif Jeequoo3 uJ5doequ bu4Xooph&lt;/span&gt;
+&lt;span class="go"&gt;eiGa1pha ahh6Ei0R Xai8thoo Quae4Iez AiMas9ew Ri3lahpi ahL6Eija ohyeih6A&lt;/span&gt;
+&lt;span class="go"&gt;phe2Oor3 IaBaex6i bohTo0ba Ait0Uosh gaih1Bei Ohs7thei Ais1uejo UYah1shi&lt;/span&gt;
+&lt;span class="go"&gt;oor7Eec3 pahgh7Ch ekie5aFu io0ohpuK aghai2Ba Hie4Aeb4 ohve9Chi Iev9Mu3H&lt;/span&gt;
+&lt;span class="go"&gt;iej0aiNi OhCh5ied hie3ooGh eiguuJ1a zu7Aut6a Teen7owi eiy2Ahvu daCui2iv&lt;/span&gt;
+&lt;span class="go"&gt;Uc4Dothi Emah2oht Suv6poi5 Eej3quoa Mooj8eim Teifu1ah ZuaDeez3 Ereoqu9I&lt;/span&gt;
+&lt;span class="go"&gt;ua0juoTe Fash9eig eiY6Ohr0 Imie8jie dohJoh4t ieNg2coo XahQuu8s eereS0ri&lt;/span&gt;
+&lt;span class="go"&gt;Da7yiyu1 zaepoo0A to0Aexoh gooxoh0D Aezoofo3 aeZ5oopo Shoo6iip aemahx0R&lt;/span&gt;
+&lt;span class="go"&gt;Thay5gah aethu0Ph Yaedei4d ixur7Xoh Eidee8ri ata9oNoo yoox9Zee foow9Muz&lt;/span&gt;
+&lt;span class="go"&gt;pah1Oe0w Xiec1vie quee2Aeb neXe0ahl choh2Oan nai0Uhae iek8pahG iu1ohZ7u&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ele vai gerar uma pancada de senhas exatamente como demostrado acima. Porém tem outros parâmetros bem legais, exemplos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;#&lt;/span&gt; gera uma senha somente
+&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1
+&lt;span class="go"&gt;zoh1So3D&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt; gera uma senha simples de &lt;span class="m"&gt;20&lt;/span&gt; caracteres
+&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 &lt;span class="m"&gt;20&lt;/span&gt;
+&lt;span class="go"&gt;iesheiquaesae0uGhuK5&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt; gerar senhas mais complexas para serem memorizadas com o parâmetro -s
+&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -s -1 &lt;span class="m"&gt;20&lt;/span&gt;
+&lt;span class="go"&gt;rtUyok8K5nFdcWQpuHZU&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt; gerar senhas com símbolos
+&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 -y
+&lt;span class="go"&gt;ieShe&amp;quot;c8&lt;/span&gt;
+
+&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 -y &lt;span class="m"&gt;20&lt;/span&gt;
+&lt;span class="go"&gt;eiriaraidee8Naecaap~&lt;/span&gt;
+
+&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 -y &lt;span class="m"&gt;20&lt;/span&gt; -s
+&lt;span class="go"&gt;_7kwgl7tu1QEb#^Qz/K&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Perceba atentamente que os parâmetros podem ser combinados para gerar senhas mais complexas.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-guardar-minhas-senhas"&gt;
+&lt;h2&gt;Como guardar minhas senhas?&lt;/h2&gt;
+&lt;p&gt;Eu utilizo a um tempinho o comando &lt;cite&gt;gpg&lt;/cite&gt; para fazer isso. O &lt;cite&gt;gpg&lt;/cite&gt; parte integrante do pacote &lt;cite&gt;gnupg&lt;/cite&gt; e se você quiser saber mais sobre essa história pode dar uma &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/GNU_Privacy_Guard"&gt;lida aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Para instalar o comando &lt;cite&gt;gpg&lt;/cite&gt; via apt-get é muito simples:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install gnupg
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Porém vale lembrar que na maioria das distribuições do Linux atualmente este comando vem instalado por padrão. Após a instalação suponha que eu temos um arquivo chamado &lt;cite&gt;passwords&lt;/cite&gt; e vou exibir seu conteúdo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cat passwords
+&lt;span class="go"&gt;serviço xpto&lt;/span&gt;
+&lt;span class="go"&gt;usuário: teste&lt;/span&gt;
+&lt;span class="go"&gt;senha: 12345&lt;/span&gt;
+&lt;span class="go"&gt;--------&lt;/span&gt;
+&lt;span class="go"&gt;serviço xablau&lt;/span&gt;
+&lt;span class="go"&gt;usuário: abc&lt;/span&gt;
+&lt;span class="go"&gt;senha: 4321&lt;/span&gt;
+&lt;span class="go"&gt;--------&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vou encriptar esse arquivo com uma senha mestra usando o &lt;cite&gt;gpg&lt;/cite&gt; (nesta etapa a senha mestra será solicitada):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; gpg -c passwords
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Após a execução deste comando acima um novo arquivo será gerado nomeado como &lt;cite&gt;passwords.gpg&lt;/cite&gt; este arquivo é a saída encriptada com o &lt;cite&gt;gpg&lt;/cite&gt;. Mostrando seu conteúdo (abaixo) podemos ver que realmente ele está encriptado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cat passwords.gpg
+&lt;span class="go"&gt;&amp;lt;jӘ�h1��ҁ�(ߠ+����a����&lt;/span&gt;
+&lt;span class="go"&gt;                          7l3_�۔F�&amp;gt;��,;g��z2�qk�g`ZE�-�i��w��k���������X�d)��O���o�igi�)7&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;                                                                                             ˳&lt;/span&gt;
+&lt;span class="go"&gt;�E~�3���Q̿4�  �[x+48�&amp;amp;�̋6g-��Xd�&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A saída será esse monte de caracteres estranhos conforme mostrado acima. Para que nós consigamos ler esse arquivo novamente podemos executar novamente o comando &lt;cite&gt;gpg&lt;/cite&gt; conforme mostrado abaixo (você deverá informar a senha mestra nesta etapa, caso você não a tenha informado durante esta &amp;quot;seção de shell&amp;quot;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; gpg -d passwords.gpg
+&lt;span class="go"&gt;gpg: AES encrypted data&lt;/span&gt;
+&lt;span class="go"&gt;gpg: encrypted with 1 passphrase&lt;/span&gt;
+&lt;span class="go"&gt;serviço xpto&lt;/span&gt;
+&lt;span class="go"&gt;usuário: teste&lt;/span&gt;
+&lt;span class="go"&gt;senha: 12345&lt;/span&gt;
+&lt;span class="go"&gt;--------&lt;/span&gt;
+&lt;span class="go"&gt;serviço xablau&lt;/span&gt;
+&lt;span class="go"&gt;usuário: abc&lt;/span&gt;
+&lt;span class="go"&gt;senha: 4321&lt;/span&gt;
+&lt;span class="go"&gt;--------&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pronto! Feito isso agora podemos apagar o arquivo antigo chamado &lt;cite&gt;passwords&lt;/cite&gt; e ficamos com o arquivo &lt;cite&gt;passwords.gpg&lt;/cite&gt; criptografado que só eu tenho a senha. Vamos remover:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; rm passwords
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Eu recomendo como &amp;quot;boas práticas&amp;quot; no uso do &lt;cite&gt;gpg&lt;/cite&gt;:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Não nomear o arquivo de senhas como &lt;cite&gt;passwords&lt;/cite&gt; nem como &lt;cite&gt;senhas&lt;/cite&gt; nem outro nome óbvio;&lt;/li&gt;
+&lt;li&gt;Se quiser você também poderá omitir o nome &lt;cite&gt;.gpg&lt;/cite&gt; ao final do arquivo, a extensão não é necessária para que o &lt;cite&gt;gpg&lt;/cite&gt; consiga ler o arquivo;&lt;/li&gt;
+&lt;li&gt;Crie um arquivo de senhas com uma senha mestra diferente para cada conjunto de senhas que você tem, como por exemplo os seguintes conjuntos: senhas do trabalho, senhas de redes sociais, senhas de email ... etc&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Seguindo esses passos não garanto que sua segurança esteja 100% garantida, mas irá melhorar bastante! A propósito você pode encriptar outros arquivos e não somente arquivos texto, você conseguirá encriptar qualquer arquivo com o &lt;cite&gt;gpg&lt;/cite&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-gerenciar-tokens-de-autenticacao-por-dois-fatores-2fa"&gt;
+&lt;h2&gt;Como gerenciar &amp;quot;tokens&amp;quot; de autenticação por dois fatores (2FA)?&lt;/h2&gt;
+&lt;p&gt;Autenticação por dois fatores hoje em dia é um negócio indispensável para qualquer serviço web (ou não web) que você utiliza, se você ainda não conhece deveria conhecer &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/Identifica%C3%A7%C3%A3o_por_dois_fatores"&gt;clique aqui para saber mais&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Porém este tipo de autenticação pode ser o vilão da sua vida quando é mal administrado. Vamos dar um exemplo clássico:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Eu sou um usuário de um serviço X e uso autenticação por dois fatores e para isso tenho no meu smartphone um aplicativo magnífico chamado Google Authenticator, sempre que algum serviço requisita meu token eu vou no meu smartphone e recebo esse token através do aplicativo do celular.
+&lt;/pre&gt;
+&lt;p&gt;Esse usuário acima era eu a alguns meses atrás, porém comecei a pensar que eu poderia sofrer um assalto, me roubarem o celular e eu ficar a ver navios.&lt;/p&gt;
+&lt;p&gt;É uma verdade que todo serviço que disponibiliza autenticação por dois fatores também te disponibiliza tokens de recuperação para o caso de acontecerem tragédias (como assaltos) e você perder o &amp;quot;app autenticador&amp;quot; com seus tokens todos.&lt;/p&gt;
+&lt;p&gt;Porém tem outra opção para você mesmo gerenciar/gerar seus tokens! Você construir sua própria ferramenta gerenciadora/geradora de tokens!&lt;/p&gt;
+&lt;p&gt;Quem me deu essa dica foi meu amigo &lt;a class="reference external" href="https://disqus.com/by/jaimeasnchezhidalg/"&gt;Jayme&lt;/a&gt;. E pra falar a verdade você nem vai construir tanta coisa assim, pois existe um utilitário de linha de comando que te ajuda a fazer isso. Vamos começar instalando o pacote &lt;cite&gt;oauthtool&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install oathtool
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Legal! Instalado! Agora vamos testar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;xablaus&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;865242&lt;/span&gt;
+
+&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;xablaus&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;376849&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Percebam que a cada vez que eu executei este comando com a secret &lt;cite&gt;xablaus&lt;/cite&gt; ele me gerou um código. Este código seria o nosso token válido para autenticação por dois fatores.&lt;/p&gt;
+&lt;p&gt;Agora para que você possa descobrir o secret do seu serviço você pode usar qualquer aplicativo que leia QR Codes (que não seja o Google Authenticator), eu atualmente uso um muito legal (que pode ser baixado no Google Play gratuitamente) chamado &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=tw.mobileapp.qrcode.banner&amp;amp;hl=pt"&gt;Código QR Reader&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Quando eu uso este aplicativo apontando para um código QR que os serviços de 2FA me dão eu tenho algo parecido com isso:&lt;/p&gt;
+&lt;img alt="imagem da app QR Reader" class="align-center" src="images/como-gerenciar-minhas-senhas.png" /&gt;
+&lt;p&gt;Baseado no link retornado do QR Code você deverá usar somente a parte do secret que seria o código &lt;cite&gt;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&lt;/cite&gt;, com esse código em mãos podemos usar o comando &lt;cite&gt;oathtool&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;866946&lt;/span&gt;
+
+&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;640765&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Como vocês podem ver na imagem esse código eu gerei a partir da minha conta pessoal da Amazon Web Services (obviamente que não estou usando este no momento senão meio mundo agora estaria tentando me invadir neste momento), para que sejam gerados tokens de outros serviços o mesmo procedimento poderia ser usado tranquilamente.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusao-final"&gt;
+&lt;h2&gt;Conclusão final&lt;/h2&gt;
+&lt;p&gt;Agora que você aprendeu a fazer tudo isso, que tal misturar as coisas para trazer mais segurança? Vou deixar duas dicas:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Você pode armazenar seus secrets encriptados com &lt;cite&gt;gpg&lt;/cite&gt; e criar um script simplório para que o oathtool solicite sua chave mestra do gpg para depois gerar seus tokens;&lt;/li&gt;
+&lt;li&gt;Você poderá armazenar recovery codes e outras coisas na sua máquina sem problema nenhum se isso estiver devidamente encriptado com &lt;cite&gt;gpg&lt;/cite&gt;. Desta forma se alguma tragédia ocorrer com os seus tokens de autenticação por duplo fator você poderá ler a partir do arquivo encriptado seus recovery codes e recuperar sua conta normalmente;&lt;/li&gt;
+&lt;li&gt;Não confia na sua máquina? Nem eu! Você poderá jogar arquivos encriptados para o Dropbox/Google Drive ou outro serviço na nuvem para não perder suas senhas e acessos caso seu notebook seja roubado ou seu hd misteriosamente explodir do nada do dia para a noite.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Espero que tenham gostado do post! Deixem seus comentários ai abaixo que a gente continua a conversa.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="gpg"></category><category term="oathtool"></category><category term="pwgen"></category><category term="segurança"></category><category term="senhas"></category></entry><entry><title>Usando vetores em Shell Script</title><link href="http://blog.abraseucodigo.com.br/usando-vetores-em-shell-script.html" rel="alternate"></link><published>2018-01-09T20:33:00-02:00</published><updated>2018-01-09T20:33:00-02:00</updated><author><name>Rafael Henrique da Silva Correia</name></author><id>tag:blog.abraseucodigo.com.br,2018-01-09:/usando-vetores-em-shell-script.html</id><summary type="html">&lt;p class="first last"&gt;Como usar vetores em Shell Script e como eles podem me ajudar?&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Eu assumo! Eu sou um shelleiro!&lt;/p&gt;
 &lt;p&gt;Gosto muito de Shell Script e já cheguei a trabalhar cerca de 2 anos programando com Shell Script em uma empresa muito massa chamada &lt;a class="reference external" href="http://www.automalogica.com.br/"&gt;Automalógica&lt;/a&gt;, onde eu desenvolvia scripts em Shell para geração de bases de um sistema &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/Sistemas_de_Supervis%C3%A3o_e_Aquisi%C3%A7%C3%A3o_de_Dados"&gt;SCADA&lt;/a&gt; em específico chamado &lt;a class="reference external" href="http://www.cepel.br/produtos/sage-sistema-aberto-de-gerenciamento-de-energia.htm"&gt;SAGE&lt;/a&gt;, muitos e muitos parsers desenvolvidos.&lt;/p&gt;
 &lt;p&gt;Como eu gosto muito de Shell sempre vejo algumas vantagens no seu uso como:&lt;/p&gt;

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abra seu Código!!!, Programando, devopando e deixando minha barba mais fofinha">
+
+        <link rel="alternate"  href="http://blog.abraseucodigo.com.br/feeds/all.atom.xml" type="application/atom+xml" title="Abra seu Código!!! Full Atom Feed"/>
+
+        <title>Como gerenciar minhas senhas? // Abra seu Código!!! // Programando, devopando e deixando minha barba mais fofinha</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/custom.css">
+    <link rel="stylesheet" href="http://blog.abraseucodigo.com.br/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://blog.abraseucodigo.com.br/author/rafael-henrique-da-silva-correia.html" title="See posts by Rafael Henrique da Silva Correia">
+                        <img class="avatar" alt="Rafael Henrique da Silva Correia" src="http://www.gravatar.com/avatar/ed7e6b96c041beb6d2e86b48c74a2055">
+                </a>
+                <h2 class="article-info">Rafael Henrique da Silva Correia</h2>
+                <small class="about-author">Pythonista, Gopher, Linuxista, Gamer, Devopeiro e bebedor de Cerveja</small>
+                <h5>Published</h5>
+                <p>fevereiro 01, 2018</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Como gerenciar minhas senhas?</h1>
+                    <p class="post-meta">
+                        # tags                         <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/gpg.html">gpg</a>
+                        <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/oathtool.html">oathtool</a>
+                        <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/pwgen.html">pwgen</a>
+                        <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/seguranca.html">segurança</a>
+                        <a class="post-category" href="http://blog.abraseucodigo.com.br/tag/senhas.html">senhas</a>
+                    </p>
+                    <p class="post-meta">
+                        # compartilhar
+                        <a style="padding-right: 12px; padding-left: 12px;" href="http://twitter.com/home?status=Como%20gerenciar%20minhas%20senhas%3F%20http%3A//blog.abraseucodigo.com.br/como-gerenciar-minhas-senhas.html" target="_blank" title="Compartilhar no Twitter"><i class="fa fa-twitter fa-2x"></i></a>
+                        <a style="padding-right: 12px;" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//blog.abraseucodigo.com.br/como-gerenciar-minhas-senhas.html" target="_blank" title="Compartilhar no Facebook"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a style="padding-right: 12px;" href="https://plus.google.com/share?url=http%3A//blog.abraseucodigo.com.br/como-gerenciar-minhas-senhas.html" target="_blank" title="Compartilhar no Google Plus"><i class="fa fa-google-plus fa-2x"></i></a>
+                        <a style="padding-right: 12px;" href="mailto:?subject=Como%20gerenciar%20minhas%20senhas%3F&amp;body=http%3A//blog.abraseucodigo.com.br/como-gerenciar-minhas-senhas.html" target="_blank" title="Compartilhar via Email"><i class="fa fa-envelope fa-2x"></i></a>
+                    </p>
+                </header>
+            </section>
+            <p>Esses dias em uma call no Hangout com alguns colegas estive falando sobre senhas, gpg, two-factor-authentication e essas coisas.</p>
+<p>Eis que pensei que esse papo rápido deveria virar um post detalhado, pois percebi que muitos dos colegas que ali falavam comigo não conheciam algumas palavrinhas mágicas que eu estava falando.</p>
+<p>Nesse post vou explicar o que EU faço para gerenciar minhas senhas, se vocês quiserem usar TUDO que eu falar aqui fiquem a vontade, a maioria das ferramentas aqui citadas funcionam lindamente em ambientes Linux, não faço ideia se vão funcionar em Mac OSX e Windows.</p>
+<div class="section" id="como-gerar-senhas-seguras">
+<h2>Como gerar senhas seguras?</h2>
+<p>Gosto bastante de um comandinho mágico chamado <cite>pwgen</cite> que é facilmente instalado pelo pacote de mesmo nome em sistemas Debian-like pelo comando apt-get:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install pwgen
+</pre></div>
+<p>Este comando é muito simples de usar, basta abrir um terminar e digitar o seu respectivo nome:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> pwgen
+<span class="go">ki8eTeef Acho1or1 oophuGh5 shawoe6F ahmi9ieG Iej3ohmi oS3unais ve0eiv5X</span>
+<span class="go">iew5gaiP othai7Ch UFoh1eep naid5Sho Koo5Hai9 cohThaa8 eiBok1ae koofei8S</span>
+<span class="go">Dae8Wai1 Pae1lo8u Iega7uah uNoawae8 Ood7uiN0 raiQu3ai wae6ca4U ohNg9aer</span>
+<span class="go">Shahbio9 taeP9Oku weo7Rapa iu3yieC6 oThi2gen ahK4ahsa Dah3shei nai2Baiy</span>
+<span class="go">ohz5Wur8 eeShee6x Ahyah0Be ieYo9Ail hoo6tooP aej7ToPh Veith3do Ro0fahv8</span>
+<span class="go">Mie4meeK aeghooR0 sha6eeVo uc1Juish eeXui7le IeY5eiY5 queT7Iev Pha4ahvu</span>
+<span class="go">eXah4ulu Oong9eig IoNgie9e Ieng0pie mah3Einu jeiwen6U bu5Ohw4d VeeXak2a</span>
+<span class="go">bohse7uY EiJee2Ie xae0aiSh huo3Yei5 leCh7ezu Soh2thoh Chughei2 Yu7ahHed</span>
+<span class="go">Audutee4 naN5aequ upu3Ka8z Choh6Chu nae9ic1E Heewuy7A quai5Te2 Oebai8ae</span>
+<span class="go">ux0Xieng Hoong6pi Ezoh1aid eiVe1Ue2 IetaB3ei eib4Phee go6ooRee ool0aiWi</span>
+<span class="go">uN4pua8y Icheiy5w EiK3aeci pae1Eej9 ao3Phaif Jeequoo3 uJ5doequ bu4Xooph</span>
+<span class="go">eiGa1pha ahh6Ei0R Xai8thoo Quae4Iez AiMas9ew Ri3lahpi ahL6Eija ohyeih6A</span>
+<span class="go">phe2Oor3 IaBaex6i bohTo0ba Ait0Uosh gaih1Bei Ohs7thei Ais1uejo UYah1shi</span>
+<span class="go">oor7Eec3 pahgh7Ch ekie5aFu io0ohpuK aghai2Ba Hie4Aeb4 ohve9Chi Iev9Mu3H</span>
+<span class="go">iej0aiNi OhCh5ied hie3ooGh eiguuJ1a zu7Aut6a Teen7owi eiy2Ahvu daCui2iv</span>
+<span class="go">Uc4Dothi Emah2oht Suv6poi5 Eej3quoa Mooj8eim Teifu1ah ZuaDeez3 Ereoqu9I</span>
+<span class="go">ua0juoTe Fash9eig eiY6Ohr0 Imie8jie dohJoh4t ieNg2coo XahQuu8s eereS0ri</span>
+<span class="go">Da7yiyu1 zaepoo0A to0Aexoh gooxoh0D Aezoofo3 aeZ5oopo Shoo6iip aemahx0R</span>
+<span class="go">Thay5gah aethu0Ph Yaedei4d ixur7Xoh Eidee8ri ata9oNoo yoox9Zee foow9Muz</span>
+<span class="go">pah1Oe0w Xiec1vie quee2Aeb neXe0ahl choh2Oan nai0Uhae iek8pahG iu1ohZ7u</span>
+</pre></div>
+<p>Ele vai gerar uma pancada de senhas exatamente como demostrado acima. Porém tem outros parâmetros bem legais, exemplos:</p>
+<div class="highlight"><pre><span></span><span class="gp">#</span> gera uma senha somente
+<span class="gp">$</span> pwgen -1
+<span class="go">zoh1So3D</span>
+
+<span class="gp">#</span> gera uma senha simples de <span class="m">20</span> caracteres
+<span class="gp">$</span> pwgen -1 <span class="m">20</span>
+<span class="go">iesheiquaesae0uGhuK5</span>
+
+<span class="gp">#</span> gerar senhas mais complexas para serem memorizadas com o parâmetro -s
+<span class="gp">$</span> pwgen -s -1 <span class="m">20</span>
+<span class="go">rtUyok8K5nFdcWQpuHZU</span>
+
+<span class="gp">#</span> gerar senhas com símbolos
+<span class="gp">$</span> pwgen -1 -y
+<span class="go">ieShe&quot;c8</span>
+
+<span class="gp">$</span> pwgen -1 -y <span class="m">20</span>
+<span class="go">eiriaraidee8Naecaap~</span>
+
+<span class="gp">$</span> pwgen -1 -y <span class="m">20</span> -s
+<span class="go">_7kwgl7tu1QEb#^Qz/K&gt;</span>
+</pre></div>
+<p>Perceba atentamente que os parâmetros podem ser combinados para gerar senhas mais complexas.</p>
+</div>
+<div class="section" id="como-guardar-minhas-senhas">
+<h2>Como guardar minhas senhas?</h2>
+<p>Eu utilizo a um tempinho o comando <cite>gpg</cite> para fazer isso. O <cite>gpg</cite> parte integrante do pacote <cite>gnupg</cite> e se você quiser saber mais sobre essa história pode dar uma <a class="reference external" href="https://pt.wikipedia.org/wiki/GNU_Privacy_Guard">lida aqui</a>.</p>
+<p>Para instalar o comando <cite>gpg</cite> via apt-get é muito simples:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install gnupg
+</pre></div>
+<p>Porém vale lembrar que na maioria das distribuições do Linux atualmente este comando vem instalado por padrão. Após a instalação suponha que eu temos um arquivo chamado <cite>passwords</cite> e vou exibir seu conteúdo:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> cat passwords
+<span class="go">serviço xpto</span>
+<span class="go">usuário: teste</span>
+<span class="go">senha: 12345</span>
+<span class="go">--------</span>
+<span class="go">serviço xablau</span>
+<span class="go">usuário: abc</span>
+<span class="go">senha: 4321</span>
+<span class="go">--------</span>
+</pre></div>
+<p>Vou encriptar esse arquivo com uma senha mestra usando o <cite>gpg</cite> (nesta etapa a senha mestra será solicitada):</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> gpg -c passwords
+</pre></div>
+<p>Após a execução deste comando acima um novo arquivo será gerado nomeado como <cite>passwords.gpg</cite> este arquivo é a saída encriptada com o <cite>gpg</cite>. Mostrando seu conteúdo (abaixo) podemos ver que realmente ele está encriptado:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> cat passwords.gpg
+<span class="go">&lt;jӘ�h1��ҁ�(ߠ+����a����</span>
+<span class="go">                          7l3_�۔F�&gt;��,;g��z2�qk�g`ZE�-�i��w��k���������X�d)��O���o�igi�)7&gt;</span>
+<span class="go">                                                                                             ˳</span>
+<span class="go">�E~�3���Q̿4�  �[x+48�&amp;�̋6g-��Xd�</span>
+</pre></div>
+<p>A saída será esse monte de caracteres estranhos conforme mostrado acima. Para que nós consigamos ler esse arquivo novamente podemos executar novamente o comando <cite>gpg</cite> conforme mostrado abaixo (você deverá informar a senha mestra nesta etapa, caso você não a tenha informado durante esta &quot;seção de shell&quot;):</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> gpg -d passwords.gpg
+<span class="go">gpg: AES encrypted data</span>
+<span class="go">gpg: encrypted with 1 passphrase</span>
+<span class="go">serviço xpto</span>
+<span class="go">usuário: teste</span>
+<span class="go">senha: 12345</span>
+<span class="go">--------</span>
+<span class="go">serviço xablau</span>
+<span class="go">usuário: abc</span>
+<span class="go">senha: 4321</span>
+<span class="go">--------</span>
+</pre></div>
+<p>Pronto! Feito isso agora podemos apagar o arquivo antigo chamado <cite>passwords</cite> e ficamos com o arquivo <cite>passwords.gpg</cite> criptografado que só eu tenho a senha. Vamos remover:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> rm passwords
+</pre></div>
+<p>Eu recomendo como &quot;boas práticas&quot; no uso do <cite>gpg</cite>:</p>
+<ol class="arabic simple">
+<li>Não nomear o arquivo de senhas como <cite>passwords</cite> nem como <cite>senhas</cite> nem outro nome óbvio;</li>
+<li>Se quiser você também poderá omitir o nome <cite>.gpg</cite> ao final do arquivo, a extensão não é necessária para que o <cite>gpg</cite> consiga ler o arquivo;</li>
+<li>Crie um arquivo de senhas com uma senha mestra diferente para cada conjunto de senhas que você tem, como por exemplo os seguintes conjuntos: senhas do trabalho, senhas de redes sociais, senhas de email ... etc</li>
+</ol>
+<p>Seguindo esses passos não garanto que sua segurança esteja 100% garantida, mas irá melhorar bastante! A propósito você pode encriptar outros arquivos e não somente arquivos texto, você conseguirá encriptar qualquer arquivo com o <cite>gpg</cite>.</p>
+</div>
+<div class="section" id="como-gerenciar-tokens-de-autenticacao-por-dois-fatores-2fa">
+<h2>Como gerenciar &quot;tokens&quot; de autenticação por dois fatores (2FA)?</h2>
+<p>Autenticação por dois fatores hoje em dia é um negócio indispensável para qualquer serviço web (ou não web) que você utiliza, se você ainda não conhece deveria conhecer <a class="reference external" href="https://pt.wikipedia.org/wiki/Identifica%C3%A7%C3%A3o_por_dois_fatores">clique aqui para saber mais</a>.</p>
+<p>Porém este tipo de autenticação pode ser o vilão da sua vida quando é mal administrado. Vamos dar um exemplo clássico:</p>
+<pre class="literal-block">
+Eu sou um usuário de um serviço X e uso autenticação por dois fatores e para isso tenho no meu smartphone um aplicativo magnífico chamado Google Authenticator, sempre que algum serviço requisita meu token eu vou no meu smartphone e recebo esse token através do aplicativo do celular.
+</pre>
+<p>Esse usuário acima era eu a alguns meses atrás, porém comecei a pensar que eu poderia sofrer um assalto, me roubarem o celular e eu ficar a ver navios.</p>
+<p>É uma verdade que todo serviço que disponibiliza autenticação por dois fatores também te disponibiliza tokens de recuperação para o caso de acontecerem tragédias (como assaltos) e você perder o &quot;app autenticador&quot; com seus tokens todos.</p>
+<p>Porém tem outra opção para você mesmo gerenciar/gerar seus tokens! Você construir sua própria ferramenta gerenciadora/geradora de tokens!</p>
+<p>Quem me deu essa dica foi meu amigo <a class="reference external" href="https://disqus.com/by/jaimeasnchezhidalg/">Jayme</a>. E pra falar a verdade você nem vai construir tanta coisa assim, pois existe um utilitário de linha de comando que te ajuda a fazer isso. Vamos começar instalando o pacote <cite>oauthtool</cite>:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install oathtool
+</pre></div>
+<p>Legal! Instalado! Agora vamos testar:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;xablaus&quot;</span>
+<span class="go">865242</span>
+
+<span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;xablaus&quot;</span>
+<span class="go">376849</span>
+</pre></div>
+<p>Percebam que a cada vez que eu executei este comando com a secret <cite>xablaus</cite> ele me gerou um código. Este código seria o nosso token válido para autenticação por dois fatores.</p>
+<p>Agora para que você possa descobrir o secret do seu serviço você pode usar qualquer aplicativo que leia QR Codes (que não seja o Google Authenticator), eu atualmente uso um muito legal (que pode ser baixado no Google Play gratuitamente) chamado <a class="reference external" href="https://play.google.com/store/apps/details?id=tw.mobileapp.qrcode.banner&amp;hl=pt">Código QR Reader</a>.</p>
+<p>Quando eu uso este aplicativo apontando para um código QR que os serviços de 2FA me dão eu tenho algo parecido com isso:</p>
+<img alt="imagem da app QR Reader" class="align-center" src="images/como-gerenciar-minhas-senhas.png" />
+<p>Baseado no link retornado do QR Code você deverá usar somente a parte do secret que seria o código <cite>HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD</cite>, com esse código em mãos podemos usar o comando <cite>oathtool</cite>:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&quot;</span>
+<span class="go">866946</span>
+
+<span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&quot;</span>
+<span class="go">640765</span>
+</pre></div>
+<p>Como vocês podem ver na imagem esse código eu gerei a partir da minha conta pessoal da Amazon Web Services (obviamente que não estou usando este no momento senão meio mundo agora estaria tentando me invadir neste momento), para que sejam gerados tokens de outros serviços o mesmo procedimento poderia ser usado tranquilamente.</p>
+</div>
+<div class="section" id="conclusao-final">
+<h2>Conclusão final</h2>
+<p>Agora que você aprendeu a fazer tudo isso, que tal misturar as coisas para trazer mais segurança? Vou deixar duas dicas:</p>
+<ul class="simple">
+<li>Você pode armazenar seus secrets encriptados com <cite>gpg</cite> e criar um script simplório para que o oathtool solicite sua chave mestra do gpg para depois gerar seus tokens;</li>
+<li>Você poderá armazenar recovery codes e outras coisas na sua máquina sem problema nenhum se isso estiver devidamente encriptado com <cite>gpg</cite>. Desta forma se alguma tragédia ocorrer com os seus tokens de autenticação por duplo fator você poderá ler a partir do arquivo encriptado seus recovery codes e recuperar sua conta normalmente;</li>
+<li>Não confia na sua máquina? Nem eu! Você poderá jogar arquivos encriptados para o Dropbox/Google Drive ou outro serviço na nuvem para não perder suas senhas e acessos caso seu notebook seja roubado ou seu hd misteriosamente explodir do nada do dia para a noite.</li>
+</ul>
+<p>Espero que tenham gostado do post! Deixem seus comentários ai abaixo que a gente continua a conversa.</p>
+</div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "abraseucodigo"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Abra seu Código!!! &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+    <p>Create your blog too, <a href="https://github.com/rafaelhenrique/rafaelhenrique.github.io/tree/pelican">just clone this blog</a></p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-66364849-1', 'blog.abraseucodigo.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+    </script>
+</body>
+</html>
