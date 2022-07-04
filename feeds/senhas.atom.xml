@@ -6,10 +6,10 @@
 &lt;div class="section" id="como-gerar-senhas-seguras"&gt;
 &lt;h2&gt;Como gerar senhas seguras?&lt;/h2&gt;
 &lt;p&gt;Gosto bastante de um comandinho mágico chamado &lt;cite&gt;pwgen&lt;/cite&gt; que é facilmente instalado pelo pacote de mesmo nome em sistemas Debian-like pelo comando apt-get:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install pwgen
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;sudo apt-get install pwgen
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Este comando é muito simples de usar, basta abrir um terminar e digitar o seu respectivo nome:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pwgen
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;pwgen
 &lt;span class="go"&gt;ki8eTeef Acho1or1 oophuGh5 shawoe6F ahmi9ieG Iej3ohmi oS3unais ve0eiv5X&lt;/span&gt;
 &lt;span class="go"&gt;iew5gaiP othai7Ch UFoh1eep naid5Sho Koo5Hai9 cohThaa8 eiBok1ae koofei8S&lt;/span&gt;
 &lt;span class="go"&gt;Dae8Wai1 Pae1lo8u Iega7uah uNoawae8 Ood7uiN0 raiQu3ai wae6ca4U ohNg9aer&lt;/span&gt;
@@ -32,26 +32,26 @@
 &lt;span class="go"&gt;pah1Oe0w Xiec1vie quee2Aeb neXe0ahl choh2Oan nai0Uhae iek8pahG iu1ohZ7u&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Ele vai gerar uma pancada de senhas exatamente como demostrado acima. Porém tem outros parâmetros bem legais, exemplos:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;#&lt;/span&gt; gera uma senha somente
-&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;# &lt;/span&gt;gera uma senha somente
+&lt;span class="gp"&gt;$ &lt;/span&gt;pwgen -1
 &lt;span class="go"&gt;zoh1So3D&lt;/span&gt;
 
-&lt;span class="gp"&gt;#&lt;/span&gt; gera uma senha simples de &lt;span class="m"&gt;20&lt;/span&gt; caracteres
-&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 &lt;span class="m"&gt;20&lt;/span&gt;
+&lt;span class="gp"&gt;# &lt;/span&gt;gera uma senha simples de &lt;span class="m"&gt;20&lt;/span&gt; caracteres
+&lt;span class="gp"&gt;$ &lt;/span&gt;pwgen -1 &lt;span class="m"&gt;20&lt;/span&gt;
 &lt;span class="go"&gt;iesheiquaesae0uGhuK5&lt;/span&gt;
 
-&lt;span class="gp"&gt;#&lt;/span&gt; gerar senhas mais complexas para serem memorizadas com o parâmetro -s
-&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -s -1 &lt;span class="m"&gt;20&lt;/span&gt;
+&lt;span class="gp"&gt;# &lt;/span&gt;gerar senhas mais complexas para serem memorizadas com o parâmetro -s
+&lt;span class="gp"&gt;$ &lt;/span&gt;pwgen -s -1 &lt;span class="m"&gt;20&lt;/span&gt;
 &lt;span class="go"&gt;rtUyok8K5nFdcWQpuHZU&lt;/span&gt;
 
-&lt;span class="gp"&gt;#&lt;/span&gt; gerar senhas com símbolos
-&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 -y
+&lt;span class="gp"&gt;# &lt;/span&gt;gerar senhas com símbolos
+&lt;span class="gp"&gt;$ &lt;/span&gt;pwgen -1 -y
 &lt;span class="go"&gt;ieShe&amp;quot;c8&lt;/span&gt;
 
-&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 -y &lt;span class="m"&gt;20&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;pwgen -1 -y &lt;span class="m"&gt;20&lt;/span&gt;
 &lt;span class="go"&gt;eiriaraidee8Naecaap~&lt;/span&gt;
 
-&lt;span class="gp"&gt;$&lt;/span&gt; pwgen -1 -y &lt;span class="m"&gt;20&lt;/span&gt; -s
+&lt;span class="gp"&gt;$ &lt;/span&gt;pwgen -1 -y &lt;span class="m"&gt;20&lt;/span&gt; -s
 &lt;span class="go"&gt;_7kwgl7tu1QEb#^Qz/K&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Perceba atentamente que os parâmetros podem ser combinados para gerar senhas mais complexas.&lt;/p&gt;
@@ -60,10 +60,10 @@
 &lt;h2&gt;Como guardar minhas senhas?&lt;/h2&gt;
 &lt;p&gt;Eu utilizo a um tempinho o comando &lt;cite&gt;gpg&lt;/cite&gt; para fazer isso. O &lt;cite&gt;gpg&lt;/cite&gt; parte integrante do pacote &lt;cite&gt;gnupg&lt;/cite&gt; e se você quiser saber mais sobre essa história pode dar uma &lt;a class="reference external" href="https://pt.wikipedia.org/wiki/GNU_Privacy_Guard"&gt;lida aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Para instalar o comando &lt;cite&gt;gpg&lt;/cite&gt; via apt-get é muito simples:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install gnupg
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;sudo apt-get install gnupg
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Porém vale lembrar que na maioria das distribuições do Linux atualmente este comando vem instalado por padrão. Após a instalação suponha que eu temos um arquivo chamado &lt;cite&gt;passwords&lt;/cite&gt; e vou exibir seu conteúdo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cat passwords
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;cat passwords
 &lt;span class="go"&gt;serviço xpto&lt;/span&gt;
 &lt;span class="go"&gt;usuário: teste&lt;/span&gt;
 &lt;span class="go"&gt;senha: 12345&lt;/span&gt;
@@ -74,17 +74,17 @@
 &lt;span class="go"&gt;--------&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Vou encriptar esse arquivo com uma senha mestra usando o &lt;cite&gt;gpg&lt;/cite&gt; (nesta etapa a senha mestra será solicitada):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; gpg -c passwords
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;gpg -c passwords
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Após a execução deste comando acima um novo arquivo será gerado nomeado como &lt;cite&gt;passwords.gpg&lt;/cite&gt; este arquivo é a saída encriptada com o &lt;cite&gt;gpg&lt;/cite&gt;. Mostrando seu conteúdo (abaixo) podemos ver que realmente ele está encriptado:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cat passwords.gpg
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;cat passwords.gpg
 &lt;span class="go"&gt;&amp;lt;jӘ�h1��ҁ�(ߠ+����a����&lt;/span&gt;
 &lt;span class="go"&gt;                          7l3_�۔F�&amp;gt;��,;g��z2�qk�g`ZE�-�i��w��k���������X�d)��O���o�igi�)7&amp;gt;&lt;/span&gt;
 &lt;span class="go"&gt;                                                                                             ˳&lt;/span&gt;
 &lt;span class="go"&gt;�E~�3���Q̿4�  �[x+48�&amp;amp;�̋6g-��Xd�&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A saída será esse monte de caracteres estranhos conforme mostrado acima. Para que nós consigamos ler esse arquivo novamente podemos executar novamente o comando &lt;cite&gt;gpg&lt;/cite&gt; conforme mostrado abaixo (você deverá informar a senha mestra nesta etapa, caso você não a tenha informado durante esta &amp;quot;seção de shell&amp;quot;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; gpg -d passwords.gpg
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;gpg -d passwords.gpg
 &lt;span class="go"&gt;gpg: AES encrypted data&lt;/span&gt;
 &lt;span class="go"&gt;gpg: encrypted with 1 passphrase&lt;/span&gt;
 &lt;span class="go"&gt;serviço xpto&lt;/span&gt;
@@ -97,7 +97,7 @@
 &lt;span class="go"&gt;--------&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Pronto! Feito isso agora podemos apagar o arquivo antigo chamado &lt;cite&gt;passwords&lt;/cite&gt; e ficamos com o arquivo &lt;cite&gt;passwords.gpg&lt;/cite&gt; criptografado que só eu tenho a senha. Vamos remover:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; rm passwords
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;rm passwords
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Eu recomendo como &amp;quot;boas práticas&amp;quot; no uso do &lt;cite&gt;gpg&lt;/cite&gt;:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
@@ -118,13 +118,13 @@ Eu sou um usuário de um serviço X e uso autenticação por dois fatores e para
 &lt;p&gt;É uma verdade que todo serviço que disponibiliza autenticação por dois fatores também te disponibiliza tokens de recuperação para o caso de acontecerem tragédias (como assaltos) e você perder o &amp;quot;app autenticador&amp;quot; com seus tokens todos.&lt;/p&gt;
 &lt;p&gt;Porém tem outra opção para você mesmo gerenciar/gerar seus tokens! Você construir sua própria ferramenta gerenciadora/geradora de tokens!&lt;/p&gt;
 &lt;p&gt;Quem me deu essa dica foi meu amigo &lt;a class="reference external" href="https://disqus.com/by/jaimeasnchezhidalg/"&gt;Jayme&lt;/a&gt;. E pra falar a verdade você nem vai construir tanta coisa assim, pois existe um utilitário de linha de comando que te ajuda a fazer isso. Vamos começar instalando o pacote &lt;cite&gt;oauthtool&lt;/cite&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install oathtool
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;sudo apt-get install oathtool
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Legal! Instalado! Agora vamos testar:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;xablaus&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;xablaus&amp;quot;&lt;/span&gt;
 &lt;span class="go"&gt;865242&lt;/span&gt;
 
-&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;xablaus&amp;quot;&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;xablaus&amp;quot;&lt;/span&gt;
 &lt;span class="go"&gt;376849&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Percebam que a cada vez que eu executei este comando com a secret &lt;cite&gt;xablaus&lt;/cite&gt; ele me gerou um código. Este código seria o nosso token válido para autenticação por dois fatores.&lt;/p&gt;
@@ -132,10 +132,10 @@ Eu sou um usuário de um serviço X e uso autenticação por dois fatores e para
 &lt;p&gt;Quando eu uso este aplicativo apontando para um código QR que os serviços de 2FA me dão eu tenho algo parecido com isso:&lt;/p&gt;
 &lt;img alt="imagem da app QR Reader" class="align-center" src="images/como-gerenciar-minhas-senhas.png" /&gt;
 &lt;p&gt;Baseado no link retornado do QR Code você deverá usar somente a parte do secret que seria o código &lt;cite&gt;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&lt;/cite&gt;, com esse código em mãos podemos usar o comando &lt;cite&gt;oathtool&lt;/cite&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&amp;quot;&lt;/span&gt;
 &lt;span class="go"&gt;866946&lt;/span&gt;
 
-&lt;span class="gp"&gt;$&lt;/span&gt; oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&amp;quot;&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;oathtool --base32 --totp &lt;span class="s2"&gt;&amp;quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&amp;quot;&lt;/span&gt;
 &lt;span class="go"&gt;640765&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Como vocês podem ver na imagem esse código eu gerei a partir da minha conta pessoal da Amazon Web Services (obviamente que não estou usando este no momento senão meio mundo agora estaria tentando me invadir neste momento), para que sejam gerados tokens de outros serviços o mesmo procedimento poderia ser usado tranquilamente.&lt;/p&gt;

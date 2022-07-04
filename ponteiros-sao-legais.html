@@ -69,7 +69,7 @@
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
 <span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">number</span> <span class="p">:</span><span class="o">=</span> <span class="mi">10</span>
+    <span class="n">number</span> <span class="o">:=</span> <span class="mi">10</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;number: %p - %+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">number</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
 
     <span class="n">number</span> <span class="o">=</span> <span class="n">increment</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -92,7 +92,7 @@ number: 0xc42001c0d0 - 20
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
 <span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">number</span> <span class="p">:</span><span class="o">=</span> <span class="mi">10</span>
+    <span class="n">number</span> <span class="o">:=</span> <span class="mi">10</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;number: %p - %+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">number</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
 
     <span class="n">number</span> <span class="o">=</span> <span class="n">increment</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -122,7 +122,7 @@ number: 0xc42001c0d0 - 20
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
 <span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">number</span> <span class="p">:</span><span class="o">=</span> <span class="mi">10</span>
+    <span class="n">number</span> <span class="o">:=</span> <span class="mi">10</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;number: %p - %+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">number</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
 
     <span class="n">increment</span><span class="p">(</span><span class="o">&amp;</span><span class="n">number</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>

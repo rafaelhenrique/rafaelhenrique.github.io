@@ -82,7 +82,7 @@
 
 <span class="n">notas</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">alunos</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Alexsandro&quot;</span><span class="p">,</span> <span class="s2">&quot;Arieh&quot;</span><span class="p">]</span>
-<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{} Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
 
 <span class="c1"># esse é o for sem a list comprehenssion ai de cima</span>
 <span class="c1">#</span>
@@ -101,10 +101,10 @@
 <span class="p">}</span>
 
 <span class="k">for</span> <span class="n">aluno</span> <span class="ow">in</span> <span class="n">alunos</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aluno: &quot;</span><span class="p">,</span> <span class="n">aluno</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aluno: &quot;</span><span class="p">,</span> <span class="n">aluno</span><span class="p">)</span>
     <span class="n">notas</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">bimestre</span> <span class="ow">in</span> <span class="n">bimestres</span><span class="p">:</span>
-        <span class="n">nota</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a nota do {}: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bimestre</span><span class="p">))</span>
+        <span class="n">nota</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a nota do </span><span class="si">{}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bimestre</span><span class="p">))</span>
         <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nota</span><span class="p">)</span>
         <span class="n">notas</span><span class="p">[</span><span class="n">aluno</span><span class="p">][</span><span class="n">bimestre</span><span class="p">]</span> <span class="o">=</span> <span class="n">nota</span>
 
@@ -130,16 +130,16 @@
 <span class="c1"># Nota menor que 5 teve menção D</span>
 
 <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">nota</span> <span class="ow">in</span> <span class="n">resultado_final</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota final {}: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nome</span><span class="p">,</span> <span class="n">nota</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota final </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nome</span><span class="p">,</span> <span class="n">nota</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota A&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota A&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="mi">9</span> <span class="o">&gt;=</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota B&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota B&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="mi">7</span> <span class="o">&gt;=</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota C&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota C&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota D&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota D&quot;</span><span class="p">)</span>
 </pre></div>
 <p>Vamos analisar os problemas deste código acima:</p>
 <ol class="arabic simple">
@@ -167,7 +167,7 @@
 <p>Só ai já eliminei duas coisas inúteis no script. Continuando:</p>
 <div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
 
-<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{} Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="n">bimestres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
 
 <span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
 </pre></div>
@@ -195,7 +195,7 @@
 
 <span class="n">bimestres</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
-   <span class="n">bimestres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;{} Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">))</span>
+   <span class="n">bimestres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> Bim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">))</span>
 
 <span class="o">...</span> <span class="n">linhas</span> <span class="n">omitidas</span> <span class="o">...</span>
 </pre></div>
@@ -238,11 +238,11 @@
 <span class="n">denominador</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pesos</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 </pre></div>
 <p>Eu particularmente achei bem mais bonito e claro de entender as coisas. Só tem uma coisa diferente ai, que a é função <tt class="docutils literal">sum</tt> que já é padrão do Python e faz soma de valores de um iterador, vamos ver como isso funciona:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> python
+<div class="highlight"><pre><span></span><span class="gp">$ </span>python
 <span class="go">Python 3.5.1 (default, Feb 22 2016, 23:22:06)</span>
 <span class="go">[GCC 4.9.2] on linux</span>
 <span class="go">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span>
-<span class="gp">&gt;</span>&gt;&gt; <span class="nv">pesos</span> <span class="o">=</span> <span class="o">{</span>
+<span class="go">&gt;&gt;&gt; pesos = {</span>
 <span class="go">...         &quot;1 Bim&quot;: 2.0,</span>
 <span class="go">...         &quot;2 Bim&quot;: 3.0,</span>
 <span class="go">...         &quot;3 Bim&quot;: 3.0,</span>
@@ -250,20 +250,20 @@
 <span class="go">...         &quot;5 Bim&quot;: 5.0,</span>
 <span class="go">...         &quot;6 Bim&quot;: 5.0,</span>
 <span class="go">...     }</span>
-<span class="gp">&gt;</span>&gt;&gt; pesos.values<span class="o">()</span>
+<span class="go">&gt;&gt;&gt; pesos.values()</span>
 <span class="go">dict_values([5.0, 2.0, 4.0, 5.0, 3.0, 3.0])</span>
-<span class="gp">&gt;</span>&gt;&gt; type<span class="o">(</span>pesos.values<span class="o">())</span>
+<span class="go">&gt;&gt;&gt; type(pesos.values())</span>
 <span class="go">&lt;class &#39;dict_values&#39;&gt;</span>
-<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>pesos.values<span class="o">())</span>
+<span class="go">&gt;&gt;&gt; sum(pesos.values())</span>
 <span class="go">22.0</span>
-<span class="gp">&gt;</span>&gt;&gt; <span class="nv">lista</span> <span class="o">=</span> <span class="o">[</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span><span class="o">]</span>
-<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>lista<span class="o">)</span>
+<span class="go">&gt;&gt;&gt; lista = [1, 2, 3, 4, 5, 6]</span>
+<span class="go">&gt;&gt;&gt; sum(lista)</span>
 <span class="go">21</span>
-<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>range<span class="o">(</span><span class="m">1</span>,100<span class="o">))</span>
+<span class="go">&gt;&gt;&gt; sum(range(1,100))</span>
 <span class="go">4950</span>
-<span class="gp">&gt;</span>&gt;&gt; pesos.keys<span class="o">()</span>
+<span class="go">&gt;&gt;&gt; pesos.keys()</span>
 <span class="go">dict_keys([&#39;5 Bim&#39;, &#39;1 Bim&#39;, &#39;4 Bim&#39;, &#39;6 Bim&#39;, &#39;3 Bim&#39;, &#39;2 Bim&#39;])</span>
-<span class="gp">&gt;</span>&gt;&gt; sum<span class="o">(</span>pesos.keys<span class="o">())</span>
+<span class="go">&gt;&gt;&gt; sum(pesos.keys())</span>
 <span class="go">Traceback (most recent call last):</span>
 <span class="go">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
 <span class="go">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
@@ -300,30 +300,30 @@
 <span class="n">denominador</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pesos</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
 <span class="k">for</span> <span class="n">aluno</span> <span class="ow">in</span> <span class="n">alunos</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Aluno: &quot;</span><span class="p">,</span> <span class="n">aluno</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aluno: &quot;</span><span class="p">,</span> <span class="n">aluno</span><span class="p">)</span>
     <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">bimestre</span> <span class="ow">in</span> <span class="n">bimestres</span><span class="p">:</span>
-        <span class="n">nota</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a nota do {}: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bimestre</span><span class="p">))</span>
+        <span class="n">nota</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a nota do </span><span class="si">{}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bimestre</span><span class="p">))</span>
         <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nota</span><span class="p">)</span>
         <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nota</span> <span class="o">*</span> <span class="n">pesos</span><span class="p">[</span><span class="n">bimestre</span><span class="p">]</span>
 
     <span class="n">media</span> <span class="o">=</span> <span class="n">numerador</span><span class="p">[</span><span class="n">aluno</span><span class="p">]</span> <span class="o">/</span> <span class="n">denominador</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota final {}: {:.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aluno</span><span class="p">,</span> <span class="n">media</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota final </span><span class="si">{}</span><span class="s2">: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aluno</span><span class="p">,</span> <span class="n">media</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">media</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota A&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota A&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="mi">9</span> <span class="o">&gt;=</span> <span class="n">media</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota B&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota B&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="mi">7</span> <span class="o">&gt;=</span> <span class="n">media</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota C&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota C&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Nota D&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota D&quot;</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 <p>Agora sim! Ficou um script clean, mais pythônico do que era antes. De 6 loops reduzi para 2 loops somente.</p>
 <p>A criação de um dicionário dinamicamente ainda é usada na linha <tt class="docutils literal">numerador[aluno] = 0</tt> porém de forma bem mais simples, somente é inicializado com 0 para poder ir somando as notas do aluno no numerador da nossa equação. Para entender como ficou a estrutura do nosso dicionário numerador veja o exemplo abaixo:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> python media_alunos_dict.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>python media_alunos_dict.py
 <span class="go">Aluno:  Rafael1</span>
 <span class="go">Digite a nota do 1 Bim: 7</span>
 <span class="go">Digite a nota do 2 Bim: 5</span>
@@ -331,7 +331,7 @@
 <span class="go">Digite a nota do 4 Bim: 10</span>
 <span class="go">Digite a nota do 5 Bim: 9</span>
 <span class="go">Digite a nota do 6 Bim: 8</span>
-<span class="gp">&gt;</span> /home/rafael/Dropbox/Grupo de estudos Python/nivel_mediano/media_ponderada/media_alunos_dict.py<span class="o">(</span><span class="m">35</span><span class="o">)</span>&lt;module&gt;<span class="o">()</span>
+<span class="go">&gt; /home/rafael/Dropbox/Grupo de estudos Python/nivel_mediano/media_ponderada/media_alunos_dict.py(35)&lt;module&gt;()</span>
 <span class="go">     34     import ipdb; ipdb.set_trace()</span>
 <span class="go">---&gt; 35     media = numerador[aluno] / denominador</span>
 <span class="go">     36     print(&quot;Nota final {}: {:.2f}&quot;.format(aluno, media))</span>

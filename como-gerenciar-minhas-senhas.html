@@ -68,10 +68,10 @@
 <div class="section" id="como-gerar-senhas-seguras">
 <h2>Como gerar senhas seguras?</h2>
 <p>Gosto bastante de um comandinho mágico chamado <cite>pwgen</cite> que é facilmente instalado pelo pacote de mesmo nome em sistemas Debian-like pelo comando apt-get:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install pwgen
+<div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt-get install pwgen
 </pre></div>
 <p>Este comando é muito simples de usar, basta abrir um terminar e digitar o seu respectivo nome:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> pwgen
+<div class="highlight"><pre><span></span><span class="gp">$ </span>pwgen
 <span class="go">ki8eTeef Acho1or1 oophuGh5 shawoe6F ahmi9ieG Iej3ohmi oS3unais ve0eiv5X</span>
 <span class="go">iew5gaiP othai7Ch UFoh1eep naid5Sho Koo5Hai9 cohThaa8 eiBok1ae koofei8S</span>
 <span class="go">Dae8Wai1 Pae1lo8u Iega7uah uNoawae8 Ood7uiN0 raiQu3ai wae6ca4U ohNg9aer</span>
@@ -94,26 +94,26 @@
 <span class="go">pah1Oe0w Xiec1vie quee2Aeb neXe0ahl choh2Oan nai0Uhae iek8pahG iu1ohZ7u</span>
 </pre></div>
 <p>Ele vai gerar uma pancada de senhas exatamente como demostrado acima. Porém tem outros parâmetros bem legais, exemplos:</p>
-<div class="highlight"><pre><span></span><span class="gp">#</span> gera uma senha somente
-<span class="gp">$</span> pwgen -1
+<div class="highlight"><pre><span></span><span class="gp"># </span>gera uma senha somente
+<span class="gp">$ </span>pwgen -1
 <span class="go">zoh1So3D</span>
 
-<span class="gp">#</span> gera uma senha simples de <span class="m">20</span> caracteres
-<span class="gp">$</span> pwgen -1 <span class="m">20</span>
+<span class="gp"># </span>gera uma senha simples de <span class="m">20</span> caracteres
+<span class="gp">$ </span>pwgen -1 <span class="m">20</span>
 <span class="go">iesheiquaesae0uGhuK5</span>
 
-<span class="gp">#</span> gerar senhas mais complexas para serem memorizadas com o parâmetro -s
-<span class="gp">$</span> pwgen -s -1 <span class="m">20</span>
+<span class="gp"># </span>gerar senhas mais complexas para serem memorizadas com o parâmetro -s
+<span class="gp">$ </span>pwgen -s -1 <span class="m">20</span>
 <span class="go">rtUyok8K5nFdcWQpuHZU</span>
 
-<span class="gp">#</span> gerar senhas com símbolos
-<span class="gp">$</span> pwgen -1 -y
+<span class="gp"># </span>gerar senhas com símbolos
+<span class="gp">$ </span>pwgen -1 -y
 <span class="go">ieShe&quot;c8</span>
 
-<span class="gp">$</span> pwgen -1 -y <span class="m">20</span>
+<span class="gp">$ </span>pwgen -1 -y <span class="m">20</span>
 <span class="go">eiriaraidee8Naecaap~</span>
 
-<span class="gp">$</span> pwgen -1 -y <span class="m">20</span> -s
+<span class="gp">$ </span>pwgen -1 -y <span class="m">20</span> -s
 <span class="go">_7kwgl7tu1QEb#^Qz/K&gt;</span>
 </pre></div>
 <p>Perceba atentamente que os parâmetros podem ser combinados para gerar senhas mais complexas.</p>
@@ -122,10 +122,10 @@
 <h2>Como guardar minhas senhas?</h2>
 <p>Eu utilizo a um tempinho o comando <cite>gpg</cite> para fazer isso. O <cite>gpg</cite> parte integrante do pacote <cite>gnupg</cite> e se você quiser saber mais sobre essa história pode dar uma <a class="reference external" href="https://pt.wikipedia.org/wiki/GNU_Privacy_Guard">lida aqui</a>.</p>
 <p>Para instalar o comando <cite>gpg</cite> via apt-get é muito simples:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install gnupg
+<div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt-get install gnupg
 </pre></div>
 <p>Porém vale lembrar que na maioria das distribuições do Linux atualmente este comando vem instalado por padrão. Após a instalação suponha que eu temos um arquivo chamado <cite>passwords</cite> e vou exibir seu conteúdo:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cat passwords
+<div class="highlight"><pre><span></span><span class="gp">$ </span>cat passwords
 <span class="go">serviço xpto</span>
 <span class="go">usuário: teste</span>
 <span class="go">senha: 12345</span>
@@ -136,17 +136,17 @@
 <span class="go">--------</span>
 </pre></div>
 <p>Vou encriptar esse arquivo com uma senha mestra usando o <cite>gpg</cite> (nesta etapa a senha mestra será solicitada):</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> gpg -c passwords
+<div class="highlight"><pre><span></span><span class="gp">$ </span>gpg -c passwords
 </pre></div>
 <p>Após a execução deste comando acima um novo arquivo será gerado nomeado como <cite>passwords.gpg</cite> este arquivo é a saída encriptada com o <cite>gpg</cite>. Mostrando seu conteúdo (abaixo) podemos ver que realmente ele está encriptado:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cat passwords.gpg
+<div class="highlight"><pre><span></span><span class="gp">$ </span>cat passwords.gpg
 <span class="go">&lt;jӘ�h1��ҁ�(ߠ+����a����</span>
 <span class="go">                          7l3_�۔F�&gt;��,;g��z2�qk�g`ZE�-�i��w��k���������X�d)��O���o�igi�)7&gt;</span>
 <span class="go">                                                                                             ˳</span>
 <span class="go">�E~�3���Q̿4�  �[x+48�&amp;�̋6g-��Xd�</span>
 </pre></div>
 <p>A saída será esse monte de caracteres estranhos conforme mostrado acima. Para que nós consigamos ler esse arquivo novamente podemos executar novamente o comando <cite>gpg</cite> conforme mostrado abaixo (você deverá informar a senha mestra nesta etapa, caso você não a tenha informado durante esta &quot;seção de shell&quot;):</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> gpg -d passwords.gpg
+<div class="highlight"><pre><span></span><span class="gp">$ </span>gpg -d passwords.gpg
 <span class="go">gpg: AES encrypted data</span>
 <span class="go">gpg: encrypted with 1 passphrase</span>
 <span class="go">serviço xpto</span>
@@ -159,7 +159,7 @@
 <span class="go">--------</span>
 </pre></div>
 <p>Pronto! Feito isso agora podemos apagar o arquivo antigo chamado <cite>passwords</cite> e ficamos com o arquivo <cite>passwords.gpg</cite> criptografado que só eu tenho a senha. Vamos remover:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> rm passwords
+<div class="highlight"><pre><span></span><span class="gp">$ </span>rm passwords
 </pre></div>
 <p>Eu recomendo como &quot;boas práticas&quot; no uso do <cite>gpg</cite>:</p>
 <ol class="arabic simple">
@@ -180,13 +180,13 @@ Eu sou um usuário de um serviço X e uso autenticação por dois fatores e para
 <p>É uma verdade que todo serviço que disponibiliza autenticação por dois fatores também te disponibiliza tokens de recuperação para o caso de acontecerem tragédias (como assaltos) e você perder o &quot;app autenticador&quot; com seus tokens todos.</p>
 <p>Porém tem outra opção para você mesmo gerenciar/gerar seus tokens! Você construir sua própria ferramenta gerenciadora/geradora de tokens!</p>
 <p>Quem me deu essa dica foi meu amigo <a class="reference external" href="https://disqus.com/by/jaimeasnchezhidalg/">Jayme</a>. E pra falar a verdade você nem vai construir tanta coisa assim, pois existe um utilitário de linha de comando que te ajuda a fazer isso. Vamos começar instalando o pacote <cite>oauthtool</cite>:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install oathtool
+<div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt-get install oathtool
 </pre></div>
 <p>Legal! Instalado! Agora vamos testar:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;xablaus&quot;</span>
+<div class="highlight"><pre><span></span><span class="gp">$ </span>oathtool --base32 --totp <span class="s2">&quot;xablaus&quot;</span>
 <span class="go">865242</span>
 
-<span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;xablaus&quot;</span>
+<span class="gp">$ </span>oathtool --base32 --totp <span class="s2">&quot;xablaus&quot;</span>
 <span class="go">376849</span>
 </pre></div>
 <p>Percebam que a cada vez que eu executei este comando com a secret <cite>xablaus</cite> ele me gerou um código. Este código seria o nosso token válido para autenticação por dois fatores.</p>
@@ -194,10 +194,10 @@ Eu sou um usuário de um serviço X e uso autenticação por dois fatores e para
 <p>Quando eu uso este aplicativo apontando para um código QR que os serviços de 2FA me dão eu tenho algo parecido com isso:</p>
 <img alt="imagem da app QR Reader" class="align-center" src="images/como-gerenciar-minhas-senhas.png" />
 <p>Baseado no link retornado do QR Code você deverá usar somente a parte do secret que seria o código <cite>HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD</cite>, com esse código em mãos podemos usar o comando <cite>oathtool</cite>:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&quot;</span>
+<div class="highlight"><pre><span></span><span class="gp">$ </span>oathtool --base32 --totp <span class="s2">&quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&quot;</span>
 <span class="go">866946</span>
 
-<span class="gp">$</span> oathtool --base32 --totp <span class="s2">&quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&quot;</span>
+<span class="gp">$ </span>oathtool --base32 --totp <span class="s2">&quot;HKAOMWCXK6NCVIX7XHUIABCSYC3J42MQWBBDPHG2GKRELBTT5YISYYUULA7ZPOQD&quot;</span>
 <span class="go">640765</span>
 </pre></div>
 <p>Como vocês podem ver na imagem esse código eu gerei a partir da minha conta pessoal da Amazon Web Services (obviamente que não estou usando este no momento senão meio mundo agora estaria tentando me invadir neste momento), para que sejam gerados tokens de outros serviços o mesmo procedimento poderia ser usado tranquilamente.</p>

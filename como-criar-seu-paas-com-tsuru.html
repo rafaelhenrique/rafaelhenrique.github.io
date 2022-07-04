@@ -117,28 +117,28 @@
 <p>Ai começa meu instinto de programador maluco e fui depurando a parada. Pelo que pude ver o script não estava pegando meu ip externo adequadamente.</p>
 <h2>Variáveis/adaptação e funcionamento completo</h2>
 <p>Como o Tsuru Now não conseguia pegar meu ip corretamente fui lá e comecei a testar coisas de modo que fizesse o filho da mãe funcionar. Eis que por fim eu consegui, e vou dar a receita de bolo pra vocês. Clone o repositório do Tsuru Now inicialmente:</p>
-<div class="highlight"><pre><span></span># git clone git@github.com:tsuru/now.git
+<div class="highlight"><pre><span></span><span class="err">#</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">tsuru</span><span class="o">/</span><span class="n">now</span><span class="p">.</span><span class="n">git</span><span class="w"></span>
 </pre></div>
 
 
 <p>Nas primeiras linhas do script chamado <code>run.bash</code> tem algumas variáveis interessantes:</p>
-<div class="highlight"><pre><span></span>1  #!/bin/bash -ue
-2 
-3  # Copyright 2015 tsuru-now authors. All rights reserved.
-4  # Use of this source code is governed by a BSD-style
-5  # license that can be found in the LICENSE file.
-6 
-7  set -eu
-8
-9  release=&quot;&quot;
-10 codename=&quot;&quot;
-11 host_ip=&quot;&quot;
-12 private_ip=&quot;&quot;
-13 host_name=&quot;&quot;
-14 set_interface=&quot;&quot;
-15 is_debug=&quot;&quot;
-16 docker_node=&quot;&quot;
-17 set_interface=&quot;&quot;
+<div class="highlight"><pre><span></span><span class="mf">1</span><span class="w">  </span><span class="err">#!</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span><span class="w"> </span><span class="o">-</span><span class="n">ue</span><span class="w"></span>
+<span class="mf">2</span><span class="w"> </span>
+<span class="mf">3</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">Copyright</span><span class="w"> </span><span class="mf">2015</span><span class="w"> </span><span class="n">tsuru</span><span class="o">-</span><span class="n">now</span><span class="w"> </span><span class="n">authors</span><span class="mf">.</span><span class="w"> </span><span class="n">All</span><span class="w"> </span><span class="n">rights</span><span class="w"> </span><span class="n">reserved</span><span class="mf">.</span><span class="w"></span>
+<span class="mf">4</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">Use</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="kr">go</span><span class="n">verned</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">BSD</span><span class="o">-</span><span class="n">style</span><span class="w"></span>
+<span class="mf">5</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">license</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">LICENSE</span><span class="w"> </span><span class="n">file</span><span class="mf">.</span><span class="w"></span>
+<span class="mf">6</span><span class="w"> </span>
+<span class="mf">7</span><span class="w">  </span><span class="n">set</span><span class="w"> </span><span class="o">-</span><span class="n">eu</span><span class="w"></span>
+<span class="mf">8</span><span class="w"></span>
+<span class="mf">9</span><span class="w">  </span><span class="n">release</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">10</span><span class="w"> </span><span class="n">codename</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">11</span><span class="w"> </span><span class="n">host_ip</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">12</span><span class="w"> </span><span class="n">private_ip</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">13</span><span class="w"> </span><span class="n">host_name</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">14</span><span class="w"> </span><span class="n">set_interface</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">15</span><span class="w"> </span><span class="n">is_debug</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">16</span><span class="w"> </span><span class="n">docker_node</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="mf">17</span><span class="w"> </span><span class="n">set_interface</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"></span>
 </pre></div>
 
 
@@ -153,16 +153,16 @@
 <p>Usei o comando <code>| tee log_run.log</code> para que ele gere um arquivo contendo todo output (erros e não erros) do script, se você quiser analisar depois como foi a instalação ficará mais fácil você ler este arquivo.</p>
 <h2>Finish him!</h2>
 <p>Se tudo correr bem ao fim dessa execução seu Tsuru já vai estar funcionando de forma básica pronta para testes bacaninhas. É importante em um primeiro momento alterar a senha do admin e rodar <code>source ~/.bashrc</code> conforme manda o próprio Tsuru Now:</p>
-<div class="highlight"><pre><span></span>######################## DONE! ########################
+<div class="highlight"><pre><span></span><span class="err">########################</span><span class="w"> </span><span class="n">DONE</span><span class="err">!</span><span class="w"> </span><span class="err">########################</span><span class="w"></span>
 
-Some information about your tsuru installation:
+<span class="ow">Some</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">tsuru</span><span class="w"> </span><span class="nl">installation</span><span class="p">:</span><span class="w"></span>
 
-Admin user: admin@example.com
-Admin password: admin123 (PLEASE CHANGE RUNNING: tsuru change-password)
-Target address: http://&lt;meu ip externo&gt;:8080
-Dashboard address: http://&lt;meu ip externo&gt;:32768
+<span class="k">Admin</span><span class="w"> </span><span class="k">user</span><span class="err">:</span><span class="w"> </span><span class="k">admin</span><span class="nv">@example</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
+<span class="k">Admin</span><span class="w"> </span><span class="nl">password</span><span class="p">:</span><span class="w"> </span><span class="n">admin123</span><span class="w"> </span><span class="p">(</span><span class="n">PLEASE</span><span class="w"> </span><span class="n">CHANGE</span><span class="w"> </span><span class="nl">RUNNING</span><span class="p">:</span><span class="w"> </span><span class="n">tsuru</span><span class="w"> </span><span class="n">change</span><span class="o">-</span><span class="n">password</span><span class="p">)</span><span class="w"></span>
+<span class="n">Target</span><span class="w"> </span><span class="nl">address</span><span class="p">:</span><span class="w"> </span><span class="nl">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">meu</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">externo</span><span class="o">&gt;</span><span class="err">:</span><span class="mi">8080</span><span class="w"></span>
+<span class="n">Dashboard</span><span class="w"> </span><span class="nl">address</span><span class="p">:</span><span class="w"> </span><span class="nl">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">meu</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">externo</span><span class="o">&gt;</span><span class="err">:</span><span class="mi">32768</span><span class="w"></span>
 
-You should run `source ~/.bashrc` on your current terminal.
+<span class="n">You</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="err">`</span><span class="n">source</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">bashrc</span><span class="err">`</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">terminal</span><span class="p">.</span><span class="w"></span>
 </pre></div>
 
 

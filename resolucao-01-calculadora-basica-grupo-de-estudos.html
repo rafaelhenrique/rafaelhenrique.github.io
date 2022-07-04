@@ -72,7 +72,7 @@
 <span class="n">segundo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite o segundo número: &quot;</span><span class="p">)</span>
 <span class="n">operacao</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a operação: &quot;</span><span class="p">)</span>
 
-<span class="n">resultado</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">if</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">primeiro</span><span class="p">)</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">segundo</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
@@ -82,10 +82,10 @@
 <span class="k">elif</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">primeiro</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">segundo</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Operação não existente!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Operação não existente!&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">resultado</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Resultado: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultado</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultado</span><span class="p">))</span>
 </pre></div>
 <p>Se executarmos este exercício passo a passo poderemos ver alguns problemas e curiosidades a respeito dele que podem ser aprimorados em relação ao código simples que escrevi acima. Problemas encontrados:</p>
 <ol class="arabic simple">
@@ -93,7 +93,7 @@
 <li>A divisão por 0 também causará uma exceção, mas desta vez do tipo ZeroDivisionError.</li>
 </ol>
 <p>Vamos visualizar estes erros na prática:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> python calculadora.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>python calculadora.py
 <span class="go">Qual operação deseja fazer? ( * / - +)</span>
 <span class="go">*</span>
 <span class="go">Digite operando1:</span>
@@ -105,7 +105,7 @@
 <span class="go">    resultado = float(operando1) * float(operando2)</span>
 <span class="go">ValueError: could not convert string to float: &#39;a&#39;</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="gp">$</span> python calculadora.py
+<div class="highlight"><pre><span></span><span class="gp">$ </span>python calculadora.py
 <span class="go">Qual operação deseja fazer? ( * / - +)</span>
 <span class="go">/</span>
 <span class="go">Digite operando1:</span>
@@ -127,10 +127,10 @@
     <span class="n">operando1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite operando1:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
     <span class="n">operando2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite operando2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Digite somente números nos operandos 1 e 2&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Digite somente números nos operandos 1 e 2&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">resultado</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">if</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="n">operando1</span> <span class="o">+</span> <span class="n">operando2</span>
 <span class="k">elif</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
@@ -141,13 +141,13 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">resultado</span> <span class="o">=</span> <span class="n">operando1</span> <span class="o">/</span> <span class="n">operando2</span>
     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Operação inválida: Divisão por 0&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Operação inválida: Divisão por 0&quot;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Operação não existente!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Operação não existente!&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">resultado</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Resultado: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultado</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultado</span><span class="p">))</span>
 </pre></div>
 <p>Neste código foram acrescentadas as estruturas try / except, focando especificamente nas exceptions ValueError e ZeroDivisionError.</p>
 <p>Todo código entre o bloco try ao levantar uma exceção esta será verificada na chamada except, caso ela tenha o mesmo nome da exceção levantada o bloco except correspondente será executado.</p>
@@ -164,10 +164,10 @@
     <span class="n">operando1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite operando1:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
     <span class="n">operando2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite operando2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Digite somente números nos operandos 1 e 2&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Digite somente números nos operandos 1 e 2&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">resultado</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">if</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="n">operando1</span> <span class="o">+</span> <span class="n">operando2</span>
 <span class="k">elif</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
@@ -175,15 +175,15 @@
 <span class="k">elif</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="n">operando1</span> <span class="o">*</span> <span class="n">operando2</span>
 <span class="k">elif</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span> <span class="ow">and</span> <span class="n">operando2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Operação inválida: Divisão por 0&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Operação inválida: Divisão por 0&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">operacao</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="n">operando1</span> <span class="o">/</span> <span class="n">operando2</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Operação não existente!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Operação não existente!&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">resultado</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Resultado: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultado</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultado: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultado</span><span class="p">))</span>
 </pre></div>
 <div class="section" id="conclusao">
 <h2>Conclusão</h2>

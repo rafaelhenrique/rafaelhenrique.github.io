@@ -66,7 +66,7 @@
 <p>Assim como Python hoje existem inúmeras linguagens no mercado que são dinamicamente tipadas.</p>
 <p>Referenciando especificamente o Python para explicar a questão: Tipagem dinâmica significa que o próprio interpretador do Python infere o tipo dos dados que uma variável recebe, sem a necessidade que você, o usuário da linguagem diga de que tipo determinada variável é. Exemplo de um script Python:</p>
 <div class="highlight"><pre><span></span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
 </pre></div>
 <p>Vamos melhorar esta explicação com um exemplo de tipagem estática, a linguagem C. A linguagem C é estaticamente tipada, isso significa que deveremos sempre determinar qual o tipo de dados uma variável irá receber, exemplo de um programa em C:</p>
 <div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
@@ -83,9 +83,9 @@
 <p>Assim como Python hoje existem inúmeras linguagens no mercado que são fortemente tipadas.</p>
 <p>Referenciando especificamente o Python para explicar a questão: Tipagem forte significa que o interpretador do Python avalia as expressões (evaluate) e não faz coerções automáticas entre tipos não compatíveis (conversões de valores), ou seja:</p>
 <div class="highlight"><pre><span></span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Rafael&quot;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O resultado é: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
 </pre></div>
 <p>Neste código acima definimos <tt class="docutils literal">i</tt> como <tt class="docutils literal">10</tt> e <tt class="docutils literal">j</tt> como <tt class="docutils literal">&quot;Rafael&quot;</tt>, desta forma temos um inteiro em <tt class="docutils literal">i</tt> e uma string em <tt class="docutils literal">j</tt>, ao executar este código veja o que acontece:</p>
 <div class="highlight"><pre><span></span>$ python3 teste.py
